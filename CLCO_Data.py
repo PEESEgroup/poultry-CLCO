@@ -7,45 +7,42 @@ class CLCO_Data:
     def __init__(self, scenario):
         if scenario > 1000:
             if scenario % 10 == 1:
-                self.FEEDSTOCK_SUPPLY = [4867]
+                self.FEEDSTOCK_SUPPLY = [4867*3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [80.6]
             if scenario % 10 == 2:
-                self.FEEDSTOCK_SUPPLY = [1356.1]
+                self.FEEDSTOCK_SUPPLY = [1356.1*3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [16.5]
             if scenario % 10 == 3:
-                self.FEEDSTOCK_SUPPLY = [76.1]
+                self.FEEDSTOCK_SUPPLY = [76.1*3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [26.2]
         else:
             if scenario == 51:
-                self.FEEDSTOCK_SUPPLY = [1356.1]
+                self.FEEDSTOCK_SUPPLY = [1356.1*3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [16.5]
             elif scenario == 52:
-                self.FEEDSTOCK_SUPPLY = [76.1]
+                self.FEEDSTOCK_SUPPLY = [76.1*3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [26.2]
             elif 420 < scenario <430:
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [80.6, 154.3]
-                self.FEEDSTOCK_SUPPLY = [4867, 2501.4]
+                self.FEEDSTOCK_SUPPLY = [4867*3, 2501.4*3]
             elif 430 <scenario < 440:
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [94.2, 83.6, 81.7]
-                self.FEEDSTOCK_SUPPLY = [4867, 1087.8, 1413.6]
+                self.FEEDSTOCK_SUPPLY = [4867*3, 1087.8*3, 1413.6*3]
             elif 440 < scenario < 450:
-                self.FEEDSTOCK_SUPPLY = [3394.5, 1485.2, 1368.4, 1120.3]
+                self.FEEDSTOCK_SUPPLY = [3394.5*3, 1485.2*3, 1368.4*3, 1120.3*3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [66.7, 54.4, 62.6, 94.2]
             else:
-                self.FEEDSTOCK_SUPPLY = [5.5, 28.6, 0.0, 4.8, 6.1, 52.7, 11.6, 2.0, 9.1, 907.4, 16.3, 2.6, 10.0, 12.6, 907.2,
-                                     11.1, 127.5, 7.9, 151.7, 30.5, 0.0, 16.1, 76.1, 0.0, 4.4, 4.2, 5.5, 3.3, 8.3, 0.1, 0.1,
-                                     6.6, 9.3, 1356.1, 62.1, 208.9, 4.4, 4.5, 12.7, 1.4, 0.8, 11.5, 0.0, 0.5, 272.7, 1.0,
-                                     11.0, 23.2, 112.0, 11.9, 594.8, 23.6, 758.8, 4.0, 4.3, 8.6, 1.2, 12.5, 1285.5, 10.8,
-                                     4.5, 125.9]
-                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [13.8, 20.4, 4.6, 17.8, 23.1, 21.2, 24.7, 12.6, 17.8, 21.2, 16.6, 14.2,
-                                                   23.7,
-                                                   16.7, 22.5, 27.2, 26.5, 14.5, 14.1, 16.1, 23.6, 29.6, 26.2, 5.2, 22.8,
-                                                   16.4,
-                                                   16.9, 22.9, 12.8, 12.4, 4.4, 21.2, 19.9, 16.5, 16.3, 17.4, 17.7, 23.9,
-                                                   19.8,
-                                                   10.2, 8.6, 16.4, 6.2, 8.8, 17.3, 9.4, 15.4, 12.1, 14.1, 32.5, 21.3, 30.3,
-                                                   19.9,
-                                                   14.4, 14.0, 20.7, 18.8, 20.7, 22.4, 12.7, 15.3, 11.9]
+                self.FEEDSTOCK_SUPPLY = [16.4, 85.7, 0.0, 14.5, 18.3, 158.2, 34.8, 6.1, 27.4, 2722.3, 49.0, 7.8, 29.9,
+                                         37.7, 2721.6, 33.4, 382.5, 23.8, 455.0, 91.4, 0.0, 48.2, 228.4, 0.1, 13.1,
+                                         12.5, 16.5, 9.9, 24.9, 0.3, 0.2, 19.9, 28.0, 4068.4, 186.4, 626.8, 13.1, 13.4,
+                                         38.1, 4.2, 2.5, 34.5, 0.0, 1.6, 818.1, 3.0, 33.0, 69.7, 335.9, 35.8, 1784.3,
+                                         70.8, 2276.5, 12.0, 12.8, 25.8, 3.5, 37.6, 3856.4, 32.3, 13.4, 377.7]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [13.8, 20.4, 4.6, 17.8, 23.1, 21.2, 24.7, 12.6, 17.8, 21.2, 16.6,
+                                                        14.2, 23.7, 16.7, 22.5, 27.2, 26.5, 14.5, 14.1, 16.1, 23.6,
+                                                        29.6, 26.2, 5.2, 22.8, 16.4, 16.9, 22.9, 12.8, 12.4, 4.4, 21.2,
+                                                        19.9, 16.5, 16.3, 17.4, 17.7, 23.9, 19.8, 10.2, 8.6, 16.4, 6.2,
+                                                        8.8, 17.3, 9.4, 15.4, 12.1, 14.1, 32.5, 21.3, 30.3, 19.9, 14.4,
+                                                        14.0, 20.7, 18.8, 20.7, 22.4, 12.7, 15.3, 11.9]
 
     # X,Y coordinates of each centroid
     XCOORD = [584, 250, 596, 432, 196, 371, 136, 354, 449, 604, 612, 412, 502, 604, 190, 598, 555, 547, 239, 572, 540,
@@ -56,11 +53,11 @@ class CLCO_Data:
               4747, 4583, 4808, 4815, 4720, 4586, 4501, 4729, 4490, 4556, 4773, 4741, 4715, 4695, 4738, 4926, 4682,
               4535, 4618, 4669, 4700, 4637, 4823, 4796, 4799, 4556, 4732, 4722]
 
-    ORIGINAL_FEEDSTOCK_SUPPLY = [5.5, 28.6, 0.0, 4.8, 6.1, 52.7, 11.6, 2.0, 9.1, 907.4, 16.3, 2.6, 10.0, 12.6, 907.2,
-                                 11.1, 127.5, 7.9, 151.7, 30.5, 0.0, 16.1, 76.1, 0.0, 4.4, 4.2, 5.5, 3.3, 8.3, 0.1, 0.1,
-                                 6.6, 9.3, 1356.1, 62.1, 208.9, 4.4, 4.5, 12.7, 1.4, 0.8, 11.5, 0.0, 0.5, 272.7, 1.0,
-                                 11.0, 23.2, 112.0, 11.9, 594.8, 23.6, 758.8, 4.0, 4.3, 8.6, 1.2, 12.5, 1285.5, 10.8,
-                                 4.5, 125.9]
+    ORIGINAL_FEEDSTOCK_SUPPLY = [16.4, 85.7, 0.0, 14.5, 18.3, 158.2, 34.8, 6.1, 27.4, 2722.3, 49.0, 7.8, 29.9,
+                                         37.7, 2721.6, 33.4, 382.5, 23.8, 455.0, 91.4, 0.0, 48.2, 228.4, 0.1, 13.1,
+                                         12.5, 16.5, 9.9, 24.9, 0.3, 0.2, 19.9, 28.0, 4068.4, 186.4, 626.8, 13.1, 13.4,
+                                         38.1, 4.2, 2.5, 34.5, 0.0, 1.6, 818.1, 3.0, 33.0, 69.7, 335.9, 35.8, 1784.3,
+                                         70.8, 2276.5, 12.0, 12.8, 25.8, 3.5, 37.6, 3856.4, 32.3, 13.4, 377.7]
     ### PARAMETERS TO VARY IN SENSITIVITY ANALYSIS
     ENERGY_CONTENT = 1
     P_CONTENT = 1
@@ -72,13 +69,14 @@ class CLCO_Data:
     ### LCA EMISSIONS CHARACTERIZATION FACTORS
 
     ### TEO ECONOMICS PARAMETERS
-    TIME = 120
+    TIME_PERIODS = 40
+    YEARS = 10
     ANNUAL_DISCOUNT_RATE = .07
-    MONTHLY_DISCOUNT_RATE = (1 + ANNUAL_DISCOUNT_RATE) ** (1 / 12) - 1
+    MONTHLY_DISCOUNT_RATE = (1 + ANNUAL_DISCOUNT_RATE) ** (1 / 4) - 1
 
-    LAND_APPLICATION_MONTH = 5
+    LAND_APPLICATION_MONTH = 1
 
-    OPEX_TPC = .0075
+    OPEX_TPC = .09 / TIME_PERIODS * YEARS
 
     ### MODEL PARAMETERS
     ## STAGE 1 PARAMETERS
@@ -237,7 +235,7 @@ class CLCO_Data:
     CHP_HEAT_EFFICIENCY = .5  # MJ out /MJ in
     CHP_ELECTRICITY_EFFICIENCY = .10  # kWh/MJ in
     MJ_TO_KW = .277
-    HOURS_PER_MONTH = 660
+    HOURS_PER_PERIOD = 660*3
     LOAD_TRANSIT_COST = 5.17
 
     # Pyrolysis Yield Data.  Yield at each temperature must sum to 1
