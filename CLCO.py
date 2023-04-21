@@ -399,9 +399,10 @@ def add_constraints(A, M, scenario):
                 for temp in M.PyrolysisTemperatures:
                     for pyro_prod in M.PyrolysisProducts:
                         # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
-                        M.const.add(expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] == M.pyrolysis_in[
-                            l, t, feed] * M.decision_pyrolysis_temperature[l, t, feed, temp] *
-                                         A.PYRO_YIELD[feed, pyro_prod, temp]) #TODO glovers
+                        M.const.add(expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp]/A.PYRO_YIELD[feed, pyro_prod, temp] <= M.pyrolysis_in[l, t, feed])
+                        M.const.add(expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp]/A.PYRO_YIELD[feed, pyro_prod, temp] <= A.FEEDSTOCK_SUPPLY[l]* M.decision_pyrolysis_temperature[l, t, feed, temp])
+                        M.const.add(expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp] >=0)
+                        M.const.add(expr=M.pyrolysis_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] *(1-M.decision_pyrolysis_temperature[l, t, feed, temp]) <= M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp])
 
                         M.const.add(
                             expr=M.pyrolysis_from_storage[l, t, feed, pyro_prod, temp] <=
@@ -492,9 +493,16 @@ def add_constraints(A, M, scenario):
                     for temp in M.HTLTemperatures:
                         # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
                         M.const.add(
-                            expr=M.htl_out[l, t, feed, prod, temp] == M.htl_in[l, t, feed] *
-                                 M.decision_htl_temperature[
-                                     l, t, feed, temp] * A.HTL_YIELD[feed, prod, temp]) #TODO glovers
+                            expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp] <=
+                                 M.htl_in[l, t, feed])
+                        M.const.add(
+                            expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp] <=
+                                 A.FEEDSTOCK_SUPPLY[l] * M.decision_htl_temperature[l, t, feed, temp])
+                        M.const.add(expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[
+                            feed, prod, temp] >= 0)
+                        M.const.add(expr=M.htl_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
+                                    1 - M.decision_htl_temperature[l, t, feed, temp]) <= M.htl_out[
+                                             l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp])
                         M.const.add(
                             expr=M.htl_from_storage[l, t, feed, prod, temp] <= M.htl_storage[
                                 l, t, feed, prod, temp])
@@ -570,9 +578,18 @@ def add_constraints(A, M, scenario):
                 for temp in M.HTCTemperatures:
                     for prod in M.HTCProducts:
                         # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
-                        M.const.add(expr=M.htc_out[l, t, feed, prod, temp] == M.htc_in[l, t, feed] *
-                                         M.decision_htc_temperature[l, t, feed, temp] * A.HTC_YIELD[
-                                             feed, prod, temp]) #TODO glovers
+                        M.const.add(
+                            expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp] <=
+                                 M.htc_in[l, t, feed])
+                        M.const.add(
+                            expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp] <=
+                                 A.FEEDSTOCK_SUPPLY[l] * M.decision_htc_temperature[l, t, feed, temp])
+                        M.const.add(expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[
+                            feed, prod, temp] >= 0)
+                        M.const.add(expr=M.htc_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
+                                    1 - M.decision_htc_temperature[l, t, feed, temp]) <= M.htc_out[
+                                             l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp])
+
                         M.const.add(
                             expr=M.htc_from_storage[l, t, feed, prod, temp] <= M.htc_storage[
                                 l, t, feed, prod, temp])
@@ -628,9 +645,17 @@ def add_constraints(A, M, scenario):
             ## AD
             # products entering ad must be under capacity
             for stage in M.ADStages:
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] * A.LOADING[stage] * M.decision_ad_stage[l, stage] +
-                                 M.ad_in[l, t, 'COD'] * A.COD['Loading', stage] * M.decision_ad_stage[l, stage]
-                                 == M.ad_capacity[l, stage]) #TODO glovers
+                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] <= A.FEEDSTOCK_SUPPLY[l])
+                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] >= 0)
+                M.const.add(expr=M.ad_in[l, t, 'feedstock'] - A.FEEDSTOCK_SUPPLY[l] * (1-M.decision_ad_stage[l, stage]) <= M.ad_in_glovers[l, t, 'feedstock'])
+                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] <= M.ad_in[l, t, 'feedstock'])
+                M.const.add(expr=M.ad_in_glovers[l, t, 'COD'] <= A.FEEDSTOCK_SUPPLY[l])
+                M.const.add(expr=M.ad_in_glovers[l, t, 'COD'] >= 0)
+                M.const.add(expr=M.ad_in[l, t, 'COD'] - A.FEEDSTOCK_SUPPLY[l] * (1-M.decision_ad_stage[l, stage]) <= M.ad_in_glovers[l, t, 'COD'])
+                M.const.add(expr=M.ad_in_glovers[l, t, 'COD'] <= M.ad_in[l, t, 'COD'])
+
+                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] * A.LOADING[stage] + M.ad_in_glovers[l, t, 'COD'] * A.COD['Loading', stage]
+                                 == M.ad_capacity[l, stage])
 
             M.const.add(expr=sum(M.ad_capacity[l, stage] for stage in M.ADStages) == M.process_capacity[l, 'AD'])
 
@@ -650,10 +675,9 @@ def add_constraints(A, M, scenario):
                     if t == 0:
                         M.const.add(expr=M.ad_out[l, t, prod, stage] == 0)  # no yield from first month of ad
                     else:
-                        M.const.add(expr=M.ad_out[l, t, prod, stage] == sum(M.ad_in[l, t - 1, feed]
-                                                                            * M.decision_ad_stage[l, stage] *
+                        M.const.add(expr=M.ad_out[l, t, prod, stage] == sum(M.ad_in_glovers[l, t-1, feed] *
                                                                             A.AD_YIELD[feed, prod, stage] for feed
-                                                                            in M.ADFeedstocks)) #TODO glovers
+                                                                            in M.ADFeedstocks))
                         # yields from ad take time to materialize, biogas yield is in Nm^3, digestate is in kg
 
                     M.const.add(expr=M.ad_from_storage[l, t, prod, stage] <= M.ad_storage[l, t, prod, stage])
@@ -844,14 +868,14 @@ def add_constraints(A, M, scenario):
                 M.const.add(expr=M.opex_revenues[l, t, tech, "potting media"] == 0)
 
             # calculating the heat and electricity used by all processes
+            # tech_in * decision_temp = sum(tech_out/tech_yield[product])
             for tech in M.Technology:
                 if tech == "AD":
-                    M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(
-                        M.decision_ad_stage[l, temp] * A.OPEX['AD', 'Heat'] * M.ad_in[l, t, feed] for feed in
-                        M.ADFeedstocks for temp in M.ADStages)) #TODO glovers
-                    M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(
-                        M.decision_ad_stage[l, temp] * A.OPEX['AD', 'Electricity'] * M.ad_in[
-                            l, t, feed] for feed in M.ADFeedstocks for temp in M.ADStages)) #TODO glovers
+                    M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(A.OPEX['AD', 'Heat'] *
+                                                                         M.ad_in_glovers[l, t, feed] for feed in
+                        M.ADFeedstocks))
+                    M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] *
+                                M.ad_in_glovers[l, t, feed] for feed in M.ADFeedstocks))
                 elif tech == "CHP":
                     M.const.add(expr=M.inputs[l, t, 'CHP', 'heat'] == A.OPEX['CHP', 'Heat'] *
                                      A.CHP_HEAT_EFFICIENCY *M.chp_in[l, t])
@@ -863,31 +887,31 @@ def add_constraints(A, M, scenario):
                     M.const.add(expr=M.inputs[l, t, 'Feedstock', 'electricity'] == 0)
                 elif tech == "Pyrolysis":
                     M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'heat'] == sum(
-                        A.OPEX['Pyrolysis', 'Heat', temp] * M.pyrolysis_in[l, t, feed] *
-                        M.decision_pyrolysis_temperature[
-                            l, t, feed, temp] for temp in M.PyrolysisTemperatures for feed in M.PyrolysisFeedstocks)) #TODO glovers
+                        A.OPEX['Pyrolysis', 'Heat', temp] * M.pyrolysis_out[l, t, feed, pyro_prod, temp]/A.PYRO_YIELD[feed, pyro_prod, temp]
+                        for temp in M.PyrolysisTemperatures for feed in M.PyrolysisFeedstocks
+                        for pyro_prod in M.PyrolysisProducts))
                     M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'electricity'] == sum(
-                        A.OPEX['Pyrolysis', 'Electricity'] *M.pyrolysis_in[l, t, feed] for feed in
-                        M.PyrolysisFeedstocks))
+                        A.OPEX['Pyrolysis', 'Electricity'] *M.pyrolysis_out[l, t, feed, pyro_prod, temp]/A.PYRO_YIELD[feed, pyro_prod, temp] for feed in
+                        M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures for pyro_prod in M.PyrolysisProducts))
                 elif tech == "HTL":
-                    M.const.add(expr=M.inputs[l, t, 'HTL', 'heat'] == sum(M.decision_htl_temperature[l, t, feed, temp] *
-                                                                          A.OPEX['HTL', 'Heat'] * M.htl_in[l, t, feed]
-                                                                          for feed in M.HTLFeedstocks for temp in
-                                                                          M.HTLTemperatures)) #TODO glovers
+                    M.const.add(expr=M.inputs[l, t, 'HTL', 'heat'] ==
+                                     sum(M.htl_out[l, t, feed, prod, temp] /
+                                         A.HTL_YIELD[feed, prod, temp] * A.OPEX['HTL', 'Heat']
+                                        for feed in M.HTLFeedstocks for temp in M.HTLTemperatures for prod in M.HTLProducts))
                     M.const.add(
-                        expr=M.inputs[l, t, 'HTL', 'electricity'] == sum(M.decision_htl_temperature[l, t, feed, temp] *
-                                                                         A.OPEX['HTL', 'Electricity'] * M.htl_in[
-                                                                             l, t, feed] for feed in M.HTLFeedstocks for
-                                                                         temp in M.HTLTemperatures)) #TODO glovers
+                        expr=M.inputs[l, t, 'HTL', 'electricity'] ==
+                             sum(A.OPEX['HTL', 'Electricity'] * M.htl_out[l, t, feed, prod, temp] /
+                                 A.HTL_YIELD[feed, prod, temp]for feed in M.HTLFeedstocks
+                                 for temp in M.HTLTemperatures for prod in M.HTLProducts))
                 elif tech == "HTC":
                     M.const.add(expr=M.inputs[l, t, 'HTC', 'heat'] == sum(
-                        A.OPEX['HTC', 'Heat', temp] * M.htc_in[l, t, feed] * M.decision_htc_temperature[
-                            l, t, feed, temp] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures)) #TODO glovers
+                        A.OPEX['HTC', 'Heat', temp] * M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp]
+                        for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
                     M.const.add(
-                        expr=M.inputs[l, t, 'HTC', 'electricity'] == sum(M.decision_htc_temperature[l, t, feed, temp] *
-                                                                         A.OPEX['HTC', 'Electricity'] * M.htc_in[
-                                                                             l, t, feed] for feed in M.HTCFeedstocks for
-                                                                         temp in M.HTCTemperatures)) #TODO glovers
+                        expr=M.inputs[l, t, 'HTC', 'electricity'] ==
+                             sum(A.OPEX['HTC', 'Electricity'] *
+                                 M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp]
+                                 for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
 
             # water costs and revenues
             for tech in M.Technology:
@@ -1485,6 +1509,7 @@ def add_variables(M):
     M.htc_storage_cost = pyo.Var(M.Location, M.HTCProducts, initialize=0, within=pyo.NonNegativeReals)
 
     ## AD VARIABLES
+    M.ad_in_glovers = pyo.Var(M.Location, M.Time, M.ADFeedstocks, initialize=0, within=pyo.NonNegativeReals)
     M.decision_ad_stage = pyo.Var(M.Location, M.ADStages, initialize=0,
                                   within=pyo.Binary)  # can only choose one reactor size
     M.ad_capacity = pyo.Var(M.Location, M.ADStages, initialize=0, within=pyo.NonNegativeReals)
