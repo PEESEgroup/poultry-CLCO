@@ -6,8 +6,6 @@ from sympy import symbols
 import matplotlib.pyplot as plt
 import math
 
-AWS_MIPGAP = .005
-
 def utopian(M, midpoint):
     # step 1: normalize the objective functions
     # solve the model to get optimal objective function values
@@ -19,7 +17,6 @@ def utopian(M, midpoint):
     M.Obj.activate()
     model = M
     opt = pyo.SolverFactory('gurobi')
-    opt.options['mipgap'] = AWS_MIPGAP/100
     print(opt.solve(model))  # keepfiles = True
 
     utopia.append(pyo.value(model.npv[0]))
@@ -29,7 +26,6 @@ def utopian(M, midpoint):
     M.Obj.deactivate()
     M.Obj2.activate()
     model = M
-    opt.options['mipgap'] = AWS_MIPGAP
     opt = pyo.SolverFactory('gurobi')
     print(opt.solve(model))  # keepfiles = True
 
@@ -40,6 +36,9 @@ def utopian(M, midpoint):
 
     print("scalar numerator", (nadir[0] - utopia[0]), nadir[0], utopia[0])
     print("scalar denominator", (nadir[1] - utopia[1]), nadir[1], utopia[1])
+
+    if (nadir[1] - utopia[1]) == 0:
+        raise ValueError("No Pareto Front can be generated - no change in denominator")
     scalar = abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1]))
     print("scalar", scalar)
 
@@ -91,7 +90,6 @@ def aws(M, divs, midpoint, utopia, nadir, scenario):
         M.alpha = alpha
         model = M
         opt = pyo.SolverFactory('gurobi')
-        opt.options['mipgap'] = AWS_MIPGAP
         opt.options['TimeLimit'] = 3600
         try:
             results = opt.solve(model, tee=True)
@@ -227,7 +225,12 @@ def pareto_front(M, midpoint, scenario, A):
     M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, midpoint] for l in M.Location),
                            sense=pyo.minimize)
     M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
-    utopia, nadir = utopian(M, midpoint)
+    try:
+        utopia, nadir = utopian(M, midpoint)
+    except ValueError as err:
+        print(err.args)
+        print("no further attempt to find the pareto front")
+        return
 
     print("\n\n finished computing utopia and nadir points")
 
@@ -303,6 +306,7 @@ def initialize_model(scenario, j, midpoint):
     print(opt.solve(model, tee=True))  # keepfiles = True
 
     model.npv.pprint()
+    model.pyrolysis_out.pprint()
 
     # print data to csv
     print_model(scenario, model, j, "TEA")
@@ -645,16 +649,14 @@ def add_constraints(A, M, scenario):
             ## AD
             # products entering ad must be under capacity
             for stage in M.ADStages:
-                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] <= A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] >= 0)
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] - A.FEEDSTOCK_SUPPLY[l] * (1-M.decision_ad_stage[l, stage]) <= M.ad_in_glovers[l, t, 'feedstock'])
-                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] <= M.ad_in[l, t, 'feedstock'])
-                M.const.add(expr=M.ad_in_glovers[l, t, 'COD'] <= A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.ad_in_glovers[l, t, 'COD'] >= 0)
-                M.const.add(expr=M.ad_in[l, t, 'COD'] - A.FEEDSTOCK_SUPPLY[l] * (1-M.decision_ad_stage[l, stage]) <= M.ad_in_glovers[l, t, 'COD'])
-                M.const.add(expr=M.ad_in_glovers[l, t, 'COD'] <= M.ad_in[l, t, 'COD'])
+                for feed in M.ADFeedstocks:
+                    #glovers linearization for ad_in_glovers = ad_in*decision_ad_stage
+                    M.const.add(expr=M.ad_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (1-M.decision_ad_stage[l, stage]) <= M.ad_in_glovers[l, t, feed, stage])
+                    M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] <= A.FEEDSTOCK_SUPPLY[l] * M.decision_ad_stage[l, stage])
+                    M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] <= M.ad_in[l, t, feed])
+                    M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] >= 0)
 
-                M.const.add(expr=M.ad_in_glovers[l, t, 'feedstock'] * A.LOADING[stage] + M.ad_in_glovers[l, t, 'COD'] * A.COD['Loading', stage]
+                M.const.add(expr=sum(M.ad_in_glovers[l, t, feed, stage] * A.LOADING[feed, stage] for feed in M.ADFeedstocks)
                                  == M.ad_capacity[l, stage])
 
             M.const.add(expr=sum(M.ad_capacity[l, stage] for stage in M.ADStages) == M.process_capacity[l, 'AD'])
@@ -675,7 +677,7 @@ def add_constraints(A, M, scenario):
                     if t == 0:
                         M.const.add(expr=M.ad_out[l, t, prod, stage] == 0)  # no yield from first month of ad
                     else:
-                        M.const.add(expr=M.ad_out[l, t, prod, stage] == sum(M.ad_in_glovers[l, t-1, feed] *
+                        M.const.add(expr=M.ad_out[l, t, prod, stage] == sum(M.ad_in_glovers[l, t-1, feed, stage] *
                                                                             A.AD_YIELD[feed, prod, stage] for feed
                                                                             in M.ADFeedstocks))
                         # yields from ad take time to materialize, biogas yield is in Nm^3, digestate is in kg
@@ -872,10 +874,10 @@ def add_constraints(A, M, scenario):
             for tech in M.Technology:
                 if tech == "AD":
                     M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(A.OPEX['AD', 'Heat'] *
-                                                                         M.ad_in_glovers[l, t, feed] for feed in
-                        M.ADFeedstocks))
+                                                                         M.ad_in_glovers[l, t, feed, stage] for feed in
+                        M.ADFeedstocks for stage in M.ADStages))
                     M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] *
-                                M.ad_in_glovers[l, t, feed] for feed in M.ADFeedstocks))
+                                M.ad_in_glovers[l, t, feed, stage] for feed in M.ADFeedstocks for stage in M.ADStages))
                 elif tech == "CHP":
                     M.const.add(expr=M.inputs[l, t, 'CHP', 'heat'] == A.OPEX['CHP', 'Heat'] *
                                      A.CHP_HEAT_EFFICIENCY *M.chp_in[l, t])
@@ -887,30 +889,28 @@ def add_constraints(A, M, scenario):
                     M.const.add(expr=M.inputs[l, t, 'Feedstock', 'electricity'] == 0)
                 elif tech == "Pyrolysis":
                     M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'heat'] == sum(
-                        A.OPEX['Pyrolysis', 'Heat', temp] * M.pyrolysis_out[l, t, feed, pyro_prod, temp]/A.PYRO_YIELD[feed, pyro_prod, temp]
+                        A.OPEX['Pyrolysis', 'Heat', temp] * M.pyrolysis_out[l, t, feed, pyro_prod, temp]
                         for temp in M.PyrolysisTemperatures for feed in M.PyrolysisFeedstocks
                         for pyro_prod in M.PyrolysisProducts))
                     M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'electricity'] == sum(
-                        A.OPEX['Pyrolysis', 'Electricity'] *M.pyrolysis_out[l, t, feed, pyro_prod, temp]/A.PYRO_YIELD[feed, pyro_prod, temp] for feed in
+                        A.OPEX['Pyrolysis', 'Electricity'] *M.pyrolysis_out[l, t, feed, pyro_prod, temp] for feed in
                         M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures for pyro_prod in M.PyrolysisProducts))
                 elif tech == "HTL":
                     M.const.add(expr=M.inputs[l, t, 'HTL', 'heat'] ==
-                                     sum(M.htl_out[l, t, feed, prod, temp] /
-                                         A.HTL_YIELD[feed, prod, temp] * A.OPEX['HTL', 'Heat']
+                                     sum(M.htl_out[l, t, feed, prod, temp]  * A.OPEX['HTL', 'Heat']
                                         for feed in M.HTLFeedstocks for temp in M.HTLTemperatures for prod in M.HTLProducts))
                     M.const.add(
                         expr=M.inputs[l, t, 'HTL', 'electricity'] ==
-                             sum(A.OPEX['HTL', 'Electricity'] * M.htl_out[l, t, feed, prod, temp] /
-                                 A.HTL_YIELD[feed, prod, temp]for feed in M.HTLFeedstocks
+                             sum(A.OPEX['HTL', 'Electricity'] * M.htl_out[l, t, feed, prod, temp] for feed in M.HTLFeedstocks
                                  for temp in M.HTLTemperatures for prod in M.HTLProducts))
                 elif tech == "HTC":
                     M.const.add(expr=M.inputs[l, t, 'HTC', 'heat'] == sum(
-                        A.OPEX['HTC', 'Heat', temp] * M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp]
+                        A.OPEX['HTC', 'Heat', temp] * M.htc_out[l, t, feed, prod, temp]
                         for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
                     M.const.add(
                         expr=M.inputs[l, t, 'HTC', 'electricity'] ==
                              sum(A.OPEX['HTC', 'Electricity'] *
-                                 M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp]
+                                 M.htc_out[l, t, feed, prod, temp]
                                  for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
 
             # water costs and revenues
@@ -1111,10 +1111,9 @@ def add_constraints(A, M, scenario):
         q = symbols("q")
         lpa_xvals = []
         [lpa_xvals.append(x) for x in A.ORIGINAL_FEEDSTOCK_SUPPLY if x not in lpa_xvals]
-        lpa_xvals.append(4500)
         lpa_xvals.append(0.00000001)
-        for i in range(15):
-            lpa_xvals.append(i * 1000 + 5000)
+        for i in range(16):
+            lpa_xvals.append(i * 1000 + 4500)
         for i in range(19):
             lpa_xvals.append(i * 10000 + 20000)
         lpa_xvals.sort()
@@ -1509,7 +1508,7 @@ def add_variables(M):
     M.htc_storage_cost = pyo.Var(M.Location, M.HTCProducts, initialize=0, within=pyo.NonNegativeReals)
 
     ## AD VARIABLES
-    M.ad_in_glovers = pyo.Var(M.Location, M.Time, M.ADFeedstocks, initialize=0, within=pyo.NonNegativeReals)
+    M.ad_in_glovers = pyo.Var(M.Location, M.Time, M.ADFeedstocks, M.ADStages, initialize=0, within=pyo.NonNegativeReals)
     M.decision_ad_stage = pyo.Var(M.Location, M.ADStages, initialize=0,
                                   within=pyo.Binary)  # can only choose one reactor size
     M.ad_capacity = pyo.Var(M.Location, M.ADStages, initialize=0, within=pyo.NonNegativeReals)
@@ -1749,7 +1748,7 @@ if __name__ == '__main__':
     1512: All, Pareto Front NPV max freshwater eutrophication min, Onondaga county
     1513: All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
     '''
-    S = [1502,1503,1511,1512,1513]
+    S = [1501,1512,1513]
     for scenario in S:
         print("scenario", scenario)
         if scenario > 1000:

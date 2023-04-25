@@ -129,16 +129,16 @@ class CLCO_Data:
     HTC_YIELD['feedstock', 'Hydrochar', 200] = .549
     HTC_YIELD['feedstock', 'Hydrochar', 220] = .501
     HTC_YIELD['feedstock', 'Hydrochar', 250] = .43
-    HTC_YIELD['feedstock', 'GP', 180] = .0
+    HTC_YIELD['feedstock', 'GP', 180] = .01
     HTC_YIELD['feedstock', 'GP', 200] = .056
     HTC_YIELD['feedstock', 'GP', 220] = .188
-    HTC_YIELD['feedstock', 'GP', 250] = .2785
+    HTC_YIELD['feedstock', 'GP', 250] = .2685
     HTC_YIELD['feedstock', 'AP', 180] = .403 + HTC_WATER / 1000
     HTC_YIELD['feedstock', 'AP', 200] = .394 + HTC_WATER / 1000
     HTC_YIELD['feedstock', 'AP', 220] = .310 + HTC_WATER / 1000
     HTC_YIELD['feedstock', 'AP', 250] = .291 + HTC_WATER / 1000
 
-    DRY_BIOMASS_REF = 3025
+    DRY_BIOMASS_REF = 3025*3 #3 exists to adjust from months to quarters
 
     # AD Yield Data.  Yield at each temperature must sum to 1
     AD_YIELD = defaultdict(dict)  # indexed on temperature and yield product
@@ -338,15 +338,14 @@ class CLCO_Data:
     NUTRIENTS['AD', 'K'] = 2.19* K_CONTENT
 
     LOADING = defaultdict(dict)
-    LOADING[1.5] = .945*12  # m^3 / ton feedstock
-    LOADING[3] = .479*12
-    LOADING[4.5] = .315*12
+    LOADING["feedstock", 1.5] = .945*12  # m^3 / ton feedstock
+    LOADING["feedstock", 3] = .479*12
+    LOADING["feedstock", 4.5] = .315*12
+    LOADING["COD", 1.5] = .945*12  # m^3 / ton feedstock
+    LOADING["COD", 3] = .479*12
+    LOADING["COD", 4.5] = .315*12
 
     COD = defaultdict(dict)
-    COD['Loading', 1.5] = .945  # m^3/ ton COD
-    COD['Loading', 3] = .479
-    COD['Loading', 4.5] = .315
-
     COD['Pyrolysis', 'feedstock', 'Biochar', 400] = .0
     COD['Pyrolysis', 'feedstock', 'Biochar', 450] = .0
     COD['Pyrolysis', 'feedstock', 'Biochar', 500] = .0
