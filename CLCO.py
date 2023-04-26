@@ -63,11 +63,21 @@ def utopian(m, midpoint, lca_type):
 
 
 def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
+    '''
+    the main control loop for conducting adaptive weight sums to identify the pareto front
+    :param M: the model being used
+    :param divs: the initial number of divisions
+    :param midpoint: the LCA ReCiPe midpoint used
+    :param utopia: the utopia point for the pareto front
+    :param nadir: the nadir point for the pareto front
+    :param scenario: the scenario number
+    :param lca_type: the type of LCA being conducted (ALCA/CLCA)
+    :return: the npv values and the midpoint values that comprise the pareto front
+    '''
     # following Adaptive weighted-sum method for bi-objective optimization:Pareto front generation
     print("\n\n AWS!!!!")
     npv_new = []
     gwp_new = []
-    models = []
 
     # introduce the scaling factors
     scalar = abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1]))
@@ -156,6 +166,12 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
 
 
 def pareto_point_distance(gwp_vals, npv_vals):
+    '''
+    calculates the distance between the pareto points
+    :param gwp_vals: the list of midpoint values
+    :param npv_vals: the list of npv values
+    :return: the list continaing the distance between the points in the list
+    '''
     dist = []
     for i in range(len(npv_vals) - 1):
         dist.append((((npv_vals[i] - npv_vals[i + 1]) ** 2) + ((gwp_vals[i] - gwp_vals[i + 1]) ** 2)) ** (1 / 2))
@@ -164,6 +180,13 @@ def pareto_point_distance(gwp_vals, npv_vals):
 
 
 def ws_bound_refinement(dist, nadir, utopia):
+    '''
+    Updates the lower and upper bounds on regions of the aws curve
+    :param dist: the list containing the distance between points
+    :param nadir: the nadir point for the pareto curve
+    :param utopia: the utopia point for the pareto curve
+    :return: the offset parameter delta and the number of refinements to conduct in each segment
+    '''
     avg_length = sum(i for i in dist) / len(dist)
     C = 1.8
     delta = abs(nadir[0] - utopia[0]) / 8
@@ -186,6 +209,15 @@ def ws_bound_refinement(dist, nadir, utopia):
 
 
 def ws(M, divisions, lca_type, midpoint, scalar):
+    '''
+    Conducts weighted sums on a region of a pareto front
+    :param M: the model being optimized
+    :param divisions: the number of divisions to be made on the pareto front
+    :param lca_type: the LCA type (ALCA, CLCA)
+    :param midpoint: the ReCiPe midpoint used on the pareto front
+    :param scalar: the scalar for the objective function so that the distance function works accurately
+    :return: a list of npv values, midpoint values, and copies of the models for points alongside the pareto front
+    '''
     # lists of objective values
     models = []
     npv_vals = []
@@ -221,6 +253,15 @@ def ws(M, divisions, lca_type, midpoint, scalar):
 
 
 def pareto_front(M, midpoint, scenario, A, lca_type):
+    '''
+    Calculates the pareto front
+    :param M: the model used in the pareto front
+    :param midpoint: the midpoint used for the objective function
+    :param scenario:  the scenario number
+    :param A: parameters from the CLCO_Data
+    :param lca_type: the LCA type (ALCA/CLCA)
+    :return:
+    '''
     M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint] for l in M.Location),
                            sense=pyo.minimize)
     M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
@@ -263,6 +304,14 @@ def pareto_front(M, midpoint, scenario, A, lca_type):
 
 
 def initialize_model(scenario, j, midpoint, lca_type):
+    """
+    Initializes the CLCO model
+    :param scenario: the scenario number
+    :param j: the county number
+    :param midpoint: the midpoint type for MOO
+    :param lca_type: the LCA type for MOO
+    :return:
+    """
     A = CLCO_Data(scenario)
 
     #### MODEL
@@ -313,6 +362,13 @@ def initialize_model(scenario, j, midpoint, lca_type):
 
 
 def add_constraints(A, M, scenario):
+    """
+    Adds constraints to the model
+    :param A: parameters for the model
+    :param M: the model
+    :param scenario: the scenario number
+    :return:
+    """
     ### CONSTRAINT LIST
     M.const = pyo.ConstraintList()
     ### Stage 2 constraints
@@ -1576,6 +1632,11 @@ def add_constraints(A, M, scenario):
 
 
 def add_variables(M):
+    """
+    Adds variables to the model
+    :param M: the model
+    :return:
+    """
     ### VARIABLES
     ## LAND APPLICATION VARIABLES
     M.feedstock_storage_capacity = pyo.Var(M.Location, initialize=0, within=pyo.NonNegativeReals)
@@ -1711,6 +1772,13 @@ def add_variables(M):
 
 
 def add_sets(A, M, j):
+    """
+    Defines sets for the model
+    :param A: CLCO parameters
+    :param M: the model itself
+    :param j: the location number
+    :return:
+    """
     ### SETS
     # technology is the set of technologies in stage 2 of the model
     M.Location = pyo.Set(initialize=[j])
@@ -1785,6 +1853,13 @@ def add_sets(A, M, j):
 
 
 def save_plot(scenario, FLP=False, midpoint=""):
+    """
+    Saves the pareto plot for quick investigations
+    :param scenario: the scenario number
+    :param FLP: whether or not this is being used to solve the facility location problem
+    :param midpoint: the midpoint for hte Pareto front
+    :return:
+    """
     if FLP:
         filename = "data/FLP/data/" + str(scenario) + 'aws'
     else:
@@ -1794,6 +1869,16 @@ def save_plot(scenario, FLP=False, midpoint=""):
 
 
 def print_model(scenario, model, location_num, model_type="TEA", FLP=False, midpoint=""):
+    """
+    Prints the relevant data in the model out to a .csv file
+    :param scenario: the sceanrio number
+    :param model: the model being used
+    :param location_num: the location number
+    :param model_type: the model type TEA/LCA
+    :param FLP: boolean for if facility location problem is being conducted
+    :param midpoint: the LCA midpoints being used
+    :return:
+    """
     # construct the filenames
     if FLP:
         filename = "data/FLP/" + model_type + "/data/" + str(scenario) + "location" + str(location_num) + 'aws'
