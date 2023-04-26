@@ -1,5 +1,5 @@
 import os.path
-
+import glob
 import pyomo.environ as pyo
 from pyomo.opt import TerminationCondition
 import csv
@@ -1882,14 +1882,15 @@ def print_model(scenario, model, location_num, model_type="TEA", FLP=False, midp
     """
     # construct the filenames
     if FLP:
-        filename = "data/FLP/" + model_type + "/data/" + str(scenario) + "location" + str(location_num) + 'aws'
+        filepath = "data/FLP/" + model_type + "/data/"
     else:
-        filename = "data/" + str(scenario) + "/" + model_type + "/location" + str(location_num) + \
-                   midpoint.replace(" ", "").replace(":", "-") + '_data.csv'
+        filepath = "data/" + str(scenario) + "/" + model_type
 
-    #check to see if path exists, and if it doesn't, create it
-    if not os.path.exists(filename):
-        os.makedirs("path")
+    # check to see if path exists, and if it doesn't, create it
+    if not os.path.exists(filepath):
+        os.makedirs(filepath)
+
+    filename = filepath + "/location" + str(location_num) + midpoint.replace(" ", "").replace(":", "-") + '_data.csv'
 
     with open(filename, 'w', encoding='UTF8', newline='') as f:
         write = csv.writer(f)
@@ -2029,18 +2030,26 @@ if __name__ == '__main__':
     2512:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Onondaga county
     2513:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
     '''
-    # TODO fix fertilizer application: for ALCA (1) identify how much fertilizer is needed per county - and include the application of fertilizer to land as a positive impact
-    # TODO - selling bio-oil in market offset / price elasticity
-    # TODO - selling biochar in market offset / price elasticity
-    # TODO - selling hydrochar in market offset / price elasticity
 
-    S = [1501, 1502, 1503, 1511, 1512, 1513]
-
+    S = [1501, 2501]
 
     for scenario in S:
         lca_type = "CLCA"
         print("scenario", scenario)
         # scenario defines LCA type
+
+        # clear existing/old TEA data
+        files = glob.glob("data/"+str(scenario)+"/TEA/*")
+        for file in files:
+            os.remove(file)
+
+        # clear existing/old LCA data
+        files = glob.glob("data/"+str(scenario)+"/LCA/*")
+        for file in files:
+            os.remove(file)
+
+        print("old files removed")
+
         if 1000 < scenario < 1999:
             lca_type = "ALCA"
         elif 2000 < scenario < 2999:
@@ -2064,5 +2073,6 @@ if __name__ == '__main__':
         else:
             number_counties = 62
 
+    # initialize the model
         for j in range(number_counties):
             initialize_model(scenario, j, midpoint, lca_type)
