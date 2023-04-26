@@ -1,3 +1,5 @@
+import os.path
+
 import pyomo.environ as pyo
 from pyomo.opt import TerminationCondition
 import csv
@@ -1885,6 +1887,10 @@ def print_model(scenario, model, location_num, model_type="TEA", FLP=False, midp
         filename = "data/" + str(scenario) + "/" + model_type + "/location" + str(location_num) + \
                    midpoint.replace(" ", "").replace(":", "-") + '_data.csv'
 
+    #check to see if path exists, and if it doesn't, create it
+    if not os.path.exists(filename):
+        os.makedirs("path")
+
     with open(filename, 'w', encoding='UTF8', newline='') as f:
         write = csv.writer(f)
 
@@ -2029,43 +2035,34 @@ if __name__ == '__main__':
     # TODO - selling hydrochar in market offset / price elasticity
 
     S = [1501, 1502, 1503, 1511, 1512, 1513]
+
+
     for scenario in S:
         lca_type = "CLCA"
         print("scenario", scenario)
+        # scenario defines LCA type
         if 1000 < scenario < 1999:
             lca_type = "ALCA"
-            if (int(scenario / 10) % 10) == 1:
-                midpoint = 'eutrophication: freshwater'
-                for j in range(1):
-                    initialize_model(scenario, j, midpoint, lca_type)
-            else:
-                midpoint = "climate change"
-                for j in range(1):
-                    initialize_model(scenario, j, midpoint, lca_type)
         elif 2000 < scenario < 2999:
             lca_type = "CLCA"
-            if (int(scenario / 10) % 10) == 1:
-                midpoint = 'eutrophication: freshwater'
-                for j in range(1):
-                    initialize_model(scenario, j, midpoint, lca_type)
-            else:
-                midpoint = "climate change"
-                for j in range(1):
-                    initialize_model(scenario, j, midpoint, lca_type)
+
+        #scenario defines midpoint type
+        if (int(scenario / 10) % 10) == 1:
+            midpoint = 'eutrophication: freshwater'
         else:
             midpoint = "climate change"
-            if scenario == 51 or scenario == 52:
-                for j in range(1):
-                    initialize_model(scenario, j, midpoint, lca_type)
-            elif scenario < 100:
-                for j in range(62):
-                    initialize_model(scenario, j, midpoint, lca_type)
-            elif 420 < scenario < 430:
-                for j in range(2):
-                    initialize_model(scenario, j, midpoint, lca_type)
-            elif 430 < scenario < 440:
-                for j in range(3):
-                    initialize_model(scenario, j, midpoint, lca_type)
-            elif 440 < scenario < 450:
-                for j in range(4):
-                    initialize_model(scenario, j, midpoint, lca_type)
+
+        #scenario defines the number of counties
+        if scenario > 1000 or scenario == 51 or scenario == 52:
+            number_counties = 1
+        elif 420 < scenario < 430:
+            number_counties = 2
+        elif 430 < scenario < 440:
+            number_counties = 3
+        elif 440 < scenario < 450:
+            number_counties = 4
+        else:
+            number_counties = 62
+
+        for j in range(number_counties):
+            initialize_model(scenario, j, midpoint, lca_type)
