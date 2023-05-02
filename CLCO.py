@@ -96,14 +96,14 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
         print_model(scenario, models[0], int(pyo.value(models[0].npv[0])), "LCA", midpoint=midpoint)
     else:
         # return if there are no values from weighted sums, there's no point in further refinement
-        return [], [], []
+        return [], []
 
     # calculate the euclidean distances between the points on the pareto front
     dist = pareto_point_distance(gwp_vals, npv_vals)
 
     # avoid those damn divide by zero errors
     if len(dist) == 0:
-        return [], [], []
+        return [], []
 
     # refinement along sections of the pareto front
     delta, n = ws_bound_refinement(dist, nadir, utopia)
@@ -116,7 +116,7 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
                 theta = math.atan(-((gwp_vals[i] - gwp_vals[i + 1]) / (npv_vals[i] - npv_vals[i + 1])))
             except ZeroDivisionError:
                 # if we divide by zero, there is no need to subdivide this region any further
-                return [], [], []
+                return [], []
 
             delta1 = delta * math.cos(theta)
             delta2 = delta * math.sin(theta)
@@ -285,8 +285,7 @@ def pareto_front(M, midpoint, scenario, A, lca_type):
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, t = aws(M, 4, midpoint, utopia, nadir, scenario, lca_type)
-    print("temps", t)
+    x, y = aws(M, 4, midpoint, utopia, nadir, scenario, lca_type)
 
     # rescale the y points back to their original values
     scalar = abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1]))
@@ -1354,111 +1353,111 @@ def add_constraints(A, M, scenario):
                 # mid point for a point in time
                 if lca_type == "ALCA":
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'natural gas', cat] ==
-                                     A.IMPACT['natural gas', cat] * sum(M.purchased_fuel[l, t, tech]
+                                     A.IMPACT[lca_type, 'natural gas', cat] * sum(M.purchased_fuel[l, t, tech]
                                                                         for tech in M.Technology for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'grid electricity', cat] ==
-                                     A.IMPACT['grid electricity', cat] * sum(M.purchased_power[l, t, tech]
+                                     A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.purchased_power[l, t, tech]
                                                                              for tech in M.Technology for t in
                                                                              M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT['diesel', cat]
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
                                      * sum(M.inputs[l, t, tech, 'diesel'] for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT['water', cat] *
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
                                      sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
-                                     sum(A.IMPACT['biochar-chp', temp, cat] * M.biochar_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'biochar-chp', temp, cat] * M.biochar_from_pyrolysis[
                                          l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-land', cat] ==
-                                     sum(A.IMPACT['biochar-land', temp, cat] * M.biochar_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'biochar-land', temp, cat] * M.biochar_from_pyrolysis[
                                          l, t, feed, temp, 'land'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-disposal', cat] ==
-                                     A.IMPACT['biochar-disposal', cat] * sum(M.biochar_from_pyrolysis[
+                                     A.IMPACT[lca_type, 'biochar-disposal', cat] * sum(M.biochar_from_pyrolysis[
                                                                                  l, t, feed, temp, 'disposal'] for
                                                                              temp in M.PyrolysisTemperatures
                                                                              for feed in M.PyrolysisFeedstocks for t
                                                                              in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-bio-oil-chp', cat] ==
-                                     sum(A.IMPACT['pyro-bio-oil-chp', temp, cat] * M.biooil_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'pyro-bio-oil-chp', temp, cat] * M.biooil_from_pyrolysis[
                                          l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures for feed
                                          in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-chp', cat] ==
-                                     sum(A.IMPACT['syngas-chp', temp, cat] * M.syngas_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'syngas-chp', temp, cat] * M.syngas_from_pyrolysis[
                                          l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-disposal', cat] ==
-                                     sum(A.IMPACT['syngas-disposal', temp, cat] * M.syngas_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'syngas-disposal', temp, cat] * M.syngas_from_pyrolysis[
                                          l, t, feed, temp, 'disposal'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-ap-disposal', cat] ==
-                                     A.IMPACT['pyro-ap-disposal', cat] * sum(M.ap_from_pyrolysis[
+                                     A.IMPACT[lca_type, 'pyro-ap-disposal', cat] * sum(M.ap_from_pyrolysis[
                                                                                  l, t, feed, temp, 'disposal'] for
                                                                              temp in M.PyrolysisTemperatures
                                                                              for feed in M.PyrolysisFeedstocks for t
                                                                              in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-land', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-land', cat] == A.IMPACT[lca_type, 
                         'htl-hydrochar-land', cat]
                                      * sum(M.hydrochar_from_htl[l, t, feed, temp, 'land']
                                            for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
                                            M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-chp', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-chp', cat] == A.IMPACT[lca_type, 
                         'htl-hydrochar-chp', cat]
                                      * sum(M.hydrochar_from_htl[l, t, feed, temp, 'CHP']
                                            for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
                                            M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
                         'htl-hydrochar-disposal', cat] * sum(M.hydrochar_from_htl[l, t, feed, temp, 'disposal']
                                                              for temp in M.HTLTemperatures for feed in
                                                              M.HTLFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-bio-oil-chp', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-bio-oil-chp', cat] == A.IMPACT[lca_type, 
                         'htl-bio-oil-chp', cat] * sum(M.biooil_from_htl[l, t, feed, temp, 'CHP']
                                                       for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
                                                       t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-gp-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-gp-disposal', cat] == A.IMPACT[lca_type, 
                         'htl-gp-disposal', cat] * sum(M.gp_from_htl[l, t, feed, temp, 'disposal']
                                                       for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
                                                       t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-ap-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-ap-disposal', cat] == A.IMPACT[lca_type, 
                         'htl-ap-disposal', cat] * sum(M.ap_from_htl[l, t, feed, temp, 'disposal']
                                                       for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
                                                       t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-land', cat] ==
-                                     A.IMPACT['htc-hydrochar-land', cat] * sum(
+                                     A.IMPACT[lca_type, 'htc-hydrochar-land', cat] * sum(
                         M.hydrochar_from_htc[l, t, feed, temp, 'land']
                         for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-chp', cat] ==
-                                     sum(A.IMPACT['htc-hydrochar-chp', temp, cat] * M.hydrochar_from_htc[
+                                     sum(A.IMPACT[lca_type, 'htc-hydrochar-chp', temp, cat] * M.hydrochar_from_htc[
                                          l, t, feed, temp, 'CHP']
                                          for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
                         'htc-hydrochar-disposal', cat] * sum(M.hydrochar_from_htc[l, t, feed, temp, 'disposal']
                                                              for temp in M.HTCTemperatures for feed in
                                                              M.HTCFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-gp-disposal', cat] ==
-                                     sum(A.IMPACT['htc-gp-disposal', temp, cat] * M.gp_from_htc[
+                                     sum(A.IMPACT[lca_type, 'htc-gp-disposal', temp, cat] * M.gp_from_htc[
                                          l, t, feed, temp, 'disposal']
                                          for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-ap-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-ap-disposal', cat] == A.IMPACT[lca_type, 
                         'htc-ap-disposal', cat] * sum(M.ap_from_htc[l, t, feed, temp, 'disposal']
                                                       for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for
                                                       t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-land', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-land', cat] == A.IMPACT[lca_type, 
                         'digestate-land', cat] * sum(M.digestate_from_ad[l, t, stage, 'land']
                                                      for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-disposal', cat] == A.IMPACT[lca_type, 
                         'digestate-disposal', cat] * sum(M.digestate_from_ad[l, t, stage, 'disposal']
                                                          for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-disposal', cat] == A.IMPACT[lca_type, 
                         'biogas-disposal', cat] * sum(M.biogas_from_ad[l, t, stage, 'disposal']
                                                       for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-chp', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-chp', cat] == A.IMPACT[lca_type, 
                         'biogas-chp', cat] * sum(M.biogas_from_ad[l, t, stage, 'CHP']
                                                  for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'manure-land', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'manure-land', cat] == A.IMPACT[lca_type, 
                         'manure-land', cat] * sum(M.feedstock_from_storage[l, t] for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'facility construction', cat] ==
-                                     A.IMPACT['facility construction', "ad", cat] * M.process_capacity[l, 'AD'] +
-                                     A.IMPACT['facility construction', "chem", cat] * (
+                                     A.IMPACT[lca_type, 'facility construction', "ad", cat] * M.process_capacity[l, 'AD'] +
+                                     A.IMPACT[lca_type, 'facility construction', "chem", cat] * (
                                              M.process_capex[l, 'Pyrolysis'] + M.process_capex[l, 'HTL'] +
                                              M.process_capex[l, 'HTC']))
                     # CHP facility construction LCA impacts are spread out across the various CHP categories
@@ -1466,13 +1465,13 @@ def add_constraints(A, M, scenario):
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == 0)
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == 0)
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] == A.IMPACT[lca_type, 
                         'storage-facility-solids', cat] * (M.feedstock_storage_capacity[l] +
                                                            M.pyrolysis_storage_capacity[l, 'Biochar'] +
                                                            M.htl_storage_capacity[l, 'Hydrochar'] +
                                                            M.htc_storage_capacity[l, 'Hydrochar'] +
                                                            M.ad_storage_capacity[l, 'digestate']))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-liquids', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-liquids', cat] == A.IMPACT[lca_type, 
                         'storage-facility-liquids', cat] * (M.pyrolysis_storage_capacity[l, 'AP'] +
                                                             M.pyrolysis_storage_capacity[l, 'Syngas'] +
                                                             M.htl_storage_capacity[l, 'AP'] +
@@ -1489,131 +1488,131 @@ def add_constraints(A, M, scenario):
 
                 elif lca_type == "CLCA":
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'natural gas', cat] ==
-                                     A.IMPACT['natural gas', cat] * sum(M.purchased_fuel[l, t, tech]
+                                     A.IMPACT[lca_type, 'natural gas', cat] * sum(M.purchased_fuel[l, t, tech]
                                                                         for tech in M.Technology for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'grid electricity', cat] ==
-                                     A.IMPACT['grid electricity', cat] * sum(M.purchased_power[l, t, tech]
+                                     A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.purchased_power[l, t, tech]
                                                                              for tech in M.Technology for t in
                                                                              M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT['diesel', cat]
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
                                      * sum(M.inputs[l, t, tech, 'diesel'] for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT['water', cat] *
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
                                      sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
-                                     sum(A.IMPACT['biochar-chp', temp, cat] * M.biochar_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'biochar-chp', temp, cat] * M.biochar_from_pyrolysis[
                                          l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-land', cat] ==
-                                     sum(A.IMPACT['biochar-land', temp, cat] * M.biochar_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'biochar-land', temp, cat] * M.biochar_from_pyrolysis[
                                          l, t, feed, temp, 'land'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-disposal', cat] ==
-                                     A.IMPACT['biochar-disposal', cat] * sum(M.biochar_from_pyrolysis[
+                                     A.IMPACT[lca_type, 'biochar-disposal', cat] * sum(M.biochar_from_pyrolysis[
                                                                                  l, t, feed, temp, 'disposal'] for
                                                                              temp in M.PyrolysisTemperatures
                                                                              for feed in M.PyrolysisFeedstocks for t
                                                                              in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-bio-oil-chp', cat] ==
-                                     sum(A.IMPACT['pyro-bio-oil-chp', temp, cat] * M.biooil_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'pyro-bio-oil-chp', temp, cat] * M.biooil_from_pyrolysis[
                                          l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures for feed
                                          in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-chp', cat] ==
-                                     sum(A.IMPACT['syngas-chp', temp, cat] * M.syngas_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'syngas-chp', temp, cat] * M.syngas_from_pyrolysis[
                                          l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-disposal', cat] ==
-                                     sum(A.IMPACT['syngas-disposal', temp, cat] * M.syngas_from_pyrolysis[
+                                     sum(A.IMPACT[lca_type, 'syngas-disposal', temp, cat] * M.syngas_from_pyrolysis[
                                          l, t, feed, temp, 'disposal'] for temp in M.PyrolysisTemperatures
                                          for feed in M.PyrolysisFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-ap-disposal', cat] ==
-                                     A.IMPACT['pyro-ap-disposal', cat] * sum(M.ap_from_pyrolysis[
+                                     A.IMPACT[lca_type, 'pyro-ap-disposal', cat] * sum(M.ap_from_pyrolysis[
                                                                                  l, t, feed, temp, 'disposal'] for
                                                                              temp in M.PyrolysisTemperatures
                                                                              for feed in M.PyrolysisFeedstocks for t
                                                                              in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-land', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-land', cat] == A.IMPACT[lca_type, 
                         'htl-hydrochar-land', cat]
                                      * sum(M.hydrochar_from_htl[l, t, feed, temp, 'land']
                                            for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
                                            M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-chp', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-chp', cat] == A.IMPACT[lca_type, 
                         'htl-hydrochar-chp', cat]
                                      * sum(M.hydrochar_from_htl[l, t, feed, temp, 'CHP']
                                            for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
                                            M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
                         'htl-hydrochar-disposal', cat]
                                      * sum(M.hydrochar_from_htl[l, t, feed, temp, 'disposal']
                                            for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
                                            M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-bio-oil-chp', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-bio-oil-chp', cat] == A.IMPACT[lca_type, 
                         'htl-bio-oil-chp', cat] * sum(M.biooil_from_htl[l, t, feed, temp, 'CHP']
                                                       for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
                                                       t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-gp-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-gp-disposal', cat] == A.IMPACT[lca_type, 
                         'htl-gp-disposal', cat] * sum(M.gp_from_htl[l, t, feed, temp, 'disposal']
                                                       for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
                                                       t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-ap-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-ap-disposal', cat] == A.IMPACT[lca_type, 
                         'htl-ap-disposal', cat] * sum(M.ap_from_htl[l, t, feed, temp, 'disposal']
                                                       for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
                                                       t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-land', cat] ==
-                                     A.IMPACT['htc-hydrochar-land', cat] * sum(
+                                     A.IMPACT[lca_type, 'htc-hydrochar-land', cat] * sum(
                         M.hydrochar_from_htc[l, t, feed, temp, 'land']
                         for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-chp', cat] ==
-                                     sum(A.IMPACT['htc-hydrochar-chp', temp, cat] * M.hydrochar_from_htc[
+                                     sum(A.IMPACT[lca_type, 'htc-hydrochar-chp', temp, cat] * M.hydrochar_from_htc[
                                          l, t, feed, temp, 'CHP']
                                          for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
                         'htc-hydrochar-disposal', cat] * sum(M.hydrochar_from_htc[l, t, feed, temp, 'disposal']
                                                              for temp in M.HTCTemperatures for feed in
                                                              M.HTCFeedstocks for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-gp-disposal', cat] ==
-                                     sum(A.IMPACT['htc-gp-disposal', temp, cat] * M.gp_from_htc[
+                                     sum(A.IMPACT[lca_type, 'htc-gp-disposal', temp, cat] * M.gp_from_htc[
                                          l, t, feed, temp, 'disposal']
                                          for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-ap-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-ap-disposal', cat] == A.IMPACT[lca_type, 
                         'htc-ap-disposal', cat] * sum(M.ap_from_htc[l, t, feed, temp, 'disposal']
                                                       for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for
                                                       t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-land', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-land', cat] == A.IMPACT[lca_type, 
                         'digestate-land', cat] * sum(M.digestate_from_ad[l, t, stage, 'land']
                                                      for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-disposal', cat] == A.IMPACT[lca_type, 
                         'digestate-disposal', cat] * sum(M.digestate_from_ad[l, t, stage, 'disposal']
                                                          for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-disposal', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-disposal', cat] == A.IMPACT[lca_type, 
                         'biogas-disposal', cat] * sum(M.biogas_from_ad[l, t, stage, 'disposal']
                                                       for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-chp', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-chp', cat] == A.IMPACT[lca_type, 
                         'biogas-chp', cat] * sum(M.biogas_from_ad[l, t, stage, 'CHP']
                                                  for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'manure-land', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'manure-land', cat] == A.IMPACT[lca_type, 
                         'manure-land', cat] * sum(M.feedstock_from_storage[l, t] for t in M.Time))
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, 'facility construction', cat] ==
-                                     A.IMPACT['facility construction', "ad", cat] * M.process_capacity[l, 'AD'] +
-                                     A.IMPACT['facility construction', "chem", cat] * (
+                                     A.IMPACT[lca_type, 'facility construction', "ad", cat] * M.process_capacity[l, 'AD'] +
+                                     A.IMPACT[lca_type, 'facility construction', "chem", cat] * (
                                              M.process_capex[l, 'Pyrolysis'] + M.process_capex[l, 'HTL'] +
                                              M.process_capex[l, 'HTC']))
                     # CHP facility construction LCA impacts are spread out across the various CHP categories
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == -A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == -A.IMPACT[lca_type, 
                         'N fertilizer', cat] * sum(M.avoided_fertilizers[l, t, tech, 'N']
                                                    for t in M.Time for tech in M.Technology))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == -A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == -A.IMPACT[lca_type, 
                         'P fertilizer', cat] * sum(M.avoided_fertilizers[l, t, tech, 'P']
                                                    for t in M.Time for tech in M.Technology))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == -A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == -A.IMPACT[lca_type, 
                         'K fertilizer', cat] * sum(M.avoided_fertilizers[l, t, tech, 'K']
                                                    for t in M.Time for tech in M.Technology))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] == A.IMPACT[lca_type, 
                         'storage-facility-solids', cat] * (M.feedstock_storage_capacity[l] +
                                                            M.pyrolysis_storage_capacity[l, 'Biochar'] +
                                                            M.htl_storage_capacity[l, 'Hydrochar'] +
                                                            M.htc_storage_capacity[l, 'Hydrochar'] +
                                                            M.ad_storage_capacity[l, 'digestate']))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-liquids', cat] == A.IMPACT[
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-liquids', cat] == A.IMPACT[lca_type, 
                         'storage-facility-liquids', cat] * (M.pyrolysis_storage_capacity[l, 'AP'] +
                                                             M.pyrolysis_storage_capacity[l, 'Syngas'] +
                                                             M.htl_storage_capacity[l, 'AP'] +
@@ -1623,8 +1622,9 @@ def add_constraints(A, M, scenario):
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, "biochar market", cat] == 0)
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, "bio-oil market", cat] == 0)
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, "hydrochar market", cat] == 0)
+
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] ==
-                                     A.IMPACT['grid electricity', cat] * sum(M.chp_market[l, t, 'electricity']
+                                     -A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.chp_market[l, t, 'electricity']
                                                                              for t in M.Time))
 
                     M.const.add(expr=M.total_LCA_midpoints[l, lca_type, cat] == sum(
