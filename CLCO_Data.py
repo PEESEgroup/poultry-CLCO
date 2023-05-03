@@ -382,8 +382,6 @@ class CLCO_Data:
     REVENUE['electricity'] = .06  # units $/kWh
     REVENUE['hydrochar'] = .0030  # units $/MJ
 
-    # TODO change impact to support ALCA and CLCA
-    # TODO update wastewater for CLCA
     IMPACT = defaultdict(dict)
     IMPACT['CLCA', 'natural gas', 'acidification'] = .000081729  # per MJ
     IMPACT['CLCA', 'natural gas', 'climate change'] = .16083
@@ -2866,7 +2864,6 @@ class CLCO_Data:
     IMPACT['ALCA', 'facility construction', "chem", 'photochemical oxidant formation: human health'] =0.000430589
     IMPACT['ALCA', 'facility construction', "chem", 'photochemical oxidant formation: terrestrial ecosystems'] = 0.000444368
     IMPACT['ALCA', 'facility construction', "chem", 'water use'] = 0.001171737
-    #TODO check CLCA and ALCA AD facility construction LCI data
     IMPACT['ALCA', 'facility construction', "ad", 'acidification'] = 0.525593333
     IMPACT['ALCA', 'facility construction', "ad", 'climate change'] = 167.2433333
     IMPACT['ALCA', 'facility construction', "ad", 'ecotoxicity: freshwater'] = 16.6657

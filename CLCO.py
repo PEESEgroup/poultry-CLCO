@@ -233,7 +233,7 @@ def ws(M, divisions, lca_type, midpoint, scalar):
         M.alpha = alpha
         model = M
         opt = pyo.SolverFactory('gurobi')
-        opt.options['TimeLimit'] = 3600
+        opt.options['TimeLimit'] = 600
         try:
             results = opt.solve(model, tee=True)
 
@@ -348,11 +348,6 @@ def initialize_model(scenario, j, midpoint, lca_type):
 
     opt = pyo.SolverFactory('gurobi')
 
-    if scenario == 9 or scenario == 429 or scenario == 449 or scenario == 439:
-        opt.options['mipgap'] = .02
-    elif scenario == 3 or scenario == 423 or scenario == 433 or scenario == 443:
-        opt.options['mipgap'] = .2
-
     print(opt.solve(model, tee=True))  # keepfiles = True
 
     model.npv.pprint()
@@ -386,32 +381,32 @@ def add_constraints(A, M, scenario):
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 2 or scenario == 422 or scenario == 432 or scenario == 442 or (1000 < scenario < 1019):
+            elif scenario == 2 or scenario == 422 or scenario == 432 or scenario == 442 or (1000 < scenario < 1019) or (2000 < scenario < 2019):
                 M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
             elif scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-                    1100 < scenario < 1119):
+                    1100 < scenario < 1119) or (2100 < scenario < 2119):
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 6 or scenario == 426 or scenario == 436 or scenario == 446 or (1200 < scenario < 1219):
+            elif scenario == 6 or scenario == 426 or scenario == 436 or scenario == 446 or (1200 < scenario < 1219) or (2200 < scenario < 2219):
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 7 or scenario == 427 or scenario == 437 or scenario == 447 or (1300 < scenario < 1319):
+            elif scenario == 7 or scenario == 427 or scenario == 437 or scenario == 447 or (1300 < scenario < 1319) or (2300 < scenario < 2319):
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 8 or scenario == 428 or scenario == 438 or scenario == 448 or (1400 < scenario < 1419):
+            elif scenario == 8 or scenario == 428 or scenario == 438 or scenario == 448 or (1400 < scenario < 1419) or (2400 < scenario < 2419):
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
@@ -514,10 +509,6 @@ def add_constraints(A, M, scenario):
                             l, t, feed, 'AP', temp] == sum(
                             M.ap_from_pyrolysis[l, t, feed, temp, loc] for loc in
                             M.PyroAPLocations))
-                    if scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-                            1100 < scenario < 1119):
-                        M.const.add(expr=M.ap_from_pyrolysis[
-                                             l, t, feed, temp, 'AD'] == 0)  # no pyrolysis to AD in scenario 5
 
                     # linking the edges of the graph for biochar
                     M.const.add(expr=M.pyrolysis_to_storage[l, t, feed, 'Biochar', temp] ==
@@ -734,11 +725,10 @@ def add_constraints(A, M, scenario):
             M.const.add(expr=sum(M.ad_capacity[l, stage] for stage in M.ADStages) == M.process_capacity[l, 'AD'])
 
             if scenario == 1 or scenario == 5 or scenario == 421 or scenario == 425 or scenario == 431 or scenario == 435 or scenario == 441 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-                    1100 < scenario < 1119):
+                    1100 < scenario < 1119) or (2000 < scenario < 2019):
                 M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
             else:
-                M.const.add(expr=M.ad_in[l, t, 'COD'] ==
-                                 sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
+                M.const.add(expr=M.ad_in[l, t, 'COD'] == sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
                                      l, t, feed, temp, 'AD'] for feed in M.PyrolysisFeedstocks
                                      for temp in M.PyrolysisTemperatures))  # units: tons COD
 
@@ -2031,7 +2021,7 @@ if __name__ == '__main__':
     2513:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
     '''
 
-    S = [1501, 2501]
+    S = [2203, 2101]
 
     for scenario in S:
         lca_type = "CLCA"
@@ -2051,9 +2041,9 @@ if __name__ == '__main__':
         print("old files removed")
 
         if 1000 < scenario < 1999:
-            lca_type = "ALCA"
-        elif 2000 < scenario < 2999:
             lca_type = "CLCA"
+        elif 2000 < scenario < 2999:
+            lca_type = "ALCA"
 
         #scenario defines midpoint type
         if (int(scenario / 10) % 10) == 1:
