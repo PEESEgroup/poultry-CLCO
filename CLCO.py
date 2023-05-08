@@ -2021,7 +2021,7 @@ if __name__ == '__main__':
     2513:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
     '''
 
-    S = [2203, 2101]
+    S = [1501, 2501, 1502, 2502, 1503, 2503]
 
     for scenario in S:
         lca_type = "CLCA"
