@@ -1608,10 +1608,28 @@ def add_constraints(A, M, scenario):
                                                             M.htl_storage_capacity[l, 'AP'] +
                                                             M.htc_storage_capacity[l, 'AP'] +
                                                             M.ad_storage_capacity[l, 'biogas']))
-                    # TODO find data for this for CLCA
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, "biochar market", cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "bio-oil market", cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "hydrochar market", cat] == 0)
+                    '''A.IMPACT[lca_type,
+                        'biochar market', cat] *
+                                     sum(M.biochar_from_pyrolysis[l, t, feedstock, temp, 'market']
+                                          for l in M.Location for t in M.Time for feedstock in M.PyrolysisFeedstocks
+                                          for temp in M.PyrolysisTemperatures))''' # for when biochar can be sold on the market
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "bio-oil market", cat] == A.IMPACT[lca_type,
+                        'bio-oil market', cat] *
+                                     (sum(M.biooil_from_pyrolysis[l, t, feedstock, temp, 'market']
+                                          for l in M.Location for t in M.Time for feedstock in M.PyrolysisFeedstocks
+                                          for temp in M.PyrolysisTemperatures)
+                                     +sum(M.biooil_from_htl[l, t, feedstock, temp, 'market']
+                                          for l in M.Location for t in M.Time for feedstock in M.HTLFeedstocks
+                                          for temp in M.HTLTemperatures)))
+                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "hydrochar market", cat] == A.IMPACT[lca_type,
+                        'hydrochar market', cat] *
+                                     (sum(M.hydrochar_from_htc[l, t, feedstock, temp, 'market']
+                                          for l in M.Location for t in M.Time for feedstock in M.HTCFeedstocks
+                                          for temp in M.HTCTemperatures)
+                                     +sum(M.hydrochar_from_htl[l, t, feedstock, temp, 'market']
+                                          for l in M.Location for t in M.Time for feedstock in M.HTLFeedstocks
+                                          for temp in M.HTLTemperatures)))
 
                     M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] ==
                                      -A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.chp_market[l, t, 'electricity']
@@ -2021,7 +2039,7 @@ if __name__ == '__main__':
     2513:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
     '''
 
-    S = [1501, 2501, 1502, 2502, 1503, 2503]
+    S = [1501, 2501]
 
     for scenario in S:
         lca_type = "CLCA"
