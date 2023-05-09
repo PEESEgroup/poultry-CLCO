@@ -935,6 +935,8 @@ def add_constraints(A, M, scenario):
                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
 
                 # other revenue sources
+                if scenario == 10103:
+                    M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -4.54/1000*sum(M.total_LCA_midpoints[l, "CLCA", "climate change"] for l in M.Location))
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 2"] == 0)
                 M.const.add(expr=M.opex_revenues[l, t, tech, "potting media"] == 0)
@@ -2058,7 +2060,7 @@ if __name__ == '__main__':
     3203: plant in every county, calculate biochar break-even prices - min GWP
     '''
 
-    S = [3103, 3203]
+    S = [10103]
 
     for scenario in S:
         lca_type = "CLCA"
