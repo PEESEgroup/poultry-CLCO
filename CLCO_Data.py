@@ -5,7 +5,7 @@ from collections import defaultdict
 class CLCO_Data:
     ## put scenario specific data here in the init method
     def __init__(self, scenario):
-        if scenario > 1000:
+        if 1000 < scenario <2999:
             if scenario % 10 == 1:
                 self.FEEDSTOCK_SUPPLY = [4867 * 3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [80.6]
@@ -15,6 +15,25 @@ class CLCO_Data:
             if scenario % 10 == 3:
                 self.FEEDSTOCK_SUPPLY = [76.1 * 3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [26.2]
+        elif scenario > 2999:
+            if scenario % 10 == 0:
+                self.FEEDSTOCK_SUPPLY = [4867 * 3 + 2501.4 * 3]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [120]
+            elif scenario % 10 == 1:
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [80.6, 154.3]
+                self.FEEDSTOCK_SUPPLY = [4867 * 3, 2501.4 * 3]
+            else:
+                self.FEEDSTOCK_SUPPLY = [16.4, 85.7, 0.0, 14.5, 18.3, 158.2, 34.8, 6.1, 27.4, 2722.3, 49.0, 7.8, 29.9,
+                                         37.7, 2721.6, 33.4, 382.5, 23.8, 455.0, 91.4, 0.0, 48.2, 228.4, 0.1, 13.1,
+                                         12.5, 16.5, 9.9, 24.9, 0.3, 0.2, 19.9, 28.0, 4068.4, 186.4, 626.8, 13.1, 13.4,
+                                         38.1, 4.2, 2.5, 34.5, 0.0, 1.6, 818.1, 3.0, 33.0, 69.7, 335.9, 35.8, 1784.3,
+                                         70.8, 2276.5, 12.0, 12.8, 25.8, 3.5, 37.6, 3856.4, 32.3, 13.4, 377.7]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [13.8, 20.4, 4.6, 17.8, 23.1, 21.2, 24.7, 12.6, 17.8, 21.2, 16.6,
+                                                        14.2, 23.7, 16.7, 22.5, 27.2, 26.5, 14.5, 14.1, 16.1, 23.6,
+                                                        29.6, 26.2, 5.2, 22.8, 16.4, 16.9, 22.9, 12.8, 12.4, 4.4, 21.2,
+                                                        19.9, 16.5, 16.3, 17.4, 17.7, 23.9, 19.8, 10.2, 8.6, 16.4, 6.2,
+                                                        8.8, 17.3, 9.4, 15.4, 12.1, 14.1, 32.5, 21.3, 30.3, 19.9, 14.4,
+                                                        14.0, 20.7, 18.8, 20.7, 22.4, 12.7, 15.3, 11.9]
         else:
             if scenario == 51:
                 self.FEEDSTOCK_SUPPLY = [1356.1 * 3]

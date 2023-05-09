@@ -326,10 +326,17 @@ def initialize_model(scenario, j, midpoint, lca_type):
     add_constraints(A, M, scenario)
 
     # solving the model
-    if scenario > 1000:
+    if 1000 < scenario < 3000:
         return pareto_front(M, midpoint, scenario, A, lca_type)
+    elif scenario > 2999:
+        if int((scenario / 100 ) % 10) == 0:
+            M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
+        if int((scenario / 100 ) % 10) == 1:
+            M.Obj = pyo.Objective(expr=sum(M.npv[l] - M.total_LCA_midpoints[l, "CLCA", "climate change"]/5 for l in M.Location), sense=pyo.maximize)
+        if int((scenario / 100 ) % 10) == 2:
+            M.Obj = pyo.Objective(expr=sum(M.npv[l] - M.total_LCA_midpoints[l, "CLCA", "climate change"] for l in M.Location), sense=pyo.maximize)
 
-    if scenario == 50:
+    elif scenario == 50:
         # M.Obj = pyo.Objective(expr=sum(M.pyrolysis_to_storage[l, t, feed, 'Biochar', temp] for l in M.Location for t in M.Time for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures), sense=pyo.maximize)
         M.Obj = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location),
                               sense=pyo.minimize)
@@ -388,7 +395,7 @@ def add_constraints(A, M, scenario):
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
             elif scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-                    1100 < scenario < 1119) or (2100 < scenario < 2119):
+                    1100 < scenario < 1119) or (2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
@@ -724,8 +731,8 @@ def add_constraints(A, M, scenario):
 
             M.const.add(expr=sum(M.ad_capacity[l, stage] for stage in M.ADStages) == M.process_capacity[l, 'AD'])
 
-            if scenario == 1 or scenario == 5 or scenario == 421 or scenario == 425 or scenario == 431 or scenario == 435 or scenario == 441 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-                    1100 < scenario < 1119) or (2000 < scenario < 2019):
+            if scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
+                    1100 < scenario < 1119) or (2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
                 M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
             else:
                 M.const.add(expr=M.ad_in[l, t, 'COD'] == sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
@@ -2037,9 +2044,21 @@ if __name__ == '__main__':
     2511:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
     2512:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Onondaga county
     2513:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    3000: 1 pyrolysis plant for the whole state - max NPV
+    3001: 2 pyrolysis plants for the whole state - max NPV
+    3002: pyrolysis plant in every county, calculate biochar break-even prices - max NPV
+    3003: plant in every county, calculate biochar break-even prices - max NPV
+    3100: 1 pyrolysis plant for the whole state - max NPV and min GWP
+    3101: 2 pyrolysis plants for the whole state - max NPV and min GWP
+    3102: pyrolysis plant in every county, calculate biochar break-even prices - max NPV and min GWP
+    3103: plant in every county, calculate biochar break-even prices - max NPV and min GWP
+    3200: 1 pyrolysis plant for the whole state - min GWP
+    3201: 2 pyrolysis plants for the whole state - min GWP
+    3202: pyrolysis plant in every county, calculate biochar break-even prices - min GWP
+    3203: plant in every county, calculate biochar break-even prices - min GWP
     '''
 
-    S = [1501, 2501]
+    S = [3103, 3203]
 
     for scenario in S:
         lca_type = "CLCA"
@@ -2070,9 +2089,9 @@ if __name__ == '__main__':
             midpoint = "climate change"
 
         #scenario defines the number of counties
-        if scenario > 1000 or scenario == 51 or scenario == 52:
+        if 1000 < scenario < 2999 or scenario == 51 or scenario == 52 or scenario == 3000 or scenario == 3100 or scenario == 3200:
             number_counties = 1
-        elif 420 < scenario < 430:
+        elif 420 < scenario < 430 or scenario == 3001 or scenario == 3101 or scenario == 3201:
             number_counties = 2
         elif 430 < scenario < 440:
             number_counties = 3
