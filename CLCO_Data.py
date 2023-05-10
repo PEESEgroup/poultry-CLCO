@@ -87,6 +87,7 @@ class CLCO_Data:
     ### LCA EMISSIONS CHARACTERIZATION FACTORS
 
     ### TEO ECONOMICS PARAMETERS
+    #TODO replace back after validating with Bora
     TIME_PERIODS = 40
     YEARS = 10
     ANNUAL_DISCOUNT_RATE = .07

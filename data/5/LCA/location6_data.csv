@@ -1,595 +1,1333 @@
 Variable,LCA_midpoints
-LCA_midpoints,"(6, 'natural gas', 'acidification')",0.0
-LCA_midpoints,"(6, 'natural gas', 'climate change')",0.0
-LCA_midpoints,"(6, 'natural gas', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'natural gas', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'natural gas', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'natural gas', 'energy resources')",0.0
-LCA_midpoints,"(6, 'natural gas', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'natural gas', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'natural gas', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'natural gas', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'natural gas', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'natural gas', 'land use')",0.0
-LCA_midpoints,"(6, 'natural gas', 'material resources')",0.0
-LCA_midpoints,"(6, 'natural gas', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'natural gas', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'natural gas', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'natural gas', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'natural gas', 'water use')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'acidification')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'climate change')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'energy resources')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'land use')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'material resources')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'grid electricity', 'water use')",0.0
-LCA_midpoints,"(6, 'diesel', 'acidification')",124.91720521592329
-LCA_midpoints,"(6, 'diesel', 'climate change')",30494.874287107803
-LCA_midpoints,"(6, 'diesel', 'ecotoxicity: freshwater')",913.1878450267483
-LCA_midpoints,"(6, 'diesel', 'ecotoxicity: marine')",1223.3271131490392
-LCA_midpoints,"(6, 'diesel', 'ecotoxicity: terrestrial')",126948.18667314046
-LCA_midpoints,"(6, 'diesel', 'energy resources')",8619.287159898699
-LCA_midpoints,"(6, 'diesel', 'eutrophication: freshwater')",4.645175766543586
-LCA_midpoints,"(6, 'diesel', 'eutrophication: marine')",0.7728280819454534
-LCA_midpoints,"(6, 'diesel', 'human toxicity: carcinogenic')",611.6635565745196
-LCA_midpoints,"(6, 'diesel', 'human toxicity: non -carcinogenic')",107256.49689229242
-LCA_midpoints,"(6, 'diesel', 'ionising radiation')",148.60839930859782
-LCA_midpoints,"(6, 'diesel', 'land use')",2366.9656643499916
-LCA_midpoints,"(6, 'diesel', 'material resources')",206.75951208152802
-LCA_midpoints,"(6, 'diesel', 'ozone depletion')",0.01026690793056357
-LCA_midpoints,"(6, 'diesel', 'particulate matter formation')",71.07358227802517
-LCA_midpoints,"(6, 'diesel', 'photochemical oxidant formation: human health')",232.60445109171894
-LCA_midpoints,"(6, 'diesel', 'photochemical oxidant formation: terrestrial ecosystems')",239.06568584426685
-LCA_midpoints,"(6, 'diesel', 'water use')",62.458602607961645
-LCA_midpoints,"(6, 'water', 'acidification')",0.0
-LCA_midpoints,"(6, 'water', 'climate change')",0.0
-LCA_midpoints,"(6, 'water', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'water', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'water', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'water', 'energy resources')",0.0
-LCA_midpoints,"(6, 'water', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'water', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'water', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'water', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'water', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'water', 'land use')",0.0
-LCA_midpoints,"(6, 'water', 'material resources')",0.0
-LCA_midpoints,"(6, 'water', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'water', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'water', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'water', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'water', 'water use')",0.0
-LCA_midpoints,"(6, 'biochar-chp', 'acidification')",219.13222053334476
-LCA_midpoints,"(6, 'biochar-chp', 'climate change')",56167.392776536275
-LCA_midpoints,"(6, 'biochar-chp', 'ecotoxicity: freshwater')",1073.4165792000545
-LCA_midpoints,"(6, 'biochar-chp', 'ecotoxicity: marine')",1467.6652610667418
-LCA_midpoints,"(6, 'biochar-chp', 'ecotoxicity: terrestrial')",30875.39857173496
-LCA_midpoints,"(6, 'biochar-chp', 'energy resources')",11607.854947733951
-LCA_midpoints,"(6, 'biochar-chp', 'eutrophication: freshwater')",26.030825333334725
-LCA_midpoints,"(6, 'biochar-chp', 'eutrophication: marine')",1.670995466666755
-LCA_midpoints,"(6, 'biochar-chp', 'human toxicity: carcinogenic')",1877.5324381334333
-LCA_midpoints,"(6, 'biochar-chp', 'human toxicity: non -carcinogenic')",39823.37645813543
-LCA_midpoints,"(6, 'biochar-chp', 'ionising radiation')",26.030825333334725
-LCA_midpoints,"(6, 'biochar-chp', 'land use')",585.9108960000314
-LCA_midpoints,"(6, 'biochar-chp', 'material resources')",53.47958208000275
-LCA_midpoints,"(6, 'biochar-chp', 'ozone depletion')",0.015307863904000818
-LCA_midpoints,"(6, 'biochar-chp', 'particulate matter formation')",66.26028266667021
-LCA_midpoints,"(6, 'biochar-chp', 'photochemical oxidant formation: human health')",74.30617413333728
-LCA_midpoints,"(6, 'biochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",75.25274960000398
-LCA_midpoints,"(6, 'biochar-chp', 'water use')",55.3746648000028
-LCA_midpoints,"(6, 'biochar-land', 'acidification')",1.702069016380947
-LCA_midpoints,"(6, 'biochar-land', 'climate change')",-1387228.2007558052
-LCA_midpoints,"(6, 'biochar-land', 'ecotoxicity: freshwater')",12.387945974857104
-LCA_midpoints,"(6, 'biochar-land', 'ecotoxicity: marine')",16.433356489142803
-LCA_midpoints,"(6, 'biochar-land', 'ecotoxicity: terrestrial')",1984.228908251422
-LCA_midpoints,"(6, 'biochar-land', 'energy resources')",114.54804616228533
-LCA_midpoints,"(6, 'biochar-land', 'eutrophication: freshwater')",0.0499041841042284
-LCA_midpoints,"(6, 'biochar-land', 'eutrophication: marine')",0.010369435958247585
-LCA_midpoints,"(6, 'biochar-land', 'human toxicity: carcinogenic')",1.9358038460952316
-LCA_midpoints,"(6, 'biochar-land', 'human toxicity: non -carcinogenic')",810.100946986664
-LCA_midpoints,"(6, 'biochar-land', 'ionising radiation')",2.043681459809517
-LCA_midpoints,"(6, 'biochar-land', 'land use')",37.84706281142845
-LCA_midpoints,"(6, 'biochar-land', 'material resources')",22.714230887618978
-LCA_midpoints,"(6, 'biochar-land', 'ozone depletion')",-0.8690141104761875
-LCA_midpoints,"(6, 'biochar-land', 'particulate matter formation')",1.7979602285714227
-LCA_midpoints,"(6, 'biochar-land', 'photochemical oxidant formation: human health')",3.5419816502857024
-LCA_midpoints,"(6, 'biochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",3.6438660632380837
-LCA_midpoints,"(6, 'biochar-land', 'water use')",0.6113064777142838
-LCA_midpoints,"(6, 'biochar-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'biochar-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'acidification')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'climate change')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'energy resources')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'land use')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'material resources')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'pyro-bio-oil-chp', 'water use')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'acidification')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'climate change')",309074.32079999923
-LCA_midpoints,"(6, 'syngas-chp', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'energy resources')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'land use')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'material resources')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'syngas-chp', 'water use')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'climate change')",8208.554400000867
-LCA_midpoints,"(6, 'syngas-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'syngas-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'acidification')",1.1763791999999997
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'climate change')",531.0995040000006
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'ecotoxicity: freshwater')",9.48620159999999
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'ecotoxicity: marine')",13.17695039999998
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'ecotoxicity: terrestrial')",2063.1110400000057
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'energy resources')",83.69455679999994
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'eutrophication: freshwater')",23.362214399999996
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'eutrophication: marine')",27.813412799999952
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'human toxicity: carcinogenic')",8.187048000000017
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'human toxicity: non -carcinogenic')",206.81222400000038
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'ionising radiation')",31.484116800000066
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'land use')",-5.894423999999995
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'material resources')",-0.43096319999999905
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'ozone depletion')",0.0023497516800000066
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'particulate matter formation')",0.6401807999999993
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'photochemical oxidant formation: human health')",1.1024639999999972
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",11.337839999999986
-LCA_midpoints,"(6, 'pyro-ap-disposal', 'water use')",2.579515200000004
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'acidification')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'climate change')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'land use')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'material resources')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-land', 'water use')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'acidification')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'climate change')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'land use')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'material resources')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-chp', 'water use')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htl-hydrochar-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'acidification')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'climate change')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'land use')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'material resources')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htl-bio-oil-chp', 'water use')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htl-gp-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htl-ap-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'acidification')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'climate change')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'land use')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'material resources')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-land', 'water use')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'acidification')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'climate change')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'land use')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'material resources')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-chp', 'water use')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htc-hydrochar-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htc-gp-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'htc-ap-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'acidification')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'climate change')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'energy resources')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'land use')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'material resources')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'digestate-land', 'water use')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'digestate-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'acidification')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'climate change')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'energy resources')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'land use')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'material resources')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'biogas-disposal', 'water use')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'acidification')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'climate change')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'energy resources')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'land use')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'material resources')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'biogas-chp', 'water use')",0.0
-LCA_midpoints,"(6, 'manure-land', 'acidification')",0.0
-LCA_midpoints,"(6, 'manure-land', 'climate change')",0.0
-LCA_midpoints,"(6, 'manure-land', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'manure-land', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'manure-land', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'manure-land', 'energy resources')",0.0
-LCA_midpoints,"(6, 'manure-land', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'manure-land', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'manure-land', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'manure-land', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'manure-land', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'manure-land', 'land use')",0.0
-LCA_midpoints,"(6, 'manure-land', 'material resources')",0.0
-LCA_midpoints,"(6, 'manure-land', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'manure-land', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'manure-land', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'manure-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'manure-land', 'water use')",0.0
-LCA_midpoints,"(6, 'facility construction', 'acidification')",0.0042455999999808265
-LCA_midpoints,"(6, 'facility construction', 'climate change')",1.8200399999917807
-LCA_midpoints,"(6, 'facility construction', 'ecotoxicity: freshwater')",0.5029295999977287
-LCA_midpoints,"(6, 'facility construction', 'ecotoxicity: marine')",0.6749459999969519
-LCA_midpoints,"(6, 'facility construction', 'ecotoxicity: terrestrial')",99.86439999954901
-LCA_midpoints,"(6, 'facility construction', 'energy resources')",0.4543371999979482
-LCA_midpoints,"(6, 'facility construction', 'eutrophication: freshwater')",0.0014905999999932683
-LCA_midpoints,"(6, 'facility construction', 'eutrophication: marine')",7.057405199968129e-05
-LCA_midpoints,"(6, 'facility construction', 'human toxicity: carcinogenic')",0.36736039999834097
-LCA_midpoints,"(6, 'facility construction', 'human toxicity: non -carcinogenic')",11.829679999946576
-LCA_midpoints,"(6, 'facility construction', 'ionising radiation')",0.06729507999969608
-LCA_midpoints,"(6, 'facility construction', 'land use')",0.249109999998875
-LCA_midpoints,"(6, 'facility construction', 'material resources')",0.015465119999930159
-LCA_midpoints,"(6, 'facility construction', 'ozone depletion')",7.39140399996662e-07
-LCA_midpoints,"(6, 'facility construction', 'particulate matter formation')",0.0003507027999984162
-LCA_midpoints,"(6, 'facility construction', 'photochemical oxidant formation: human health')",0.006266667999971699
-LCA_midpoints,"(6, 'facility construction', 'photochemical oxidant formation: terrestrial ecosystems')",0.006513863999970583
-LCA_midpoints,"(6, 'facility construction', 'water use')",0.010606807999952098
-LCA_midpoints,"(6, 'N fertilizer', 'acidification')",-186.13850735945084
-LCA_midpoints,"(6, 'N fertilizer', 'climate change')",-73066.76634084548
-LCA_midpoints,"(6, 'N fertilizer', 'ecotoxicity: freshwater')",-2649.4508193398774
-LCA_midpoints,"(6, 'N fertilizer', 'ecotoxicity: marine')",-3514.226538237245
-LCA_midpoints,"(6, 'N fertilizer', 'ecotoxicity: terrestrial')",-505665.5265243412
-LCA_midpoints,"(6, 'N fertilizer', 'energy resources')",-21544.13035726622
-LCA_midpoints,"(6, 'N fertilizer', 'eutrophication: freshwater')",-9.961958238445682
-LCA_midpoints,"(6, 'N fertilizer', 'eutrophication: marine')",-7.778515336868545
-LCA_midpoints,"(6, 'N fertilizer', 'human toxicity: carcinogenic')",-1648.2099190939373
-LCA_midpoints,"(6, 'N fertilizer', 'human toxicity: non -carcinogenic')",-55983.80682111981
-LCA_midpoints,"(6, 'N fertilizer', 'ionising radiation')",-248.23016487305063
-LCA_midpoints,"(6, 'N fertilizer', 'land use')",-2061.575359324336
-LCA_midpoints,"(6, 'N fertilizer', 'material resources')",-824.7872854537117
-LCA_midpoints,"(6, 'N fertilizer', 'ozone depletion')",-0.5028948698121125
-LCA_midpoints,"(6, 'N fertilizer', 'particulate matter formation')",-63.0469137830398
-LCA_midpoints,"(6, 'N fertilizer', 'photochemical oxidant formation: human health')",-138.64862425014815
-LCA_midpoints,"(6, 'N fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",-148.2011869445481
-LCA_midpoints,"(6, 'N fertilizer', 'water use')",-1767.0586861229656
-LCA_midpoints,"(6, 'P fertilizer', 'acidification')",-26.750052280685626
-LCA_midpoints,"(6, 'P fertilizer', 'climate change')",-7365.541851967974
-LCA_midpoints,"(6, 'P fertilizer', 'ecotoxicity: freshwater')",-324.1962020144751
-LCA_midpoints,"(6, 'P fertilizer', 'ecotoxicity: marine')",-434.57238112639857
-LCA_midpoints,"(6, 'P fertilizer', 'ecotoxicity: terrestrial')",-57004.92836693315
-LCA_midpoints,"(6, 'P fertilizer', 'energy resources')",-1859.4894241935176
-LCA_midpoints,"(6, 'P fertilizer', 'eutrophication: freshwater')",-1.5204750332952333
-LCA_midpoints,"(6, 'P fertilizer', 'eutrophication: marine')",-0.4381029756952366
-LCA_midpoints,"(6, 'P fertilizer', 'human toxicity: carcinogenic')",-189.00277786758028
-LCA_midpoints,"(6, 'P fertilizer', 'human toxicity: non -carcinogenic')",-7833.28120543083
-LCA_midpoints,"(6, 'P fertilizer', 'ionising radiation')",-7.98893661561902
-LCA_midpoints,"(6, 'P fertilizer', 'land use')",-506.88514287938875
-LCA_midpoints,"(6, 'P fertilizer', 'material resources')",-273.9432136259038
-LCA_midpoints,"(6, 'P fertilizer', 'ozone depletion')",-0.055373639051550294
-LCA_midpoints,"(6, 'P fertilizer', 'particulate matter formation')",-9.973285387885682
-LCA_midpoints,"(6, 'P fertilizer', 'photochemical oxidant formation: human health')",-20.616610620952315
-LCA_midpoints,"(6, 'P fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",-21.518587335618978
-LCA_midpoints,"(6, 'P fertilizer', 'water use')",-130.0392714916567
-LCA_midpoints,"(6, 'K fertilizer', 'acidification')",-46.71819857919985
-LCA_midpoints,"(6, 'K fertilizer', 'climate change')",-15927.300205928786
-LCA_midpoints,"(6, 'K fertilizer', 'ecotoxicity: freshwater')",-724.6307122809881
-LCA_midpoints,"(6, 'K fertilizer', 'ecotoxicity: marine')",-986.0685131971015
-LCA_midpoints,"(6, 'K fertilizer', 'ecotoxicity: terrestrial')",-152413.32830402997
-LCA_midpoints,"(6, 'K fertilizer', 'energy resources')",-3921.5670137417014
-LCA_midpoints,"(6, 'K fertilizer', 'eutrophication: freshwater')",-3.068518790095228
-LCA_midpoints,"(6, 'K fertilizer', 'eutrophication: marine')",-1.2274075160380915
-LCA_midpoints,"(6, 'K fertilizer', 'human toxicity: carcinogenic')",-501.2425443620555
-LCA_midpoints,"(6, 'K fertilizer', 'human toxicity: non -carcinogenic')",-16412.739878521854
-LCA_midpoints,"(6, 'K fertilizer', 'ionising radiation')",-29.227641475657048
-LCA_midpoints,"(6, 'K fertilizer', 'land use')",-781.9353006860164
-LCA_midpoints,"(6, 'K fertilizer', 'material resources')",-146.36834628754235
-LCA_midpoints,"(6, 'K fertilizer', 'ozone depletion')",-0.1362115490923272
-LCA_midpoints,"(6, 'K fertilizer', 'particulate matter formation')",-17.64398304304756
-LCA_midpoints,"(6, 'K fertilizer', 'photochemical oxidant formation: human health')",-40.581160999009384
-LCA_midpoints,"(6, 'K fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",-42.57569821257129
-LCA_midpoints,"(6, 'K fertilizer', 'water use')",-180.352191887847
-LCA_midpoints,"(6, 'storage-facility-solids', 'acidification')",4.991232224000211
-LCA_midpoints,"(6, 'storage-facility-solids', 'climate change')",1560.4034190730822
-LCA_midpoints,"(6, 'storage-facility-solids', 'ecotoxicity: freshwater')",714.4210739809826
-LCA_midpoints,"(6, 'storage-facility-solids', 'ecotoxicity: marine')",872.1211119238465
-LCA_midpoints,"(6, 'storage-facility-solids', 'ecotoxicity: terrestrial')",26267.147500699528
-LCA_midpoints,"(6, 'storage-facility-solids', 'energy resources')",303.3080047695367
-LCA_midpoints,"(6, 'storage-facility-solids', 'eutrophication: freshwater')",0.20743887279238976
-LCA_midpoints,"(6, 'storage-facility-solids', 'eutrophication: marine')",0.12036555151238608
-LCA_midpoints,"(6, 'storage-facility-solids', 'human toxicity: carcinogenic')",274.3529592990593
-LCA_midpoints,"(6, 'storage-facility-solids', 'human toxicity: non -carcinogenic')",2853.751915073137
-LCA_midpoints,"(6, 'storage-facility-solids', 'ionising radiation')",11.389447184762387
-LCA_midpoints,"(6, 'storage-facility-solids', 'land use')",1031.0355616000436
-LCA_midpoints,"(6, 'storage-facility-solids', 'material resources')",11.199189346540157
-LCA_midpoints,"(6, 'storage-facility-solids', 'ozone depletion')",0.0004535423020089082
-LCA_midpoints,"(6, 'storage-facility-solids', 'particulate matter formation')",2.7538231781588474
-LCA_midpoints,"(6, 'storage-facility-solids', 'photochemical oxidant formation: human health')",5.180333479619268
-LCA_midpoints,"(6, 'storage-facility-solids', 'photochemical oxidant formation: terrestrial ecosystems')",5.444034313143088
-LCA_midpoints,"(6, 'storage-facility-solids', 'water use')",5.067797992330374
-LCA_midpoints,"(6, 'storage-facility-liquids', 'acidification')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'climate change')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'ecotoxicity: freshwater')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'ecotoxicity: marine')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'ecotoxicity: terrestrial')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'energy resources')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'eutrophication: freshwater')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'eutrophication: marine')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'human toxicity: carcinogenic')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'human toxicity: non -carcinogenic')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'ionising radiation')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'land use')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'material resources')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'ozone depletion')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'particulate matter formation')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'photochemical oxidant formation: human health')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
-LCA_midpoints,"(6, 'storage-facility-liquids', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'acidification')",0.27756692029375496
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'climate change')",640.9332817906659
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'ecotoxicity: freshwater')",2.612772863993928
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'ecotoxicity: marine')",3.41670297599206
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'ecotoxicity: terrestrial')",211.63460198350816
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'energy resources')",241.78198118343812
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'eutrophication: freshwater')",0.011044793843686333
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'eutrophication: marine')",0.0013905096789164485
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'human toxicity: carcinogenic')",7.838318591981784
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'human toxicity: non -carcinogenic')",46.627946495891635
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'ionising radiation')",2.2108078079948625
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'land use')",0.9614662469200055
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'material resources')",3.2157204479925268
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'ozone depletion')",0.00011293951883647354
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'particulate matter formation')",0.11148139059583692
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'photochemical oxidant formation: human health')",0.6924250054639909
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'photochemical oxidant formation: terrestrial ecosystems')",0.7932016646535166
+LCA_midpoints,"(6, 'ALCA', 'natural gas', 'water use')",1.31238174080719
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'grid electricity', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'acidification')",254.6727060348927
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'climate change')",59457.29504169802
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'ecotoxicity: freshwater')",2388.654346258306
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'ecotoxicity: marine')",3143.890646913509
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'ecotoxicity: terrestrial')",213363.03675254347
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'energy resources')",16501.034987571187
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'eutrophication: freshwater')",8.264172075512583
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'eutrophication: marine')",1.6890723619496015
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'human toxicity: carcinogenic')",4720.226879095001
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'human toxicity: non -carcinogenic')",216001.97289611175
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'ionising radiation')",807.9272053520739
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'land use')",4944.163224056715
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'material resources')",1497.299875136182
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'ozone depletion')",0.019636968994669348
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'particulate matter formation')",140.50907919166528
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'photochemical oxidant formation: human health')",465.4363248223912
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'photochemical oxidant formation: terrestrial ecosystems')",478.6090509966089
+LCA_midpoints,"(6, 'ALCA', 'diesel', 'water use')",127.33635301744636
+LCA_midpoints,"(6, 'ALCA', 'water', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'water', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'climate change')",9.732616490509827e-09
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'acidification')",3.62318112
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'climate change')",-3187723.2285600007
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'ecotoxicity: freshwater')",26.370124559999994
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'ecotoxicity: marine')",34.98155855999999
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'ecotoxicity: terrestrial')",4223.8126944000005
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'energy resources')",243.8375378399999
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'eutrophication: freshwater')",0.10623064982399996
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'eutrophication: marine')",0.022073337936000005
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'human toxicity: carcinogenic')",4.12073064
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'human toxicity: non -carcinogenic')",1724.4556055999997
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'ionising radiation')",4.35036888
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'land use')",80.56474920000004
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'material resources')",48.3516072
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'ozone depletion')",-1.8498636000000004
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'particulate matter formation')",3.827304
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'photochemical oxidant formation: human health')",7.539788879999996
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",7.756669440000001
+LCA_midpoints,"(6, 'ALCA', 'biochar-land', 'water use')",1.3012833599999998
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-bio-oil-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'climate change')",654201.9566400005
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'syngas-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'pyro-ap-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-land', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-hydrochar-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-bio-oil-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-gp-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htl-ap-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-land', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-hydrochar-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-gp-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'htc-ap-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-land', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'digestate-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biogas-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'manure-land', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'acidification')",499.3689812036965
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'climate change')",62250.08419303299
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'ecotoxicity: freshwater')",32834.693423050805
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'ecotoxicity: marine')",42473.33757375943
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'ecotoxicity: terrestrial')",2818334.1077364627
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'energy resources')",14627.960131861599
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'eutrophication: freshwater')",59.47759448144026
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'eutrophication: marine')",3.143912571488472
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'human toxicity: carcinogenic')",25447.65636237493
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'human toxicity: non -carcinogenic')",507067.00510785205
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'ionising radiation')",6372.336241927129
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'land use')",6150.454233887967
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'material resources')",5035.457216879514
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'ozone depletion')",0.023960823246185363
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'particulate matter formation')",208.5053332564234
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'photochemical oxidant formation: human health')",197.26861490598023
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'photochemical oxidant formation: terrestrial ecosystems')",203.58128021974696
+LCA_midpoints,"(6, 'ALCA', 'facility construction', 'water use')",536.8156990171336
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'N fertilizer', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'P fertilizer', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'K fertilizer', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'acidification')",5.4554503581719995
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'climate change')",1428.958296
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'ecotoxicity: freshwater')",713.11225385448
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'ecotoxicity: marine')",873.76088585448
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'ecotoxicity: terrestrial')",20977.551359999998
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'energy resources')",269.257145121828
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'eutrophication: freshwater')",0.46376271817200004
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'eutrophication: marine')",0.12330086727599998
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'human toxicity: carcinogenic')",395.10254570727597
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'human toxicity: non -carcinogenic')",3582.13223307276
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'ionising radiation')",34.204461627276
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'land use')",1169.44899980724
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'material resources')",70.46080682727599
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'ozone depletion')",0.00040194493812000003
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'particulate matter formation')",2.7436021854479997
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'photochemical oxidant formation: human health')",4.777610972724
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'photochemical oxidant formation: terrestrial ecosystems')",4.952783732724
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-solids', 'water use')",6.7152361745519995
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'storage-facility-liquids', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'biochar market', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'bio-oil market', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'hydrochar market', 'water use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'acidification')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'climate change')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'energy resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'land use')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'material resources')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'ALCA', 'avoided electricity', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'acidification')",1.6426101030873828
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'climate change')",3232.401997816488
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'ecotoxicity: freshwater')",19.897270271953758
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'ecotoxicity: marine')",26.328711167938813
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'ecotoxicity: terrestrial')",1604.8454860762704
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'energy resources')",1081.2860006374872
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'eutrophication: freshwater')",0.0780497559058666
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'eutrophication: marine')",0.006247843356657481
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'human toxicity: carcinogenic')",9.044213759978982
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'human toxicity: non -carcinogenic')",304.08656486329335
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'ionising radiation')",3.0147379199929936
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'land use')",5.627510783986921
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'material resources')",4.220633087990192
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'ozone depletion')",0.0006230036304676722
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'particulate matter formation')",0.7074102627516361
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'photochemical oxidant formation: human health')",3.2157204479925268
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'photochemical oxidant formation: terrestrial ecosystems')",3.617685503991593
+LCA_midpoints,"(6, 'CLCA', 'natural gas', 'water use')",1.4833656166775127
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'grid electricity', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'acidification')",254.6727060348927
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'climate change')",62170.87663358716
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'ecotoxicity: freshwater')",1861.7452992895649
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'ecotoxicity: marine')",2494.036155652055
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'ecotoxicity: terrestrial')",258813.33296232202
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'energy resources')",17572.416716407635
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'eutrophication: freshwater')",9.470268570518476
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'eutrophication: marine')",1.5755893560746794
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'human toxicity: carcinogenic')",1247.0180778260276
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'human toxicity: non -carcinogenic')",218667.25449202902
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'ionising radiation')",302.97270200702803
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'land use')",4825.608688488746
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'material resources')",421.52723757499547
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'ozone depletion')",0.020931473937222174
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'particulate matter formation')",144.8999879164046
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'photochemical oxidant formation: human health')",474.21814227186906
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'photochemical oxidant formation: terrestrial ecosystems')",487.3908684460887
+LCA_midpoints,"(6, 'CLCA', 'diesel', 'water use')",127.33635301744636
+LCA_midpoints,"(6, 'CLCA', 'water', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'water', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'acidification')",3.62318112
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'climate change')",-3187723.2285600007
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'ecotoxicity: freshwater')",26.370124559999994
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'ecotoxicity: marine')",34.98155855999999
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'ecotoxicity: terrestrial')",4223.8126944000005
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'energy resources')",243.8375378399999
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'eutrophication: freshwater')",0.10623064982399996
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'eutrophication: marine')",0.022073337936000005
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'human toxicity: carcinogenic')",4.12073064
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'human toxicity: non -carcinogenic')",1724.4556055999997
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'ionising radiation')",4.35036888
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'land use')",80.56474920000004
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'material resources')",48.3516072
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'ozone depletion')",-1.8498636000000004
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'particulate matter formation')",3.827304
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'photochemical oxidant formation: human health')",7.539788879999996
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",7.756669440000001
+LCA_midpoints,"(6, 'CLCA', 'biochar-land', 'water use')",1.3012833599999998
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-bio-oil-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'climate change')",654201.9566400005
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'syngas-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'pyro-ap-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-land', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-hydrochar-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-bio-oil-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-gp-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htl-ap-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-land', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-hydrochar-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-gp-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'htc-ap-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-land', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'digestate-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-disposal', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biogas-chp', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'manure-land', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'acidification')",167.67802488124119
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'climate change')",71881.64509253208
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'ecotoxicity: freshwater')",19862.97389822703
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'ecotoxicity: marine')",26656.682725997318
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'ecotoxicity: terrestrial')",3944098.678149195
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'energy resources')",17943.839345692824
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'eutrophication: freshwater')",58.870563380435776
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'eutrophication: marine')",2.7872898170402323
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'human toxicity: carcinogenic')",14508.730519027398
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'human toxicity: non -carcinogenic')",467207.7862674584
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'ionising radiation')",2657.7883217036733
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'land use')",9838.485203072827
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'material resources')",610.7878217805212
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'ozone depletion')",0.029192011113136088
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'particulate matter formation')",13.850846246542527
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'photochemical oxidant formation: human health')",247.49917863823208
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'photochemical oxidant formation: terrestrial ecosystems')",257.2620712891043
+LCA_midpoints,"(6, 'CLCA', 'facility construction', 'water use')",418.9110174615009
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'acidification')",-367.51916298240013
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'climate change')",-144265.8866688
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'ecotoxicity: freshwater')",-5231.1795194880015
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'ecotoxicity: marine')",-6938.626586111999
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'ecotoxicity: terrestrial')",-998405.8306559995
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'energy resources')",-42537.57520896
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'eutrophication: freshwater')",-19.669280716800007
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'eutrophication: marine')",-15.358205491199996
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'human toxicity: carcinogenic')",-3254.290251263999
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'human toxicity: non -carcinogenic')",-110536.62197759998
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'ionising radiation')",-490.11536471039983
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'land use')",-4070.455174656001
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'material resources')",-1628.4923366400005
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'ozone depletion')",-0.9929353374720002
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'particulate matter formation')",-124.48229713920004
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'photochemical oxidant formation: human health')",-273.75327682560004
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",-292.6142309375999
+LCA_midpoints,"(6, 'CLCA', 'N fertilizer', 'water use')",-3488.949914111999
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'acidification')",-99.31853879999996
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'climate change')",-27347.043906000003
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'ecotoxicity: freshwater')",-1203.6871079999999
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'ecotoxicity: marine')",-1613.4956838
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'ecotoxicity: terrestrial')",-211649.91119999991
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'energy resources')",-6903.9780029999965
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'eutrophication: freshwater')",-5.645273400000001
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'eutrophication: marine')",-1.6266041999999996
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'human toxicity: carcinogenic')",-701.7361883999997
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'human toxicity: non -carcinogenic')",-29083.683095999993
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'ionising radiation')",-29.66160599999998
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'land use')",-1881.9810593999994
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'material resources')",-1017.1060379999997
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'ozone depletion')",-0.20559320261999994
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'particulate matter formation')",-37.0291662
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'photochemical oxidant formation: human health')",-76.54607999999999
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",-79.89497099999998
+LCA_midpoints,"(6, 'CLCA', 'P fertilizer', 'water use')",-482.81439959999983
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'acidification')",-176.36599562400002
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'climate change')",-60127.193338992016
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'ecotoxicity: freshwater')",-2735.5553278560005
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'ecotoxicity: marine')",-3722.509864943999
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'ecotoxicity: terrestrial')",-575375.9607647996
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'energy resources')",-14804.318056319993
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'eutrophication: freshwater')",-11.583973439999998
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'eutrophication: marine')",-4.633589376000001
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'human toxicity: carcinogenic')",-1892.2420614240004
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'human toxicity: non -carcinogenic')",-61959.777937200015
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'ionising radiation')",-110.33734701600002
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'land use')",-2951.886031848001
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'material resources')",-552.555533088
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'ozone depletion')",-0.5142125810016002
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'particulate matter formation')",-66.60784727999997
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'photochemical oxidant formation: human health')",-153.19804874399995
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'photochemical oxidant formation: terrestrial ecosystems')",-160.72763148000007
+LCA_midpoints,"(6, 'CLCA', 'K fertilizer', 'water use')",-680.8480389359999
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'acidification')",4.23505908
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'climate change')",1324.001844
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'ecotoxicity: freshwater')",606.186072
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'ecotoxicity: marine')",739.994508
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'ecotoxicity: terrestrial')",22287.66696
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'energy resources')",257.3567532
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'eutrophication: freshwater')",0.1760118228
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'eutrophication: marine')",0.1021301352
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'human toxicity: carcinogenic')",232.7884056
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'human toxicity: non -carcinogenic')",2421.407664
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'ionising radiation')",9.663942599999999
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'land use')",874.8333719999999
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'material resources')",9.502508879999999
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'ozone depletion')",0.0003848305104
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'particulate matter formation')",2.33661816
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'photochemical oxidant formation: human health')",4.39551144
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'photochemical oxidant formation: terrestrial ecosystems')",4.61926152
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-solids', 'water use')",4.300025112
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'storage-facility-liquids', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'biochar market', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'acidification')",-4658.0217600000005
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'climate change')",-1738466.0159999966
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'ecotoxicity: freshwater')",-7376.402879999989
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'ecotoxicity: marine')",-10383.206399999988
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'ecotoxicity: terrestrial')",-3298110.144000002
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'energy resources')",78450.89280000005
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'eutrophication: freshwater')",9647.729280000003
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'eutrophication: marine')",-2783.2761599999976
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'human toxicity: carcinogenic')",-8883.409919999982
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'human toxicity: non -carcinogenic')",394302.26304000046
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'ionising radiation')",7239.402239999993
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'land use')",-1150069.8988800014
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'material resources')",-2033.377920000003
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'ozone depletion')",-6.467151263999996
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'particulate matter formation')",-2018.9567999999977
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'photochemical oxidant formation: human health')",-2170.378560000002
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'photochemical oxidant formation: terrestrial ecosystems')",-2393.905920000001
+LCA_midpoints,"(6, 'CLCA', 'bio-oil market', 'water use')",-35858.11488000004
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'acidification')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'climate change')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'ecotoxicity: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'ecotoxicity: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'ecotoxicity: terrestrial')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'energy resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'eutrophication: freshwater')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'eutrophication: marine')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'human toxicity: carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'human toxicity: non -carcinogenic')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'ionising radiation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'land use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'material resources')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'ozone depletion')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'particulate matter formation')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'photochemical oxidant formation: human health')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'photochemical oxidant formation: terrestrial ecosystems')",0.0
+LCA_midpoints,"(6, 'CLCA', 'hydrochar market', 'water use')",0.0
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'acidification')",-81.31786991999992
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'climate change')",-79740.3032435521
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'ecotoxicity: freshwater')",-21847.40105183999
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'ecotoxicity: marine')",-27127.641405312017
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'ecotoxicity: terrestrial')",-1457297.5468363198
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'energy resources')",-26444.57129798404
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'eutrophication: freshwater')",-15.04049900848993
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'eutrophication: marine')",-1.493196675810338
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'human toxicity: carcinogenic')",-4125.526600608
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'human toxicity: non -carcinogenic')",-132737.86966607996
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'ionising radiation')",-650.5429593599994
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'land use')",-17456.236076159985
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'material resources')",86.73906124800006
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'ozone depletion')",-0.040903972808025574
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'particulate matter formation')",-49.72034784092538
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'photochemical oxidant formation: human health')",-135.52978320000014
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'photochemical oxidant formation: terrestrial ecosystems')",-146.37216585600024
+LCA_midpoints,"(6, 'CLCA', 'avoided electricity', 'water use')",-829.4422731840007

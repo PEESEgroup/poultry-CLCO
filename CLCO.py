@@ -355,10 +355,14 @@ def initialize_model(scenario, j, midpoint, lca_type):
 
     opt = pyo.SolverFactory('gurobi')
 
+    if scenario in [5]:
+        opt.options["mipgap"] = .001
+
     print(opt.solve(model, tee=True))  # keepfiles = True
 
     model.npv.pprint()
-    model.pyrolysis_out.pprint()
+    #model.opex_revenues.pprint()
+    #model.pyrolysis_out.pprint()
 
     # print data to csv
     print_model(scenario, model, j, "TEA")
@@ -935,9 +939,15 @@ def add_constraints(A, M, scenario):
                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
 
                 # other revenue sources
-                if scenario == 10103:
-                    M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -4.54/1000*sum(M.total_LCA_midpoints[l, "CLCA", "climate change"] for l in M.Location))
-                M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+                if scenario == 10103 or scenario in [5]:
+                    if tech == "Feedstock":
+                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+                        #carbon credits can go here
+                        #M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
+                    else:
+                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+                else:
+                    M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 2"] == 0)
                 M.const.add(expr=M.opex_revenues[l, t, tech, "potting media"] == 0)
 
