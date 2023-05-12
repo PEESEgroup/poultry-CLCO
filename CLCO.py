@@ -328,7 +328,7 @@ def initialize_model(scenario, j, midpoint, lca_type):
     # solving the model
     if 1000 < scenario < 3000:
         return pareto_front(M, midpoint, scenario, A, lca_type)
-    elif scenario > 2999:
+    elif 2999 < scenario < 9999:
         if int((scenario / 100 ) % 10) == 0:
             M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
         if int((scenario / 100 ) % 10) == 1:
@@ -346,6 +346,7 @@ def initialize_model(scenario, j, midpoint, lca_type):
             sense=pyo.maximize)
     else:
         M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
+
     # M.Obj = pyo.Objective(expr = sum(M.pyrolysis_in[0 ,t, feed] for feed in M.PyrolysisFeedstocks for t in M.Time), sense=pyo.maximize)
     # M.Obj = pyo.Objective(expr=sum(M.opex_revenues[0, t, tech, 'avoided fertilizer'] for t in M.Time for rev in M.OPEXSubRevenues for tech in M.Technology), sense=pyo.maximize)
 
@@ -366,7 +367,6 @@ def initialize_model(scenario, j, midpoint, lca_type):
 
     model.npv.pprint()
     #model.opex_revenues.pprint()
-    #model.pyrolysis_out.pprint()
 
     # print data to csv
     print_model(scenario, model, j, "TEA")
@@ -396,7 +396,7 @@ def add_constraints(A, M, scenario):
                 M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 2 or scenario == 422 or scenario == 432 or scenario == 442 or (1000 < scenario < 1019) or (2000 < scenario < 2019):
+            elif scenario == 2 or scenario == 422 or scenario == 432 or scenario == 442 or (1000 < scenario < 1019) or (2000 < scenario < 2019) or scenario == 10003:
                 M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
@@ -433,6 +433,34 @@ def add_constraints(A, M, scenario):
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
                 M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+            elif scenario == 10103: #TODO repeat for 10203
+                if A.FEEDSTOCK_SUPPLY[l] > 100:
+                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+                    M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+                else:
+                    M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
+                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+
+                # ensure that no other feedstocks are used
+                M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
+                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', temp] == 1)
+            elif scenario == 10203:
+                if A.FEEDSTOCK_SUPPLY[l] > 3.2:
+                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+                    M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+                else:
+                    M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
+                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+
+                # ensure that no other feedstocks are used
+                M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
+                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', temp] == 1)
             else:
                 M.const.add(
                     expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
@@ -2072,9 +2100,10 @@ if __name__ == '__main__':
     3201: 2 pyrolysis plants for the whole state - min GWP
     3202: pyrolysis plant in every county, calculate biochar break-even prices - min GWP
     3203: plant in every county, calculate biochar break-even prices - min GWP
+    10103: 
     '''
 
-    S = [8]
+    S = [10003, 10103, 10203]
 
     for scenario in S:
         lca_type = "CLCA"
