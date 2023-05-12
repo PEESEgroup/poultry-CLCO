@@ -357,12 +357,12 @@ class CLCO_Data:
     NUTRIENTS['AD', 'K'] = 2.19 * K_CONTENT
 
     LOADING = defaultdict(dict)
-    LOADING["feedstock", 1.5] = .945 * 12  # m^3 / ton feedstock
-    LOADING["feedstock", 3] = .479 * 12
-    LOADING["feedstock", 4.5] = .315 * 12
-    LOADING["COD", 1.5] = .945 * 12  # m^3 / ton feedstock
-    LOADING["COD", 3] = .479 * 12
-    LOADING["COD", 4.5] = .315 * 12
+    LOADING["feedstock", 1.5] = .373  # m^3 / ton feedstock
+    LOADING["feedstock", 3] = .186
+    LOADING["feedstock", 4.5] = .124
+    LOADING["COD", 1.5] = .373  # m^3 / ton feedstock
+    LOADING["COD", 3] = .186
+    LOADING["COD", 4.5] = .124
 
     COD = defaultdict(dict)
     COD['Pyrolysis', 'feedstock', 'Biochar', 400] = .0

@@ -340,6 +340,10 @@ def initialize_model(scenario, j, midpoint, lca_type):
         # M.Obj = pyo.Objective(expr=sum(M.pyrolysis_to_storage[l, t, feed, 'Biochar', temp] for l in M.Location for t in M.Time for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures), sense=pyo.maximize)
         M.Obj = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location),
                               sense=pyo.minimize)
+    elif scenario in [425]:
+        M.Obj = pyo.Objective(
+            expr=sum(M.npv[l] - M.total_LCA_midpoints[l, "CLCA", "climate change"] / 5 for l in M.Location),
+            sense=pyo.maximize)
     else:
         M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
     # M.Obj = pyo.Objective(expr = sum(M.pyrolysis_in[0 ,t, feed] for feed in M.PyrolysisFeedstocks for t in M.Time), sense=pyo.maximize)
@@ -941,9 +945,9 @@ def add_constraints(A, M, scenario):
                 # other revenue sources
                 if scenario == 10103 or scenario in [5]:
                     if tech == "Feedstock":
-                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+                        #M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                         #carbon credits can go here
-                        #M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
+                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
                     else:
                         M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                 else:
@@ -2070,7 +2074,7 @@ if __name__ == '__main__':
     3203: plant in every county, calculate biochar break-even prices - min GWP
     '''
 
-    S = [10103]
+    S = [8]
 
     for scenario in S:
         lca_type = "CLCA"
