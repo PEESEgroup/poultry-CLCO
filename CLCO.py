@@ -402,6 +402,13 @@ def add_constraints(A, M, scenario):
 
 
 def lca_constraints(A, M, l):
+    """
+    Adds constraints on ALCA/CLCA to model
+    :param A: data
+    :param M: model
+    :param l: location
+    :return: N/A
+    """
     # LCA calculations
     for cat in M.LCAMidpointCat:
         for lca_type in M.LCATypes:
@@ -573,7 +580,6 @@ def capex_constraints(A, M, l):
     :param l: the location
     :return: N/A
     """
-
     # CAPEX for storage and process capacity
     # implementing piecewise linear approximation
     q = symbols("q")
@@ -727,6 +733,14 @@ def capex_constraints(A, M, l):
 
 
 def opex_constraints(A, M, l, t):
+    """
+    Constraints on the OPEX costs for the model
+    :param A: data
+    :param M: model
+    :param l: location
+    :param t: time
+    :return: N/A
+    """
     # calculating the heat and electricity used by all processes
     # tech_in * decision_temp = sum(tech_out/tech_yield[product])
     for tech in M.Technology:
@@ -950,8 +964,16 @@ def opex_constraints(A, M, l, t):
 
 
 def revenue_constraints(A, M, l, scenario, t):
-    ### REVENUES
-    ## AVOIDED FERTILIZER
+    """
+    Adds revenue constraints to the model
+    :param A: data
+    :param M: model
+    :param l: location
+    :param scenario: scenario
+    :param t: time
+    :return: N/A
+    """
+    # AVOIDED FERTILIZER
     # calculating the amount of avoided fertilizers
     for fertilizer in M.AvoidedFertilizers:
         M.const.add(expr=M.avoided_fertilizers[l, t, 'Pyrolysis', fertilizer] == sum(
@@ -1073,6 +1095,15 @@ def revenue_constraints(A, M, l, scenario, t):
 
 
 def facility_constraints(A, M, l, scenario, t):
+    """
+    Adds facility constraints to the model
+    :param A: data
+    :param M: model
+    :param l: location
+    :param scenario: scenario
+    :param t: time
+    :return: N/A
+    """
     ## FEEDSTOCK
     if scenario == 1 or scenario == 421 or scenario == 431 or scenario == 441:
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
@@ -1122,7 +1153,7 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-    elif scenario == 10103:  # TODO repeat for 10203
+    elif scenario == 10103:
         if A.FEEDSTOCK_SUPPLY[l] > 100:
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
@@ -1151,8 +1182,7 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
     else:
-        M.const.add(
-            expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
                  M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
     ## DIRECT LAND APPLICATION
     M.const.add(expr=M.feedstock_to_storage[l, t] <= M.process_capacity[l, 'Feedstock'])
@@ -1171,6 +1201,7 @@ def facility_constraints(A, M, l, scenario, t):
                  A.FEEDSTOCK_SUPPLY[l] + 1)  # constrain likely to cause infeasibility issues
     # ensuring that the feedstock storage does not overflow
     M.const.add(expr=M.feedstock_storage[l, t] <= M.feedstock_storage_capacity[l])
+
     ## PYROLYSIS
     M.const.add(expr=sum(M.pyrolysis_in[l, t, feed] for feed in M.PyrolysisFeedstocks) <=
                      M.process_capacity[l, 'Pyrolysis'])
