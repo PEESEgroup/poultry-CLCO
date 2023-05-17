@@ -329,12 +329,16 @@ def initialize_model(scenario, j, midpoint, lca_type):
     if 1000 < scenario < 3000:
         return pareto_front(M, midpoint, scenario, A, lca_type)
     elif 2999 < scenario < 9999:
-        if int((scenario / 100 ) % 10) == 0:
+        if int((scenario / 100) % 10) == 0:
             M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
-        if int((scenario / 100 ) % 10) == 1:
-            M.Obj = pyo.Objective(expr=sum(M.npv[l] - M.total_LCA_midpoints[l, "CLCA", "climate change"]/5 for l in M.Location), sense=pyo.maximize)
-        if int((scenario / 100 ) % 10) == 2:
-            M.Obj = pyo.Objective(expr=sum(M.npv[l] - M.total_LCA_midpoints[l, "CLCA", "climate change"] for l in M.Location), sense=pyo.maximize)
+        if int((scenario / 100) % 10) == 1:
+            M.Obj = pyo.Objective(
+                expr=sum(M.npv[l] - M.total_LCA_midpoints[l, "CLCA", "climate change"] / 5 for l in M.Location),
+                sense=pyo.maximize)
+        if int((scenario / 100) % 10) == 2:
+            M.Obj = pyo.Objective(
+                expr=sum(M.npv[l] - M.total_LCA_midpoints[l, "CLCA", "climate change"] for l in M.Location),
+                sense=pyo.maximize)
 
     elif scenario == 50:
         # M.Obj = pyo.Objective(expr=sum(M.pyrolysis_to_storage[l, t, feed, 'Biochar', temp] for l in M.Location for t in M.Time for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures), sense=pyo.maximize)
@@ -366,7 +370,7 @@ def initialize_model(scenario, j, midpoint, lca_type):
     print(opt.solve(model, tee=True))  # keepfiles = True
 
     model.npv.pprint()
-    #model.opex_revenues.pprint()
+    # model.opex_revenues.pprint()
 
     # print data to csv
     print_model(scenario, model, j, "TEA")
@@ -388,1307 +392,1167 @@ def add_constraints(A, M, scenario):
         # only one stage can be selected for each location for AD
         M.const.add(expr=sum(M.decision_ad_stage[l, stage] for stage in M.ADStages) == 1)
 
+        # time dependent constraints
         for t in M.Time:
-            ## FEEDSTOCK
-            if scenario == 1 or scenario == 421 or scenario == 431 or scenario == 441:
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 2 or scenario == 422 or scenario == 432 or scenario == 442 or (1000 < scenario < 1019) or (2000 < scenario < 2019) or scenario == 10003:
-                M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-            elif scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-                    1100 < scenario < 1119) or (2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
-                M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 6 or scenario == 426 or scenario == 436 or scenario == 446 or (1200 < scenario < 1219) or (2200 < scenario < 2219):
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 7 or scenario == 427 or scenario == 437 or scenario == 447 or (1300 < scenario < 1319) or (2300 < scenario < 2319):
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 8 or scenario == 428 or scenario == 438 or scenario == 448 or (1400 < scenario < 1419) or (2400 < scenario < 2419):
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-                M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 9 or scenario == 429 or scenario == 439 or scenario == 449:
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
-                M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            elif scenario == 10103: #TODO repeat for 10203
-                if A.FEEDSTOCK_SUPPLY[l] > 100:
-                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-                    M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-                else:
-                    M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
-                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-
-                # ensure that no other feedstocks are used
-                M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
-            elif scenario == 10203:
-                if A.FEEDSTOCK_SUPPLY[l] > 3.2:
-                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-                    M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-                else:
-                    M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
-                    M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-
-                # ensure that no other feedstocks are used
-                M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
-                M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
-            else:
-                M.const.add(
-                    expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
-                         M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-
-            ## DIRECT LAND APPLICATION
-            M.const.add(expr=M.feedstock_to_storage[l, t] <= M.process_capacity[l, 'Feedstock'])
-            M.const.add(expr=M.feedstock_from_storage[l, t] <= M.feedstock_storage[l, t])
-
-            # direct land cost storage size updates
-            if t > 0:
-                M.const.add(expr=M.feedstock_storage[l, t] == M.feedstock_storage[
-                    l, t - 1] + M.feedstock_to_storage[l, t - 1] - M.feedstock_from_storage[l, t - 1])
-            else:
-                M.const.add(expr=M.feedstock_storage[l, t] == 0)
-                M.const.add(expr=M.feedstock_from_storage[l, t] == 0)
-
-            if t == A.TIME_PERIODS - 1:
-                # raw feedstock has no other disposal pathway other than direct land application, so it must be allowed to store a certain amount for next year
-                M.const.add(
-                    expr=M.feedstock_storage[l, t] <= (A.TIME_PERIODS / A.YEARS - A.LAND_APPLICATION_MONTH - 1) *
-                         A.FEEDSTOCK_SUPPLY[l] + 1)  # constrain likely to cause infeasibility issues
-
-            # ensuring that the feedstock storage does not overflow
-            M.const.add(expr=M.feedstock_storage[l, t] <= M.feedstock_storage_capacity[l])
-
-            ## PYROLYSIS
-            M.const.add(expr=sum(M.pyrolysis_in[l, t, feed] for feed in M.PyrolysisFeedstocks) <=
-                             M.process_capacity[l, 'Pyrolysis'])
-
-            ##pyrolysis yield conversion
-
-            # only one temperature can be selected for each location at each time period
-            for feed in M.PyrolysisFeedstocks:
-                M.const.add(expr=sum(M.decision_pyrolysis_temperature[l, t, feed, temp] for temp in
-                                     M.PyrolysisTemperatures) == 1)
-                # getting pyrolysis yields from inputs
-                for temp in M.PyrolysisTemperatures:
-                    for pyro_prod in M.PyrolysisProducts:
-                        # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
-                        M.const.add(
-                            expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp] <=
-                                 M.pyrolysis_in[l, t, feed])
-                        M.const.add(
-                            expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp] <=
-                                 A.FEEDSTOCK_SUPPLY[l] * M.decision_pyrolysis_temperature[l, t, feed, temp])
-                        M.const.add(expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[
-                            feed, pyro_prod, temp] >= 0)
-                        M.const.add(expr=M.pyrolysis_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
-                                1 - M.decision_pyrolysis_temperature[l, t, feed, temp]) <= M.pyrolysis_out[
-                                             l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp])
-
-                        M.const.add(
-                            expr=M.pyrolysis_from_storage[l, t, feed, pyro_prod, temp] <=
-                                 M.pyrolysis_storage[l, t, feed, pyro_prod, temp])
-                        M.const.add(
-                            expr=M.pyrolysis_to_storage[l, t, feed, pyro_prod, temp] <=
-                                 M.pyrolysis_storage_capacity[l, pyro_prod])
-                        # storage is empty in the first time period, and is the boundary conditions
-                        if t > 0:
-                            M.const.add(expr=M.pyrolysis_storage[l, t, feed, pyro_prod, temp] ==
-                                             M.pyrolysis_storage[l, t - 1, feed, pyro_prod, temp] +
-                                             M.pyrolysis_to_storage[l, t - 1, feed, pyro_prod, temp] -
-                                             M.pyrolysis_from_storage[l, t - 1, feed, pyro_prod, temp])
-                        else:
-                            M.const.add(expr=M.pyrolysis_storage[l, t, feed, pyro_prod, temp] == 0)
-                            M.const.add(expr=M.pyrolysis_from_storage[l, t, feed, pyro_prod, temp] == 0)
-
-                        if t == A.TIME_PERIODS - 1:
-                            M.const.add(expr=M.pyrolysis_storage[l, t, feed, pyro_prod, temp] == 0)
-
-                    # moving products to stage 3 of the model
-                    M.const.add(
-                        expr=M.pyrolysis_out[l, t, feed, 'Biochar', temp] + M.pyrolysis_from_storage[
-                            l, t, feed, 'Biochar', temp] == sum(
-                            M.biochar_from_pyrolysis[l, t, feed, temp, loc] for loc in
-                            M.PyroBiocharLocations))
-                    M.const.add(
-                        expr=M.pyrolysis_out[l, t, feed, 'Biooil', temp] + M.pyrolysis_from_storage[
-                            l, t, feed, 'Biooil', temp] == sum(
-                            M.biooil_from_pyrolysis[l, t, feed, temp, loc] for loc in
-                            M.PyroBiooilLocations))
-                    M.const.add(expr=M.pyrolysis_out[l, t, feed, 'Syngas', temp] + M.pyrolysis_from_storage[
-                        l, t, feed, 'Syngas', temp] == sum(
-                        M.syngas_from_pyrolysis[l, t, feed, temp, loc] for loc in
-                        M.PyroSyngasLocations))
-                    M.const.add(
-                        expr=M.pyrolysis_out[l, t, feed, 'AP', temp] + M.pyrolysis_from_storage[
-                            l, t, feed, 'AP', temp] == sum(
-                            M.ap_from_pyrolysis[l, t, feed, temp, loc] for loc in
-                            M.PyroAPLocations))
-
-                    # linking the edges of the graph for biochar
-                    M.const.add(expr=M.pyrolysis_to_storage[l, t, feed, 'Biochar', temp] ==
-                                     M.biochar_from_pyrolysis[l, t, feed, temp, 'storage'])
-                    M.const.add(expr=M.pyrolysis_to_chp[l, t, feed, 'Biochar', temp] ==
-                                     A.HHV['Pyrolysis', feed, 'Biochar', temp] * M.biochar_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'])
-
-                    # linking the edges of the graph for biooil
-                    M.const.add(expr=M.pyrolysis_to_storage[
-                                         l, t, feed, 'Biooil', temp] == 0)  # biooil cannot be stored
-                    M.const.add(expr=M.pyrolysis_to_chp[
-                                         l, t, feed, 'Biooil', temp] == (
-                                             A.HHV['Pyrolysis', feed, 'Biooil', temp] + 3 * 42800) *
-                                     M.biooil_from_pyrolysis[l, t, feed, temp, 'CHP'])
-
-                    # linking the edges of the graph for syngas
-                    M.const.add(expr=M.pyrolysis_to_storage[l, t, feed, 'Syngas', temp] ==
-                                     M.syngas_from_pyrolysis[
-                                         l, t, feed, temp, 'storage'])
-                    M.const.add(expr=M.pyrolysis_to_chp[l, t, feed, 'Syngas', temp]
-                                     == A.HHV['Pyrolysis', feed, 'Syngas', temp] * M.syngas_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'])
-
-                    # linking the edges of the graph for aqueous phase
-                    M.const.add(expr=M.pyrolysis_to_storage[l, t, feed, 'AP', temp] == 0)
-                    M.const.add(expr=M.pyrolysis_to_chp[l, t, feed, 'AP', temp] == 0)
-
-            # ensuring that the pyrolysis storage does not overflow
-            for prod in M.PyrolysisProducts:
-                M.const.add(expr=sum(
-                    M.pyrolysis_storage[l, t, feed, prod, temp] for feed in M.PyrolysisFeedstocks for temp in
-                    M.PyrolysisTemperatures) <= M.pyrolysis_storage_capacity[l, prod])
-
-            ## HTL
-            M.const.add(expr=sum(M.htl_in[l, t, feed] for feed in M.HTLFeedstocks) <= M.process_capacity[l, 'HTL'])
-
-            ##htl yield conversion
-            # only one temperature can be selected for each location at each time period
-            for feed in M.HTLFeedstocks:
-                M.const.add(
-                    expr=sum(M.decision_htl_temperature[l, t, feed, temp] for temp in M.HTLTemperatures) == 1)
-                # getting pyrolysis yields from inputs
-                for prod in M.HTLProducts:
-                    for temp in M.HTLTemperatures:
-                        # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
-                        M.const.add(
-                            expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp] <=
-                                 M.htl_in[l, t, feed])
-                        M.const.add(
-                            expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp] <=
-                                 A.FEEDSTOCK_SUPPLY[l] * M.decision_htl_temperature[l, t, feed, temp])
-                        M.const.add(expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[
-                            feed, prod, temp] >= 0)
-                        M.const.add(expr=M.htl_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
-                                1 - M.decision_htl_temperature[l, t, feed, temp]) <= M.htl_out[
-                                             l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp])
-                        M.const.add(
-                            expr=M.htl_from_storage[l, t, feed, prod, temp] <= M.htl_storage[
-                                l, t, feed, prod, temp])
-                        M.const.add(
-                            expr=M.htl_to_storage[l, t, feed, prod, temp] <= M.htl_storage_capacity[
-                                l, prod])
-
-                        # storage is empty in the first time period, and is the boundary conditions
-                        if (t > 0):
-                            M.const.add(expr=M.htl_storage[l, t, feed, prod, temp] == M.htl_storage[
-                                l, t - 1, feed, prod, temp] + M.htl_to_storage[l, t - 1, feed, prod, temp] -
-                                             M.htl_from_storage[l, t - 1, feed, prod, temp])
-                        else:
-                            M.const.add(expr=M.htl_storage[l, t, feed, prod, temp] == 0)
-                            M.const.add(expr=M.htl_from_storage[l, t, feed, prod, temp] == 0)
-
-                        if t == A.TIME_PERIODS - 1:
-                            M.const.add(expr=M.htl_storage[l, t, feed, prod, temp] == 0)
-
-            for feed in M.HTLFeedstocks:
-                for temp in M.HTLTemperatures:
-                    # moving products to stage 3 of the model
-                    M.const.add(expr=M.htl_out[l, t, feed, 'Hydrochar', temp] + M.htl_from_storage[
-                        l, t, feed, 'Hydrochar', temp] == sum(
-                        M.hydrochar_from_htl[l, t, feed, temp, loc] for loc in M.HTLHydrocharLocations))
-                    M.const.add(expr=M.htl_out[l, t, feed, 'Biooil', temp] == sum(
-                        M.biooil_from_htl[l, t, feed, temp, loc] for loc in M.HTLBiooilLocations))
-                    M.const.add(
-                        expr=M.htl_out[l, t, feed, 'GP', temp] + M.htl_from_storage[l, t, feed, 'GP', temp] == sum(
-                            M.gp_from_htl[l, t, feed, temp, loc] for loc in M.HTLGPLocations))
-                    M.const.add(
-                        expr=M.htl_out[l, t, feed, 'AP', temp] + M.htl_from_storage[l, t, feed, 'AP', temp] == sum(
-                            M.ap_from_htl[l, t, feed, temp, loc] for loc in M.HTLAPLocations))
-
-                    # linking the edges of the graph for hydrochar
-                    M.const.add(expr=M.htl_to_storage[l, t, feed, 'Hydrochar', temp] == M.hydrochar_from_htl[
-                        l, t, feed, temp, 'storage'])
-                    M.const.add(
-                        expr=M.htl_to_chp[l, t, feed, 'Hydrochar', temp] == A.HHV['HTL', feed, 'Hydrochar', temp] *
-                             M.hydrochar_from_htl[l, t, feed, temp, 'CHP'])
-
-                    # linking the edges of the graph for biooil
-                    M.const.add(expr=M.htl_to_storage[l, t, feed, 'Biooil', temp] == 0)  # biooil cannot be stored
-                    M.const.add(
-                        expr=M.htl_to_chp[l, t, feed, 'Biooil', temp] == (
-                                A.HHV['HTL', feed, 'Biooil', temp] + 3 * 42800) *
-                             M.biooil_from_htl[l, t, feed, temp, 'CHP'])
-
-                    # linking the edges of the graph for GP
-                    M.const.add(expr=M.htl_to_storage[l, t, feed, 'GP', temp] == 0)
-                    M.const.add(expr=M.htl_to_chp[l, t, feed, 'GP', temp] == 0)
-
-                    # linking the edges of the graph for AP
-                    M.const.add(expr=M.htl_to_storage[l, t, feed, 'AP', temp] == M.ap_from_htl[
-                        l, t, feed, temp, 'storage'])
-                    M.const.add(expr=M.htl_to_chp[l, t, feed, 'AP', temp] == 0)
-
-            # ensuring that the HTL storage does not overflow
-            for prod in M.HTLProducts:
-                M.const.add(expr=sum(M.htl_storage[l, t, feed, prod, temp] for feed in M.HTLFeedstocks
-                                     for temp in M.HTLTemperatures) <= M.htl_storage_capacity[l, prod])
-
-            ## HTC
-            # products entering htc must be under capacity
-            M.const.add(expr=sum(M.htc_in[l, t, feed] for feed in M.HTCFeedstocks) <= M.process_capacity[l, 'HTC'])
-
-            ##htc yield conversion
-            # only one temperature can be selected for each location at each time period
-            for feed in M.HTCFeedstocks:
-                M.const.add(
-                    expr=sum(M.decision_htc_temperature[l, t, feed, temp] for temp in M.HTCTemperatures) == 1)
-                # getting HTC yields from inputs
-                for temp in M.HTCTemperatures:
-                    for prod in M.HTCProducts:
-                        # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
-                        M.const.add(
-                            expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp] <=
-                                 M.htc_in[l, t, feed])
-                        M.const.add(
-                            expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp] <=
-                                 A.FEEDSTOCK_SUPPLY[l] * M.decision_htc_temperature[l, t, feed, temp])
-                        M.const.add(expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[
-                            feed, prod, temp] >= 0)
-                        M.const.add(expr=M.htc_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
-                                1 - M.decision_htc_temperature[l, t, feed, temp]) <= M.htc_out[
-                                             l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp])
-
-                        M.const.add(
-                            expr=M.htc_from_storage[l, t, feed, prod, temp] <= M.htc_storage[
-                                l, t, feed, prod, temp])
-                        M.const.add(
-                            expr=M.htc_to_storage[l, t, feed, prod, temp] <= M.htc_storage_capacity[
-                                l, prod])
-
-                        # storage is empty in the first time period, and is the boundary conditions
-                        if t > 0:
-                            M.const.add(expr=M.htc_storage[l, t, feed, prod, temp] == M.htc_storage[
-                                l, t - 1, feed, prod, temp] + M.htc_to_storage[l, t - 1, feed, prod, temp] -
-                                             M.htc_from_storage[l, t - 1, feed, prod, temp])
-                        else:
-                            M.const.add(expr=M.htc_storage[l, t, feed, prod, temp] == 0)
-                            M.const.add(expr=M.htc_from_storage[l, t, feed, prod, temp] == 0)
-
-                        if t == A.TIME_PERIODS - 1:
-                            M.const.add(expr=M.htc_storage[l, t, feed, prod, temp] == 0)
-
-                    # moving products to stage 3 of the model
-                    M.const.add(expr=M.htc_out[l, t, feed, 'Hydrochar', temp] + M.htc_from_storage[
-                        l, t, feed, 'Hydrochar', temp] == sum(
-                        M.hydrochar_from_htc[l, t, feed, temp, loc] for loc in M.HTCHydrocharLocations))
-                    M.const.add(
-                        expr=M.htc_out[l, t, feed, 'GP', temp] + M.htc_from_storage[l, t, feed, 'GP', temp] == sum(
-                            M.gp_from_htc[l, t, feed, temp, loc] for loc in M.HTCGPLocations))
-                    M.const.add(
-                        expr=M.htc_out[l, t, feed, 'AP', temp] + M.htc_from_storage[l, t, feed, 'AP', temp] == sum(
-                            M.ap_from_htc[l, t, feed, temp, loc] for loc in M.HTCAPLocations))
-
-                    # linking the edges of the graph for hydrochar
-                    M.const.add(expr=M.htc_to_storage[l, t, feed, 'Hydrochar', temp] == M.hydrochar_from_htc[
-                        l, t, feed, temp, 'storage'])
-                    M.const.add(
-                        expr=M.htc_to_chp[l, t, feed, 'Hydrochar', temp] == A.HHV['HTC', feed, 'Hydrochar', temp] *
-                             M.hydrochar_from_htc[l, t, feed, temp, 'CHP'])
-
-                    # linking the edges of the graph for gaseous phase
-                    M.const.add(expr=M.htc_to_storage[l, t, feed, 'GP', temp] == 0)
-                    M.const.add(expr=M.htc_to_chp[l, t, feed, 'GP', temp] == 0)
-
-                    # linking the edges of the graph for AP
-                    M.const.add(expr=M.htc_to_storage[l, t, feed, 'AP', temp] == M.ap_from_htc[
-                        l, t, feed, temp, 'storage'])
-                    M.const.add(expr=M.htc_to_chp[l, t, feed, 'AP', temp] == 0)
-
-                    # ensuring that the HTC storage does not overflow
-                for prod in M.HTCProducts:
-                    M.const.add(
-                        expr=sum(M.htc_storage[l, t, feed, prod, temp] for feed in M.HTCFeedstocks for temp in
-                                 M.HTCTemperatures) <= M.htc_storage_capacity[l, prod])
-
-            ## AD
-            # products entering ad must be under capacity
-            for stage in M.ADStages:
-                for feed in M.ADFeedstocks:
-                    # glovers linearization for ad_in_glovers = ad_in*decision_ad_stage
-                    M.const.add(
-                        expr=M.ad_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (1 - M.decision_ad_stage[l, stage]) <=
-                             M.ad_in_glovers[l, t, feed, stage])
-                    M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] <= A.FEEDSTOCK_SUPPLY[l] * M.decision_ad_stage[
-                        l, stage])
-                    M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] <= M.ad_in[l, t, feed])
-                    M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] >= 0)
-
-                M.const.add(
-                    expr=sum(M.ad_in_glovers[l, t, feed, stage] * A.LOADING[feed, stage] for feed in M.ADFeedstocks)
-                         == M.ad_capacity[l, stage])
-
-            M.const.add(expr=sum(M.ad_capacity[l, stage] for stage in M.ADStages) == M.process_capacity[l, 'AD'])
-
-            if scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-                    1100 < scenario < 1119) or (2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
-                M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
-            else:
-                M.const.add(expr=M.ad_in[l, t, 'COD'] == sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
-                                     l, t, feed, temp, 'AD'] for feed in M.PyrolysisFeedstocks
-                                     for temp in M.PyrolysisTemperatures))  # units: tons COD
-
-            ##ad yield conversion
-            # getting AD yields from inputs
-            for prod in M.ADProducts:
-                for stage in M.ADStages:
-                    # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
-                    if t == 0:
-                        M.const.add(expr=M.ad_out[l, t, prod, stage] == 0)  # no yield from first month of ad
-                    else:
-                        M.const.add(expr=M.ad_out[l, t, prod, stage] == sum(M.ad_in_glovers[l, t - 1, feed, stage] *
-                                                                            A.AD_YIELD[feed, prod, stage] for feed
-                                                                            in M.ADFeedstocks))
-                        # yields from ad take time to materialize, biogas yield is in Nm^3, digestate is in kg
-
-                    M.const.add(expr=M.ad_from_storage[l, t, prod, stage] <= M.ad_storage[l, t, prod, stage])
-                    M.const.add(expr=M.ad_to_storage[l, t, prod, stage] <= M.ad_storage_capacity[l, prod])
-
-                    # storage is empty in the first time period, and is the boundary conditions
-                    if t > 0:
-                        M.const.add(expr=M.ad_storage[l, t, prod, stage] == M.ad_storage[
-                            l, t - 1, prod, stage] + M.ad_to_storage[l, t - 1, prod, stage] -
-                                         M.ad_from_storage[l, t - 1, prod, stage])
-                    else:
-                        M.const.add(expr=M.ad_storage[l, t, prod, stage] == 0)
-                        M.const.add(expr=M.ad_from_storage[l, t, prod, stage] == 0)
-
-                    if t == A.TIME_PERIODS - 1:
-                        M.const.add(expr=M.ad_storage[l, t, prod, stage] == 0)
-
-            for stage in M.ADStages:
-                # moving products to stage 3 of the model
-                M.const.add(expr=M.ad_out[l, t, 'digestate', stage] + M.ad_from_storage[
-                    l, t, 'digestate', stage] == sum(
-                    M.digestate_from_ad[l, t, stage, loc] for loc in M.ADDigestateLocations))
-                M.const.add(expr=M.ad_out[l, t, 'biogas', stage] + M.ad_from_storage[
-                    l, t, 'biogas', stage] == sum(
-                    M.biogas_from_ad[l, t, stage, loc] for loc in M.ADBiogasLocations))
-
-                # linking the edges of the graph for digestate
-                # if scenario is 1, then digestate can only be disposed of
-                if scenario == 1 or scenario == 421 or scenario == 431 or scenario == 441:
-                    M.const.add(expr=M.digestate_from_ad[l, t, stage, 'storage'] == 0)
-                    M.const.add(expr=M.digestate_from_ad[l, t, stage, 'land'] == 0)
-
-                M.const.add(expr=M.ad_to_storage[l, t, 'digestate', stage] == M.digestate_from_ad[
-                    l, t, stage, 'storage'])
-                M.const.add(expr=M.ad_to_chp[l, t, 'digestate', stage] == 0)
-
-                M.const.add(expr=M.ad_to_storage[l, t, 'biogas', stage] == M.biogas_from_ad[
-                    l, t, stage, 'storage'])
-                M.const.add(
-                    expr=M.ad_to_chp[l, t, 'biogas', stage] == A.HHV['methane'] * M.biogas_from_ad[
-                        l, t, stage, 'CHP'])  # units MJ
-
-                # ensuring the AD storage does not overflow
-                for prod in M.ADProducts:
-                    M.const.add(expr=sum(M.ad_storage[l, t, prod, stage] for stage in
-                                         M.ADStages) <= M.ad_storage_capacity[l, prod])
-
-            # CHP CONSTRAINTS
-            M.const.add(expr=M.chp_in[l, t] * A.MJ_TO_KW / A.HOURS_PER_PERIOD <= M.process_capacity[l, 'CHP'])
-
-            # different available products in different scenarios
-            M.const.add(expr=M.chp_in[l, t] == sum(
-                M.pyrolysis_to_chp[l, t, feedstock, pyro_prod, temp]
-                for temp in M.PyrolysisTemperatures for pyro_prod in M.PyrolysisProducts for feedstock in
-                M.PyrolysisFeedstocks) +
-                             sum(M.htl_to_chp[l, t, feedstock, htl_prod, temp]
-                                 for feedstock in M.HTLFeedstocks for htl_prod
-                                 in M.HTLProducts for temp in M.HTLTemperatures) +
-                             sum(M.htc_to_chp[l, t, feedstock, htc_prod, temp]
-                                 for feedstock in M.HTCFeedstocks for htc_prod
-                                 in M.HTCProducts for temp in M.HTCTemperatures) +
-                             sum(M.ad_to_chp[l, t, ad_prod, temp]
-                                 for ad_prod in M.ADProducts for temp in
-                                 M.ADStages))  # units in MJ
-
-            # CHP yields heat and power depends on the types of feedstocks used
-            M.const.add(
-                expr=sum(M.chp_out[l, t, tech, 'heat'] for tech in M.Technology) + M.chp_market[l, t, 'heat'] ==
-                     A.CHP_HEAT_EFFICIENCY * M.chp_in[l, t])  # units of J
-
-            M.const.add(expr=sum(M.chp_out[l, t, tech, 'electricity'] for tech in M.Technology) +
-                             M.chp_market[l, t, 'electricity'] == A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[
-                                 l, t])  # units of kWh out, MJ in
-
-            ### REVENUES
-            ## AVOIDED FERTILIZER
-            # calculating the amount of avoided fertilizers
-            for fertilizer in M.AvoidedFertilizers:
-                M.const.add(expr=M.avoided_fertilizers[l, t, 'Pyrolysis', fertilizer] == sum(
-                    A.NUTRIENTS['Pyrolysis', feed, temp, fertilizer] * M.biochar_from_pyrolysis[
-                        l, t, feed, temp, 'land'] for feed in M.PyrolysisFeedstocks for temp in
-                    M.PyrolysisTemperatures))
-                M.const.add(expr=M.avoided_fertilizers[l, t, 'HTL', fertilizer] == sum(
-                    A.NUTRIENTS['HTL', feed, temp, fertilizer] * M.hydrochar_from_htl[l, t, feed, temp, 'land']
-                    for feed in M.HTLFeedstocks for temp in M.HTLTemperatures))
-                M.const.add(expr=M.avoided_fertilizers[l, t, 'HTC', fertilizer] == sum(
-                    A.NUTRIENTS['HTC', feed, temp, fertilizer] * M.hydrochar_from_htc[l, t, feed, temp, 'land']
-                    for feed in M.HTCFeedstocks for temp in M.HTCTemperatures))
-                M.const.add(expr=M.avoided_fertilizers[l, t, 'AD', fertilizer] == sum(
-                    A.NUTRIENTS['AD', fertilizer] * M.digestate_from_ad[l, t, temp, 'land']
-                    for temp in M.ADStages))
-                M.const.add(expr=M.avoided_fertilizers[l, t, 'CHP', fertilizer] == 0)
-                M.const.add(expr=M.avoided_fertilizers[l, t, 'Feedstock', fertilizer] == A.NUTRIENTS[
-                    'Feedstock', fertilizer] * M.feedstock_from_storage[l, t])
-
-            # feedstock can only be applied to land in the dedicated month of the year
-            if not int(t) % (int(A.TIME_PERIODS / A.YEARS)) == int(A.LAND_APPLICATION_MONTH):
-                # no avoided fertilizers allowed when it is not application month
-                for fert in M.AvoidedFertilizers:
-                    for tech in M.Technology:
-                        M.const.add(expr=M.avoided_fertilizers[l, t, tech, fert] == 0)
-
-            ## Selling products on the markets
-            # adding the avoided fertilizer and coal revenues to opex
-            for tech in M.Technology:
-                M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided fertilizer'] == sum(
-                    A.REVENUE[fert] * M.avoided_fertilizers[l, t, tech, fert] for fert in M.AvoidedFertilizers) / (
-                                         (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-                if tech == "Pyrolysis":
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'bio oil'] == (A.REVENUE['Biooil'] *
-                                                                                sum(A.HHV[
-                                                                                        'Pyrolysis', feedstock, 'Biooil', temp] *
-                                                                                    M.biooil_from_pyrolysis[
-                                                                                        l, t, feedstock, temp, 'market']
-                                                                                    for feedstock in
-                                                                                    M.PyrolysisFeedstocks for temp in
-                                                                                    M.PyrolysisTemperatures)) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                elif tech == "HTL":
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == (A.REVENUE['hydrochar'] *
-                                                                                     sum(A.HHV[
-                                                                                             tech, feedstock, 'Hydrochar', temp] *
-                                                                                         M.hydrochar_from_htl[
-                                                                                             l, t, feedstock, temp, 'market']
-                                                                                         for feedstock in
-                                                                                         M.HTLFeedstocks for temp in
-                                                                                         M.HTLTemperatures) /
-                                                                                     ((
-                                                                                              1 + A.MONTHLY_DISCOUNT_RATE) ** int(
-                                                                                         t))))
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'bio oil'] == (A.REVENUE['Biooil'] *
-                                                                                sum(A.HHV[
-                                                                                        'HTL', feedstock, 'Biooil', temp] *
-                                                                                    M.biooil_from_htl[
-                                                                                        l, t, feedstock, temp, 'market']
-                                                                                    for feedstock in M.HTLFeedstocks for
-                                                                                    temp in M.HTLTemperatures)) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                elif tech == "HTC":
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == (A.REVENUE['hydrochar'] *
-                                                                                     sum(A.HHV[
-                                                                                             tech, feedstock, 'Hydrochar', temp] *
-                                                                                         M.hydrochar_from_htc[
-                                                                                             l, t, feedstock, temp, 'market']
-                                                                                         for feedstock in
-                                                                                         M.HTCFeedstocks for temp in
-                                                                                         M.HTCTemperatures) /
-                                                                                     ((
-                                                                                              1 + A.MONTHLY_DISCOUNT_RATE) ** int(
-                                                                                         t))))
-                    M.const.add(
-                        expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                elif tech == 'CHP':
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(
-                        expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(
-                        expr=M.opex_revenues[l, t, tech, 'electricity'] == (A.REVENUE['electricity'] * M.chp_market[
-                            l, t, 'electricity']) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                elif tech == 'AD':
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(
-                        expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                else:
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(
-                        expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-                # other revenue sources
-                if scenario == 10103 or scenario in [5]:
-                    if tech == "Feedstock":
-                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
-                        #carbon credits can go here
-                        #M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
-                    else:
-                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
-                else:
-                    M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
-                M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 2"] == 0)
-                M.const.add(expr=M.opex_revenues[l, t, tech, "potting media"] == 0)
-
-            # calculating the heat and electricity used by all processes
-            # tech_in * decision_temp = sum(tech_out/tech_yield[product])
-            for tech in M.Technology:
-                if tech == "AD":
-                    M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(A.OPEX['AD', 'Heat'] *
-                                                                         M.ad_in_glovers[l, t, feed, stage] for feed in
-                                                                         M.ADFeedstocks for stage in M.ADStages))
-                    M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] *
-                                                                                M.ad_in_glovers[l, t, feed, stage] for
-                                                                                feed in M.ADFeedstocks for stage in
-                                                                                M.ADStages))
-                elif tech == "CHP":
-                    M.const.add(expr=M.inputs[l, t, 'CHP', 'heat'] == A.OPEX['CHP', 'Heat'] *
-                                     A.CHP_HEAT_EFFICIENCY * M.chp_in[l, t])
-                    M.const.add(
-                        expr=M.inputs[l, t, 'CHP', 'electricity'] == A.OPEX['CHP', 'Electricity'] *
-                             A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[l, t])
-                elif tech == "Feedstock":
-                    M.const.add(expr=M.inputs[l, t, 'Feedstock', 'heat'] == 0)
-                    M.const.add(expr=M.inputs[l, t, 'Feedstock', 'electricity'] == 0)
-                elif tech == "Pyrolysis":
-                    M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'heat'] == sum(
-                        A.OPEX['Pyrolysis', 'Heat', temp] * M.pyrolysis_out[l, t, feed, pyro_prod, temp]
-                        for temp in M.PyrolysisTemperatures for feed in M.PyrolysisFeedstocks
-                        for pyro_prod in M.PyrolysisProducts))
-                    M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'electricity'] == sum(
-                        A.OPEX['Pyrolysis', 'Electricity'] * M.pyrolysis_out[l, t, feed, pyro_prod, temp] for feed in
-                        M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures for pyro_prod in M.PyrolysisProducts))
-                elif tech == "HTL":
-                    M.const.add(expr=M.inputs[l, t, 'HTL', 'heat'] ==
-                                     sum(M.htl_out[l, t, feed, prod, temp] * A.OPEX['HTL', 'Heat']
-                                         for feed in M.HTLFeedstocks for temp in M.HTLTemperatures for prod in
-                                         M.HTLProducts))
-                    M.const.add(
-                        expr=M.inputs[l, t, 'HTL', 'electricity'] ==
-                             sum(A.OPEX['HTL', 'Electricity'] * M.htl_out[l, t, feed, prod, temp] for feed in
-                                 M.HTLFeedstocks
-                                 for temp in M.HTLTemperatures for prod in M.HTLProducts))
-                elif tech == "HTC":
-                    M.const.add(expr=M.inputs[l, t, 'HTC', 'heat'] == sum(
-                        A.OPEX['HTC', 'Heat', temp] * M.htc_out[l, t, feed, prod, temp]
-                        for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
-                    M.const.add(
-                        expr=M.inputs[l, t, 'HTC', 'electricity'] ==
-                             sum(A.OPEX['HTC', 'Electricity'] *
-                                 M.htc_out[l, t, feed, prod, temp]
-                                 for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
-
-            # water costs and revenues
-            for tech in M.Technology:
-                if tech == "HTC":
-                    M.const.add(expr=M.inputs[l, t, 'HTC', 'water'] == A.HTC_WATER * M.htc_in[l, t, 'feedstock'])
-                    M.const.add(expr=M.inputs[l, t, tech, 'bio-oil diesel'] == 0)
-                elif tech == "HTL":
-                    M.const.add(expr=M.inputs[l, t, 'HTL', 'water'] == A.HTL_WATER * M.htl_in[l, t, 'feedstock'])
-                    M.const.add(
-                        expr=M.inputs[l, t, 'HTL', 'bio-oil diesel'] == A.DIESEL_PRICE * 3 * A.TON_DIESEL_TO_GAL *
-                             sum(M.biooil_from_htl[l, t, 'feedstock', temp, 'CHP']
-                                 for temp in M.HTLTemperatures))
-                elif tech == "Pyrolysis":
-                    M.const.add(
-                        expr=M.inputs[l, t, 'Pyrolysis', 'bio-oil diesel'] == A.DIESEL_PRICE * 3 * A.TON_DIESEL_TO_GAL *
-                             sum(M.biooil_from_pyrolysis[l, t, 'feedstock', temp, 'CHP']
-                                 for temp in M.PyrolysisTemperatures))
-                    M.const.add(expr=M.inputs[l, t, tech, 'water'] == 0)
-                else:
-                    M.const.add(expr=M.inputs[l, t, tech, 'water'] == 0)
-                    M.const.add(expr=M.inputs[l, t, tech, 'bio-oil diesel'] == 0)
-
-                M.const.add(
-                    expr=M.opex_costs[l, t, tech, 'water'] == A.OPEX['Freshwater'] * M.inputs[l, t, tech, 'water']
-                         / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-            # inputs and costs for heat and electricity
-            for tech in M.Technology:
-                M.const.add(
-                    expr=M.inputs[l, t, tech, 'heat'] == M.chp_out[l, t, tech, 'heat'] + A.CHP_HEAT_EFFICIENCY *
-                         M.purchased_fuel[l, t, tech])  # units of MJ
-                M.const.add(expr=M.inputs[l, t, tech, 'electricity'] == M.chp_out[l, t, tech, 'electricity'] +
-                                 M.purchased_power[l, t, tech])  # units of kWh
-                M.const.add(
-                    expr=M.opex_costs[l, t, tech, 'heat'] == (A.OPEX['Fuel'] * M.purchased_fuel[l, t, tech]) / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                M.const.add(
-                    expr=M.opex_costs[l, t, tech, 'electricity'] == (A.OPEX['Electricity'] * M.purchased_power[
-                        l, t, tech]) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-            # Operational expenses depend on the amount of feedstock beingd and the energyd
-            for tech in M.Technology:
-                if tech == "AD" or tech == "CHP" or tech == "Feedstock":
-                    M.const.add(expr=M.opex_costs[l, t, tech, 'labor'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))  # really plant labor cost
-                else:
-                    M.const.add(expr=M.opex_costs[l, t, tech, 'labor'] == (A.OPEX['Labor Cost'] *
-                                                                           (M.process_capacity[
-                                                                                l, tech] / A.HOURS_PER_PERIOD ** A.OPEX[
-                                                                                'Labor Exponent'])) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-            for tech in M.Technology:
-                # transportation costs and fuel depends upon the distance travelled and the amount of product being moved
-                if tech == "AD":
-                    M.const.add(expr=M.opex_costs[l, t, 'AD', 'transportation'] ==
-                                     (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[
-                                         l]) *
-                                     (M.ad_in[l, t, 'feedstock'] + sum(
-                                         M.digestate_from_ad[l, t, temp, 'land'] for temp in M.ADStages)) /
-                                     ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.inputs[l, t, 'AD', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE * (
-                            A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.ad_in[l, t, 'feedstock'] +
-                            A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
-                        M.digestate_from_ad[l, t, temp, 'land'] for temp in M.ADStages)) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                elif tech == "CHP":
-                    M.const.add(expr=M.opex_costs[l, t, 'CHP', 'transportation'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.inputs[l, t, 'CHP', 'diesel'] == 0)
-                elif tech == "Feedstock":
-                    M.const.add(expr=M.opex_costs[l, t, 'Feedstock', 'transportation'] ==
-                                     (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.ON_FARM_TRANSPORT_DISTANCE) *
-                                     (M.feedstock_to_storage[l, t] + M.feedstock_from_storage[l, t])
-                                     / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(
-                        expr=M.inputs[l, t, 'Feedstock', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
-                             (A.ON_FARM_TRANSPORT_DISTANCE * (
-                                     M.feedstock_to_storage[l, t] + M.feedstock_from_storage[l, t])))
-                elif tech == "Pyrolysis":
-                    M.const.add(expr=M.opex_costs[l, t, 'Pyrolysis', 'transportation'] ==
-                                     (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
-                                     (M.pyrolysis_in[l, t, 'feedstock'] + sum(
-                                         M.biochar_from_pyrolysis[l, t, feed, temp, 'land'] for feed in
-                                         M.PyrolysisFeedstocks for temp in
-                                         M.PyrolysisTemperatures)) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
-                                     (A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.pyrolysis_in[l, t, 'feedstock'] +
-                                      A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
-                                                 M.biochar_from_pyrolysis[l, t, feed, temp, 'land'] for feed in
-                                                 M.PyrolysisFeedstocks for temp in
-                                                 M.PyrolysisTemperatures)))
-                elif tech == "HTL":
-                    M.const.add(expr=M.opex_costs[l, t, 'HTL', 'transportation'] ==
-                                     (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
-                                     (M.htl_in[l, t, 'feedstock'] + sum(
-                                         M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in M.HTLFeedstocks for
-                                         temp in
-                                         M.HTLTemperatures)) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.inputs[l, t, 'HTL', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
-                                     (A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.htl_in[l, t, 'feedstock'] +
-                                      A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
-                                                 M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in
-                                                 M.HTLFeedstocks for temp in M.HTLTemperatures)))
-                elif tech == "HTC":
-                    M.const.add(expr=M.opex_costs[l, t, 'HTC', 'transportation'] ==
-                                     (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
-                                     (M.htc_in[l, t, 'feedstock'] + sum(M.hydrochar_from_htc[l, t, feed, temp, 'land']
-                                                                        for feed in M.HTCFeedstocks for temp in
-                                                                        M.HTCTemperatures)) /
-                                     ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                    M.const.add(expr=M.inputs[l, t, 'HTC', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
-                                     (A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.htc_in[l, t, 'feedstock'] +
-                                      A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
-                                                 M.hydrochar_from_htc[l, t, feed, temp, 'land'] for feed in
-                                                 M.HTCFeedstocks for temp in M.HTCTemperatures)))
-
-                ## DISPOSAL
-                # Disposal operational expenses depend on the amount of feedstock being and the energy
-                if tech == "AD":
-                    M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] == (A.OPEX['Landfill'] *
-                                                                              sum(M.digestate_from_ad[
-                                                                                      l, t, stage, 'disposal'] for stage
-                                                                                  in M.ADStages) +
-                                                                              sum(A.OPEX['Atmosphere'] *
-                                                                                  M.biogas_from_ad[
-                                                                                      l, t, stage, 'disposal']
-                                                                                  for stage in M.ADStages)) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                elif tech == "CHP":
-                    M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] == 0 / (
-                            (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-                elif tech == "Feedstock":
-                    M.const.add(
-                        expr=M.opex_costs[l, t, tech, 'disposal'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-                elif tech == "Pyrolysis":
-                    M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] == (A.OPEX['Landfill'] *
-                                                                              sum(M.biochar_from_pyrolysis[
-                                                                                      l, t, feed, temp, 'disposal']
-                                                                                  for feed in M.PyrolysisFeedstocks for
-                                                                                  temp in M.PyrolysisTemperatures) +
-                                                                              A.OPEX['Wastewater'] * sum(1000 *
-                                                                                                         M.ap_from_pyrolysis[
-                                                                                                             l, t, feed, temp, 'disposal']
-                                                                                                         for feed in
-                                                                                                         M.PyrolysisFeedstocks
-                                                                                                         for temp in
-                                                                                                         M.PyrolysisTemperatures) +
-                                                                              sum(A.OPEX['Atmosphere'] *
-                                                                                  M.syngas_from_pyrolysis[
-                                                                                      l, t, feed, temp, 'disposal']
-                                                                                  for feed in M.PyrolysisFeedstocks for
-                                                                                  temp in M.PyrolysisTemperatures)) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                elif tech == "HTL":
-                    M.const.add(expr=M.opex_costs[l, t, 'HTL', 'disposal'] == (A.OPEX['Landfill'] *
-                                                                               sum(M.hydrochar_from_htl[
-                                                                                       l, t, feed, temp, 'disposal']
-                                                                                   for feed in M.HTLFeedstocks for temp
-                                                                                   in M.HTLTemperatures) +
-                                                                               A.OPEX['Wastewater'] * sum(
-                                1000 * M.ap_from_htl[l, t, feed, temp, 'disposal']
-                                for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) +
-                                                                               sum(A.OPEX['Atmosphere'] * M.gp_from_htl[
-                                                                                   l, t, feed, temp, 'disposal']
-                                                                                   for feed in M.HTLFeedstocks for temp
-                                                                                   in M.HTLTemperatures)) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-                elif tech == "HTC":
-                    M.const.add(expr=M.opex_costs[l, t, 'HTC', 'disposal'] == (A.OPEX['Landfill'] *
-                                                                               sum(M.hydrochar_from_htc[
-                                                                                       l, t, feed, temp, 'disposal']
-                                                                                   for feed in M.HTCFeedstocks for temp
-                                                                                   in M.HTCTemperatures) +
-                                                                               A.OPEX['Wastewater'] * sum(
-                                1000 * M.ap_from_htc[l, t, feed, temp, 'disposal']
-                                for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) +
-                                                                               sum(A.OPEX['Atmosphere'] * M.gp_from_htc[
-                                                                                   l, t, feed, temp, 'disposal']
-                                                                                   for feed in M.HTCFeedstocks for temp
-                                                                                   in M.HTCTemperatures)) / (
-                                             (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-            # diesel costs
-            for tech in M.Technology:
-                M.const.add(
-                    expr=M.opex_costs[l, t, tech, 'diesel'] == (M.inputs[l, t, tech, 'diesel'] +
-                                                                M.inputs[l, t, tech, 'bio-oil diesel']) / (
-                                 (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-                M.const.add(expr=M.opex_costs[l, t, tech, 'TPC'] == (A.OPEX_TPC * M.process_capex[l, tech]) / (
-                        (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-        # CAPEX for storage and process capacity
-        # implementing piecewise linear approximation
-        q = symbols("q")
-        lpa_xvals = []
-        [lpa_xvals.append(x) for x in A.ORIGINAL_FEEDSTOCK_SUPPLY if x not in lpa_xvals]
-        lpa_xvals.append(0.00000001)
-        for i in range(16):
-            lpa_xvals.append(i * 1000 + 4500)
-        for i in range(19):
-            lpa_xvals.append(i * 10000 + 20000)
-        lpa_xvals.sort()
-
-        pyro_process = A.CAPEX['Pyrolysis', 'process', 'coefficient'] * (q * 1000 / A.HOURS_PER_PERIOD) ** A.CAPEX[
-            'Pyrolysis', 'process', 'exponent']
-        pyro_storage = A.CAPEX['Pyrolysis', 'storage', 'coefficient'] * (q / A.HOURS_PER_PERIOD) ** A.CAPEX[
-            'Pyrolysis', 'storage', 'exponent']
-        htl_process = A.CAPEX['HTL', 'process', 'coefficient'] * (q / A.DRY_BIOMASS_REF) ** A.CAPEX[
-            'HTL', 'process', 'exponent']
-        htl_storage = A.CAPEX['HTL', 'storage', 'coefficient'] * (q / A.HOURS_PER_PERIOD) ** A.CAPEX[
-            'HTL', 'storage', 'exponent']
-        htc_process = A.CAPEX['HTC', 'process', 'coefficient'] * (q / A.DRY_BIOMASS_REF) ** A.CAPEX[
-            'HTC', 'process', 'exponent']
-        htc_storage = A.CAPEX['HTC', 'storage', 'coefficient'] * (q / A.HOURS_PER_PERIOD) ** A.CAPEX[
-            'HTC', 'storage', 'exponent']
-        ad_process = A.CAPEX['AD', 'process', 'coefficient'] * q ** A.CAPEX['AD', 'process', 'exponent']
-        ad_storage = A.CAPEX['AD', 'storage', 'coefficient'] * q ** A.CAPEX['AD', 'storage', 'exponent']
-        chp_process = A.CAPEX['CHP', 'process', 'coefficient'] * q ** A.CAPEX['CHP', 'process', 'exponent']
-        solid_storage = A.CAPEX['Solid', 'storage', 'coefficient'] * q ** A.CAPEX['Solid', 'storage', 'exponent']
-
-        pyro_proc_lpa = [pyro_process.evalf(subs={q: x}) for x in lpa_xvals]
-        pyro_stor_lpa = [pyro_storage.evalf(subs={q: x}) for x in lpa_xvals]
-        solids_products = [solid_storage.evalf(subs={q: x}) for x in lpa_xvals]
-        htl_proc_lpa = [htl_process.evalf(subs={q: x}) for x in lpa_xvals]
-        htl_stor_lpa = [htl_storage.evalf(subs={q: x}) for x in lpa_xvals]
-        htc_proc_lpa = [htc_process.evalf(subs={q: x}) for x in lpa_xvals]
-        htc_stor_lpa = [htc_storage.evalf(subs={q: x}) for x in lpa_xvals]
-        ad_proc_lpa = [ad_process.evalf(subs={q: x}) for x in lpa_xvals]
-        ad_stor_lpa = [ad_storage.evalf(subs={q: x}) for x in lpa_xvals]
-        chp_proc_lpa = [chp_process.evalf(subs={q: x}) for x in lpa_xvals]
-
-        # Piecewise linear approximation to capital cost terms
-        # bounds (0,10) for pyro, HTL, HTC, (0,1500) for chp, AD
-        for tech in M.Technology:
-            if tech == 'Pyrolysis':
-                M.con5 = pyo.Piecewise(M.process_capex[l, 'Pyrolysis'], M.process_capacity[l, 'Pyrolysis'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=pyro_proc_lpa,
-                                       pw_repn='SOS2')
-                M.con6 = pyo.Piecewise(M.pyro_storage_cost[l, 'Biochar'], M.pyrolysis_storage_capacity[l, 'Biochar'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=solids_products,
-                                       pw_repn='SOS2')
-                M.con7 = pyo.Piecewise(M.pyro_storage_cost[l, 'Biooil'], M.pyrolysis_storage_capacity[l, 'Biooil'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=pyro_stor_lpa,
-                                       pw_repn='SOS2')
-                M.con8 = pyo.Piecewise(M.pyro_storage_cost[l, 'AP'], M.pyrolysis_storage_capacity[l, 'AP'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=pyro_stor_lpa,
-                                       pw_repn='SOS2')
-                M.con9 = pyo.Piecewise(M.pyro_storage_cost[l, 'Syngas'], M.pyrolysis_storage_capacity[l, 'Syngas'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=pyro_stor_lpa,
-                                       pw_repn='SOS2')
-                M.const.add(expr=M.storage_capex[l, 'Pyrolysis'] == sum(
-                    M.pyro_storage_cost[l, prod] for prod in M.PyrolysisProducts))
-
-            elif tech == 'HTL':
-                M.con10 = pyo.Piecewise(M.process_capex[l, 'HTL'], M.process_capacity[l, 'HTL'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=htl_proc_lpa,
-                                        pw_repn='SOS2')
-                M.con11 = pyo.Piecewise(M.htl_storage_cost[l, 'Hydrochar'], M.htl_storage_capacity[l, 'Hydrochar'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=solids_products,
-                                        pw_repn='SOS2')
-                M.con12 = pyo.Piecewise(M.htl_storage_cost[l, 'Biooil'], M.htl_storage_capacity[l, 'Biooil'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=htl_stor_lpa,
-                                        pw_repn='SOS2')
-                M.con13 = pyo.Piecewise(M.htl_storage_cost[l, 'AP'], M.htl_storage_capacity[l, 'AP'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=htl_stor_lpa,
-                                        pw_repn='SOS2')
-                M.con14 = pyo.Piecewise(M.htl_storage_cost[l, 'GP'], M.htl_storage_capacity[l, 'GP'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=htl_stor_lpa,
-                                        pw_repn='SOS2')
-                M.const.add(
-                    expr=M.storage_capex[l, 'HTL'] == sum(M.htl_storage_cost[l, prod] for prod in M.HTLProducts))
-            elif tech == 'HTC':
-                M.con15 = pyo.Piecewise(M.process_capex[l, 'HTC'], M.process_capacity[l, 'HTC'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=htc_proc_lpa,
-                                        pw_repn='SOS2')
-                M.con16 = pyo.Piecewise(M.htc_storage_cost[l, 'Hydrochar'], M.htc_storage_capacity[l, 'Hydrochar'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=solids_products,
-                                        pw_repn='SOS2')
-                M.con17 = pyo.Piecewise(M.htc_storage_cost[l, 'AP'], M.htc_storage_capacity[l, 'AP'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=htc_stor_lpa,
-                                        pw_repn='SOS2')
-                M.con18 = pyo.Piecewise(M.htc_storage_cost[l, 'GP'], M.htc_storage_capacity[l, 'GP'],
-                                        pw_pts=lpa_xvals,
-                                        pw_constr_type='EQ',
-                                        f_rule=htc_stor_lpa,
-                                        pw_repn='SOS2')
-                M.const.add(
-                    expr=M.storage_capex[l, 'HTC'] == sum(M.htc_storage_cost[l, prod] for prod in M.HTCProducts))
-            elif tech == 'AD':
-                M.con1 = pyo.Piecewise(M.process_capex[l, 'AD'], M.process_capacity[l, 'AD'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=ad_proc_lpa,
-                                       pw_repn='SOS2')
-                M.con2 = pyo.Piecewise(M.ad_storage_cost[l, 'biogas'], M.ad_storage_capacity[l, 'biogas'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=ad_stor_lpa,
-                                       pw_repn='SOS2')
-                M.con4 = pyo.Piecewise(M.ad_storage_cost[l, 'digestate'], M.ad_storage_capacity[l, 'digestate'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=solids_products,
-                                       pw_repn='SOS2')
-
-                M.const.add(expr=M.storage_capex[l, 'AD'] == sum(M.ad_storage_cost[l, prod] for prod in M.ADProducts))
-
-            elif tech == 'CHP':
-                M.con3 = pyo.Piecewise(M.process_capex[l, 'CHP'], M.process_capacity[l, 'CHP'],
-                                       pw_pts=lpa_xvals,
-                                       pw_constr_type='EQ',
-                                       f_rule=chp_proc_lpa,
-                                       pw_repn='SOS2')  # process capacity of CHP is in kWh
-                M.const.add(expr=M.storage_capex[l, 'CHP'] == 0)
-
-            elif tech == 'Feedstock':
-                M.const.add(expr=M.process_capex[l, 'Feedstock'] == A.CAPEX['Feedstock', 'process', 'coefficient'] *
-                                 M.process_capacity[l, 'Feedstock'])
-                M.const.add(expr=M.storage_capex[l, 'Feedstock'] == A.CAPEX['Feedstock', 'storage', 'coefficient'] *
-                                 M.feedstock_storage_capacity[l])
+            facility_constraints(A, M, l, scenario, t)
+            revenue_constraints(A, M, l, scenario, t)
+            opex_constraints(A, M, l, t)
+
+        # time independent constraints
+        capex_constraints(A, M, l)
+        lca_constraints(A, M, l)
 
         # NPV discounting for each location
-        M.const.add(expr=M.npv[l] == 0 - sum(M.process_capex[l, tech] + M.storage_capex[l, tech]
-                                             for tech in M.Technology) +
-                         sum(M.opex_revenues[l, t, tech, revenue_type]
-                             for t in M.Time for tech in M.Technology for revenue_type in M.OPEXSubRevenues) -
+        M.const.add(expr=M.npv[l] == - sum(M.process_capex[l, tech] + M.storage_capex[l, tech] for tech in M.Technology)
+                         + sum(M.opex_revenues[l, t, tech, revenue_type]
+                               for t in M.Time for tech in M.Technology for revenue_type in M.OPEXSubRevenues) -
                          sum(M.opex_costs[l, t, tech, cost_type]
                              for cost_type in M.OPEXSubCosts for t in M.Time for tech in M.Technology))
 
-        # LCA calculations
-        for cat in M.LCAMidpointCat:
-            for lca_type in M.LCATypes:
-                # mid point for a point in time
-                if lca_type == "ALCA":
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'natural gas', cat] ==
-                                     A.IMPACT[lca_type, 'natural gas', cat] * sum(M.purchased_fuel[l, t, tech]
-                                                                        for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'grid electricity', cat] ==
-                                     A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.purchased_power[l, t, tech]
-                                                                             for tech in M.Technology for t in
-                                                                             M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
-                                     * sum(M.inputs[l, t, tech, 'diesel'] for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
-                                     sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'biochar-chp', temp, cat] * M.biochar_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-land', cat] ==
-                                     sum(A.IMPACT[lca_type, 'biochar-land', temp, cat] * M.biochar_from_pyrolysis[
-                                         l, t, feed, temp, 'land'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-disposal', cat] ==
-                                     A.IMPACT[lca_type, 'biochar-disposal', cat] * sum(M.biochar_from_pyrolysis[
-                                                                                 l, t, feed, temp, 'disposal'] for
-                                                                             temp in M.PyrolysisTemperatures
-                                                                             for feed in M.PyrolysisFeedstocks for t
-                                                                             in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-bio-oil-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'pyro-bio-oil-chp', temp, cat] * M.biooil_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures for feed
-                                         in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'syngas-chp', temp, cat] * M.syngas_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-disposal', cat] ==
-                                     sum(A.IMPACT[lca_type, 'syngas-disposal', temp, cat] * M.syngas_from_pyrolysis[
-                                         l, t, feed, temp, 'disposal'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-ap-disposal', cat] ==
-                                     A.IMPACT[lca_type, 'pyro-ap-disposal', cat] * sum(M.ap_from_pyrolysis[
-                                                                                 l, t, feed, temp, 'disposal'] for
-                                                                             temp in M.PyrolysisTemperatures
-                                                                             for feed in M.PyrolysisFeedstocks for t
-                                                                             in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-land', cat] == A.IMPACT[lca_type, 
-                        'htl-hydrochar-land', cat]
-                                     * sum(M.hydrochar_from_htl[l, t, feed, temp, 'land']
-                                           for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
-                                           M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-chp', cat] == A.IMPACT[lca_type, 
-                        'htl-hydrochar-chp', cat]
-                                     * sum(M.hydrochar_from_htl[l, t, feed, temp, 'CHP']
-                                           for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
-                                           M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
-                        'htl-hydrochar-disposal', cat] * sum(M.hydrochar_from_htl[l, t, feed, temp, 'disposal']
-                                                             for temp in M.HTLTemperatures for feed in
-                                                             M.HTLFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-bio-oil-chp', cat] == A.IMPACT[lca_type, 
-                        'htl-bio-oil-chp', cat] * sum(M.biooil_from_htl[l, t, feed, temp, 'CHP']
-                                                      for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-gp-disposal', cat] == A.IMPACT[lca_type, 
-                        'htl-gp-disposal', cat] * sum(M.gp_from_htl[l, t, feed, temp, 'disposal']
-                                                      for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-ap-disposal', cat] == A.IMPACT[lca_type, 
-                        'htl-ap-disposal', cat] * sum(M.ap_from_htl[l, t, feed, temp, 'disposal']
-                                                      for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-land', cat] ==
-                                     A.IMPACT[lca_type, 'htc-hydrochar-land', cat] * sum(
-                        M.hydrochar_from_htc[l, t, feed, temp, 'land']
-                        for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'htc-hydrochar-chp', temp, cat] * M.hydrochar_from_htc[
-                                         l, t, feed, temp, 'CHP']
-                                         for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
-                        'htc-hydrochar-disposal', cat] * sum(M.hydrochar_from_htc[l, t, feed, temp, 'disposal']
-                                                             for temp in M.HTCTemperatures for feed in
-                                                             M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-gp-disposal', cat] ==
-                                     sum(A.IMPACT[lca_type, 'htc-gp-disposal', temp, cat] * M.gp_from_htc[
-                                         l, t, feed, temp, 'disposal']
-                                         for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-ap-disposal', cat] == A.IMPACT[lca_type, 
-                        'htc-ap-disposal', cat] * sum(M.ap_from_htc[l, t, feed, temp, 'disposal']
-                                                      for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-land', cat] == A.IMPACT[lca_type, 
-                        'digestate-land', cat] * sum(M.digestate_from_ad[l, t, stage, 'land']
-                                                     for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-disposal', cat] == A.IMPACT[lca_type, 
-                        'digestate-disposal', cat] * sum(M.digestate_from_ad[l, t, stage, 'disposal']
-                                                         for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-disposal', cat] == A.IMPACT[lca_type, 
-                        'biogas-disposal', cat] * sum(M.biogas_from_ad[l, t, stage, 'disposal']
-                                                      for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-chp', cat] == A.IMPACT[lca_type, 
-                        'biogas-chp', cat] * sum(M.biogas_from_ad[l, t, stage, 'CHP']
-                                                 for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'manure-land', cat] == A.IMPACT[lca_type, 
-                        'manure-land', cat] * sum(M.feedstock_from_storage[l, t] for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'facility construction', cat] ==
-                                     A.IMPACT[lca_type, 'facility construction', "ad", cat] * M.process_capacity[l, 'AD'] +
-                                     A.IMPACT[lca_type, 'facility construction', "chem", cat] * (
-                                             M.process_capex[l, 'Pyrolysis'] + M.process_capex[l, 'HTL'] +
-                                             M.process_capex[l, 'HTC']))
-                    # CHP facility construction LCA impacts are spread out across the various CHP categories
-                    # TODO fix fertilizers in ALCA system
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] == A.IMPACT[lca_type, 
-                        'storage-facility-solids', cat] * (M.feedstock_storage_capacity[l] +
-                                                           M.pyrolysis_storage_capacity[l, 'Biochar'] +
-                                                           M.htl_storage_capacity[l, 'Hydrochar'] +
-                                                           M.htc_storage_capacity[l, 'Hydrochar'] +
-                                                           M.ad_storage_capacity[l, 'digestate']))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-liquids', cat] == A.IMPACT[lca_type, 
-                        'storage-facility-liquids', cat] * (M.pyrolysis_storage_capacity[l, 'AP'] +
-                                                            M.pyrolysis_storage_capacity[l, 'Syngas'] +
-                                                            M.htl_storage_capacity[l, 'AP'] +
-                                                            M.htc_storage_capacity[l, 'AP'] +
-                                                            M.ad_storage_capacity[l, 'biogas']))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "biochar market", cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "bio-oil market", cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "hydrochar market", cat] == 0)
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] == 0)
 
-                    M.const.add(expr=M.total_LCA_midpoints[l, lca_type, cat] ==
-                                     sum(M.LCA_midpoints[l, lca_type, origin, cat]
-                                         for origin in M.ALCAInputs))
+def lca_constraints(A, M, l):
+# LCA calculations
+    for cat in M.LCAMidpointCat:
+        for lca_type in M.LCATypes:
+            # mid point for a point in time
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'natural gas', cat] ==
+                             A.IMPACT[lca_type, 'natural gas', cat] * sum(M.purchased_fuel[l, t, tech]
+                                                                          for tech in M.Technology for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'grid electricity', cat] ==
+                             A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.purchased_power[l, t, tech]
+                                                                               for tech in M.Technology for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
+                             * sum(M.inputs[l, t, tech, 'diesel'] for tech in M.Technology for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
+                             sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
+                             sum(A.IMPACT[lca_type, 'biochar-chp', temp, cat] * M.biochar_from_pyrolysis[
+                                 l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
+                                 for feed in M.PyrolysisFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-land', cat] ==
+                             sum(A.IMPACT[lca_type, 'biochar-land', temp, cat] * M.biochar_from_pyrolysis[
+                                 l, t, feed, temp, 'land'] for temp in M.PyrolysisTemperatures
+                                 for feed in M.PyrolysisFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-disposal', cat] ==
+                             A.IMPACT[lca_type, 'biochar-disposal', cat] * sum(M.biochar_from_pyrolysis[
+                                                                                   l, t, feed, temp, 'disposal'] for
+                                                                               temp in M.PyrolysisTemperatures
+                                                                               for feed in M.PyrolysisFeedstocks for
+                                                                               t
+                                                                               in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-bio-oil-chp', cat] ==
+                             sum(A.IMPACT[lca_type, 'pyro-bio-oil-chp', temp, cat] * M.biooil_from_pyrolysis[
+                                 l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures for feed
+                                 in M.PyrolysisFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-chp', cat] ==
+                             sum(A.IMPACT[lca_type, 'syngas-chp', temp, cat] * M.syngas_from_pyrolysis[
+                                 l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
+                                 for feed in M.PyrolysisFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-disposal', cat] ==
+                             sum(A.IMPACT[lca_type, 'syngas-disposal', temp, cat] * M.syngas_from_pyrolysis[
+                                 l, t, feed, temp, 'disposal'] for temp in M.PyrolysisTemperatures
+                                 for feed in M.PyrolysisFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-ap-disposal', cat] ==
+                             A.IMPACT[lca_type, 'pyro-ap-disposal', cat] * sum(M.ap_from_pyrolysis[
+                                                                                   l, t, feed, temp, 'disposal'] for
+                                                                               temp in M.PyrolysisTemperatures
+                                                                               for feed in M.PyrolysisFeedstocks for
+                                                                               t
+                                                                               in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-land', cat] == A.IMPACT[lca_type,
+            'htl-hydrochar-land', cat]
+                             * sum(M.hydrochar_from_htl[l, t, feed, temp, 'land']
+                                   for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
+                                   M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-chp', cat] == A.IMPACT[lca_type,
+            'htl-hydrochar-chp', cat]
+                             * sum(M.hydrochar_from_htl[l, t, feed, temp, 'CHP']
+                                   for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
+                                   M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-disposal', cat] == A.IMPACT[lca_type,
+            'htl-hydrochar-disposal', cat] * sum(M.hydrochar_from_htl[l, t, feed, temp, 'disposal']
+                                                 for temp in M.HTLTemperatures for feed in
+                                                 M.HTLFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-bio-oil-chp', cat] == A.IMPACT[lca_type,
+            'htl-bio-oil-chp', cat] * sum(M.biooil_from_htl[l, t, feed, temp, 'CHP']
+                                          for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
+                                          t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-gp-disposal', cat] == A.IMPACT[lca_type,
+            'htl-gp-disposal', cat] * sum(M.gp_from_htl[l, t, feed, temp, 'disposal']
+                                          for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
+                                          t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-ap-disposal', cat] == A.IMPACT[lca_type,
+            'htl-ap-disposal', cat] * sum(M.ap_from_htl[l, t, feed, temp, 'disposal']
+                                          for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
+                                          t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-land', cat] ==
+                             A.IMPACT[lca_type, 'htc-hydrochar-land', cat] * sum(
+                M.hydrochar_from_htc[l, t, feed, temp, 'land']
+                for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-chp', cat] ==
+                             sum(A.IMPACT[lca_type, 'htc-hydrochar-chp', temp, cat] * M.hydrochar_from_htc[
+                                 l, t, feed, temp, 'CHP']
+                                 for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-disposal', cat] == A.IMPACT[lca_type,
+            'htc-hydrochar-disposal', cat] * sum(M.hydrochar_from_htc[l, t, feed, temp, 'disposal']
+                                                 for temp in M.HTCTemperatures for feed in
+                                                 M.HTCFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-gp-disposal', cat] ==
+                             sum(A.IMPACT[lca_type, 'htc-gp-disposal', temp, cat] * M.gp_from_htc[
+                                 l, t, feed, temp, 'disposal']
+                                 for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-ap-disposal', cat] == A.IMPACT[lca_type,
+            'htc-ap-disposal', cat] * sum(M.ap_from_htc[l, t, feed, temp, 'disposal']
+                                          for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for
+                                          t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-land', cat] == A.IMPACT[lca_type,
+            'digestate-land', cat] * sum(M.digestate_from_ad[l, t, stage, 'land']
+                                         for stage in M.ADStages for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-disposal', cat] == A.IMPACT[lca_type,
+            'digestate-disposal', cat] * sum(M.digestate_from_ad[l, t, stage, 'disposal']
+                                             for stage in M.ADStages for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-disposal', cat] == A.IMPACT[lca_type,
+            'biogas-disposal', cat] * sum(M.biogas_from_ad[l, t, stage, 'disposal']
+                                          for stage in M.ADStages for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-chp', cat] == A.IMPACT[lca_type,
+            'biogas-chp', cat] * sum(M.biogas_from_ad[l, t, stage, 'CHP']
+                                     for stage in M.ADStages for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'manure-land', cat] == A.IMPACT[lca_type,
+            'manure-land', cat] * sum(M.feedstock_from_storage[l, t] for t in M.Time))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'facility construction', cat] ==
+                             A.IMPACT[lca_type, 'facility construction', "ad", cat] * M.process_capacity[l, 'AD'] +
+                             A.IMPACT[lca_type, 'facility construction', "chem", cat] * (
+                                     M.process_capex[l, 'Pyrolysis'] + M.process_capex[l, 'HTL'] +
+                                     M.process_capex[l, 'HTC']))
+            # CHP facility construction LCA impacts are spread out across the various CHP categories
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == 0)
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == 0)
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == 0)
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] == A.IMPACT[lca_type,
+            'storage-facility-solids', cat] * (M.feedstock_storage_capacity[l] +
+                                               M.pyrolysis_storage_capacity[l, 'Biochar'] +
+                                               M.htl_storage_capacity[l, 'Hydrochar'] +
+                                               M.htc_storage_capacity[l, 'Hydrochar'] +
+                                               M.ad_storage_capacity[l, 'digestate']))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-liquids', cat] == A.IMPACT[lca_type,
+            'storage-facility-liquids', cat] * (M.pyrolysis_storage_capacity[l, 'AP'] +
+                                                M.pyrolysis_storage_capacity[l, 'Syngas'] +
+                                                M.htl_storage_capacity[l, 'AP'] +
+                                                M.htc_storage_capacity[l, 'AP'] +
+                                                M.ad_storage_capacity[l, 'biogas']))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, "biochar market", cat] == 0)
+            '''A.IMPACT[lca_type,
+                'biochar market', cat] *
+                             sum(M.biochar_from_pyrolysis[l, t, feedstock, temp, 'market']
+                                  for l in M.Location for t in M.Time for feedstock in M.PyrolysisFeedstocks
+                                  for temp in M.PyrolysisTemperatures))'''  # for when biochar can be sold on the market
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, "bio-oil market", cat] == A.IMPACT[lca_type,
+            'bio-oil market', cat] *
+                             (sum(M.biooil_from_pyrolysis[l, t, feedstock, temp, 'market']
+                                  for l in M.Location for t in M.Time for feedstock in M.PyrolysisFeedstocks
+                                  for temp in M.PyrolysisTemperatures)
+                              + sum(M.biooil_from_htl[l, t, feedstock, temp, 'market']
+                                    for l in M.Location for t in M.Time for feedstock in M.HTLFeedstocks
+                                    for temp in M.HTLTemperatures)))
+            M.const.add(expr=M.LCA_midpoints[l, lca_type, "hydrochar market", cat] == A.IMPACT[lca_type,
+            'hydrochar market', cat] *
+                             (sum(M.hydrochar_from_htc[l, t, feedstock, temp, 'market']
+                                  for l in M.Location for t in M.Time for feedstock in M.HTCFeedstocks
+                                  for temp in M.HTCTemperatures)
+                              + sum(M.hydrochar_from_htl[l, t, feedstock, temp, 'market']
+                                    for l in M.Location for t in M.Time for feedstock in M.HTLFeedstocks
+                                    for temp in M.HTLTemperatures)))
 
-                elif lca_type == "CLCA":
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'natural gas', cat] ==
-                                     A.IMPACT[lca_type, 'natural gas', cat] * sum(M.purchased_fuel[l, t, tech]
-                                                                        for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'grid electricity', cat] ==
-                                     A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.purchased_power[l, t, tech]
-                                                                             for tech in M.Technology for t in
-                                                                             M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
-                                     * sum(M.inputs[l, t, tech, 'diesel'] for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
-                                     sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'biochar-chp', temp, cat] * M.biochar_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-land', cat] ==
-                                     sum(A.IMPACT[lca_type, 'biochar-land', temp, cat] * M.biochar_from_pyrolysis[
-                                         l, t, feed, temp, 'land'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-disposal', cat] ==
-                                     A.IMPACT[lca_type, 'biochar-disposal', cat] * sum(M.biochar_from_pyrolysis[
-                                                                                 l, t, feed, temp, 'disposal'] for
-                                                                             temp in M.PyrolysisTemperatures
-                                                                             for feed in M.PyrolysisFeedstocks for t
-                                                                             in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-bio-oil-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'pyro-bio-oil-chp', temp, cat] * M.biooil_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures for feed
-                                         in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'syngas-chp', temp, cat] * M.syngas_from_pyrolysis[
-                                         l, t, feed, temp, 'CHP'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'syngas-disposal', cat] ==
-                                     sum(A.IMPACT[lca_type, 'syngas-disposal', temp, cat] * M.syngas_from_pyrolysis[
-                                         l, t, feed, temp, 'disposal'] for temp in M.PyrolysisTemperatures
-                                         for feed in M.PyrolysisFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'pyro-ap-disposal', cat] ==
-                                     A.IMPACT[lca_type, 'pyro-ap-disposal', cat] * sum(M.ap_from_pyrolysis[
-                                                                                 l, t, feed, temp, 'disposal'] for
-                                                                             temp in M.PyrolysisTemperatures
-                                                                             for feed in M.PyrolysisFeedstocks for t
-                                                                             in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-land', cat] == A.IMPACT[lca_type, 
-                        'htl-hydrochar-land', cat]
-                                     * sum(M.hydrochar_from_htl[l, t, feed, temp, 'land']
-                                           for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
-                                           M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-chp', cat] == A.IMPACT[lca_type, 
-                        'htl-hydrochar-chp', cat]
-                                     * sum(M.hydrochar_from_htl[l, t, feed, temp, 'CHP']
-                                           for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
-                                           M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
-                        'htl-hydrochar-disposal', cat]
-                                     * sum(M.hydrochar_from_htl[l, t, feed, temp, 'disposal']
-                                           for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for t in
-                                           M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-bio-oil-chp', cat] == A.IMPACT[lca_type, 
-                        'htl-bio-oil-chp', cat] * sum(M.biooil_from_htl[l, t, feed, temp, 'CHP']
-                                                      for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-gp-disposal', cat] == A.IMPACT[lca_type, 
-                        'htl-gp-disposal', cat] * sum(M.gp_from_htl[l, t, feed, temp, 'disposal']
-                                                      for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htl-ap-disposal', cat] == A.IMPACT[lca_type, 
-                        'htl-ap-disposal', cat] * sum(M.ap_from_htl[l, t, feed, temp, 'disposal']
-                                                      for temp in M.HTLTemperatures for feed in M.HTLFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-land', cat] ==
-                                     A.IMPACT[lca_type, 'htc-hydrochar-land', cat] * sum(
-                        M.hydrochar_from_htc[l, t, feed, temp, 'land']
-                        for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-chp', cat] ==
-                                     sum(A.IMPACT[lca_type, 'htc-hydrochar-chp', temp, cat] * M.hydrochar_from_htc[
-                                         l, t, feed, temp, 'CHP']
-                                         for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-hydrochar-disposal', cat] == A.IMPACT[lca_type, 
-                        'htc-hydrochar-disposal', cat] * sum(M.hydrochar_from_htc[l, t, feed, temp, 'disposal']
-                                                             for temp in M.HTCTemperatures for feed in
-                                                             M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-gp-disposal', cat] ==
-                                     sum(A.IMPACT[lca_type, 'htc-gp-disposal', temp, cat] * M.gp_from_htc[
-                                         l, t, feed, temp, 'disposal']
-                                         for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'htc-ap-disposal', cat] == A.IMPACT[lca_type, 
-                        'htc-ap-disposal', cat] * sum(M.ap_from_htc[l, t, feed, temp, 'disposal']
-                                                      for temp in M.HTCTemperatures for feed in M.HTCFeedstocks for
-                                                      t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-land', cat] == A.IMPACT[lca_type, 
-                        'digestate-land', cat] * sum(M.digestate_from_ad[l, t, stage, 'land']
-                                                     for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'digestate-disposal', cat] == A.IMPACT[lca_type, 
-                        'digestate-disposal', cat] * sum(M.digestate_from_ad[l, t, stage, 'disposal']
-                                                         for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-disposal', cat] == A.IMPACT[lca_type, 
-                        'biogas-disposal', cat] * sum(M.biogas_from_ad[l, t, stage, 'disposal']
-                                                      for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biogas-chp', cat] == A.IMPACT[lca_type, 
-                        'biogas-chp', cat] * sum(M.biogas_from_ad[l, t, stage, 'CHP']
-                                                 for stage in M.ADStages for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'manure-land', cat] == A.IMPACT[lca_type, 
-                        'manure-land', cat] * sum(M.feedstock_from_storage[l, t] for t in M.Time))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'facility construction', cat] ==
-                                     A.IMPACT[lca_type, 'facility construction', "ad", cat] * M.process_capacity[l, 'AD'] +
-                                     A.IMPACT[lca_type, 'facility construction', "chem", cat] * (
-                                             M.process_capex[l, 'Pyrolysis'] + M.process_capex[l, 'HTL'] +
-                                             M.process_capex[l, 'HTC']))
-                    # CHP facility construction LCA impacts are spread out across the various CHP categories
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == -A.IMPACT[lca_type, 
-                        'N fertilizer', cat] * sum(M.avoided_fertilizers[l, t, tech, 'N']
-                                                   for t in M.Time for tech in M.Technology))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == -A.IMPACT[lca_type, 
-                        'P fertilizer', cat] * sum(M.avoided_fertilizers[l, t, tech, 'P']
-                                                   for t in M.Time for tech in M.Technology))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == -A.IMPACT[lca_type, 
-                        'K fertilizer', cat] * sum(M.avoided_fertilizers[l, t, tech, 'K']
-                                                   for t in M.Time for tech in M.Technology))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] == A.IMPACT[lca_type, 
-                        'storage-facility-solids', cat] * (M.feedstock_storage_capacity[l] +
-                                                           M.pyrolysis_storage_capacity[l, 'Biochar'] +
-                                                           M.htl_storage_capacity[l, 'Hydrochar'] +
-                                                           M.htc_storage_capacity[l, 'Hydrochar'] +
-                                                           M.ad_storage_capacity[l, 'digestate']))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-liquids', cat] == A.IMPACT[lca_type, 
-                        'storage-facility-liquids', cat] * (M.pyrolysis_storage_capacity[l, 'AP'] +
-                                                            M.pyrolysis_storage_capacity[l, 'Syngas'] +
-                                                            M.htl_storage_capacity[l, 'AP'] +
-                                                            M.htc_storage_capacity[l, 'AP'] +
-                                                            M.ad_storage_capacity[l, 'biogas']))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "biochar market", cat] == 0)
-                    '''A.IMPACT[lca_type,
-                        'biochar market', cat] *
-                                     sum(M.biochar_from_pyrolysis[l, t, feedstock, temp, 'market']
-                                          for l in M.Location for t in M.Time for feedstock in M.PyrolysisFeedstocks
-                                          for temp in M.PyrolysisTemperatures))''' # for when biochar can be sold on the market
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "bio-oil market", cat] == A.IMPACT[lca_type,
-                        'bio-oil market', cat] *
-                                     (sum(M.biooil_from_pyrolysis[l, t, feedstock, temp, 'market']
-                                          for l in M.Location for t in M.Time for feedstock in M.PyrolysisFeedstocks
-                                          for temp in M.PyrolysisTemperatures)
-                                     +sum(M.biooil_from_htl[l, t, feedstock, temp, 'market']
-                                          for l in M.Location for t in M.Time for feedstock in M.HTLFeedstocks
-                                          for temp in M.HTLTemperatures)))
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "hydrochar market", cat] == A.IMPACT[lca_type,
-                        'hydrochar market', cat] *
-                                     (sum(M.hydrochar_from_htc[l, t, feedstock, temp, 'market']
-                                          for l in M.Location for t in M.Time for feedstock in M.HTCFeedstocks
-                                          for temp in M.HTCTemperatures)
-                                     +sum(M.hydrochar_from_htl[l, t, feedstock, temp, 'market']
-                                          for l in M.Location for t in M.Time for feedstock in M.HTLFeedstocks
-                                          for temp in M.HTLTemperatures)))
+            M.const.add(expr=M.total_LCA_midpoints[l, lca_type, cat] ==
+                             sum(M.LCA_midpoints[l, lca_type, origin, cat]
+                                 for origin in M.ALCAInputs))
 
-                    M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] ==
-                                     -A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.chp_market[l, t, 'electricity']
-                                                                             for t in M.Time))
+            #LCA specific constraints
+            if lca_type == "ALCA":
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] == 0)
+            elif lca_type == "CLCA":
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] ==
+                                 -A.IMPACT[lca_type, 'grid electricity', cat] * sum(M.chp_market[l, t, 'electricity']
+                                                                                    for t in M.Time))
 
-                    M.const.add(expr=M.total_LCA_midpoints[l, lca_type, cat] == sum(
-                        M.LCA_midpoints[l, lca_type, origin, cat]
-                        for origin in M.ALCAInputs))
+
+def capex_constraints(A, M, l):
+    """
+    Constraints for calculating the CAPEX for the model
+    :param A: parameter information
+    :param M: the model
+    :param l: the location
+    :return: N/A
+    """
+
+    # CAPEX for storage and process capacity
+    # implementing piecewise linear approximation
+    q = symbols("q")
+    lpa_xvals = []
+    [lpa_xvals.append(x) for x in A.ORIGINAL_FEEDSTOCK_SUPPLY if x not in lpa_xvals]
+    lpa_xvals.append(0.00000001)
+    for i in range(16):
+        lpa_xvals.append(i * 1000 + 4500)
+    for i in range(19):
+        lpa_xvals.append(i * 10000 + 20000)
+    lpa_xvals.sort()
+    pyro_process = A.CAPEX['Pyrolysis', 'process', 'coefficient'] * (q * 1000 / A.HOURS_PER_PERIOD) ** A.CAPEX[
+        'Pyrolysis', 'process', 'exponent']
+    pyro_storage = A.CAPEX['Pyrolysis', 'storage', 'coefficient'] * (q / A.HOURS_PER_PERIOD) ** A.CAPEX[
+        'Pyrolysis', 'storage', 'exponent']
+    htl_process = A.CAPEX['HTL', 'process', 'coefficient'] * (q / A.DRY_BIOMASS_REF) ** A.CAPEX[
+        'HTL', 'process', 'exponent']
+    htl_storage = A.CAPEX['HTL', 'storage', 'coefficient'] * (q / A.HOURS_PER_PERIOD) ** A.CAPEX[
+        'HTL', 'storage', 'exponent']
+    htc_process = A.CAPEX['HTC', 'process', 'coefficient'] * (q / A.DRY_BIOMASS_REF) ** A.CAPEX[
+        'HTC', 'process', 'exponent']
+    htc_storage = A.CAPEX['HTC', 'storage', 'coefficient'] * (q / A.HOURS_PER_PERIOD) ** A.CAPEX[
+        'HTC', 'storage', 'exponent']
+    ad_process = A.CAPEX['AD', 'process', 'coefficient'] * q ** A.CAPEX['AD', 'process', 'exponent']
+    ad_storage = A.CAPEX['AD', 'storage', 'coefficient'] * q ** A.CAPEX['AD', 'storage', 'exponent']
+    chp_process = A.CAPEX['CHP', 'process', 'coefficient'] * q ** A.CAPEX['CHP', 'process', 'exponent']
+    solid_storage = A.CAPEX['Solid', 'storage', 'coefficient'] * q ** A.CAPEX['Solid', 'storage', 'exponent']
+    pyro_proc_lpa = [pyro_process.evalf(subs={q: x}) for x in lpa_xvals]
+    pyro_stor_lpa = [pyro_storage.evalf(subs={q: x}) for x in lpa_xvals]
+    solids_products = [solid_storage.evalf(subs={q: x}) for x in lpa_xvals]
+    htl_proc_lpa = [htl_process.evalf(subs={q: x}) for x in lpa_xvals]
+    htl_stor_lpa = [htl_storage.evalf(subs={q: x}) for x in lpa_xvals]
+    htc_proc_lpa = [htc_process.evalf(subs={q: x}) for x in lpa_xvals]
+    htc_stor_lpa = [htc_storage.evalf(subs={q: x}) for x in lpa_xvals]
+    ad_proc_lpa = [ad_process.evalf(subs={q: x}) for x in lpa_xvals]
+    ad_stor_lpa = [ad_storage.evalf(subs={q: x}) for x in lpa_xvals]
+    chp_proc_lpa = [chp_process.evalf(subs={q: x}) for x in lpa_xvals]
+
+    # Piecewise linear approximation to capital cost terms
+    for tech in M.Technology:
+        if tech == 'Pyrolysis':
+            M.con5 = pyo.Piecewise(M.process_capex[l, 'Pyrolysis'], M.process_capacity[l, 'Pyrolysis'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=pyro_proc_lpa,
+                                   pw_repn='SOS2')
+            M.con6 = pyo.Piecewise(M.pyro_storage_cost[l, 'Biochar'], M.pyrolysis_storage_capacity[l, 'Biochar'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=solids_products,
+                                   pw_repn='SOS2')
+            M.con7 = pyo.Piecewise(M.pyro_storage_cost[l, 'Biooil'], M.pyrolysis_storage_capacity[l, 'Biooil'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=pyro_stor_lpa,
+                                   pw_repn='SOS2')
+            M.con8 = pyo.Piecewise(M.pyro_storage_cost[l, 'AP'], M.pyrolysis_storage_capacity[l, 'AP'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=pyro_stor_lpa,
+                                   pw_repn='SOS2')
+            M.con9 = pyo.Piecewise(M.pyro_storage_cost[l, 'Syngas'], M.pyrolysis_storage_capacity[l, 'Syngas'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=pyro_stor_lpa,
+                                   pw_repn='SOS2')
+            M.const.add(expr=M.storage_capex[l, 'Pyrolysis'] == sum(
+                M.pyro_storage_cost[l, prod] for prod in M.PyrolysisProducts))
+
+        elif tech == 'HTL':
+            M.con10 = pyo.Piecewise(M.process_capex[l, 'HTL'], M.process_capacity[l, 'HTL'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=htl_proc_lpa,
+                                    pw_repn='SOS2')
+            M.con11 = pyo.Piecewise(M.htl_storage_cost[l, 'Hydrochar'], M.htl_storage_capacity[l, 'Hydrochar'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=solids_products,
+                                    pw_repn='SOS2')
+            M.con12 = pyo.Piecewise(M.htl_storage_cost[l, 'Biooil'], M.htl_storage_capacity[l, 'Biooil'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=htl_stor_lpa,
+                                    pw_repn='SOS2')
+            M.con13 = pyo.Piecewise(M.htl_storage_cost[l, 'AP'], M.htl_storage_capacity[l, 'AP'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=htl_stor_lpa,
+                                    pw_repn='SOS2')
+            M.con14 = pyo.Piecewise(M.htl_storage_cost[l, 'GP'], M.htl_storage_capacity[l, 'GP'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=htl_stor_lpa,
+                                    pw_repn='SOS2')
+            M.const.add(expr=M.storage_capex[l, 'HTL'] == sum(M.htl_storage_cost[l, prod] for prod in M.HTLProducts))
+        elif tech == 'HTC':
+            M.con15 = pyo.Piecewise(M.process_capex[l, 'HTC'], M.process_capacity[l, 'HTC'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=htc_proc_lpa,
+                                    pw_repn='SOS2')
+            M.con16 = pyo.Piecewise(M.htc_storage_cost[l, 'Hydrochar'], M.htc_storage_capacity[l, 'Hydrochar'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=solids_products,
+                                    pw_repn='SOS2')
+            M.con17 = pyo.Piecewise(M.htc_storage_cost[l, 'AP'], M.htc_storage_capacity[l, 'AP'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=htc_stor_lpa,
+                                    pw_repn='SOS2')
+            M.con18 = pyo.Piecewise(M.htc_storage_cost[l, 'GP'], M.htc_storage_capacity[l, 'GP'],
+                                    pw_pts=lpa_xvals,
+                                    pw_constr_type='EQ',
+                                    f_rule=htc_stor_lpa,
+                                    pw_repn='SOS2')
+            M.const.add(expr=M.storage_capex[l, 'HTC'] == sum(M.htc_storage_cost[l, prod] for prod in M.HTCProducts))
+        elif tech == 'AD':
+            M.con1 = pyo.Piecewise(M.process_capex[l, 'AD'], M.process_capacity[l, 'AD'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=ad_proc_lpa,
+                                   pw_repn='SOS2')
+            M.con2 = pyo.Piecewise(M.ad_storage_cost[l, 'biogas'], M.ad_storage_capacity[l, 'biogas'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=ad_stor_lpa,
+                                   pw_repn='SOS2')
+            M.con4 = pyo.Piecewise(M.ad_storage_cost[l, 'digestate'], M.ad_storage_capacity[l, 'digestate'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=solids_products,
+                                   pw_repn='SOS2')
+
+            M.const.add(expr=M.storage_capex[l, 'AD'] == sum(M.ad_storage_cost[l, prod] for prod in M.ADProducts))
+
+        elif tech == 'CHP':
+            M.con3 = pyo.Piecewise(M.process_capex[l, 'CHP'], M.process_capacity[l, 'CHP'],
+                                   pw_pts=lpa_xvals,
+                                   pw_constr_type='EQ',
+                                   f_rule=chp_proc_lpa,
+                                   pw_repn='SOS2')  # process capacity of CHP is in kWh
+            M.const.add(expr=M.storage_capex[l, 'CHP'] == 0)
+
+        elif tech == 'Feedstock':
+            M.const.add(expr=M.process_capex[l, 'Feedstock'] == A.CAPEX['Feedstock', 'process', 'coefficient'] *
+                             M.process_capacity[l, 'Feedstock'])
+            M.const.add(expr=M.storage_capex[l, 'Feedstock'] == A.CAPEX['Feedstock', 'storage', 'coefficient'] *
+                             M.feedstock_storage_capacity[l])
+
+
+def opex_constraints(A, M, l, t):
+    # calculating the heat and electricity used by all processes
+    # tech_in * decision_temp = sum(tech_out/tech_yield[product])
+    for tech in M.Technology:
+        if tech == "AD":
+            M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(A.OPEX['AD', 'Heat'] *
+                                                                 M.ad_in_glovers[l, t, feed, stage] for feed in
+                                                                 M.ADFeedstocks for stage in M.ADStages))
+            M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] *
+                                                                        M.ad_in_glovers[l, t, feed, stage] for
+                                                                        feed in M.ADFeedstocks for stage in
+                                                                        M.ADStages))
+        elif tech == "CHP":
+            M.const.add(expr=M.inputs[l, t, 'CHP', 'heat'] == A.OPEX['CHP', 'Heat'] *
+                             A.CHP_HEAT_EFFICIENCY * M.chp_in[l, t])
+            M.const.add(
+                expr=M.inputs[l, t, 'CHP', 'electricity'] == A.OPEX['CHP', 'Electricity'] *
+                     A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[l, t])
+        elif tech == "Feedstock":
+            M.const.add(expr=M.inputs[l, t, 'Feedstock', 'heat'] == 0)
+            M.const.add(expr=M.inputs[l, t, 'Feedstock', 'electricity'] == 0)
+        elif tech == "Pyrolysis":
+            M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'heat'] == sum(
+                A.OPEX['Pyrolysis', 'Heat', temp] * M.pyrolysis_out[l, t, feed, pyro_prod, temp]
+                for temp in M.PyrolysisTemperatures for feed in M.PyrolysisFeedstocks
+                for pyro_prod in M.PyrolysisProducts))
+            M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'electricity'] == sum(
+                A.OPEX['Pyrolysis', 'Electricity'] * M.pyrolysis_out[l, t, feed, pyro_prod, temp] for feed in
+                M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures for pyro_prod in M.PyrolysisProducts))
+        elif tech == "HTL":
+            M.const.add(expr=M.inputs[l, t, 'HTL', 'heat'] ==
+                             sum(M.htl_out[l, t, feed, prod, temp] * A.OPEX['HTL', 'Heat']
+                                 for feed in M.HTLFeedstocks for temp in M.HTLTemperatures for prod in
+                                 M.HTLProducts))
+            M.const.add(
+                expr=M.inputs[l, t, 'HTL', 'electricity'] ==
+                     sum(A.OPEX['HTL', 'Electricity'] * M.htl_out[l, t, feed, prod, temp] for feed in
+                         M.HTLFeedstocks
+                         for temp in M.HTLTemperatures for prod in M.HTLProducts))
+        elif tech == "HTC":
+            M.const.add(expr=M.inputs[l, t, 'HTC', 'heat'] == sum(
+                A.OPEX['HTC', 'Heat', temp] * M.htc_out[l, t, feed, prod, temp]
+                for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
+            M.const.add(
+                expr=M.inputs[l, t, 'HTC', 'electricity'] ==
+                     sum(A.OPEX['HTC', 'Electricity'] *
+                         M.htc_out[l, t, feed, prod, temp]
+                         for feed in M.HTCFeedstocks for temp in M.HTCTemperatures for prod in M.HTCProducts))
+    # water costs and revenues
+    for tech in M.Technology:
+        if tech == "HTC":
+            M.const.add(expr=M.inputs[l, t, 'HTC', 'water'] == A.HTC_WATER * M.htc_in[l, t, 'feedstock'])
+            M.const.add(expr=M.inputs[l, t, tech, 'bio-oil diesel'] == 0)
+        elif tech == "HTL":
+            M.const.add(expr=M.inputs[l, t, 'HTL', 'water'] == A.HTL_WATER * M.htl_in[l, t, 'feedstock'])
+            M.const.add(
+                expr=M.inputs[l, t, 'HTL', 'bio-oil diesel'] == A.DIESEL_PRICE * 3 * A.TON_DIESEL_TO_GAL *
+                     sum(M.biooil_from_htl[l, t, 'feedstock', temp, 'CHP']
+                         for temp in M.HTLTemperatures))
+        elif tech == "Pyrolysis":
+            M.const.add(
+                expr=M.inputs[l, t, 'Pyrolysis', 'bio-oil diesel'] == A.DIESEL_PRICE * 3 * A.TON_DIESEL_TO_GAL *
+                     sum(M.biooil_from_pyrolysis[l, t, 'feedstock', temp, 'CHP']
+                         for temp in M.PyrolysisTemperatures))
+            M.const.add(expr=M.inputs[l, t, tech, 'water'] == 0)
+        else:
+            M.const.add(expr=M.inputs[l, t, tech, 'water'] == 0)
+            M.const.add(expr=M.inputs[l, t, tech, 'bio-oil diesel'] == 0)
+
+        M.const.add(
+            expr=M.opex_costs[l, t, tech, 'water'] == A.OPEX['Freshwater'] * M.inputs[l, t, tech, 'water']
+                 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+    # inputs and costs for heat and electricity
+    for tech in M.Technology:
+        M.const.add(
+            expr=M.inputs[l, t, tech, 'heat'] == M.chp_out[l, t, tech, 'heat'] + A.CHP_HEAT_EFFICIENCY *
+                 M.purchased_fuel[l, t, tech])  # units of MJ
+        M.const.add(expr=M.inputs[l, t, tech, 'electricity'] == M.chp_out[l, t, tech, 'electricity'] +
+                         M.purchased_power[l, t, tech])  # units of kWh
+        M.const.add(
+            expr=M.opex_costs[l, t, tech, 'heat'] == (A.OPEX['Fuel'] * M.purchased_fuel[l, t, tech]) / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        M.const.add(
+            expr=M.opex_costs[l, t, tech, 'electricity'] == (A.OPEX['Electricity'] * M.purchased_power[
+                l, t, tech]) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+    # Operational expenses depend on the amount of feedstock beingd and the energyd
+    for tech in M.Technology:
+        if tech == "AD" or tech == "CHP" or tech == "Feedstock":
+            M.const.add(expr=M.opex_costs[l, t, tech, 'labor'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))  # really plant labor cost
+        else:
+            M.const.add(expr=M.opex_costs[l, t, tech, 'labor'] == (A.OPEX['Labor Cost'] *
+                                                                   (M.process_capacity[
+                                                                        l, tech] / A.HOURS_PER_PERIOD ** A.OPEX[
+                                                                        'Labor Exponent'])) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+    for tech in M.Technology:
+        # transportation costs and fuel depends upon the distance travelled and the amount of product being moved
+        if tech == "AD":
+            M.const.add(expr=M.opex_costs[l, t, 'AD', 'transportation'] ==
+                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[
+                                 l]) *
+                             (M.ad_in[l, t, 'feedstock'] + sum(
+                                 M.digestate_from_ad[l, t, temp, 'land'] for temp in M.ADStages)) /
+                             ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.inputs[l, t, 'AD', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE * (
+                    A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.ad_in[l, t, 'feedstock'] +
+                    A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
+                M.digestate_from_ad[l, t, temp, 'land'] for temp in M.ADStages)) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        elif tech == "CHP":
+            M.const.add(expr=M.opex_costs[l, t, 'CHP', 'transportation'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.inputs[l, t, 'CHP', 'diesel'] == 0)
+        elif tech == "Feedstock":
+            M.const.add(expr=M.opex_costs[l, t, 'Feedstock', 'transportation'] ==
+                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.ON_FARM_TRANSPORT_DISTANCE) *
+                             (M.feedstock_to_storage[l, t] + M.feedstock_from_storage[l, t])
+                             / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(
+                expr=M.inputs[l, t, 'Feedstock', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
+                     (A.ON_FARM_TRANSPORT_DISTANCE * (
+                             M.feedstock_to_storage[l, t] + M.feedstock_from_storage[l, t])))
+        elif tech == "Pyrolysis":
+            M.const.add(expr=M.opex_costs[l, t, 'Pyrolysis', 'transportation'] ==
+                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
+                             (M.pyrolysis_in[l, t, 'feedstock'] + sum(
+                                 M.biochar_from_pyrolysis[l, t, feed, temp, 'land'] for feed in
+                                 M.PyrolysisFeedstocks for temp in
+                                 M.PyrolysisTemperatures)) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
+                             (A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.pyrolysis_in[l, t, 'feedstock'] +
+                              A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
+                                         M.biochar_from_pyrolysis[l, t, feed, temp, 'land'] for feed in
+                                         M.PyrolysisFeedstocks for temp in
+                                         M.PyrolysisTemperatures)))
+        elif tech == "HTL":
+            M.const.add(expr=M.opex_costs[l, t, 'HTL', 'transportation'] ==
+                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
+                             (M.htl_in[l, t, 'feedstock'] + sum(
+                                 M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in M.HTLFeedstocks for
+                                 temp in
+                                 M.HTLTemperatures)) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.inputs[l, t, 'HTL', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
+                             (A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.htl_in[l, t, 'feedstock'] +
+                              A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
+                                         M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in
+                                         M.HTLFeedstocks for temp in M.HTLTemperatures)))
+        elif tech == "HTC":
+            M.const.add(expr=M.opex_costs[l, t, 'HTC', 'transportation'] ==
+                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
+                             (M.htc_in[l, t, 'feedstock'] + sum(M.hydrochar_from_htc[l, t, feed, temp, 'land']
+                                                                for feed in M.HTCFeedstocks for temp in
+                                                                M.HTCTemperatures)) /
+                             ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.inputs[l, t, 'HTC', 'diesel'] == A.DIESEL_PRICE * A.DIESEL_USE *
+                             (A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * M.htc_in[l, t, 'feedstock'] +
+                              A.INTRA_COUNTY_TRANSPORT_DISTANCE[l] * sum(
+                                         M.hydrochar_from_htc[l, t, feed, temp, 'land'] for feed in
+                                         M.HTCFeedstocks for temp in M.HTCTemperatures)))
+
+        ## DISPOSAL
+        # Disposal operational expenses depend on the amount of feedstock being and the energy
+        if tech == "AD":
+            M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] == (A.OPEX['Landfill'] *
+                                                                      sum(M.digestate_from_ad[
+                                                                              l, t, stage, 'disposal'] for stage
+                                                                          in M.ADStages) +
+                                                                      sum(A.OPEX['Atmosphere'] *
+                                                                          M.biogas_from_ad[
+                                                                              l, t, stage, 'disposal']
+                                                                          for stage in M.ADStages)) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        elif tech == "CHP":
+            M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+
+        elif tech == "Feedstock":
+            M.const.add(
+                expr=M.opex_costs[l, t, tech, 'disposal'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+
+        elif tech == "Pyrolysis":
+            M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] == (A.OPEX['Landfill'] *
+                                                                      sum(M.biochar_from_pyrolysis[
+                                                                              l, t, feed, temp, 'disposal']
+                                                                          for feed in M.PyrolysisFeedstocks for
+                                                                          temp in M.PyrolysisTemperatures) +
+                                                                      A.OPEX['Wastewater'] * sum(1000 *
+                                                                                                 M.ap_from_pyrolysis[
+                                                                                                     l, t, feed, temp, 'disposal']
+                                                                                                 for feed in
+                                                                                                 M.PyrolysisFeedstocks
+                                                                                                 for temp in
+                                                                                                 M.PyrolysisTemperatures) +
+                                                                      sum(A.OPEX['Atmosphere'] *
+                                                                          M.syngas_from_pyrolysis[
+                                                                              l, t, feed, temp, 'disposal']
+                                                                          for feed in M.PyrolysisFeedstocks for
+                                                                          temp in M.PyrolysisTemperatures)) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        elif tech == "HTL":
+            M.const.add(expr=M.opex_costs[l, t, 'HTL', 'disposal'] == (A.OPEX['Landfill'] *
+                                                                       sum(M.hydrochar_from_htl[
+                                                                               l, t, feed, temp, 'disposal']
+                                                                           for feed in M.HTLFeedstocks for temp
+                                                                           in M.HTLTemperatures) +
+                                                                       A.OPEX['Wastewater'] * sum(
+                        1000 * M.ap_from_htl[l, t, feed, temp, 'disposal']
+                        for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) +
+                                                                       sum(A.OPEX['Atmosphere'] * M.gp_from_htl[
+                                                                           l, t, feed, temp, 'disposal']
+                                                                           for feed in M.HTLFeedstocks for temp
+                                                                           in M.HTLTemperatures)) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+
+        elif tech == "HTC":
+            M.const.add(expr=M.opex_costs[l, t, 'HTC', 'disposal'] == (A.OPEX['Landfill'] *
+                                                                       sum(M.hydrochar_from_htc[
+                                                                               l, t, feed, temp, 'disposal']
+                                                                           for feed in M.HTCFeedstocks for temp
+                                                                           in M.HTCTemperatures) +
+                                                                       A.OPEX['Wastewater'] * sum(
+                        1000 * M.ap_from_htc[l, t, feed, temp, 'disposal']
+                        for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) +
+                                                                       sum(A.OPEX['Atmosphere'] * M.gp_from_htc[
+                                                                           l, t, feed, temp, 'disposal']
+                                                                           for feed in M.HTCFeedstocks for temp
+                                                                           in M.HTCTemperatures)) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+    # diesel costs
+    for tech in M.Technology:
+        M.const.add(
+            expr=M.opex_costs[l, t, tech, 'diesel'] == (M.inputs[l, t, tech, 'diesel'] +
+                                                        M.inputs[l, t, tech, 'bio-oil diesel']) / (
+                         (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        M.const.add(expr=M.opex_costs[l, t, tech, 'TPC'] == (A.OPEX_TPC * M.process_capex[l, tech]) / (
+                (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+
+
+def revenue_constraints(A, M, l, scenario, t):
+    ### REVENUES
+    ## AVOIDED FERTILIZER
+    # calculating the amount of avoided fertilizers
+    for fertilizer in M.AvoidedFertilizers:
+        M.const.add(expr=M.avoided_fertilizers[l, t, 'Pyrolysis', fertilizer] == sum(
+            A.NUTRIENTS['Pyrolysis', feed, temp, fertilizer] * M.biochar_from_pyrolysis[
+                l, t, feed, temp, 'land'] for feed in M.PyrolysisFeedstocks for temp in
+            M.PyrolysisTemperatures))
+        M.const.add(expr=M.avoided_fertilizers[l, t, 'HTL', fertilizer] == sum(
+            A.NUTRIENTS['HTL', feed, temp, fertilizer] * M.hydrochar_from_htl[l, t, feed, temp, 'land']
+            for feed in M.HTLFeedstocks for temp in M.HTLTemperatures))
+        M.const.add(expr=M.avoided_fertilizers[l, t, 'HTC', fertilizer] == sum(
+            A.NUTRIENTS['HTC', feed, temp, fertilizer] * M.hydrochar_from_htc[l, t, feed, temp, 'land']
+            for feed in M.HTCFeedstocks for temp in M.HTCTemperatures))
+        M.const.add(expr=M.avoided_fertilizers[l, t, 'AD', fertilizer] == sum(
+            A.NUTRIENTS['AD', fertilizer] * M.digestate_from_ad[l, t, temp, 'land']
+            for temp in M.ADStages))
+        M.const.add(expr=M.avoided_fertilizers[l, t, 'CHP', fertilizer] == 0)
+        M.const.add(expr=M.avoided_fertilizers[l, t, 'Feedstock', fertilizer] == A.NUTRIENTS[
+            'Feedstock', fertilizer] * M.feedstock_from_storage[l, t])
+    # feedstock can only be applied to land in the dedicated month of the year
+    if not int(t) % (int(A.TIME_PERIODS / A.YEARS)) == int(A.LAND_APPLICATION_MONTH):
+        # no avoided fertilizers allowed when it is not application month
+        for fert in M.AvoidedFertilizers:
+            for tech in M.Technology:
+                M.const.add(expr=M.avoided_fertilizers[l, t, tech, fert] == 0)
+    ## Selling products on the markets
+    # adding the avoided fertilizer and coal revenues to opex
+    for tech in M.Technology:
+        M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided fertilizer'] == sum(
+            A.REVENUE[fert] * M.avoided_fertilizers[l, t, tech, fert] for fert in M.AvoidedFertilizers) / (
+                                 (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+
+        if tech == "Pyrolysis":
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'bio oil'] == (A.REVENUE['Biooil'] *
+                                                                        sum(A.HHV[
+                                                                                'Pyrolysis', feedstock, 'Biooil', temp] *
+                                                                            M.biooil_from_pyrolysis[
+                                                                                l, t, feedstock, temp, 'market']
+                                                                            for feedstock in
+                                                                            M.PyrolysisFeedstocks for temp in
+                                                                            M.PyrolysisTemperatures)) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        elif tech == "HTL":
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == (A.REVENUE['hydrochar'] *
+                                                                             sum(A.HHV[
+                                                                                     tech, feedstock, 'Hydrochar', temp] *
+                                                                                 M.hydrochar_from_htl[
+                                                                                     l, t, feedstock, temp, 'market']
+                                                                                 for feedstock in
+                                                                                 M.HTLFeedstocks for temp in
+                                                                                 M.HTLTemperatures) /
+                                                                             ((
+                                                                                      1 + A.MONTHLY_DISCOUNT_RATE) ** int(
+                                                                                 t))))
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'bio oil'] == (A.REVENUE['Biooil'] *
+                                                                        sum(A.HHV[
+                                                                                'HTL', feedstock, 'Biooil', temp] *
+                                                                            M.biooil_from_htl[
+                                                                                l, t, feedstock, temp, 'market']
+                                                                            for feedstock in M.HTLFeedstocks for
+                                                                            temp in M.HTLTemperatures)) / (
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        elif tech == "HTC":
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == (A.REVENUE['hydrochar'] *
+                                                                             sum(A.HHV[
+                                                                                     tech, feedstock, 'Hydrochar', temp] *
+                                                                                 M.hydrochar_from_htc[
+                                                                                     l, t, feedstock, temp, 'market']
+                                                                                 for feedstock in
+                                                                                 M.HTCFeedstocks for temp in
+                                                                                 M.HTCTemperatures) /
+                                                                             ((
+                                                                                      1 + A.MONTHLY_DISCOUNT_RATE) ** int(
+                                                                                 t))))
+            M.const.add(
+                expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        elif tech == 'CHP':
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(
+                expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(
+                expr=M.opex_revenues[l, t, tech, 'electricity'] == (A.REVENUE['electricity'] * M.chp_market[
+                    l, t, 'electricity']) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        elif tech == 'AD':
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(
+                expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        else:
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(
+                expr=M.opex_revenues[l, t, tech, 'bio oil'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+            M.const.add(expr=M.opex_revenues[l, t, tech, 'electricity'] == 0 / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+
+        # other revenue sources
+        if scenario == 10103 or scenario in [5]:
+            if tech == "Feedstock":
+                M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+                # carbon credits can go here
+                # M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
+            else:
+                M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+        else:
+            M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 2"] == 0)
+        M.const.add(expr=M.opex_revenues[l, t, tech, "potting media"] == 0)
+
+
+def facility_constraints(A, M, l, scenario, t):
+    ## FEEDSTOCK
+    if scenario == 1 or scenario == 421 or scenario == 431 or scenario == 441:
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+    elif scenario == 2 or scenario == 422 or scenario == 432 or scenario == 442 or (1000 < scenario < 1019) or (
+            2000 < scenario < 2019) or scenario == 10003:
+        M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+    elif scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
+            1100 < scenario < 1119) or (
+            2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+    elif scenario == 6 or scenario == 426 or scenario == 436 or scenario == 446 or (1200 < scenario < 1219) or (
+            2200 < scenario < 2219):
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+    elif scenario == 7 or scenario == 427 or scenario == 437 or scenario == 447 or (1300 < scenario < 1319) or (
+            2300 < scenario < 2319):
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+    elif scenario == 8 or scenario == 428 or scenario == 438 or scenario == 448 or (1400 < scenario < 1419) or (
+            2400 < scenario < 2419):
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+    elif scenario == 9 or scenario == 429 or scenario == 439 or scenario == 449:
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+    elif scenario == 10103:  # TODO repeat for 10203
+        if A.FEEDSTOCK_SUPPLY[l] > 100:
+            M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+            M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+        else:
+            M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
+            M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+
+        # ensure that no other feedstocks are used
+        M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
+    elif scenario == 10203:
+        if A.FEEDSTOCK_SUPPLY[l] > 3.2:
+            M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+            M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+        else:
+            M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
+            M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+
+        # ensure that no other feedstocks are used
+        M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
+    else:
+        M.const.add(
+            expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
+                 M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+    ## DIRECT LAND APPLICATION
+    M.const.add(expr=M.feedstock_to_storage[l, t] <= M.process_capacity[l, 'Feedstock'])
+    M.const.add(expr=M.feedstock_from_storage[l, t] <= M.feedstock_storage[l, t])
+    # direct land cost storage size updates
+    if t > 0:
+        M.const.add(expr=M.feedstock_storage[l, t] == M.feedstock_storage[
+            l, t - 1] + M.feedstock_to_storage[l, t - 1] - M.feedstock_from_storage[l, t - 1])
+    else:
+        M.const.add(expr=M.feedstock_storage[l, t] == 0)
+        M.const.add(expr=M.feedstock_from_storage[l, t] == 0)
+    if t == A.TIME_PERIODS - 1:
+        # raw feedstock has no other disposal pathway other than direct land application, so it must be allowed to store a certain amount for next year
+        M.const.add(
+            expr=M.feedstock_storage[l, t] <= (A.TIME_PERIODS / A.YEARS - A.LAND_APPLICATION_MONTH - 1) *
+                 A.FEEDSTOCK_SUPPLY[l] + 1)  # constrain likely to cause infeasibility issues
+    # ensuring that the feedstock storage does not overflow
+    M.const.add(expr=M.feedstock_storage[l, t] <= M.feedstock_storage_capacity[l])
+    ## PYROLYSIS
+    M.const.add(expr=sum(M.pyrolysis_in[l, t, feed] for feed in M.PyrolysisFeedstocks) <=
+                     M.process_capacity[l, 'Pyrolysis'])
+    ##pyrolysis yield conversion
+    # only one temperature can be selected for each location at each time period
+    for feed in M.PyrolysisFeedstocks:
+        M.const.add(expr=sum(M.decision_pyrolysis_temperature[l, t, feed, temp] for temp in
+                             M.PyrolysisTemperatures) == 1)
+        # getting pyrolysis yields from inputs
+        for temp in M.PyrolysisTemperatures:
+            for pyro_prod in M.PyrolysisProducts:
+                # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
+                M.const.add(
+                    expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp] <=
+                         M.pyrolysis_in[l, t, feed])
+                M.const.add(
+                    expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp] <=
+                         A.FEEDSTOCK_SUPPLY[l] * M.decision_pyrolysis_temperature[l, t, feed, temp])
+                M.const.add(expr=M.pyrolysis_out[l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[
+                    feed, pyro_prod, temp] >= 0)
+                M.const.add(expr=M.pyrolysis_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
+                        1 - M.decision_pyrolysis_temperature[l, t, feed, temp]) <= M.pyrolysis_out[
+                                     l, t, feed, pyro_prod, temp] / A.PYRO_YIELD[feed, pyro_prod, temp])
+
+                M.const.add(
+                    expr=M.pyrolysis_from_storage[l, t, feed, pyro_prod, temp] <=
+                         M.pyrolysis_storage[l, t, feed, pyro_prod, temp])
+                M.const.add(
+                    expr=M.pyrolysis_to_storage[l, t, feed, pyro_prod, temp] <=
+                         M.pyrolysis_storage_capacity[l, pyro_prod])
+                # storage is empty in the first time period, and is the boundary conditions
+                if t > 0:
+                    M.const.add(expr=M.pyrolysis_storage[l, t, feed, pyro_prod, temp] ==
+                                     M.pyrolysis_storage[l, t - 1, feed, pyro_prod, temp] +
+                                     M.pyrolysis_to_storage[l, t - 1, feed, pyro_prod, temp] -
+                                     M.pyrolysis_from_storage[l, t - 1, feed, pyro_prod, temp])
+                else:
+                    M.const.add(expr=M.pyrolysis_storage[l, t, feed, pyro_prod, temp] == 0)
+                    M.const.add(expr=M.pyrolysis_from_storage[l, t, feed, pyro_prod, temp] == 0)
+
+                if t == A.TIME_PERIODS - 1:
+                    M.const.add(expr=M.pyrolysis_storage[l, t, feed, pyro_prod, temp] == 0)
+
+            # moving products to stage 3 of the model
+            M.const.add(
+                expr=M.pyrolysis_out[l, t, feed, 'Biochar', temp] + M.pyrolysis_from_storage[
+                    l, t, feed, 'Biochar', temp] == sum(
+                    M.biochar_from_pyrolysis[l, t, feed, temp, loc] for loc in
+                    M.PyroBiocharLocations))
+            M.const.add(
+                expr=M.pyrolysis_out[l, t, feed, 'Biooil', temp] + M.pyrolysis_from_storage[
+                    l, t, feed, 'Biooil', temp] == sum(
+                    M.biooil_from_pyrolysis[l, t, feed, temp, loc] for loc in
+                    M.PyroBiooilLocations))
+            M.const.add(expr=M.pyrolysis_out[l, t, feed, 'Syngas', temp] + M.pyrolysis_from_storage[
+                l, t, feed, 'Syngas', temp] == sum(
+                M.syngas_from_pyrolysis[l, t, feed, temp, loc] for loc in
+                M.PyroSyngasLocations))
+            M.const.add(
+                expr=M.pyrolysis_out[l, t, feed, 'AP', temp] + M.pyrolysis_from_storage[
+                    l, t, feed, 'AP', temp] == sum(
+                    M.ap_from_pyrolysis[l, t, feed, temp, loc] for loc in
+                    M.PyroAPLocations))
+
+            # linking the edges of the graph for biochar
+            M.const.add(expr=M.pyrolysis_to_storage[l, t, feed, 'Biochar', temp] ==
+                             M.biochar_from_pyrolysis[l, t, feed, temp, 'storage'])
+            M.const.add(expr=M.pyrolysis_to_chp[l, t, feed, 'Biochar', temp] ==
+                             A.HHV['Pyrolysis', feed, 'Biochar', temp] * M.biochar_from_pyrolysis[
+                                 l, t, feed, temp, 'CHP'])
+
+            # linking the edges of the graph for biooil
+            M.const.add(expr=M.pyrolysis_to_storage[
+                                 l, t, feed, 'Biooil', temp] == 0)  # biooil cannot be stored
+            M.const.add(expr=M.pyrolysis_to_chp[
+                                 l, t, feed, 'Biooil', temp] == (
+                                     A.HHV['Pyrolysis', feed, 'Biooil', temp] + 3 * 42800) *
+                             M.biooil_from_pyrolysis[l, t, feed, temp, 'CHP'])
+
+            # linking the edges of the graph for syngas
+            M.const.add(expr=M.pyrolysis_to_storage[l, t, feed, 'Syngas', temp] ==
+                             M.syngas_from_pyrolysis[
+                                 l, t, feed, temp, 'storage'])
+            M.const.add(expr=M.pyrolysis_to_chp[l, t, feed, 'Syngas', temp]
+                             == A.HHV['Pyrolysis', feed, 'Syngas', temp] * M.syngas_from_pyrolysis[
+                                 l, t, feed, temp, 'CHP'])
+
+            # linking the edges of the graph for aqueous phase
+            M.const.add(expr=M.pyrolysis_to_storage[l, t, feed, 'AP', temp] == 0)
+            M.const.add(expr=M.pyrolysis_to_chp[l, t, feed, 'AP', temp] == 0)
+    # ensuring that the pyrolysis storage does not overflow
+    for prod in M.PyrolysisProducts:
+        M.const.add(expr=sum(
+            M.pyrolysis_storage[l, t, feed, prod, temp] for feed in M.PyrolysisFeedstocks for temp in
+            M.PyrolysisTemperatures) <= M.pyrolysis_storage_capacity[l, prod])
+    ## HTL
+    M.const.add(expr=sum(M.htl_in[l, t, feed] for feed in M.HTLFeedstocks) <= M.process_capacity[l, 'HTL'])
+    ##htl yield conversion
+    # only one temperature can be selected for each location at each time period
+    for feed in M.HTLFeedstocks:
+        M.const.add(
+            expr=sum(M.decision_htl_temperature[l, t, feed, temp] for temp in M.HTLTemperatures) == 1)
+        # getting pyrolysis yields from inputs
+        for prod in M.HTLProducts:
+            for temp in M.HTLTemperatures:
+                # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
+                M.const.add(
+                    expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp] <=
+                         M.htl_in[l, t, feed])
+                M.const.add(
+                    expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp] <=
+                         A.FEEDSTOCK_SUPPLY[l] * M.decision_htl_temperature[l, t, feed, temp])
+                M.const.add(expr=M.htl_out[l, t, feed, prod, temp] / A.HTL_YIELD[
+                    feed, prod, temp] >= 0)
+                M.const.add(expr=M.htl_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
+                        1 - M.decision_htl_temperature[l, t, feed, temp]) <= M.htl_out[
+                                     l, t, feed, prod, temp] / A.HTL_YIELD[feed, prod, temp])
+                M.const.add(
+                    expr=M.htl_from_storage[l, t, feed, prod, temp] <= M.htl_storage[
+                        l, t, feed, prod, temp])
+                M.const.add(
+                    expr=M.htl_to_storage[l, t, feed, prod, temp] <= M.htl_storage_capacity[
+                        l, prod])
+
+                # storage is empty in the first time period, and is the boundary conditions
+                if (t > 0):
+                    M.const.add(expr=M.htl_storage[l, t, feed, prod, temp] == M.htl_storage[
+                        l, t - 1, feed, prod, temp] + M.htl_to_storage[l, t - 1, feed, prod, temp] -
+                                     M.htl_from_storage[l, t - 1, feed, prod, temp])
+                else:
+                    M.const.add(expr=M.htl_storage[l, t, feed, prod, temp] == 0)
+                    M.const.add(expr=M.htl_from_storage[l, t, feed, prod, temp] == 0)
+
+                if t == A.TIME_PERIODS - 1:
+                    M.const.add(expr=M.htl_storage[l, t, feed, prod, temp] == 0)
+    for feed in M.HTLFeedstocks:
+        for temp in M.HTLTemperatures:
+            # moving products to stage 3 of the model
+            M.const.add(expr=M.htl_out[l, t, feed, 'Hydrochar', temp] + M.htl_from_storage[
+                l, t, feed, 'Hydrochar', temp] == sum(
+                M.hydrochar_from_htl[l, t, feed, temp, loc] for loc in M.HTLHydrocharLocations))
+            M.const.add(expr=M.htl_out[l, t, feed, 'Biooil', temp] == sum(
+                M.biooil_from_htl[l, t, feed, temp, loc] for loc in M.HTLBiooilLocations))
+            M.const.add(
+                expr=M.htl_out[l, t, feed, 'GP', temp] + M.htl_from_storage[l, t, feed, 'GP', temp] == sum(
+                    M.gp_from_htl[l, t, feed, temp, loc] for loc in M.HTLGPLocations))
+            M.const.add(
+                expr=M.htl_out[l, t, feed, 'AP', temp] + M.htl_from_storage[l, t, feed, 'AP', temp] == sum(
+                    M.ap_from_htl[l, t, feed, temp, loc] for loc in M.HTLAPLocations))
+
+            # linking the edges of the graph for hydrochar
+            M.const.add(expr=M.htl_to_storage[l, t, feed, 'Hydrochar', temp] == M.hydrochar_from_htl[
+                l, t, feed, temp, 'storage'])
+            M.const.add(
+                expr=M.htl_to_chp[l, t, feed, 'Hydrochar', temp] == A.HHV['HTL', feed, 'Hydrochar', temp] *
+                     M.hydrochar_from_htl[l, t, feed, temp, 'CHP'])
+
+            # linking the edges of the graph for biooil
+            M.const.add(expr=M.htl_to_storage[l, t, feed, 'Biooil', temp] == 0)  # biooil cannot be stored
+            M.const.add(
+                expr=M.htl_to_chp[l, t, feed, 'Biooil', temp] == (
+                        A.HHV['HTL', feed, 'Biooil', temp] + 3 * 42800) *
+                     M.biooil_from_htl[l, t, feed, temp, 'CHP'])
+
+            # linking the edges of the graph for GP
+            M.const.add(expr=M.htl_to_storage[l, t, feed, 'GP', temp] == 0)
+            M.const.add(expr=M.htl_to_chp[l, t, feed, 'GP', temp] == 0)
+
+            # linking the edges of the graph for AP
+            M.const.add(expr=M.htl_to_storage[l, t, feed, 'AP', temp] == M.ap_from_htl[
+                l, t, feed, temp, 'storage'])
+            M.const.add(expr=M.htl_to_chp[l, t, feed, 'AP', temp] == 0)
+    # ensuring that the HTL storage does not overflow
+    for prod in M.HTLProducts:
+        M.const.add(expr=sum(M.htl_storage[l, t, feed, prod, temp] for feed in M.HTLFeedstocks
+                             for temp in M.HTLTemperatures) <= M.htl_storage_capacity[l, prod])
+    ## HTC
+    # products entering htc must be under capacity
+    M.const.add(expr=sum(M.htc_in[l, t, feed] for feed in M.HTCFeedstocks) <= M.process_capacity[l, 'HTC'])
+    ##htc yield conversion
+    # only one temperature can be selected for each location at each time period
+    for feed in M.HTCFeedstocks:
+        M.const.add(
+            expr=sum(M.decision_htc_temperature[l, t, feed, temp] for temp in M.HTCTemperatures) == 1)
+        # getting HTC yields from inputs
+        for temp in M.HTCTemperatures:
+            for prod in M.HTCProducts:
+                # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
+                M.const.add(
+                    expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp] <=
+                         M.htc_in[l, t, feed])
+                M.const.add(
+                    expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp] <=
+                         A.FEEDSTOCK_SUPPLY[l] * M.decision_htc_temperature[l, t, feed, temp])
+                M.const.add(expr=M.htc_out[l, t, feed, prod, temp] / A.HTC_YIELD[
+                    feed, prod, temp] >= 0)
+                M.const.add(expr=M.htc_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (
+                        1 - M.decision_htc_temperature[l, t, feed, temp]) <= M.htc_out[
+                                     l, t, feed, prod, temp] / A.HTC_YIELD[feed, prod, temp])
+
+                M.const.add(
+                    expr=M.htc_from_storage[l, t, feed, prod, temp] <= M.htc_storage[
+                        l, t, feed, prod, temp])
+                M.const.add(
+                    expr=M.htc_to_storage[l, t, feed, prod, temp] <= M.htc_storage_capacity[
+                        l, prod])
+
+                # storage is empty in the first time period, and is the boundary conditions
+                if t > 0:
+                    M.const.add(expr=M.htc_storage[l, t, feed, prod, temp] == M.htc_storage[
+                        l, t - 1, feed, prod, temp] + M.htc_to_storage[l, t - 1, feed, prod, temp] -
+                                     M.htc_from_storage[l, t - 1, feed, prod, temp])
+                else:
+                    M.const.add(expr=M.htc_storage[l, t, feed, prod, temp] == 0)
+                    M.const.add(expr=M.htc_from_storage[l, t, feed, prod, temp] == 0)
+
+                if t == A.TIME_PERIODS - 1:
+                    M.const.add(expr=M.htc_storage[l, t, feed, prod, temp] == 0)
+
+            # moving products to stage 3 of the model
+            M.const.add(expr=M.htc_out[l, t, feed, 'Hydrochar', temp] + M.htc_from_storage[
+                l, t, feed, 'Hydrochar', temp] == sum(
+                M.hydrochar_from_htc[l, t, feed, temp, loc] for loc in M.HTCHydrocharLocations))
+            M.const.add(
+                expr=M.htc_out[l, t, feed, 'GP', temp] + M.htc_from_storage[l, t, feed, 'GP', temp] == sum(
+                    M.gp_from_htc[l, t, feed, temp, loc] for loc in M.HTCGPLocations))
+            M.const.add(
+                expr=M.htc_out[l, t, feed, 'AP', temp] + M.htc_from_storage[l, t, feed, 'AP', temp] == sum(
+                    M.ap_from_htc[l, t, feed, temp, loc] for loc in M.HTCAPLocations))
+
+            # linking the edges of the graph for hydrochar
+            M.const.add(expr=M.htc_to_storage[l, t, feed, 'Hydrochar', temp] == M.hydrochar_from_htc[
+                l, t, feed, temp, 'storage'])
+            M.const.add(
+                expr=M.htc_to_chp[l, t, feed, 'Hydrochar', temp] == A.HHV['HTC', feed, 'Hydrochar', temp] *
+                     M.hydrochar_from_htc[l, t, feed, temp, 'CHP'])
+
+            # linking the edges of the graph for gaseous phase
+            M.const.add(expr=M.htc_to_storage[l, t, feed, 'GP', temp] == 0)
+            M.const.add(expr=M.htc_to_chp[l, t, feed, 'GP', temp] == 0)
+
+            # linking the edges of the graph for AP
+            M.const.add(expr=M.htc_to_storage[l, t, feed, 'AP', temp] == M.ap_from_htc[
+                l, t, feed, temp, 'storage'])
+            M.const.add(expr=M.htc_to_chp[l, t, feed, 'AP', temp] == 0)
+
+            # ensuring that the HTC storage does not overflow
+        for prod in M.HTCProducts:
+            M.const.add(
+                expr=sum(M.htc_storage[l, t, feed, prod, temp] for feed in M.HTCFeedstocks for temp in
+                         M.HTCTemperatures) <= M.htc_storage_capacity[l, prod])
+    ## AD
+    # products entering ad must be under capacity
+    for stage in M.ADStages:
+        for feed in M.ADFeedstocks:
+            # glovers linearization for ad_in_glovers = ad_in*decision_ad_stage
+            M.const.add(
+                expr=M.ad_in[l, t, feed] - A.FEEDSTOCK_SUPPLY[l] * (1 - M.decision_ad_stage[l, stage]) <=
+                     M.ad_in_glovers[l, t, feed, stage])
+            M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] <= A.FEEDSTOCK_SUPPLY[l] * M.decision_ad_stage[
+                l, stage])
+            M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] <= M.ad_in[l, t, feed])
+            M.const.add(expr=M.ad_in_glovers[l, t, feed, stage] >= 0)
+
+        M.const.add(
+            expr=sum(M.ad_in_glovers[l, t, feed, stage] * A.LOADING[feed, stage] for feed in M.ADFeedstocks)
+                 == M.ad_capacity[l, stage])
+    M.const.add(expr=sum(M.ad_capacity[l, stage] for stage in M.ADStages) == M.process_capacity[l, 'AD'])
+    if scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
+            1100 < scenario < 1119) or (
+            2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
+        M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
+    else:
+        M.const.add(expr=M.ad_in[l, t, 'COD'] == sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
+            l, t, feed, temp, 'AD'] for feed in M.PyrolysisFeedstocks
+                                                     for temp in M.PyrolysisTemperatures))  # units: tons COD
+    ##ad yield conversion
+    # getting AD yields from inputs
+    for prod in M.ADProducts:
+        for stage in M.ADStages:
+            # the amount of yield coming out of the reaction is dependent on yield conversion factors and the amount of material entering
+            if t == 0:
+                M.const.add(expr=M.ad_out[l, t, prod, stage] == 0)  # no yield from first month of ad
+            else:
+                M.const.add(expr=M.ad_out[l, t, prod, stage] == sum(M.ad_in_glovers[l, t - 1, feed, stage] *
+                                                                    A.AD_YIELD[feed, prod, stage] for feed
+                                                                    in M.ADFeedstocks))
+                # yields from ad take time to materialize, biogas yield is in Nm^3, digestate is in kg
+
+            M.const.add(expr=M.ad_from_storage[l, t, prod, stage] <= M.ad_storage[l, t, prod, stage])
+            M.const.add(expr=M.ad_to_storage[l, t, prod, stage] <= M.ad_storage_capacity[l, prod])
+
+            # storage is empty in the first time period, and is the boundary conditions
+            if t > 0:
+                M.const.add(expr=M.ad_storage[l, t, prod, stage] == M.ad_storage[
+                    l, t - 1, prod, stage] + M.ad_to_storage[l, t - 1, prod, stage] -
+                                 M.ad_from_storage[l, t - 1, prod, stage])
+            else:
+                M.const.add(expr=M.ad_storage[l, t, prod, stage] == 0)
+                M.const.add(expr=M.ad_from_storage[l, t, prod, stage] == 0)
+
+            if t == A.TIME_PERIODS - 1:
+                M.const.add(expr=M.ad_storage[l, t, prod, stage] == 0)
+    for stage in M.ADStages:
+        # moving products to stage 3 of the model
+        M.const.add(expr=M.ad_out[l, t, 'digestate', stage] + M.ad_from_storage[
+            l, t, 'digestate', stage] == sum(
+            M.digestate_from_ad[l, t, stage, loc] for loc in M.ADDigestateLocations))
+        M.const.add(expr=M.ad_out[l, t, 'biogas', stage] + M.ad_from_storage[
+            l, t, 'biogas', stage] == sum(
+            M.biogas_from_ad[l, t, stage, loc] for loc in M.ADBiogasLocations))
+
+        # linking the edges of the graph for digestate
+        # if scenario is 1, then digestate can only be disposed of
+        if scenario == 1 or scenario == 421 or scenario == 431 or scenario == 441:
+            M.const.add(expr=M.digestate_from_ad[l, t, stage, 'storage'] == 0)
+            M.const.add(expr=M.digestate_from_ad[l, t, stage, 'land'] == 0)
+
+        M.const.add(expr=M.ad_to_storage[l, t, 'digestate', stage] == M.digestate_from_ad[
+            l, t, stage, 'storage'])
+        M.const.add(expr=M.ad_to_chp[l, t, 'digestate', stage] == 0)
+
+        M.const.add(expr=M.ad_to_storage[l, t, 'biogas', stage] == M.biogas_from_ad[
+            l, t, stage, 'storage'])
+        M.const.add(
+            expr=M.ad_to_chp[l, t, 'biogas', stage] == A.HHV['methane'] * M.biogas_from_ad[
+                l, t, stage, 'CHP'])  # units MJ
+
+        # ensuring the AD storage does not overflow
+        for prod in M.ADProducts:
+            M.const.add(expr=sum(M.ad_storage[l, t, prod, stage] for stage in
+                                 M.ADStages) <= M.ad_storage_capacity[l, prod])
+    # CHP CONSTRAINTS
+    M.const.add(expr=M.chp_in[l, t] * A.MJ_TO_KW / A.HOURS_PER_PERIOD <= M.process_capacity[l, 'CHP'])
+    # different available products in different scenarios
+    M.const.add(expr=M.chp_in[l, t] == sum(
+        M.pyrolysis_to_chp[l, t, feedstock, pyro_prod, temp]
+        for temp in M.PyrolysisTemperatures for pyro_prod in M.PyrolysisProducts for feedstock in
+        M.PyrolysisFeedstocks) +
+                     sum(M.htl_to_chp[l, t, feedstock, htl_prod, temp]
+                         for feedstock in M.HTLFeedstocks for htl_prod
+                         in M.HTLProducts for temp in M.HTLTemperatures) +
+                     sum(M.htc_to_chp[l, t, feedstock, htc_prod, temp]
+                         for feedstock in M.HTCFeedstocks for htc_prod
+                         in M.HTCProducts for temp in M.HTCTemperatures) +
+                     sum(M.ad_to_chp[l, t, ad_prod, temp]
+                         for ad_prod in M.ADProducts for temp in
+                         M.ADStages))  # units in MJ
+    # CHP yields heat and power depends on the types of feedstocks used
+    M.const.add(
+        expr=sum(M.chp_out[l, t, tech, 'heat'] for tech in M.Technology) + M.chp_market[l, t, 'heat'] ==
+             A.CHP_HEAT_EFFICIENCY * M.chp_in[l, t])  # units of J
+    M.const.add(expr=sum(M.chp_out[l, t, tech, 'electricity'] for tech in M.Technology) +
+                     M.chp_market[l, t, 'electricity'] == A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[
+                         l, t])  # units of kWh out, MJ in
 
 
 def add_variables(M):
@@ -2111,12 +1975,12 @@ if __name__ == '__main__':
         # scenario defines LCA type
 
         # clear existing/old TEA data
-        files = glob.glob("data/"+str(scenario)+"/TEA/*")
+        files = glob.glob("data/" + str(scenario) + "/TEA/*")
         for file in files:
             os.remove(file)
 
         # clear existing/old LCA data
-        files = glob.glob("data/"+str(scenario)+"/LCA/*")
+        files = glob.glob("data/" + str(scenario) + "/LCA/*")
         for file in files:
             os.remove(file)
 
@@ -2127,13 +1991,13 @@ if __name__ == '__main__':
         elif 2000 < scenario < 2999:
             lca_type = "ALCA"
 
-        #scenario defines midpoint type
+        # scenario defines midpoint type
         if (int(scenario / 10) % 10) == 1:
             midpoint = 'eutrophication: freshwater'
         else:
             midpoint = "climate change"
 
-        #scenario defines the number of counties
+        # scenario defines the number of counties
         if 1000 < scenario < 2999 or scenario == 51 or scenario == 52 or scenario == 3000 or scenario == 3100 or scenario == 3200:
             number_counties = 1
         elif 420 < scenario < 430 or scenario == 3001 or scenario == 3101 or scenario == 3201:
@@ -2145,6 +2009,6 @@ if __name__ == '__main__':
         else:
             number_counties = 62
 
-    # initialize the model
+        # initialize the model
         for j in range(number_counties):
             initialize_model(scenario, j, midpoint, lca_type)
