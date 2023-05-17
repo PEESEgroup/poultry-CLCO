@@ -3,14 +3,12 @@ import csv
 from CLCO_Data import CLCO_Data
 from sympy import symbols, evalf
 
-FEEDSTOCK_SUPPLY = [10.77, 11.01, 11.15, 11.5, 11.61, 11.95, 12.52, 12.57, 12.7, 16.06, 16.32, 23.25,
-                    23.59, 28.56, 30.45, 52.72, 62.13, 76.13, 111.96, 125.89, 127.49, 151.68, 208.94,
-                    272.69, 594.76, 758.82, 907.18, 907.45, 1285.48, 1356.12, ]
-SUPPLY_X_COORD = [604, 545, 598, 622, 136, 494, 627, 604, 497, 503, 612, 345, 696, 250, 572, 371, 312, 417,
-                  350, 327, 555, 239, 558, 592, 303, 519, 190, 604, 334, 402, ]
-SUPPLY_Y_COORD = [4556, 4715, 4885, 4729, 4692, 4926, 4796, 4624, 4720, 4807, 4678, 4695, 4535, 4682, 4680,
-                  4764, 4747, 4874, 4738, 4722, 4937, 4765, 4583, 4773, 4682, 4618, 4740, 4955, 4799,
-                  4762, ]
+FEEDSTOCK_SUPPLY = [23.25, 23.59, 28.56, 30.45, 52.72, 62.13, 76.13, 111.96, 125.89, 127.49, 151.68, 208.94,
+                    272.69, 594.76, 758.82, 907.18, 907.45, 1285.48, 1356.12]
+SUPPLY_X_COORD = [345, 696, 250, 572, 371, 312, 417,
+                  350, 327, 555, 239, 558, 592, 303, 519, 190, 604, 334, 402]
+SUPPLY_Y_COORD = [4695, 4535, 4682, 4680, 4764, 4747, 4874, 4738, 4722, 4937, 4765, 4583, 4773, 4682, 4618, 4740,
+                  4955, 4799, 4762]
 
 FACILITY_X_COORD = [i * 20 + 100 for i in range(int((700 - 100) / 20))]
 FACILITY_Y_COORD = [i * 20 + 4440 for i in range(int((5000 - 4440) / 20))]
@@ -33,7 +31,6 @@ def distance_calcs(A, max_dist):
               for i in range(len(FEEDSTOCK_SUPPLY))] for x in FACILITY_X_COORD] for y in FACILITY_Y_COORD]
 
 
-# returns an array of [x,y] locations of the facilities, an array of average transportation distance to each faciliy, and an array of the amount of feedstock going to each facility
 def FLP(t_cutoff_offset, t_dist, t_dist_no_logistics):
     """
     Model formulation for the facility location problem
@@ -64,7 +61,6 @@ def FLP(t_cutoff_offset, t_dist, t_dist_no_logistics):
                                   initialize=1)
     M.Amount_shipped = pyo.Var(M.Facility_X, M.Facility_Y, M.SupplyLocation, within=pyo.NonNegativeReals, initialize=1)
     M.Total_Costs = pyo.Var(within=pyo.NonNegativeReals, initialize=1)
-
     M.TransportCost = pyo.Var(M.Facility_X, M.Facility_Y, within=pyo.NonNegativeReals, initialize=0)
 
     M.const = pyo.ConstraintList()
@@ -81,27 +77,32 @@ def FLP(t_cutoff_offset, t_dist, t_dist_no_logistics):
 
     for x in M.Facility_X:
         for y in M.Facility_Y:
-            # constraints based on the geometry of new york
-            if x < 370 and y > 4825:
+            # constraints based on the geometry of new york to speed up problem solve time
+            if x < 390 and y > 4800:
                 M.const.add(expr=M.Facility[x, y] == 0)
             if x < 500 and y < 4650:
+                M.const.add(expr=M.Facility[x, y] == 0)
+            if x > 620:
+                M.const.add(expr=M.Facility[x, y] == 0)
+            if y < 4530:
                 M.const.add(expr=M.Facility[x, y] == 0)
 
             # calculate the capacity for each facility
             # originally sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation)
             # <= M.Facility_Capacity[x, y] * M.Facility[x, y], but applied glovers linearization
             M.const.add(expr=0 <= sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation))
-            M.const.add(expr=sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation) <= facility_upper*M.Facility[x, y])
-            M.const.add(expr=M.Facility_Capacity[x, y] - facility_upper*(1-M.Facility[x,y]) <=
+            M.const.add(
+                expr=sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation) <= facility_upper * M.Facility[x, y])
+            M.const.add(expr=M.Facility_Capacity[x, y] - facility_upper * (1 - M.Facility[x, y]) <=
                              sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation))
-            M.const.add(expr=sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation)<= M.Facility_Capacity[x, y])
+            M.const.add(expr=sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation) <= M.Facility_Capacity[x, y])
 
             # impose a minimum limit on the size of each facility
             M.const.add(expr=M.Facility_Capacity[x, y] >= M.Facility[x, y] * 250)
 
             # implementing piecewise linear approximation with a dummy CAPEX equation that mimics pyrolysis
             q = symbols("q")
-            thermochem = [i * 50 for i in range(201)]
+            thermochem = [i * 500 for i in range(21)]
             capex_cost = 60000 * (q ** .6)
             capex_est = [capex_cost.evalf(subs={q: x}) for x in thermochem]
 
@@ -117,43 +118,31 @@ def FLP(t_cutoff_offset, t_dist, t_dist_no_logistics):
                                                       int(FEEDSTOCK_SUPPLY.index(k[2]))] * M.Amount_shipped[
                                                       x, y, k[0], k[1], k[2]] for k in M.SupplyLocation))
 
+    # total costs depends upon the distance transported as well as the facility cost
     M.const.add(expr=M.Total_Costs == sum(M.Facility_Cost[x, y] for x in M.Facility_X for y in M.Facility_Y) +
                      sum(87 * transport_distances[int((y - 4440) / 20)][int((x - 100) / 20)][
                          int(FEEDSTOCK_SUPPLY.index(k[2]))] * M.Amount_shipped[x, y, k[0], k[1], k[2]]
                          for x in M.Facility_X for y in M.Facility_Y for k in
-                         M.SupplyLocation))  # 87 to account for Total_Costs
+                         M.SupplyLocation))  # 87 to account for discounting over the 10 year time horizon as opposed to 120.
 
     M.obj = pyo.Objective(expr=M.Total_Costs, sense=pyo.minimize)
 
-    '''
-    M.num_facilities = 4 #TODO change this value when changing facilities
-    instance = M.create_instance()
-    opt = pyo.SolverFactory('gurobi')
-
-    opt.options['mipgap'] = .25 + t_cutoff_offset / 50 + 16 / 200  # for gurobi #TODO update this whenever changing facilities
-
-    print(opt.solve(instance, tee=True))  # keepfiles = True
-
-    Total_Costs[t_cutoff_offset][2] = pyo.value(instance.Total_Costs)
-    print(Total_Costs)
-
-    print_model(3 + 1, instance, 100)  #TODO change this line when rerunning specific instances
-    return
-    '''
-
+    # iterates through the different number of facilities that can exist at this transportation distance cutoff
     for i in range(6):
+        # update and solve the model
         M.num_facilities = i + 1
         instance = M.create_instance()
         opt = pyo.SolverFactory('gurobi')
-        if i == 0:
-            opt.options['mipgap'] = .05 + t_cutoff_offset / 50  # for gurobi
-        else:
-            opt.options['mipgap'] = .25 + t_cutoff_offset / 50 + i * i / 200  # for gurobi
+        if not i == 0:
+            opt.options[
+                'mipgap'] = .04 + t_cutoff_offset / 100 + i / 50 + i * i / 125  # for gurobi so as to not burn the computer down
         print(opt.solve(instance, tee=True))  # keepfiles = True
 
+        # store the NPV of the location for later
         NPV[t_cutoff_offset][i] = pyo.value(instance.Total_Costs)
         print(NPV)
 
+        # save information about the specifics of the model solution
         print_model(i + 1, instance, 450 - 50 * t_cutoff_offset)
 
 
@@ -165,11 +154,12 @@ def print_model(scenario, model, transit_dist):
     :param transit_dist: the maximum transportation distance allowed to each facility
     :return: a csv file containing all pertinant information
     """
-    with open("data/FLP/range" + str(transit_dist) + "facilities" + str(scenario) + 'transport.csv', 'w', encoding='UTF8',
+    with open("data/FLP/range" + str(transit_dist) + "facilities" + str(scenario) + 'transport.csv', 'w',
+              encoding='UTF8',
               newline='') as f:
         write = csv.writer(f)
 
-        # print out all the data
+        # print out all the data that isn't part of the SOS constraints
         for v in model.component_objects(pyo.Var, active=True):
             if "SOS2" not in str(v):
                 row = ["Variable", v]
@@ -180,19 +170,14 @@ def print_model(scenario, model, transit_dist):
 
 
 if __name__ == '__main__':
-    #define the number of facilities being produced
-    '''
-    Can choose either: 2, 3, or 4 facilities
-    '''
-    num_facility = 4
-    A = CLCO_Data(num_facility)
+    # facility location problem is traditionally scenario number 4
+    A = CLCO_Data(4)
 
     for i in range(6):
         '''
         There are 6 scenarios, corresponding to maximum transportation prices of $45/ton, $40/ton, $35/ton, $30/ton, 
-        $25/ton, $20/ton, which corresponds to transportation circles of 
+        $25/ton, $20/ton, which corresponds to transportation circles of 450km, 400km, etc.
         '''
         FLP(i, distance_calcs(A, 45 - 5 * i), distance_calcs(A, 10000))
-        # corresponds to 0, 100, 150, etc. radius km circles
 
     print(NPV)
