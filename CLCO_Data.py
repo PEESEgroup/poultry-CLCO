@@ -131,14 +131,14 @@ class CLCO_Data:
     PYRO_YIELD['feedstock', 'AP', 800] = .10
     PYRO_YIELD['feedstock', 'AP', 700] = .11
 
-    HTC_WATER = 5000  # kg/ton feedstock
-    HTL_WATER = 9000  # kg/ton feedstock
+    HTC_WATER = 5  # ton/ton feedstock
+    HTL_WATER = 9  # ton/ton feedstock
 
     # HTL Yield Data.  Yield at each temperature must sum to 1
     HTL_YIELD = defaultdict(dict)  # indexed on temperature and yield product
     HTL_YIELD['feedstock', 'Hydrochar', 350] = .171
     HTL_YIELD['feedstock', 'GP', 350] = .114
-    HTL_YIELD['feedstock', 'AP', 350] = .545 + HTL_WATER / 1000
+    HTL_YIELD['feedstock', 'AP', 350] = .545 + HTL_WATER
     HTL_YIELD['feedstock', 'Biooil', 350] = .17
 
     # HTC Yield Data.  Yield at each temperature must sum to 1
@@ -151,10 +151,10 @@ class CLCO_Data:
     HTC_YIELD['feedstock', 'GP', 200] = .056
     HTC_YIELD['feedstock', 'GP', 220] = .188
     HTC_YIELD['feedstock', 'GP', 250] = .2685
-    HTC_YIELD['feedstock', 'AP', 180] = .403 + HTC_WATER / 1000
-    HTC_YIELD['feedstock', 'AP', 200] = .394 + HTC_WATER / 1000
-    HTC_YIELD['feedstock', 'AP', 220] = .310 + HTC_WATER / 1000
-    HTC_YIELD['feedstock', 'AP', 250] = .291 + HTC_WATER / 1000
+    HTC_YIELD['feedstock', 'AP', 180] = .403 + HTC_WATER
+    HTC_YIELD['feedstock', 'AP', 200] = .394 + HTC_WATER
+    HTC_YIELD['feedstock', 'AP', 220] = .310 + HTC_WATER
+    HTC_YIELD['feedstock', 'AP', 250] = .291 + HTC_WATER
 
     DRY_BIOMASS_REF = 3025 * 3  # 3 exists to adjust from months to quarters
 
@@ -204,8 +204,8 @@ class CLCO_Data:
 
     OPEX['Electricity'] = .07  # $/kWh
     OPEX['Fuel'] = .0082  # $/MJ
-    OPEX['Wastewater'] = .0023  # $/kg
-    OPEX['Freshwater'] = .00145  # $/kg
+    OPEX['Wastewater'] = 2.3  # $/ton
+    OPEX['Freshwater'] = 1.45  # $/ton
     OPEX['Landfill'] = 69.64  # $/ton
     OPEX['Atmosphere'] = 0  # $11.82/ton of emitted carbon dioxide under RGGI
     OPEX['transit'] = .1  # $dollars/km
@@ -456,24 +456,24 @@ class CLCO_Data:
     IMPACT['CLCA', 'diesel', 'photochemical oxidant formation: human health'] = .157464
     IMPACT['CLCA', 'diesel', 'photochemical oxidant formation: terrestrial ecosystems'] = .161838
     IMPACT['CLCA', 'diesel', 'water use'] = .042282
-    IMPACT['CLCA', 'water', 'acidification'] = 6.4348e-8  # per kg
-    IMPACT['CLCA', 'water', 'climate change'] = .000035842
-    IMPACT['CLCA', 'water', 'ecotoxicity: freshwater'] = 4.97887e-6
-    IMPACT['CLCA', 'water', 'ecotoxicity: marine'] = 6.3379e-6
-    IMPACT['CLCA', 'water', 'ecotoxicity: terrestrial'] = .00022
-    IMPACT['CLCA', 'water', 'energy resources'] = 1.44505e-5
-    IMPACT['CLCA', 'water', 'eutrophication: freshwater'] = 1.722e-7
-    IMPACT['CLCA', 'water', 'eutrophication: marine'] = 2.02928e-7
-    IMPACT['CLCA', 'water', 'human toxicity: carcinogenic'] = .00003356
-    IMPACT['CLCA', 'water', 'human toxicity: non -carcinogenic'] = .00033
-    IMPACT['CLCA', 'water', 'ionising radiation'] = 2.5847e-7
-    IMPACT['CLCA', 'water', 'land use'] = 4.14242e-6
-    IMPACT['CLCA', 'water', 'material resources'] = 1.73772e-7
-    IMPACT['CLCA', 'water', 'ozone depletion'] = 1.5916e-11
-    IMPACT['CLCA', 'water', 'particulate matter formation'] = 3.42606e-8
-    IMPACT['CLCA', 'water', 'photochemical oxidant formation: human health'] = 1.03887e-7
-    IMPACT['CLCA', 'water', 'photochemical oxidant formation: terrestrial ecosystems'] = 1.11422e-7
-    IMPACT['CLCA', 'water', 'water use'] = 4.64745e-6
+    IMPACT['CLCA', 'water', 'acidification'] = 0.000064348 # per kg
+    IMPACT['CLCA', 'water', 'climate change'] = 0.035842
+    IMPACT['CLCA', 'water', 'ecotoxicity: freshwater'] = 0.00497887
+    IMPACT['CLCA', 'water', 'ecotoxicity: marine'] = 0.0063379
+    IMPACT['CLCA', 'water', 'ecotoxicity: terrestrial'] = 0.22
+    IMPACT['CLCA', 'water', 'energy resources'] = 0.0144505
+    IMPACT['CLCA', 'water', 'eutrophication: freshwater'] = 0.0001722
+    IMPACT['CLCA', 'water', 'eutrophication: marine'] = 0.000202928
+    IMPACT['CLCA', 'water', 'human toxicity: carcinogenic'] = 0.03356
+    IMPACT['CLCA', 'water', 'human toxicity: non -carcinogenic'] = 0.33
+    IMPACT['CLCA', 'water', 'ionising radiation'] = 0.00025847
+    IMPACT['CLCA', 'water', 'land use'] = 0.00414242
+    IMPACT['CLCA', 'water', 'material resources'] = 0.000173772
+    IMPACT['CLCA', 'water', 'ozone depletion'] = 1.5916E-08
+    IMPACT['CLCA', 'water', 'particulate matter formation'] =3.42606E-05
+    IMPACT['CLCA', 'water', 'photochemical oxidant formation: human health'] = 0.000103887
+    IMPACT['CLCA', 'water', 'photochemical oxidant formation: terrestrial ecosystems'] = 0.000111422
+    IMPACT['CLCA', 'water', 'water use'] = 0.00464745
     IMPACT['CLCA', 'biochar-chp', 400, 'acidification'] = 6.346948  # per ton
     IMPACT['CLCA', 'biochar-chp', 400, 'climate change'] = 1626.836
     IMPACT['CLCA', 'biochar-chp', 400, 'ecotoxicity: freshwater'] = 31.0905
@@ -1778,25 +1778,24 @@ class CLCO_Data:
     IMPACT['ALCA', 'diesel', 'photochemical oxidant formation: human health'] = 0.154548
     IMPACT['ALCA', 'diesel', 'photochemical oxidant formation: terrestrial ecosystems'] = 0.158922
     IMPACT['ALCA', 'diesel', 'water use'] = 0.042282
-    IMPACT['ALCA', 'water', 'acidification'] = 1.6661E-07  # per kg
-    IMPACT['ALCA', 'water', 'climate change'] = 0.000075633
-    IMPACT['ALCA', 'water', 'ecotoxicity: freshwater'] = 3.27756E-06
-    IMPACT['ALCA', 'water', 'ecotoxicity: marine'] = 4.44529E-06
-    IMPACT['ALCA', 'water', 'ecotoxicity: terrestrial'] = 0.00017
-    IMPACT['ALCA', 'water', 'energy resources'] = 2.44258E-05
-    IMPACT['ALCA', 'water', 'eutrophication: freshwater'] = 2.0672E-07
-    IMPACT['ALCA', 'water', 'eutrophication: marine'] = 2.0551E-07
-    IMPACT['ALCA', 'water', 'human toxicity: carcinogenic'] = 0.00003738
-    IMPACT['ALCA', 'water', 'human toxicity: non -carcinogenic'] = 0.00036
-    IMPACT['ALCA', 'water', 'ionising radiation'] = 0.000019426
-    IMPACT['ALCA', 'water', 'land use'] = 4.95533E-06
-    IMPACT['ALCA', 'water', 'material resources'] = 6.98496E-07
-    IMPACT['ALCA', 'water', 'ozone depletion'] = 2.56985E-11
-    IMPACT['ALCA', 'water', 'particulate matter formation'] = 1.43782E-07
-    IMPACT['ALCA', 'water', 'photochemical oxidant formation: human health'] = 1.52419E-07
-    IMPACT['ALCA', 'water', 'photochemical oxidant formation: terrestrial ecosystems'] = 1.61179E-07
-    IMPACT['ALCA', 'water', 'water use'] = 4.82117E-06
-
+    IMPACT['ALCA', 'water', 'acidification'] = 0.00016661# per kg
+    IMPACT['ALCA', 'water', 'climate change'] = 0.075633
+    IMPACT['ALCA', 'water', 'ecotoxicity: freshwater'] = 0.00327756
+    IMPACT['ALCA', 'water', 'ecotoxicity: marine'] = 0.00444529
+    IMPACT['ALCA', 'water', 'ecotoxicity: terrestrial'] =0.17
+    IMPACT['ALCA', 'water', 'energy resources'] = 0.0244258
+    IMPACT['ALCA', 'water', 'eutrophication: freshwater'] = 0.00020672
+    IMPACT['ALCA', 'water', 'eutrophication: marine'] = 0.00020551
+    IMPACT['ALCA', 'water', 'human toxicity: carcinogenic'] = 0.03738
+    IMPACT['ALCA', 'water', 'human toxicity: non -carcinogenic'] = 0.36
+    IMPACT['ALCA', 'water', 'ionising radiation'] = 0.019426
+    IMPACT['ALCA', 'water', 'land use'] = 0.00495533
+    IMPACT['ALCA', 'water', 'material resources'] = 0.000698496
+    IMPACT['ALCA', 'water', 'ozone depletion'] = 2.56985E-08
+    IMPACT['ALCA', 'water', 'particulate matter formation'] = 0.000143782
+    IMPACT['ALCA', 'water', 'photochemical oxidant formation: human health'] =0.000152419
+    IMPACT['ALCA', 'water', 'photochemical oxidant formation: terrestrial ecosystems'] = 0.000161179
+    IMPACT['ALCA', 'water', 'water use'] = 0.00482117
     IMPACT['ALCA', 'biochar-chp', 400, 'acidification'] = 6.346948  # per ton
     IMPACT['ALCA', 'biochar-chp', 400, 'climate change'] = 1626.836
     IMPACT['ALCA', 'biochar-chp', 400, 'ecotoxicity: freshwater'] = 31.0905
