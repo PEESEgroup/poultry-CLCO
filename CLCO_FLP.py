@@ -59,7 +59,8 @@ def FLP(t_cutoff_offset, t_dist, t_dist_no_logistics):
     # set of supply amounts
     M.Facility = pyo.Var(M.Facility_X, M.Facility_Y, within=pyo.Binary, initialize=0)
     M.Facility_Cost = pyo.Var(M.Facility_X, M.Facility_Y, within=pyo.NonNegativeReals, initialize=1)
-    M.Facility_Capacity = pyo.Var(M.Facility_X, M.Facility_Y, within=pyo.NonNegativeReals, bounds=(0, 10000),
+    facility_upper = 10000
+    M.Facility_Capacity = pyo.Var(M.Facility_X, M.Facility_Y, within=pyo.NonNegativeReals, bounds=(0, facility_upper),
                                   initialize=1)
     M.Amount_shipped = pyo.Var(M.Facility_X, M.Facility_Y, M.SupplyLocation, within=pyo.NonNegativeReals, initialize=1)
     M.Total_Costs = pyo.Var(within=pyo.NonNegativeReals, initialize=1)
@@ -87,8 +88,13 @@ def FLP(t_cutoff_offset, t_dist, t_dist_no_logistics):
                 M.const.add(expr=M.Facility[x, y] == 0)
 
             # calculate the capacity for each facility
-            M.const.add( expr=sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation) <=
-                              M.Facility_Capacity[x, y] * M.Facility[x, y])
+            # originally sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation)
+            # <= M.Facility_Capacity[x, y] * M.Facility[x, y], but applied glovers linearization
+            M.const.add(expr=0 <= sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation))
+            M.const.add(expr=sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation) <= facility_upper*M.Facility[x, y])
+            M.const.add(expr=M.Facility_Capacity[x, y] - facility_upper*(1-M.Facility[x,y]) <=
+                             sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation))
+            M.const.add(expr=sum(M.Amount_shipped[x, y, k] for k in M.SupplyLocation)<= M.Facility_Capacity[x, y])
 
             # impose a minimum limit on the size of each facility
             M.const.add(expr=M.Facility_Capacity[x, y] >= M.Facility[x, y] * 250)

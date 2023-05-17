@@ -1968,10 +1968,12 @@ if __name__ == '__main__':
     3201: 2 pyrolysis plants for the whole state - min GWP
     3202: pyrolysis plant in every county, calculate biochar break-even prices - min GWP
     3203: plant in every county, calculate biochar break-even prices - min GWP
-    10103: 
+    10003: first calculated optimal plants at NPV max in every county, then implemented constraints on those plants for sensitivity analysis
+    10103: first calculated optimal plants at a tradeoff in every county, then implemented constraints on those plants for sensitivity analysis
+    10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [10003, 10103, 10203]
+    S = [428]
 
     for scenario in S:
         lca_type = "CLCA"
