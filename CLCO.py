@@ -517,9 +517,6 @@ def lca_constraints(A, M, l):
                                                                                          + M.process_capex[l, 'HTL'] +
                                                                                          M.process_capex[l, 'HTC']))
             # CHP facility construction LCA impacts are spread out across the various CHP categories
-            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == 0)
-            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == 0)
-            M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == 0)
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'storage-facility-solids', cat] ==
                              A.IMPACT[lca_type, 'storage-facility-solids', cat] * (M.feedstock_storage_capacity[l] +
                                                                                    M.pyrolysis_storage_capacity[
@@ -566,10 +563,25 @@ def lca_constraints(A, M, l):
             # LCA specific constraints
             if lca_type == "ALCA":
                 M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] == 0)
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] == 0)
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] == 0)
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] == 0)
             elif lca_type == "CLCA":
                 M.const.add(expr=M.LCA_midpoints[l, lca_type, "avoided electricity", cat] ==
                                  -A.IMPACT[lca_type, 'grid electricity', cat] *
                                  sum(M.chp_market[l, t, 'electricity'] for t in M.Time))
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] ==
+                                 A.IMPACT[lca_type, 'N fertilizer', cat] *
+                                 sum(M.avoided_fertilizers[l, t, tech, 'N']
+                                     for l in M.Location for t in M.Time for tech in M.Technology))
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] ==
+                                 A.IMPACT[lca_type, 'P fertilizer', cat] *
+                                 sum(M.avoided_fertilizers[l, t, tech, 'P']
+                                     for l in M.Location for t in M.Time for tech in M.Technology))
+                M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] ==
+                                 A.IMPACT[lca_type, 'K fertilizer', cat] *
+                                 sum(M.avoided_fertilizers[l, t, tech, 'K']
+                                     for l in M.Location for t in M.Time for tech in M.Technology))
 
 
 def capex_constraints(A, M, l):
