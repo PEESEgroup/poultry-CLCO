@@ -82,20 +82,19 @@ class CLCO_Data:
     P_CONTENT = 1
     N_CONTENT = 1
     K_CONTENT = 1
+    FERT_PRICE = 1
 
     #### PARAMETERS
     ### LCA EMISSIONS CHARACTERIZATION FACTORS
 
     ### TEO ECONOMICS PARAMETERS
-    #TODO replace back after validating with Bora
     TIME_PERIODS = 40
     YEARS = 10
     ANNUAL_DISCOUNT_RATE = .07
     MONTHLY_DISCOUNT_RATE = (1 + ANNUAL_DISCOUNT_RATE) ** (1 / 4) - 1
-
     LAND_APPLICATION_MONTH = 1
-
     OPEX_TPC = .09 / TIME_PERIODS * YEARS
+    CAPEX_RATIO = 1
 
     ### MODEL PARAMETERS
     ## STAGE 1 PARAMETERS
@@ -213,37 +212,37 @@ class CLCO_Data:
 
     #
     CAPEX = defaultdict(dict)
-    CAPEX['Pyrolysis', 'process', 'coefficient'] = 77606
+    CAPEX['Pyrolysis', 'process', 'coefficient'] = 77606 * CAPEX_RATIO
     CAPEX['Pyrolysis', 'process', 'exponent'] = .6194
-    CAPEX['Pyrolysis', 'storage', 'coefficient'] = 226351
+    CAPEX['Pyrolysis', 'storage', 'coefficient'] = 226351 * CAPEX_RATIO
     CAPEX['Pyrolysis', 'storage', 'exponent'] = .4045
 
-    CAPEX['HTL', 'process', 'coefficient'] = 16017643
+    CAPEX['HTL', 'process', 'coefficient'] = 16017643 * CAPEX_RATIO
     CAPEX['HTL', 'process', 'exponent'] = .6
-    CAPEX['HTL', 'storage', 'coefficient'] = 226351
+    CAPEX['HTL', 'storage', 'coefficient'] = 226351* CAPEX_RATIO
     CAPEX['HTL', 'storage', 'exponent'] = .4045
 
-    CAPEX['HTC', 'process', 'coefficient'] = 16017643
+    CAPEX['HTC', 'process', 'coefficient'] = 16017643* CAPEX_RATIO
     CAPEX['HTC', 'process', 'exponent'] = .6
-    CAPEX['HTC', 'storage', 'coefficient'] = 226351
+    CAPEX['HTC', 'storage', 'coefficient'] = 226351* CAPEX_RATIO
     CAPEX['HTC', 'storage', 'exponent'] = .4045
 
-    CAPEX['AD', 'process', 'coefficient'] = 4773
+    CAPEX['AD', 'process', 'coefficient'] = 4773* CAPEX_RATIO
     CAPEX['AD', 'process', 'exponent'] = .699
-    CAPEX['AD', 'storage', 'coefficient'] = 191.2
+    CAPEX['AD', 'storage', 'coefficient'] = 191.2* CAPEX_RATIO
     CAPEX['AD', 'storage', 'exponent'] = .1
 
-    CAPEX['CHP', 'process', 'coefficient'] = 1546
+    CAPEX['CHP', 'process', 'coefficient'] = 1546* CAPEX_RATIO
     CAPEX['CHP', 'process', 'exponent'] = .5291
-    CAPEX['CHP', 'storage', 'coefficient'] = 226351
+    CAPEX['CHP', 'storage', 'coefficient'] = 226351* CAPEX_RATIO
     CAPEX['CHP', 'storage', 'exponent'] = .4045
 
-    CAPEX['Feedstock', 'process', 'coefficient'] = 9.648
+    CAPEX['Feedstock', 'process', 'coefficient'] = 9.648* CAPEX_RATIO
     CAPEX['Feedstock', 'process', 'exponent'] = 1
-    CAPEX['Feedstock', 'storage', 'coefficient'] = 191.2
+    CAPEX['Feedstock', 'storage', 'coefficient'] = 191.2* CAPEX_RATIO
     CAPEX['Feedstock', 'storage', 'exponent'] = 1
 
-    CAPEX['Solid', 'storage', 'coefficient'] = 191.2
+    CAPEX['Solid', 'storage', 'coefficient'] = 191.2* CAPEX_RATIO
     CAPEX['Solid', 'storage', 'exponent'] = .1
 
     ON_FARM_TRANSPORT_DISTANCE = 1
@@ -395,9 +394,9 @@ class CLCO_Data:
     COD['Pyrolysis', 'feedstock', 'AP', 800] = .4
 
     REVENUE = defaultdict(dict)
-    REVENUE['N'] = .837  # $/kg avoided fertilizer
-    REVENUE['P'] = 1.136
-    REVENUE['K'] = 1.061
+    REVENUE['N'] = .837 * FERT_PRICE  # $/kg avoided fertilizer
+    REVENUE['P'] = 1.136 * FERT_PRICE
+    REVENUE['K'] = 1.061 * FERT_PRICE
     REVENUE['Biooil'] = .0153  # $/MJ
     REVENUE['electricity'] = .06  # units $/kWh
     REVENUE['hydrochar'] = .0030  # units $/MJ

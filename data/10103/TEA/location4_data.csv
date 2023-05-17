@@ -4,16 +4,16 @@ opex_costs,"(4, 0, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 0, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 0, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 0, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 0, 'Pyrolysis', 'labor')",5.732977705692197e-07
+opex_costs,"(4, 0, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 0, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 0, 'Pyrolysis', 'TPC')",1.4063402067442694e-06
+opex_costs,"(4, 0, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 0, 'AD', 'heat')",0.0
 opex_costs,"(4, 0, 'AD', 'electricity')",0.0
 opex_costs,"(4, 0, 'AD', 'disposal')",0.0
-opex_costs,"(4, 0, 'AD', 'transportation')",-1.388848640526777e-08
+opex_costs,"(4, 0, 'AD', 'transportation')",0.0
 opex_costs,"(4, 0, 'AD', 'water')",0.0
 opex_costs,"(4, 0, 'AD', 'labor')",0.0
-opex_costs,"(4, 0, 'AD', 'diesel')",-1.2881428171172863e-09
+opex_costs,"(4, 0, 'AD', 'diesel')",0.0
 opex_costs,"(4, 0, 'AD', 'TPC')",0.0
 opex_costs,"(4, 0, 'HTL', 'heat')",0.0
 opex_costs,"(4, 0, 'HTL', 'electricity')",0.0
@@ -42,26 +42,26 @@ opex_costs,"(4, 0, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 0, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 0, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 0, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 0, 'Feedstock', 'transportation')",96.44100000978507
+opex_costs,"(4, 0, 'Feedstock', 'transportation')",96.441
 opex_costs,"(4, 0, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 0, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 0, 'Feedstock', 'diesel')",0.549603900055764
-opex_costs,"(4, 0, 'Feedstock', 'TPC')",3.972564000403063
-opex_costs,"(4, 1, 'Pyrolysis', 'heat')",7.562119952724016e-07
+opex_costs,"(4, 0, 'Feedstock', 'diesel')",0.5496039000000001
+opex_costs,"(4, 0, 'Feedstock', 'TPC')",3.9725639999848372
+opex_costs,"(4, 1, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 1, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 1, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 1, 'Pyrolysis', 'transportation')",8.715441453818179e-07
+opex_costs,"(4, 1, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 1, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 1, 'Pyrolysis', 'labor')",5.636821839413801e-07
-opex_costs,"(4, 1, 'Pyrolysis', 'diesel')",8.08348223063669e-08
-opex_costs,"(4, 1, 'Pyrolysis', 'TPC')",1.3827524888420405e-06
+opex_costs,"(4, 1, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 1, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 1, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 1, 'AD', 'heat')",0.0
 opex_costs,"(4, 1, 'AD', 'electricity')",0.0
 opex_costs,"(4, 1, 'AD', 'disposal')",0.0
-opex_costs,"(4, 1, 'AD', 'transportation')",9.47316158724125e-08
+opex_costs,"(4, 1, 'AD', 'transportation')",0.0
 opex_costs,"(4, 1, 'AD', 'water')",0.0
 opex_costs,"(4, 1, 'AD', 'labor')",0.0
-opex_costs,"(4, 1, 'AD', 'diesel')",8.638893080720937e-09
+opex_costs,"(4, 1, 'AD', 'diesel')",0.0
 opex_costs,"(4, 1, 'AD', 'TPC')",0.0
 opex_costs,"(4, 1, 'HTL', 'heat')",0.0
 opex_costs,"(4, 1, 'HTL', 'electricity')",0.0
@@ -71,7 +71,7 @@ opex_costs,"(4, 1, 'HTL', 'water')",0.0
 opex_costs,"(4, 1, 'HTL', 'labor')",0.0
 opex_costs,"(4, 1, 'HTL', 'diesel')",0.0
 opex_costs,"(4, 1, 'HTL', 'TPC')",0.0
-opex_costs,"(4, 1, 'HTC', 'heat')",8.57292508749175e-12
+opex_costs,"(4, 1, 'HTC', 'heat')",0.0
 opex_costs,"(4, 1, 'HTC', 'electricity')",0.0
 opex_costs,"(4, 1, 'HTC', 'disposal')",0.0
 opex_costs,"(4, 1, 'HTC', 'transportation')",0.0
@@ -90,26 +90,26 @@ opex_costs,"(4, 1, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 1, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 1, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 1, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 1, 'Feedstock', 'transportation')",189.6469032886819
+opex_costs,"(4, 1, 'Feedstock', 'transportation')",189.64690355420498
 opex_costs,"(4, 1, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 1, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 1, 'Feedstock', 'diesel')",1.0807714319675492
-opex_costs,"(4, 1, 'Feedstock', 'TPC')",3.905934518759368
+opex_costs,"(4, 1, 'Feedstock', 'diesel')",1.0807714334807286
+opex_costs,"(4, 1, 'Feedstock', 'TPC')",3.9059345183481566
 opex_costs,"(4, 2, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 2, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 2, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 2, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 2, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 2, 'Pyrolysis', 'labor')",5.542278738977937e-07
+opex_costs,"(4, 2, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 2, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 2, 'Pyrolysis', 'TPC')",1.3595603938717073e-06
+opex_costs,"(4, 2, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 2, 'AD', 'heat')",0.0
 opex_costs,"(4, 2, 'AD', 'electricity')",0.0
 opex_costs,"(4, 2, 'AD', 'disposal')",0.0
-opex_costs,"(4, 2, 'AD', 'transportation')",-7.208043096105606e-09
+opex_costs,"(4, 2, 'AD', 'transportation')",0.0
 opex_costs,"(4, 2, 'AD', 'water')",0.0
 opex_costs,"(4, 2, 'AD', 'labor')",0.0
-opex_costs,"(4, 2, 'AD', 'diesel')",-6.463006368360225e-10
+opex_costs,"(4, 2, 'AD', 'diesel')",0.0
 opex_costs,"(4, 2, 'AD', 'TPC')",0.0
 opex_costs,"(4, 2, 'HTL', 'heat')",0.0
 opex_costs,"(4, 2, 'HTL', 'electricity')",0.0
@@ -138,26 +138,26 @@ opex_costs,"(4, 2, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 2, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 2, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 2, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 2, 'Feedstock', 'transportation')",93.23303374513121
+opex_costs,"(4, 2, 'Feedstock', 'transportation')",93.2330337400528
 opex_costs,"(4, 2, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 2, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 2, 'Feedstock', 'diesel')",0.531322144680745
-opex_costs,"(4, 2, 'Feedstock', 'TPC')",3.8404225742588527
+opex_costs,"(4, 2, 'Feedstock', 'diesel')",0.5313221446518039
+opex_costs,"(4, 2, 'Feedstock', 'TPC')",3.8404225738545383
 opex_costs,"(4, 3, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 3, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 3, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 3, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 3, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 3, 'Pyrolysis', 'labor')",5.449321354410817e-07
+opex_costs,"(4, 3, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 3, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 3, 'Pyrolysis', 'TPC')",1.3367572862823073e-06
+opex_costs,"(4, 3, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 3, 'AD', 'heat')",0.0
 opex_costs,"(4, 3, 'AD', 'electricity')",0.0
 opex_costs,"(4, 3, 'AD', 'disposal')",0.0
-opex_costs,"(4, 3, 'AD', 'transportation')",-6.2776212251605356e-09
+opex_costs,"(4, 3, 'AD', 'transportation')",0.0
 opex_costs,"(4, 3, 'AD', 'water')",0.0
 opex_costs,"(4, 3, 'AD', 'labor')",0.0
-opex_costs,"(4, 3, 'AD', 'diesel')",-5.534346836935017e-10
+opex_costs,"(4, 3, 'AD', 'diesel')",0.0
 opex_costs,"(4, 3, 'AD', 'TPC')",0.0
 opex_costs,"(4, 3, 'HTL', 'heat')",0.0
 opex_costs,"(4, 3, 'HTL', 'electricity')",0.0
@@ -186,26 +186,26 @@ opex_costs,"(4, 3, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 3, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 3, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 3, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 3, 'Feedstock', 'transportation')",91.66929085460947
+opex_costs,"(4, 3, 'Feedstock', 'transportation')",91.6692908501866
 opex_costs,"(4, 3, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 3, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 3, 'Feedstock', 'diesel')",0.5224105905572082
-opex_costs,"(4, 3, 'Feedstock', 'TPC')",3.7760094231076953
+opex_costs,"(4, 3, 'Feedstock', 'diesel')",0.5224105905320029
+opex_costs,"(4, 3, 'Feedstock', 'TPC')",3.776009422710162
 opex_costs,"(4, 4, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 4, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 4, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 4, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 4, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 4, 'Pyrolysis', 'labor')",5.357923089431958e-07
+opex_costs,"(4, 4, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 4, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 4, 'Pyrolysis', 'TPC')",1.3143366418170737e-06
+opex_costs,"(4, 4, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 4, 'AD', 'heat')",0.0
 opex_costs,"(4, 4, 'AD', 'electricity')",0.0
 opex_costs,"(4, 4, 'AD', 'disposal')",0.0
-opex_costs,"(4, 4, 'AD', 'transportation')",-6.968278275618968e-09
+opex_costs,"(4, 4, 'AD', 'transportation')",0.0
 opex_costs,"(4, 4, 'AD', 'water')",0.0
 opex_costs,"(4, 4, 'AD', 'labor')",0.0
-opex_costs,"(4, 4, 'AD', 'diesel')",-6.04019286762638e-10
+opex_costs,"(4, 4, 'AD', 'diesel')",0.0
 opex_costs,"(4, 4, 'AD', 'TPC')",0.0
 opex_costs,"(4, 4, 'HTL', 'heat')",0.0
 opex_costs,"(4, 4, 'HTL', 'electricity')",0.0
@@ -234,26 +234,26 @@ opex_costs,"(4, 4, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 4, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 4, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 4, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 4, 'Feedstock', 'transportation')",90.13177570584402
+opex_costs,"(4, 4, 'Feedstock', 'transportation')",90.13177570093455
 opex_costs,"(4, 4, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 4, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 4, 'Feedstock', 'diesel')",0.5136485047008755
-opex_costs,"(4, 4, 'Feedstock', 'TPC')",3.712676635890712
+opex_costs,"(4, 4, 'Feedstock', 'diesel')",0.5136485046728972
+opex_costs,"(4, 4, 'Feedstock', 'TPC')",3.7126766354998466
 opex_costs,"(4, 5, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 5, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 5, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 5, 'Pyrolysis', 'transportation')",1.6993555181521628e-07
+opex_costs,"(4, 5, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 5, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 5, 'Pyrolysis', 'labor')",5.268057793844672e-07
-opex_costs,"(4, 5, 'Pyrolysis', 'diesel')",1.576134749720503e-08
-opex_costs,"(4, 5, 'Pyrolysis', 'TPC')",1.2922920456467668e-06
+opex_costs,"(4, 5, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 5, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 5, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 5, 'AD', 'heat')",0.0
 opex_costs,"(4, 5, 'AD', 'electricity')",0.0
 opex_costs,"(4, 5, 'AD', 'disposal')",0.0
-opex_costs,"(4, 5, 'AD', 'transportation')",5.1822173798749314e-08
+opex_costs,"(4, 5, 'AD', 'transportation')",0.0
 opex_costs,"(4, 5, 'AD', 'water')",0.0
 opex_costs,"(4, 5, 'AD', 'labor')",0.0
-opex_costs,"(4, 5, 'AD', 'diesel')",4.416670520619453e-09
+opex_costs,"(4, 5, 'AD', 'diesel')",0.0
 opex_costs,"(4, 5, 'AD', 'TPC')",0.0
 opex_costs,"(4, 5, 'HTL', 'heat')",0.0
 opex_costs,"(4, 5, 'HTL', 'electricity')",0.0
@@ -282,26 +282,26 @@ opex_costs,"(4, 5, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 5, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 5, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 5, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 5, 'Feedstock', 'transportation')",443.1002417255451
+opex_costs,"(4, 5, 'Feedstock', 'transportation')",443.1002419490753
 opex_costs,"(4, 5, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 5, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 5, 'Feedstock', 'diesel')",2.52516689938203
-opex_costs,"(4, 5, 'Feedstock', 'TPC')",3.6504060922984745
+opex_costs,"(4, 5, 'Feedstock', 'diesel')",2.525166900655898
+opex_costs,"(4, 5, 'Feedstock', 'TPC')",3.650406091914165
 opex_costs,"(4, 6, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 6, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 6, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 6, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 6, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 6, 'Pyrolysis', 'labor')",5.179699756054146e-07
+opex_costs,"(4, 6, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 6, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 6, 'Pyrolysis', 'TPC')",1.2706171905343057e-06
+opex_costs,"(4, 6, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 6, 'AD', 'heat')",0.0
 opex_costs,"(4, 6, 'AD', 'electricity')",0.0
 opex_costs,"(4, 6, 'AD', 'disposal')",0.0
-opex_costs,"(4, 6, 'AD', 'transportation')",-4.396982175293817e-09
+opex_costs,"(4, 6, 'AD', 'transportation')",0.0
 opex_costs,"(4, 6, 'AD', 'water')",0.0
 opex_costs,"(4, 6, 'AD', 'labor')",0.0
-opex_costs,"(4, 6, 'AD', 'diesel')",-3.684581240730823e-10
+opex_costs,"(4, 6, 'AD', 'diesel')",0.0
 opex_costs,"(4, 6, 'AD', 'TPC')",0.0
 opex_costs,"(4, 6, 'HTL', 'heat')",0.0
 opex_costs,"(4, 6, 'HTL', 'electricity')",0.0
@@ -330,26 +330,26 @@ opex_costs,"(4, 6, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 6, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 6, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 6, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 6, 'Feedstock', 'transportation')",87.13367639567059
+opex_costs,"(4, 6, 'Feedstock', 'transportation')",87.13367639257271
 opex_costs,"(4, 6, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 6, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 6, 'Feedstock', 'diesel')",0.49656275202868605
-opex_costs,"(4, 6, 'Feedstock', 'TPC')",3.5891799759428524
+opex_costs,"(4, 6, 'Feedstock', 'diesel')",0.4965627520110317
+opex_costs,"(4, 6, 'Feedstock', 'TPC')",3.5891799755649885
 opex_costs,"(4, 7, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 7, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 7, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 7, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 7, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 7, 'Pyrolysis', 'labor')",5.092823695711041e-07
+opex_costs,"(4, 7, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 7, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 7, 'Pyrolysis', 'TPC')",1.2493058750301934e-06
+opex_costs,"(4, 7, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 7, 'AD', 'heat')",0.0
 opex_costs,"(4, 7, 'AD', 'electricity')",0.0
 opex_costs,"(4, 7, 'AD', 'disposal')",0.0
-opex_costs,"(4, 7, 'AD', 'transportation')",-3.5666681960223845e-09
+opex_costs,"(4, 7, 'AD', 'transportation')",0.0
 opex_costs,"(4, 7, 'AD', 'water')",0.0
 opex_costs,"(4, 7, 'AD', 'labor')",0.0
-opex_costs,"(4, 7, 'AD', 'diesel')",-2.938665784120793e-10
+opex_costs,"(4, 7, 'AD', 'diesel')",0.0
 opex_costs,"(4, 7, 'AD', 'TPC')",0.0
 opex_costs,"(4, 7, 'HTL', 'heat')",0.0
 opex_costs,"(4, 7, 'HTL', 'electricity')",0.0
@@ -378,26 +378,26 @@ opex_costs,"(4, 7, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 7, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 7, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 7, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 7, 'Feedstock', 'transportation')",85.67223444193958
+opex_costs,"(4, 7, 'Feedstock', 'transportation')",85.6722344394267
 opex_costs,"(4, 7, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 7, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 7, 'Feedstock', 'diesel')",0.4882341967732015
-opex_costs,"(4, 7, 'Feedstock', 'TPC')",3.528980769259527
+opex_costs,"(4, 7, 'Feedstock', 'diesel')",0.488234196758881
+opex_costs,"(4, 7, 'Feedstock', 'TPC')",3.5289807688880006
 opex_costs,"(4, 8, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 8, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 8, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 8, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 8, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 8, 'Pyrolysis', 'labor')",5.007404756478466e-07
+opex_costs,"(4, 8, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 8, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 8, 'Pyrolysis', 'TPC')",1.2283520016981995e-06
+opex_costs,"(4, 8, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 8, 'AD', 'heat')",0.0
 opex_costs,"(4, 8, 'AD', 'electricity')",0.0
 opex_costs,"(4, 8, 'AD', 'disposal')",0.0
-opex_costs,"(4, 8, 'AD', 'transportation')",-5.768533059037727e-09
+opex_costs,"(4, 8, 'AD', 'transportation')",0.0
 opex_costs,"(4, 8, 'AD', 'water')",0.0
 opex_costs,"(4, 8, 'AD', 'labor')",0.0
-opex_costs,"(4, 8, 'AD', 'diesel')",-4.673119949602174e-10
+opex_costs,"(4, 8, 'AD', 'diesel')",0.0
 opex_costs,"(4, 8, 'AD', 'TPC')",0.0
 opex_costs,"(4, 8, 'HTL', 'heat')",0.0
 opex_costs,"(4, 8, 'HTL', 'electricity')",0.0
@@ -426,26 +426,26 @@ opex_costs,"(4, 8, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 8, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 8, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 8, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 8, 'Feedstock', 'transportation')",84.23530439746096
+opex_costs,"(4, 8, 'Feedstock', 'transportation')",84.23530439339676
 opex_costs,"(4, 8, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 8, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 8, 'Feedstock', 'diesel')",0.48004533149315853
-opex_costs,"(4, 8, 'Feedstock', 'TPC')",3.469791248495992
+opex_costs,"(4, 8, 'Feedstock', 'diesel')",0.4800453314699973
+opex_costs,"(4, 8, 'Feedstock', 'TPC')",3.469791248130697
 opex_costs,"(4, 9, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 9, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 9, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 9, 'Pyrolysis', 'transportation')",1.9747798384822836e-07
+opex_costs,"(4, 9, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 9, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 9, 'Pyrolysis', 'labor')",4.923418498920253e-07
-opex_costs,"(4, 9, 'Pyrolysis', 'diesel')",1.831587971576334e-08
-opex_costs,"(4, 9, 'Pyrolysis', 'TPC')",1.2077495753708095e-06
+opex_costs,"(4, 9, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 9, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 9, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 9, 'AD', 'heat')",0.0
 opex_costs,"(4, 9, 'AD', 'electricity')",0.0
 opex_costs,"(4, 9, 'AD', 'disposal')",0.0
-opex_costs,"(4, 9, 'AD', 'transportation')",1.24268632437031e-07
+opex_costs,"(4, 9, 'AD', 'transportation')",0.0
 opex_costs,"(4, 9, 'AD', 'water')",0.0
 opex_costs,"(4, 9, 'AD', 'labor')",0.0
-opex_costs,"(4, 9, 'AD', 'diesel')",9.898220342371296e-09
+opex_costs,"(4, 9, 'AD', 'diesel')",0.0
 opex_costs,"(4, 9, 'AD', 'TPC')",0.0
 opex_costs,"(4, 9, 'HTL', 'heat')",0.0
 opex_costs,"(4, 9, 'HTL', 'electricity')",0.0
@@ -474,26 +474,26 @@ opex_costs,"(4, 9, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 9, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 9, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 9, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 9, 'Feedstock', 'transportation')",414.11237568110687
+opex_costs,"(4, 9, 'Feedstock', 'transportation')",414.1123756533419
 opex_costs,"(4, 9, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 9, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 9, 'Feedstock', 'diesel')",2.359969066191781
-opex_costs,"(4, 9, 'Feedstock', 'TPC')",3.41159447878362
+opex_costs,"(4, 9, 'Feedstock', 'diesel')",2.3599690660335524
+opex_costs,"(4, 9, 'Feedstock', 'TPC')",3.411594478424452
 opex_costs,"(4, 10, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 10, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 10, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 10, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 10, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 10, 'Pyrolysis', 'labor')",4.840840893508547e-07
+opex_costs,"(4, 10, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 10, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 10, 'Pyrolysis', 'TPC')",1.1874927014339305e-06
+opex_costs,"(4, 10, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 10, 'AD', 'heat')",0.0
 opex_costs,"(4, 10, 'AD', 'electricity')",0.0
 opex_costs,"(4, 10, 'AD', 'disposal')",0.0
-opex_costs,"(4, 10, 'AD', 'transportation')",-6.295783995200982e-09
+opex_costs,"(4, 10, 'AD', 'transportation')",0.0
 opex_costs,"(4, 10, 'AD', 'water')",0.0
 opex_costs,"(4, 10, 'AD', 'labor')",0.0
-opex_costs,"(4, 10, 'AD', 'diesel')",-4.930596613854679e-10
+opex_costs,"(4, 10, 'AD', 'diesel')",0.0
 opex_costs,"(4, 10, 'AD', 'TPC')",0.0
 opex_costs,"(4, 10, 'HTL', 'heat')",0.0
 opex_costs,"(4, 10, 'HTL', 'electricity')",0.0
@@ -522,19 +522,19 @@ opex_costs,"(4, 10, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 10, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 10, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 10, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 10, 'Feedstock', 'transportation')",81.43334242740082
+opex_costs,"(4, 10, 'Feedstock', 'transportation')",81.43334242296514
 opex_costs,"(4, 10, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 10, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 10, 'Feedstock', 'diesel')",0.4640773383533452
-opex_costs,"(4, 10, 'Feedstock', 'TPC')",3.354373809292385
+opex_costs,"(4, 10, 'Feedstock', 'diesel')",0.46407733832806697
+opex_costs,"(4, 10, 'Feedstock', 'TPC')",3.3543738089392408
 opex_costs,"(4, 11, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 11, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 11, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 11, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 11, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 11, 'Pyrolysis', 'labor')",4.759648313748636e-07
+opex_costs,"(4, 11, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 11, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 11, 'Pyrolysis', 'TPC')",1.1675755841403675e-06
+opex_costs,"(4, 11, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 11, 'AD', 'heat')",0.0
 opex_costs,"(4, 11, 'AD', 'electricity')",0.0
 opex_costs,"(4, 11, 'AD', 'disposal')",0.0
@@ -574,15 +574,15 @@ opex_costs,"(4, 11, 'Feedstock', 'transportation')",80.06750882189411
 opex_costs,"(4, 11, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 11, 'Feedstock', 'labor')",0.0
 opex_costs,"(4, 11, 'Feedstock', 'diesel')",0.45629364183072985
-opex_costs,"(4, 11, 'Feedstock', 'TPC')",3.2981128684668475
+opex_costs,"(4, 11, 'Feedstock', 'TPC')",3.2981128681196266
 opex_costs,"(4, 12, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 12, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 12, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 12, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 12, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 12, 'Pyrolysis', 'labor')",4.6798175294191243e-07
+opex_costs,"(4, 12, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 12, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 12, 'Pyrolysis', 'TPC')",1.1479925249515882e-06
+opex_costs,"(4, 12, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 12, 'AD', 'heat')",0.0
 opex_costs,"(4, 12, 'AD', 'electricity')",0.0
 opex_costs,"(4, 12, 'AD', 'disposal')",0.0
@@ -602,10 +602,10 @@ opex_costs,"(4, 12, 'HTL', 'TPC')",0.0
 opex_costs,"(4, 12, 'HTC', 'heat')",0.0
 opex_costs,"(4, 12, 'HTC', 'electricity')",0.0
 opex_costs,"(4, 12, 'HTC', 'disposal')",0.0
-opex_costs,"(4, 12, 'HTC', 'transportation')",3.950990215385225e-08
-opex_costs,"(4, 12, 'HTC', 'water')",3.829502548334609e-08
+opex_costs,"(4, 12, 'HTC', 'transportation')",0.0
+opex_costs,"(4, 12, 'HTC', 'water')",0.0
 opex_costs,"(4, 12, 'HTC', 'labor')",0.0
-opex_costs,"(4, 12, 'HTC', 'diesel')",3.6645027528116973e-09
+opex_costs,"(4, 12, 'HTC', 'diesel')",0.0
 opex_costs,"(4, 12, 'HTC', 'TPC')",0.0
 opex_costs,"(4, 12, 'CHP', 'heat')",0.0
 opex_costs,"(4, 12, 'CHP', 'electricity')",0.0
@@ -618,26 +618,26 @@ opex_costs,"(4, 12, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 12, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 12, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 12, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 12, 'Feedstock', 'transportation')",78.72458351739407
+opex_costs,"(4, 12, 'Feedstock', 'transportation')",78.72458354523059
 opex_costs,"(4, 12, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 12, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 12, 'Feedstock', 'diesel')",0.4486404965422954
-opex_costs,"(4, 12, 'Feedstock', 'TPC')",3.242795559342048
+opex_costs,"(4, 12, 'Feedstock', 'diesel')",0.44864049670093187
+opex_costs,"(4, 12, 'Feedstock', 'TPC')",3.2427955590006508
 opex_costs,"(4, 13, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 13, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 13, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 13, 'Pyrolysis', 'transportation')",1.2596874804144516e-07
+opex_costs,"(4, 13, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 13, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 13, 'Pyrolysis', 'labor')",4.6013256999254683e-07
-opex_costs,"(4, 13, 'Pyrolysis', 'diesel')",1.1683471707132822e-08
-opex_costs,"(4, 13, 'Pyrolysis', 'TPC')",1.1287379209072983e-06
+opex_costs,"(4, 13, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 13, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 13, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 13, 'AD', 'heat')",0.0
 opex_costs,"(4, 13, 'AD', 'electricity')",0.0
 opex_costs,"(4, 13, 'AD', 'disposal')",0.0
-opex_costs,"(4, 13, 'AD', 'transportation')",2.102044884165471e-07
+opex_costs,"(4, 13, 'AD', 'transportation')",0.0
 opex_costs,"(4, 13, 'AD', 'water')",0.0
 opex_costs,"(4, 13, 'AD', 'labor')",0.0
-opex_costs,"(4, 13, 'AD', 'diesel')",1.5647818705247944e-08
+opex_costs,"(4, 13, 'AD', 'diesel')",0.0
 opex_costs,"(4, 13, 'AD', 'TPC')",0.0
 opex_costs,"(4, 13, 'HTL', 'heat')",0.0
 opex_costs,"(4, 13, 'HTL', 'electricity')",0.0
@@ -666,26 +666,26 @@ opex_costs,"(4, 13, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 13, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 13, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 13, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 13, 'Feedstock', 'transportation')",387.0209118066156
+opex_costs,"(4, 13, 'Feedstock', 'transportation')",387.02091182555273
 opex_costs,"(4, 13, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 13, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 13, 'Feedstock', 'diesel')",2.2055785662785747
-opex_costs,"(4, 13, 'Feedstock', 'TPC')",3.1884060549379614
+opex_costs,"(4, 13, 'Feedstock', 'diesel')",2.205578566386495
+opex_costs,"(4, 13, 'Feedstock', 'TPC')",3.1884060546022903
 opex_costs,"(4, 14, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 14, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 14, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 14, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 14, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 14, 'Pyrolysis', 'labor')",4.524150367764995e-07
+opex_costs,"(4, 14, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 14, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 14, 'Pyrolysis', 'TPC')",1.1098062630223645e-06
+opex_costs,"(4, 14, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 14, 'AD', 'heat')",0.0
 opex_costs,"(4, 14, 'AD', 'electricity')",0.0
 opex_costs,"(4, 14, 'AD', 'disposal')",0.0
-opex_costs,"(4, 14, 'AD', 'transportation')",-3.8404945194286086e-09
+opex_costs,"(4, 14, 'AD', 'transportation')",0.0
 opex_costs,"(4, 14, 'AD', 'water')",0.0
 opex_costs,"(4, 14, 'AD', 'labor')",0.0
-opex_costs,"(4, 14, 'AD', 'diesel')",-2.8109493869536716e-10
+opex_costs,"(4, 14, 'AD', 'diesel')",0.0
 opex_costs,"(4, 14, 'AD', 'TPC')",0.0
 opex_costs,"(4, 14, 'HTL', 'heat')",0.0
 opex_costs,"(4, 14, 'HTL', 'electricity')",0.0
@@ -714,26 +714,26 @@ opex_costs,"(4, 14, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 14, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 14, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 14, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 14, 'Feedstock', 'transportation')",76.10592750080403
+opex_costs,"(4, 14, 'Feedstock', 'transportation')",76.10592749809823
 opex_costs,"(4, 14, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 14, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 14, 'Feedstock', 'diesel')",0.43371713863978145
-opex_costs,"(4, 14, 'Feedstock', 'TPC')",3.1349287937312
+opex_costs,"(4, 14, 'Feedstock', 'diesel')",0.43371713862436145
+opex_costs,"(4, 14, 'Feedstock', 'TPC')",3.1349287934011585
 opex_costs,"(4, 15, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 15, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 15, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 15, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 15, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 15, 'Pyrolysis', 'labor')",4.4482694521015277e-07
+opex_costs,"(4, 15, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 15, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 15, 'Pyrolysis', 'TPC')",1.0911921347106235e-06
+opex_costs,"(4, 15, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 15, 'AD', 'heat')",0.0
 opex_costs,"(4, 15, 'AD', 'electricity')",0.0
 opex_costs,"(4, 15, 'AD', 'disposal')",0.0
-opex_costs,"(4, 15, 'AD', 'transportation')",-3.776080161583395e-09
+opex_costs,"(4, 15, 'AD', 'transportation')",0.0
 opex_costs,"(4, 15, 'AD', 'water')",0.0
 opex_costs,"(4, 15, 'AD', 'labor')",0.0
-opex_costs,"(4, 15, 'AD', 'diesel')",-2.7174473412286526e-10
+opex_costs,"(4, 15, 'AD', 'diesel')",0.0
 opex_costs,"(4, 15, 'AD', 'TPC')",0.0
 opex_costs,"(4, 15, 'HTL', 'heat')",0.0
 opex_costs,"(4, 15, 'HTL', 'electricity')",0.0
@@ -762,26 +762,26 @@ opex_costs,"(4, 15, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 15, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 15, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 15, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 15, 'Feedstock', 'transportation')",74.8294474997577
+opex_costs,"(4, 15, 'Feedstock', 'transportation')",74.82944749709728
 opex_costs,"(4, 15, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 15, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 15, 'Feedstock', 'diesel')",0.4264426559317312
-opex_costs,"(4, 15, 'Feedstock', 'TPC')",3.08234847520266
-opex_costs,"(4, 16, 'Pyrolysis', 'heat')",5.867517528531572e-07
+opex_costs,"(4, 15, 'Feedstock', 'diesel')",0.4264426559165698
+opex_costs,"(4, 15, 'Feedstock', 'TPC')",3.082348474878154
+opex_costs,"(4, 16, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 16, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 16, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 16, 'Pyrolysis', 'transportation')",3.0547285735761613e-07
+opex_costs,"(4, 16, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 16, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 16, 'Pyrolysis', 'labor')",4.373661242447779e-07
-opex_costs,"(4, 16, 'Pyrolysis', 'diesel')",2.8332293062565737e-08
-opex_costs,"(4, 16, 'Pyrolysis', 'TPC')",1.072890210235129e-06
+opex_costs,"(4, 16, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 16, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 16, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 16, 'AD', 'heat')",0.0
 opex_costs,"(4, 16, 'AD', 'electricity')",0.0
 opex_costs,"(4, 16, 'AD', 'disposal')",0.0
-opex_costs,"(4, 16, 'AD', 'transportation')",-1.9754445740608797e-09
+opex_costs,"(4, 16, 'AD', 'transportation')",0.0
 opex_costs,"(4, 16, 'AD', 'water')",0.0
 opex_costs,"(4, 16, 'AD', 'labor')",0.0
-opex_costs,"(4, 16, 'AD', 'diesel')",-1.3977800458689325e-10
+opex_costs,"(4, 16, 'AD', 'diesel')",0.0
 opex_costs,"(4, 16, 'AD', 'TPC')",0.0
 opex_costs,"(4, 16, 'HTL', 'heat')",0.0
 opex_costs,"(4, 16, 'HTL', 'electricity')",0.0
@@ -810,26 +810,26 @@ opex_costs,"(4, 16, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 16, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 16, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 16, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 16, 'Feedstock', 'transportation')",73.57437693124757
+opex_costs,"(4, 16, 'Feedstock', 'transportation')",73.57437714507529
 opex_costs,"(4, 16, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 16, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 16, 'Feedstock', 'diesel')",0.4192901826140719
-opex_costs,"(4, 16, 'Feedstock', 'TPC')",3.030650055459857
+opex_costs,"(4, 16, 'Feedstock', 'diesel')",0.4192901838326465
+opex_costs,"(4, 16, 'Feedstock', 'TPC')",3.030650055140794
 opex_costs,"(4, 17, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 17, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 17, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 17, 'Pyrolysis', 'transportation')",6.211774321509807e-07
+opex_costs,"(4, 17, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 17, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 17, 'Pyrolysis', 'labor')",4.3003043924537083e-07
-opex_costs,"(4, 17, 'Pyrolysis', 'diesel')",5.7613567384646846e-08
-opex_costs,"(4, 17, 'Pyrolysis', 'TPC')",1.0548952531843907e-06
+opex_costs,"(4, 17, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 17, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 17, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 17, 'AD', 'heat')",0.0
 opex_costs,"(4, 17, 'AD', 'electricity')",0.0
 opex_costs,"(4, 17, 'AD', 'disposal')",0.0
-opex_costs,"(4, 17, 'AD', 'transportation')",1.0320316505817357e-07
+opex_costs,"(4, 17, 'AD', 'transportation')",0.0
 opex_costs,"(4, 17, 'AD', 'water')",0.0
 opex_costs,"(4, 17, 'AD', 'labor')",0.0
-opex_costs,"(4, 17, 'AD', 'diesel')",7.179944041713099e-09
+opex_costs,"(4, 17, 'AD', 'diesel')",0.0
 opex_costs,"(4, 17, 'AD', 'TPC')",0.0
 opex_costs,"(4, 17, 'HTL', 'heat')",0.0
 opex_costs,"(4, 17, 'HTL', 'electricity')",0.0
@@ -858,26 +858,26 @@ opex_costs,"(4, 17, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 17, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 17, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 17, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 17, 'Feedstock', 'transportation')",361.701786415002
+opex_costs,"(4, 17, 'Feedstock', 'transportation')",361.7017867528535
 opex_costs,"(4, 17, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 17, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 17, 'Feedstock', 'diesel')",2.0612883778750963
-opex_costs,"(4, 17, 'Feedstock', 'TPC')",2.979818742932674
+opex_costs,"(4, 17, 'Feedstock', 'diesel')",2.061288379800465
+opex_costs,"(4, 17, 'Feedstock', 'TPC')",2.9798187426189626
 opex_costs,"(4, 18, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 18, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 18, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 18, 'Pyrolysis', 'transportation')",4.1024679056913416e-07
+opex_costs,"(4, 18, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 18, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 18, 'Pyrolysis', 'labor')",4.22817791379906e-07
-opex_costs,"(4, 18, 'Pyrolysis', 'diesel')",3.8049967512414566e-08
-opex_costs,"(4, 18, 'Pyrolysis', 'TPC')",1.0372021149741722e-06
+opex_costs,"(4, 18, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 18, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 18, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 18, 'AD', 'heat')",0.0
 opex_costs,"(4, 18, 'AD', 'electricity')",0.0
 opex_costs,"(4, 18, 'AD', 'disposal')",0.0
-opex_costs,"(4, 18, 'AD', 'transportation')",-2.039094006391075e-08
+opex_costs,"(4, 18, 'AD', 'transportation')",0.0
 opex_costs,"(4, 18, 'AD', 'water')",0.0
 opex_costs,"(4, 18, 'AD', 'labor')",0.0
-opex_costs,"(4, 18, 'AD', 'diesel')",-1.3948237918659493e-09
+opex_costs,"(4, 18, 'AD', 'diesel')",0.0
 opex_costs,"(4, 18, 'AD', 'TPC')",0.0
 opex_costs,"(4, 18, 'HTL', 'heat')",0.0
 opex_costs,"(4, 18, 'HTL', 'electricity')",0.0
@@ -906,28 +906,28 @@ opex_costs,"(4, 18, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 18, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 18, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 18, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 18, 'Feedstock', 'transportation')",71.12703477028042
+opex_costs,"(4, 18, 'Feedstock', 'transportation')",71.1270350449516
 opex_costs,"(4, 18, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 18, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 18, 'Feedstock', 'diesel')",0.40534311864437045
-opex_costs,"(4, 18, 'Feedstock', 'TPC')",2.929839994141308
-opex_costs,"(4, 19, 'Pyrolysis', 'heat')",2.7611328880610364e-07
+opex_costs,"(4, 18, 'Feedstock', 'diesel')",0.4053431202096835
+opex_costs,"(4, 18, 'Feedstock', 'TPC')",2.929839993832858
+opex_costs,"(4, 19, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 19, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 19, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 19, 'Pyrolysis', 'transportation')",6.944926674776342e-07
+opex_costs,"(4, 19, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 19, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 19, 'Pyrolysis', 'labor')",4.157261170188343e-07
-opex_costs,"(4, 19, 'Pyrolysis', 'diesel')",6.441347998962818e-08
-opex_costs,"(4, 19, 'Pyrolysis', 'TPC')",1.0198057333744143e-06
+opex_costs,"(4, 19, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 19, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 19, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 19, 'AD', 'heat')",0.0
 opex_costs,"(4, 19, 'AD', 'electricity')",0.0
 opex_costs,"(4, 19, 'AD', 'disposal')",0.0
-opex_costs,"(4, 19, 'AD', 'transportation')",-5.406750379720172e-09
+opex_costs,"(4, 19, 'AD', 'transportation')",0.0
 opex_costs,"(4, 19, 'AD', 'water')",0.0
 opex_costs,"(4, 19, 'AD', 'labor')",0.0
-opex_costs,"(4, 19, 'AD', 'diesel')",-3.636406903144527e-10
+opex_costs,"(4, 19, 'AD', 'diesel')",0.0
 opex_costs,"(4, 19, 'AD', 'TPC')",0.0
-opex_costs,"(4, 19, 'HTL', 'heat')",6.3226920411004716e-12
+opex_costs,"(4, 19, 'HTL', 'heat')",0.0
 opex_costs,"(4, 19, 'HTL', 'electricity')",0.0
 opex_costs,"(4, 19, 'HTL', 'disposal')",0.0
 opex_costs,"(4, 19, 'HTL', 'transportation')",0.0
@@ -954,26 +954,26 @@ opex_costs,"(4, 19, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 19, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 19, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 19, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 19, 'Feedstock', 'transportation')",69.93406259590695
+opex_costs,"(4, 19, 'Feedstock', 'transportation')",69.9340630813993
 opex_costs,"(4, 19, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 19, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 19, 'Feedstock', 'diesel')",0.3985445354730311
-opex_costs,"(4, 19, 'Feedstock', 'TPC')",2.8806995095351957
-opex_costs,"(4, 20, 'Pyrolysis', 'heat')",2.738988170823791e-07
+opex_costs,"(4, 19, 'Feedstock', 'diesel')",0.3985445382397848
+opex_costs,"(4, 19, 'Feedstock', 'TPC')",2.8806995092319196
+opex_costs,"(4, 20, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 20, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 20, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 20, 'Pyrolysis', 'transportation')",6.828443500597936e-07
+opex_costs,"(4, 20, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 20, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 20, 'Pyrolysis', 'labor')",4.0875338714465217e-07
-opex_costs,"(4, 20, 'Pyrolysis', 'diesel')",6.333311054003845e-08
-opex_costs,"(4, 20, 'Pyrolysis', 'TPC')",1.002701131060868e-06
+opex_costs,"(4, 20, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 20, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 20, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 20, 'AD', 'heat')",0.0
 opex_costs,"(4, 20, 'AD', 'electricity')",0.0
 opex_costs,"(4, 20, 'AD', 'disposal')",0.0
-opex_costs,"(4, 20, 'AD', 'transportation')",-5.766467413240172e-07
+opex_costs,"(4, 20, 'AD', 'transportation')",0.0
 opex_costs,"(4, 20, 'AD', 'water')",0.0
 opex_costs,"(4, 20, 'AD', 'labor')",0.0
-opex_costs,"(4, 20, 'AD', 'diesel')",-3.813291907897749e-08
+opex_costs,"(4, 20, 'AD', 'diesel')",0.0
 opex_costs,"(4, 20, 'AD', 'TPC')",0.0
 opex_costs,"(4, 20, 'HTL', 'heat')",0.0
 opex_costs,"(4, 20, 'HTL', 'electricity')",0.0
@@ -1002,26 +1002,26 @@ opex_costs,"(4, 20, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 20, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 20, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 20, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 20, 'Feedstock', 'transportation')",68.76110006076334
+opex_costs,"(4, 20, 'Feedstock', 'transportation')",68.76110013558439
 opex_costs,"(4, 20, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 20, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 20, 'Feedstock', 'diesel')",0.39185998446392906
-opex_costs,"(4, 20, 'Feedstock', 'TPC')",2.832383229401735
+opex_costs,"(4, 20, 'Feedstock', 'diesel')",0.3918599848903238
+opex_costs,"(4, 20, 'Feedstock', 'TPC')",2.8323832291035456
 opex_costs,"(4, 21, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 21, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 21, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 21, 'Pyrolysis', 'transportation')",1.279371896412656e-07
+opex_costs,"(4, 21, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 21, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 21, 'Pyrolysis', 'labor')",4.0189760677137445e-07
-opex_costs,"(4, 21, 'Pyrolysis', 'diesel')",1.1866042639179228e-08
-opex_costs,"(4, 21, 'Pyrolysis', 'TPC')",9.85883414191019e-07
+opex_costs,"(4, 21, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 21, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 21, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 21, 'AD', 'heat')",0.0
 opex_costs,"(4, 21, 'AD', 'electricity')",0.0
 opex_costs,"(4, 21, 'AD', 'disposal')",0.0
-opex_costs,"(4, 21, 'AD', 'transportation')",1.4223663630432703e-07
+opex_costs,"(4, 21, 'AD', 'transportation')",0.0
 opex_costs,"(4, 21, 'AD', 'water')",0.0
 opex_costs,"(4, 21, 'AD', 'labor')",0.0
-opex_costs,"(4, 21, 'AD', 'diesel')",9.248168599086588e-09
+opex_costs,"(4, 21, 'AD', 'diesel')",0.0
 opex_costs,"(4, 21, 'AD', 'TPC')",0.0
 opex_costs,"(4, 21, 'HTL', 'heat')",0.0
 opex_costs,"(4, 21, 'HTL', 'electricity')",0.0
@@ -1050,26 +1050,26 @@ opex_costs,"(4, 21, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 21, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 21, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 21, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 21, 'Feedstock', 'transportation')",338.0390521083077
+opex_costs,"(4, 21, 'Feedstock', 'transportation')",338.0390530400493
 opex_costs,"(4, 21, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 21, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 21, 'Feedstock', 'diesel')",1.9264377328214057
-opex_costs,"(4, 21, 'Feedstock', 'TPC')",2.7848773298436194
+opex_costs,"(4, 21, 'Feedstock', 'diesel')",1.9264377381312718
+opex_costs,"(4, 21, 'Feedstock', 'TPC')",2.784877329550431
 opex_costs,"(4, 22, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 22, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 22, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 22, 'Pyrolysis', 'transportation')",1.3389068125689172e-07
+opex_costs,"(4, 22, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 22, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 22, 'Pyrolysis', 'labor')",3.9515681437374385e-07
-opex_costs,"(4, 22, 'Pyrolysis', 'diesel')",1.2418222857934239e-08
-opex_costs,"(4, 22, 'Pyrolysis', 'TPC')",9.693477710038988e-07
+opex_costs,"(4, 22, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 22, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 22, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 22, 'AD', 'heat')",0.0
 opex_costs,"(4, 22, 'AD', 'electricity')",0.0
 opex_costs,"(4, 22, 'AD', 'disposal')",0.0
-opex_costs,"(4, 22, 'AD', 'transportation')",-9.999466838271125e-09
+opex_costs,"(4, 22, 'AD', 'transportation')",0.0
 opex_costs,"(4, 22, 'AD', 'water')",0.0
 opex_costs,"(4, 22, 'AD', 'labor')",0.0
-opex_costs,"(4, 22, 'AD', 'diesel')",-6.392565186376618e-10
+opex_costs,"(4, 22, 'AD', 'diesel')",0.0
 opex_costs,"(4, 22, 'AD', 'TPC')",0.0
 opex_costs,"(4, 22, 'HTL', 'heat')",0.0
 opex_costs,"(4, 22, 'HTL', 'electricity')",0.0
@@ -1098,26 +1098,26 @@ opex_costs,"(4, 22, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 22, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 22, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 22, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 22, 'Feedstock', 'transportation')",66.47386444070514
+opex_costs,"(4, 22, 'Feedstock', 'transportation')",66.47386452799213
 opex_costs,"(4, 22, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 22, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 22, 'Feedstock', 'diesel')",0.37882534549292185
-opex_costs,"(4, 22, 'Feedstock', 'TPC')",2.738168218823651
+opex_costs,"(4, 22, 'Feedstock', 'diesel')",0.37882534599035833
+opex_costs,"(4, 22, 'Feedstock', 'TPC')",2.7381682185353804
 opex_costs,"(4, 23, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 23, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 23, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 23, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 23, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 23, 'Pyrolysis', 'labor')",3.885290813260133e-07
+opex_costs,"(4, 23, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 23, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 23, 'Pyrolysis', 'TPC')",9.530894704433774e-07
+opex_costs,"(4, 23, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 23, 'AD', 'heat')",0.0
 opex_costs,"(4, 23, 'AD', 'electricity')",0.0
 opex_costs,"(4, 23, 'AD', 'disposal')",0.0
-opex_costs,"(4, 23, 'AD', 'transportation')",-5.053037738056234e-09
+opex_costs,"(4, 23, 'AD', 'transportation')",0.0
 opex_costs,"(4, 23, 'AD', 'water')",0.0
 opex_costs,"(4, 23, 'AD', 'labor')",0.0
-opex_costs,"(4, 23, 'AD', 'diesel')",-3.176178620966482e-10
+opex_costs,"(4, 23, 'AD', 'diesel')",0.0
 opex_costs,"(4, 23, 'AD', 'TPC')",0.0
 opex_costs,"(4, 23, 'HTL', 'heat')",0.0
 opex_costs,"(4, 23, 'HTL', 'electricity')",0.0
@@ -1146,26 +1146,26 @@ opex_costs,"(4, 23, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 23, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 23, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 23, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 23, 'Feedstock', 'transportation')",65.35893746281177
+opex_costs,"(4, 23, 'Feedstock', 'transportation')",65.35893745925166
 opex_costs,"(4, 23, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 23, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 23, 'Feedstock', 'diesel')",0.3724715310855078
-opex_costs,"(4, 23, 'Feedstock', 'TPC')",2.692242532275883
+opex_costs,"(4, 23, 'Feedstock', 'diesel')",0.37247153106521935
+opex_costs,"(4, 23, 'Feedstock', 'TPC')",2.6922425319924472
 opex_costs,"(4, 24, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 24, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 24, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 24, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 24, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 24, 'Pyrolysis', 'labor')",3.8201251135014205e-07
+opex_costs,"(4, 24, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 24, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 24, 'Pyrolysis', 'TPC')",9.371038608045492e-07
+opex_costs,"(4, 24, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 24, 'AD', 'heat')",0.0
 opex_costs,"(4, 24, 'AD', 'electricity')",0.0
 opex_costs,"(4, 24, 'AD', 'disposal')",0.0
-opex_costs,"(4, 24, 'AD', 'transportation')",1.1422370490745705e-06
+opex_costs,"(4, 24, 'AD', 'transportation')",0.0
 opex_costs,"(4, 24, 'AD', 'water')",0.0
 opex_costs,"(4, 24, 'AD', 'labor')",0.0
-opex_costs,"(4, 24, 'AD', 'diesel')",7.059316841222217e-08
+opex_costs,"(4, 24, 'AD', 'diesel')",0.0
 opex_costs,"(4, 24, 'AD', 'TPC')",0.0
 opex_costs,"(4, 24, 'HTL', 'heat')",0.0
 opex_costs,"(4, 24, 'HTL', 'electricity')",0.0
@@ -1194,26 +1194,26 @@ opex_costs,"(4, 24, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 24, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 24, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 24, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 24, 'Feedstock', 'transportation')",64.26270960233026
+opex_costs,"(4, 24, 'Feedstock', 'transportation')",64.26271040708818
 opex_costs,"(4, 24, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 24, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 24, 'Feedstock', 'diesel')",0.3662242803580238
-opex_costs,"(4, 24, 'Feedstock', 'TPC')",2.6470871302819945
-opex_costs,"(4, 25, 'Pyrolysis', 'heat')",3.385756055523298e-07
+opex_costs,"(4, 24, 'Feedstock', 'diesel')",0.3662242849442277
+opex_costs,"(4, 24, 'Feedstock', 'TPC')",2.647087130003313
+opex_costs,"(4, 25, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 25, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 25, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 25, 'Pyrolysis', 'transportation')",7.470360679126643e-07
+opex_costs,"(4, 25, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 25, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 25, 'Pyrolysis', 'labor')",3.756052399732471e-07
-opex_costs,"(4, 25, 'Pyrolysis', 'diesel')",6.928682629118267e-08
-opex_costs,"(4, 25, 'Pyrolysis', 'TPC')",9.213863684028214e-07
+opex_costs,"(4, 25, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 25, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 25, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 25, 'AD', 'heat')",0.0
 opex_costs,"(4, 25, 'AD', 'electricity')",0.0
 opex_costs,"(4, 25, 'AD', 'disposal')",0.0
-opex_costs,"(4, 25, 'AD', 'transportation')",1.352396202090796e-07
+opex_costs,"(4, 25, 'AD', 'transportation')",0.0
 opex_costs,"(4, 25, 'AD', 'water')",0.0
 opex_costs,"(4, 25, 'AD', 'labor')",0.0
-opex_costs,"(4, 25, 'AD', 'diesel')",8.217967701714966e-09
+opex_costs,"(4, 25, 'AD', 'diesel')",0.0
 opex_costs,"(4, 25, 'AD', 'TPC')",0.0
 opex_costs,"(4, 25, 'HTL', 'heat')",0.0
 opex_costs,"(4, 25, 'HTL', 'electricity')",0.0
@@ -1242,26 +1242,26 @@ opex_costs,"(4, 25, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 25, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 25, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 25, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 25, 'Feedstock', 'transportation')",315.9243473231849
+opex_costs,"(4, 25, 'Feedstock', 'transportation')",315.9243486355607
 opex_costs,"(4, 25, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 25, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 25, 'Feedstock', 'diesel')",1.800409093578219
-opex_costs,"(4, 25, 'Feedstock', 'TPC')",2.6026890933117937
+opex_costs,"(4, 25, 'Feedstock', 'diesel')",1.800409101057267
+opex_costs,"(4, 25, 'Feedstock', 'TPC')",2.6026890930377857
 opex_costs,"(4, 26, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 26, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 26, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 26, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 26, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 26, 'Pyrolysis', 'labor')",3.69305433994153e-07
+opex_costs,"(4, 26, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 26, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 26, 'Pyrolysis', 'TPC')",9.059324962653259e-07
+opex_costs,"(4, 26, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 26, 'AD', 'heat')",0.0
 opex_costs,"(4, 26, 'AD', 'electricity')",0.0
 opex_costs,"(4, 26, 'AD', 'disposal')",0.0
-opex_costs,"(4, 26, 'AD', 'transportation')",-5.0538224678179044e-09
+opex_costs,"(4, 26, 'AD', 'transportation')",0.0
 opex_costs,"(4, 26, 'AD', 'water')",0.0
 opex_costs,"(4, 26, 'AD', 'labor')",0.0
-opex_costs,"(4, 26, 'AD', 'diesel')",-3.019496461444035e-10
+opex_costs,"(4, 26, 'AD', 'diesel')",0.0
 opex_costs,"(4, 26, 'AD', 'TPC')",0.0
 opex_costs,"(4, 26, 'HTL', 'heat')",0.0
 opex_costs,"(4, 26, 'HTL', 'electricity')",0.0
@@ -1274,10 +1274,10 @@ opex_costs,"(4, 26, 'HTL', 'TPC')",0.0
 opex_costs,"(4, 26, 'HTC', 'heat')",0.0
 opex_costs,"(4, 26, 'HTC', 'electricity')",0.0
 opex_costs,"(4, 26, 'HTC', 'disposal')",0.0
-opex_costs,"(4, 26, 'HTC', 'transportation')",5.9433140212280114e-08
-opex_costs,"(4, 26, 'HTC', 'water')",5.76056506068223e-08
+opex_costs,"(4, 26, 'HTC', 'transportation')",0.0
+opex_costs,"(4, 26, 'HTC', 'water')",0.0
 opex_costs,"(4, 26, 'HTC', 'labor')",0.0
-opex_costs,"(4, 26, 'HTC', 'diesel')",5.512362573515234e-09
+opex_costs,"(4, 26, 'HTC', 'diesel')",0.0
 opex_costs,"(4, 26, 'HTC', 'TPC')",0.0
 opex_costs,"(4, 26, 'CHP', 'heat')",0.0
 opex_costs,"(4, 26, 'CHP', 'electricity')",0.0
@@ -1290,26 +1290,26 @@ opex_costs,"(4, 26, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 26, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 26, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 26, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 26, 'Feedstock', 'transportation')",62.12510699719396
+opex_costs,"(4, 26, 'Feedstock', 'transportation')",62.12510703550666
 opex_costs,"(4, 26, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 26, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 26, 'Feedstock', 'diesel')",0.35404237921190257
-opex_costs,"(4, 26, 'Feedstock', 'TPC')",2.559035718526776
+opex_costs,"(4, 26, 'Feedstock', 'diesel')",0.35404237943024136
+opex_costs,"(4, 26, 'Feedstock', 'TPC')",2.5590357182573644
 opex_costs,"(4, 27, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 27, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 27, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 27, 'Pyrolysis', 'transportation')",2.2645277283142567e-07
+opex_costs,"(4, 27, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 27, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 27, 'Pyrolysis', 'labor')",3.631112909588908e-07
-opex_costs,"(4, 27, 'Pyrolysis', 'diesel')",2.100326156696623e-08
-opex_costs,"(4, 27, 'Pyrolysis', 'TPC')",8.907378228442777e-07
+opex_costs,"(4, 27, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 27, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 27, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 27, 'AD', 'heat')",0.0
 opex_costs,"(4, 27, 'AD', 'electricity')",0.0
 opex_costs,"(4, 27, 'AD', 'disposal')",0.0
-opex_costs,"(4, 27, 'AD', 'transportation')",-1.130264187265094e-08
+opex_costs,"(4, 27, 'AD', 'transportation')",0.0
 opex_costs,"(4, 27, 'AD', 'water')",0.0
 opex_costs,"(4, 27, 'AD', 'labor')",0.0
-opex_costs,"(4, 27, 'AD', 'diesel')",-6.639701660910126e-10
+opex_costs,"(4, 27, 'AD', 'diesel')",0.0
 opex_costs,"(4, 27, 'AD', 'TPC')",0.0
 opex_costs,"(4, 27, 'HTL', 'heat')",0.0
 opex_costs,"(4, 27, 'HTL', 'electricity')",0.0
@@ -1338,26 +1338,26 @@ opex_costs,"(4, 27, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 27, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 27, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 27, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 27, 'Feedstock', 'transportation')",61.08311896921289
+opex_costs,"(4, 27, 'Feedstock', 'transportation')",61.083119120795935
 opex_costs,"(4, 27, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 27, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 27, 'Feedstock', 'diesel')",0.348104233776541
-opex_costs,"(4, 27, 'Feedstock', 'TPC')",2.5161145161456844
+opex_costs,"(4, 27, 'Feedstock', 'diesel')",0.3481042346403918
+opex_costs,"(4, 27, 'Feedstock', 'TPC')",2.5161145158807914
 opex_costs,"(4, 28, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 28, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 28, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 28, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 28, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 28, 'Pyrolysis', 'labor')",3.570210386449925e-07
+opex_costs,"(4, 28, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 28, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 28, 'Pyrolysis', 'TPC')",8.757980007519148e-07
+opex_costs,"(4, 28, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 28, 'AD', 'heat')",0.0
 opex_costs,"(4, 28, 'AD', 'electricity')",0.0
 opex_costs,"(4, 28, 'AD', 'disposal')",0.0
-opex_costs,"(4, 28, 'AD', 'transportation')",3.1493122695392245e-07
+opex_costs,"(4, 28, 'AD', 'transportation')",0.0
 opex_costs,"(4, 28, 'AD', 'water')",0.0
 opex_costs,"(4, 28, 'AD', 'labor')",0.0
-opex_costs,"(4, 28, 'AD', 'diesel')",1.8190237920868507e-08
+opex_costs,"(4, 28, 'AD', 'diesel')",0.0
 opex_costs,"(4, 28, 'AD', 'TPC')",0.0
 opex_costs,"(4, 28, 'HTL', 'heat')",0.0
 opex_costs,"(4, 28, 'HTL', 'electricity')",0.0
@@ -1386,26 +1386,26 @@ opex_costs,"(4, 28, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 28, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 28, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 28, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 28, 'Feedstock', 'transportation')",60.05860763520839
+opex_costs,"(4, 28, 'Feedstock', 'transportation')",60.05860785709175
 opex_costs,"(4, 28, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 28, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 28, 'Feedstock', 'diesel')",0.3422656855992816
-opex_costs,"(4, 28, 'Feedstock', 'TPC')",2.4739132058710225
-opex_costs,"(4, 29, 'Pyrolysis', 'heat')",5.253247699790199e-07
+opex_costs,"(4, 28, 'Feedstock', 'diesel')",0.34226568686376413
+opex_costs,"(4, 28, 'Feedstock', 'TPC')",2.473913205610572
+opex_costs,"(4, 29, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 29, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 29, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 29, 'Pyrolysis', 'transportation')",6.436250180019779e-07
+opex_costs,"(4, 29, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 29, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 29, 'Pyrolysis', 'labor')",3.510329345544364e-07
-opex_costs,"(4, 29, 'Pyrolysis', 'diesel')",5.969555786451787e-08
-opex_costs,"(4, 29, 'Pyrolysis', 'TPC')",8.611087555166553e-07
+opex_costs,"(4, 29, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 29, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 29, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 29, 'AD', 'heat')",0.0
 opex_costs,"(4, 29, 'AD', 'electricity')",0.0
 opex_costs,"(4, 29, 'AD', 'disposal')",0.0
-opex_costs,"(4, 29, 'AD', 'transportation')",7.593483863262754e-08
+opex_costs,"(4, 29, 'AD', 'transportation')",0.0
 opex_costs,"(4, 29, 'AD', 'water')",0.0
 opex_costs,"(4, 29, 'AD', 'labor')",0.0
-opex_costs,"(4, 29, 'AD', 'diesel')",4.312387557253046e-09
+opex_costs,"(4, 29, 'AD', 'diesel')",0.0
 opex_costs,"(4, 29, 'AD', 'TPC')",0.0
 opex_costs,"(4, 29, 'HTL', 'heat')",0.0
 opex_costs,"(4, 29, 'HTL', 'electricity')",0.0
@@ -1434,26 +1434,26 @@ opex_costs,"(4, 29, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 29, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 29, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 29, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 29, 'Feedstock', 'transportation')",295.2563993702196
+opex_costs,"(4, 29, 'Feedstock', 'transportation')",295.2564005939811
 opex_costs,"(4, 29, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 29, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 29, 'Feedstock', 'diesel')",1.6826253211168514
-opex_costs,"(4, 29, 'Feedstock', 'TPC')",2.4324197133755074
+opex_costs,"(4, 29, 'Feedstock', 'diesel')",1.6826253280908987
+opex_costs,"(4, 29, 'Feedstock', 'TPC')",2.4324197131194256
 opex_costs,"(4, 30, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 30, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 30, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 30, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 30, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 30, 'Pyrolysis', 'labor')",3.451452654150962e-07
+opex_costs,"(4, 30, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 30, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 30, 'Pyrolysis', 'TPC')",8.466658843601175e-07
+opex_costs,"(4, 30, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 30, 'AD', 'heat')",0.0
 opex_costs,"(4, 30, 'AD', 'electricity')",0.0
 opex_costs,"(4, 30, 'AD', 'disposal')",0.0
-opex_costs,"(4, 30, 'AD', 'transportation')",-4.488806977592768e-09
+opex_costs,"(4, 30, 'AD', 'transportation')",0.0
 opex_costs,"(4, 30, 'AD', 'water')",0.0
 opex_costs,"(4, 30, 'AD', 'labor')",0.0
-opex_costs,"(4, 30, 'AD', 'diesel')",-2.506465298454855e-10
+opex_costs,"(4, 30, 'AD', 'diesel')",0.0
 opex_costs,"(4, 30, 'AD', 'TPC')",0.0
 opex_costs,"(4, 30, 'HTL', 'heat')",0.0
 opex_costs,"(4, 30, 'HTL', 'electricity')",0.0
@@ -1482,26 +1482,26 @@ opex_costs,"(4, 30, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 30, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 30, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 30, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 30, 'Feedstock', 'transportation')",58.06084769989774
+opex_costs,"(4, 30, 'Feedstock', 'transportation')",58.06084769673517
 opex_costs,"(4, 30, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 30, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 30, 'Feedstock', 'diesel')",0.33088072845750083
-opex_costs,"(4, 30, 'Feedstock', 'TPC')",2.3916221668474535
+opex_costs,"(4, 30, 'Feedstock', 'diesel')",0.3308807284394778
+opex_costs,"(4, 30, 'Feedstock', 'TPC')",2.391622166595667
 opex_costs,"(4, 31, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 31, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 31, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 31, 'Pyrolysis', 'transportation')",5.669128899782569e-07
+opex_costs,"(4, 31, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 31, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 31, 'Pyrolysis', 'labor')",3.39356346690552e-07
-opex_costs,"(4, 31, 'Pyrolysis', 'diesel')",5.2580586958684827e-08
-opex_costs,"(4, 31, 'Pyrolysis', 'TPC')",8.324652549946519e-07
+opex_costs,"(4, 31, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 31, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 31, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 31, 'AD', 'heat')",0.0
 opex_costs,"(4, 31, 'AD', 'electricity')",0.0
 opex_costs,"(4, 31, 'AD', 'disposal')",0.0
-opex_costs,"(4, 31, 'AD', 'transportation')",-3.909386997617948e-09
+opex_costs,"(4, 31, 'AD', 'transportation')",0.0
 opex_costs,"(4, 31, 'AD', 'water')",0.0
 opex_costs,"(4, 31, 'AD', 'labor')",0.0
-opex_costs,"(4, 31, 'AD', 'diesel')",-2.1463151211330902e-10
+opex_costs,"(4, 31, 'AD', 'diesel')",0.0
 opex_costs,"(4, 31, 'AD', 'TPC')",0.0
 opex_costs,"(4, 31, 'HTL', 'heat')",0.0
 opex_costs,"(4, 31, 'HTL', 'electricity')",0.0
@@ -1530,26 +1530,26 @@ opex_costs,"(4, 31, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 31, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 31, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 31, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 31, 'Feedstock', 'transportation')",57.087026819035565
+opex_costs,"(4, 31, 'Feedstock', 'transportation')",57.08702721569713
 opex_costs,"(4, 31, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 31, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 31, 'Feedstock', 'diesel')",0.3253310581510617
-opex_costs,"(4, 31, 'Feedstock', 'TPC')",2.351508893594097
+opex_costs,"(4, 31, 'Feedstock', 'diesel')",0.32533106041158105
+opex_costs,"(4, 31, 'Feedstock', 'TPC')",2.351508893346533
 opex_costs,"(4, 32, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 32, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 32, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 32, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 32, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 32, 'Pyrolysis', 'labor')",3.3366452209812377e-07
+opex_costs,"(4, 32, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 32, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 32, 'Pyrolysis', 'TPC')",8.185028044410417e-07
+opex_costs,"(4, 32, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 32, 'AD', 'heat')",0.0
 opex_costs,"(4, 32, 'AD', 'electricity')",0.0
 opex_costs,"(4, 32, 'AD', 'disposal')",0.0
-opex_costs,"(4, 32, 'AD', 'transportation')",-4.339493497521708e-09
+opex_costs,"(4, 32, 'AD', 'transportation')",0.0
 opex_costs,"(4, 32, 'AD', 'water')",0.0
 opex_costs,"(4, 32, 'AD', 'labor')",0.0
-opex_costs,"(4, 32, 'AD', 'diesel')",-2.342490933135378e-10
+opex_costs,"(4, 32, 'AD', 'diesel')",0.0
 opex_costs,"(4, 32, 'AD', 'TPC')",0.0
 opex_costs,"(4, 32, 'HTL', 'heat')",0.0
 opex_costs,"(4, 32, 'HTL', 'electricity')",0.0
@@ -1578,26 +1578,26 @@ opex_costs,"(4, 32, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 32, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 32, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 32, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 32, 'Feedstock', 'transportation')",56.12954005641413
+opex_costs,"(4, 32, 'Feedstock', 'transportation')",56.129540053356756
 opex_costs,"(4, 32, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 32, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 32, 'Feedstock', 'diesel')",0.3198744737218759
-opex_costs,"(4, 32, 'Feedstock', 'TPC')",2.312068416701889
+opex_costs,"(4, 32, 'Feedstock', 'diesel')",0.3198744737044524
+opex_costs,"(4, 32, 'Feedstock', 'TPC')",2.312068416458478
 opex_costs,"(4, 33, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 33, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 33, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 33, 'Pyrolysis', 'transportation')",1.058273210299413e-07
+opex_costs,"(4, 33, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 33, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 33, 'Pyrolysis', 'labor')",3.280681631349873e-07
-opex_costs,"(4, 33, 'Pyrolysis', 'diesel')",9.815375085637762e-09
-opex_costs,"(4, 33, 'Pyrolysis', 'TPC')",8.047745378660328e-07
+opex_costs,"(4, 33, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 33, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 33, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 33, 'AD', 'heat')",0.0
 opex_costs,"(4, 33, 'AD', 'electricity')",0.0
 opex_costs,"(4, 33, 'AD', 'disposal')",0.0
-opex_costs,"(4, 33, 'AD', 'transportation')",6.318938753395673e-08
+opex_costs,"(4, 33, 'AD', 'transportation')",0.0
 opex_costs,"(4, 33, 'AD', 'water')",0.0
 opex_costs,"(4, 33, 'AD', 'labor')",0.0
-opex_costs,"(4, 33, 'AD', 'diesel')",3.353799365163299e-09
+opex_costs,"(4, 33, 'AD', 'diesel')",0.0
 opex_costs,"(4, 33, 'AD', 'TPC')",0.0
 opex_costs,"(4, 33, 'HTL', 'heat')",0.0
 opex_costs,"(4, 33, 'HTL', 'electricity')",0.0
@@ -1626,19 +1626,19 @@ opex_costs,"(4, 33, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 33, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 33, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 33, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 33, 'Feedstock', 'transportation')",275.9405605448702
+opex_costs,"(4, 33, 'Feedstock', 'transportation')",275.9405613027866
 opex_costs,"(4, 33, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 33, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 33, 'Feedstock', 'diesel')",1.5725470312797132
-opex_costs,"(4, 33, 'Feedstock', 'TPC')",2.27328945175281
+opex_costs,"(4, 33, 'Feedstock', 'diesel')",1.5725470355989737
+opex_costs,"(4, 33, 'Feedstock', 'TPC')",2.273289451513481
 opex_costs,"(4, 34, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 34, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 34, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 34, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 34, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 34, 'Pyrolysis', 'labor')",3.225656686122394e-07
+opex_costs,"(4, 34, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 34, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 34, 'Pyrolysis', 'TPC')",7.91276527439362e-07
+opex_costs,"(4, 34, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 34, 'AD', 'heat')",0.0
 opex_costs,"(4, 34, 'AD', 'electricity')",0.0
 opex_costs,"(4, 34, 'AD', 'disposal')",0.0
@@ -1678,15 +1678,15 @@ opex_costs,"(4, 34, 'Feedstock', 'transportation')",54.26247448293007
 opex_costs,"(4, 34, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 34, 'Feedstock', 'labor')",0.0
 opex_costs,"(4, 34, 'Feedstock', 'diesel')",0.3092343256443717
-opex_costs,"(4, 34, 'Feedstock', 'TPC')",2.2351609035957507
+opex_costs,"(4, 34, 'Feedstock', 'TPC')",2.235160903360436
 opex_costs,"(4, 35, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 35, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 35, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 35, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 35, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 35, 'Pyrolysis', 'labor')",3.171554641967776e-07
+opex_costs,"(4, 35, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 35, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 35, 'Pyrolysis', 'TPC')",7.780049112099549e-07
+opex_costs,"(4, 35, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 35, 'AD', 'heat')",0.0
 opex_costs,"(4, 35, 'AD', 'electricity')",0.0
 opex_costs,"(4, 35, 'AD', 'disposal')",0.0
@@ -1726,22 +1726,22 @@ opex_costs,"(4, 35, 'Feedstock', 'transportation')",53.35236188382908
 opex_costs,"(4, 35, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 35, 'Feedstock', 'labor')",0.0
 opex_costs,"(4, 35, 'Feedstock', 'diesel')",0.30404772001082336
-opex_costs,"(4, 35, 'Feedstock', 'TPC')",2.197671863172053
+opex_costs,"(4, 35, 'Feedstock', 'TPC')",2.197671862940685
 opex_costs,"(4, 36, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 36, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 36, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 36, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 36, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 36, 'Pyrolysis', 'labor')",3.1183600196086323e-07
+opex_costs,"(4, 36, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 36, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 36, 'Pyrolysis', 'TPC')",7.649558920009733e-07
+opex_costs,"(4, 36, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 36, 'AD', 'heat')",0.0
 opex_costs,"(4, 36, 'AD', 'electricity')",0.0
 opex_costs,"(4, 36, 'AD', 'disposal')",0.0
-opex_costs,"(4, 36, 'AD', 'transportation')",-6.448189027832077e-09
+opex_costs,"(4, 36, 'AD', 'transportation')",0.0
 opex_costs,"(4, 36, 'AD', 'water')",0.0
 opex_costs,"(4, 36, 'AD', 'labor')",0.0
-opex_costs,"(4, 36, 'AD', 'diesel')",-3.253065885005332e-10
+opex_costs,"(4, 36, 'AD', 'diesel')",0.0
 opex_costs,"(4, 36, 'AD', 'TPC')",0.0
 opex_costs,"(4, 36, 'HTL', 'heat')",0.0
 opex_costs,"(4, 36, 'HTL', 'electricity')",0.0
@@ -1770,26 +1770,26 @@ opex_costs,"(4, 36, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 36, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 36, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 36, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 36, 'Feedstock', 'transportation')",52.45751407310075
+opex_costs,"(4, 36, 'Feedstock', 'transportation')",52.4575140685577
 opex_costs,"(4, 36, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 36, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 36, 'Feedstock', 'diesel')",0.29894810629173346
-opex_costs,"(4, 36, 'Feedstock', 'TPC')",2.1608116043942887
-opex_costs,"(4, 37, 'Pyrolysis', 'heat')",4.1132922077554235e-07
+opex_costs,"(4, 36, 'Feedstock', 'diesel')",0.2989481062658433
+opex_costs,"(4, 36, 'Feedstock', 'TPC')",2.1608116041668013
+opex_costs,"(4, 37, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 37, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 37, 'Pyrolysis', 'disposal')",0.0
-opex_costs,"(4, 37, 'Pyrolysis', 'transportation')",5.844272621487621e-07
+opex_costs,"(4, 37, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 37, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 37, 'Pyrolysis', 'labor')",3.0660575993924036e-07
-opex_costs,"(4, 37, 'Pyrolysis', 'diesel')",5.420502694799842e-08
-opex_costs,"(4, 37, 'Pyrolysis', 'TPC')",7.521257363233949e-07
+opex_costs,"(4, 37, 'Pyrolysis', 'labor')",0.0
+opex_costs,"(4, 37, 'Pyrolysis', 'diesel')",0.0
+opex_costs,"(4, 37, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 37, 'AD', 'heat')",0.0
 opex_costs,"(4, 37, 'AD', 'electricity')",0.0
 opex_costs,"(4, 37, 'AD', 'disposal')",0.0
-opex_costs,"(4, 37, 'AD', 'transportation')",1.4242706045421058e-07
+opex_costs,"(4, 37, 'AD', 'transportation')",0.0
 opex_costs,"(4, 37, 'AD', 'water')",0.0
 opex_costs,"(4, 37, 'AD', 'labor')",0.0
-opex_costs,"(4, 37, 'AD', 'diesel')",7.064829179897129e-09
+opex_costs,"(4, 37, 'AD', 'diesel')",0.0
 opex_costs,"(4, 37, 'AD', 'TPC')",0.0
 opex_costs,"(4, 37, 'HTL', 'heat')",0.0
 opex_costs,"(4, 37, 'HTL', 'electricity')",0.0
@@ -1818,26 +1818,26 @@ opex_costs,"(4, 37, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 37, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 37, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 37, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 37, 'Feedstock', 'transportation')",257.888374696395
+opex_costs,"(4, 37, 'Feedstock', 'transportation')",257.8883750493328
 opex_costs,"(4, 37, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 37, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 37, 'Feedstock', 'diesel')",1.4696701247166664
-opex_costs,"(4, 37, 'Feedstock', 'TPC')",2.124569581077392
+opex_costs,"(4, 37, 'Feedstock', 'diesel')",1.4696701267280106
+opex_costs,"(4, 37, 'Feedstock', 'TPC')",2.1245695808537204
 opex_costs,"(4, 38, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 38, 'Pyrolysis', 'electricity')",0.0
 opex_costs,"(4, 38, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 38, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 38, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 38, 'Pyrolysis', 'labor')",3.014632416936816e-07
+opex_costs,"(4, 38, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 38, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 38, 'Pyrolysis', 'TPC')",7.395107733078146e-07
+opex_costs,"(4, 38, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 38, 'AD', 'heat')",0.0
 opex_costs,"(4, 38, 'AD', 'electricity')",0.0
-opex_costs,"(4, 38, 'AD', 'disposal')",-9.824556143402758e-10
-opex_costs,"(4, 38, 'AD', 'transportation')",-1.3668322119731732e-08
+opex_costs,"(4, 38, 'AD', 'disposal')",0.0
+opex_costs,"(4, 38, 'AD', 'transportation')",0.0
 opex_costs,"(4, 38, 'AD', 'water')",0.0
 opex_costs,"(4, 38, 'AD', 'labor')",0.0
-opex_costs,"(4, 38, 'AD', 'diesel')",-6.666201167480111e-10
+opex_costs,"(4, 38, 'AD', 'diesel')",0.0
 opex_costs,"(4, 38, 'AD', 'TPC')",0.0
 opex_costs,"(4, 38, 'HTL', 'heat')",0.0
 opex_costs,"(4, 38, 'HTL', 'electricity')",0.0
@@ -1866,19 +1866,19 @@ opex_costs,"(4, 38, 'CHP', 'TPC')",0.0
 opex_costs,"(4, 38, 'Feedstock', 'heat')",0.0
 opex_costs,"(4, 38, 'Feedstock', 'electricity')",0.0
 opex_costs,"(4, 38, 'Feedstock', 'disposal')",0.0
-opex_costs,"(4, 38, 'Feedstock', 'transportation')",50.712592984330925
+opex_costs,"(4, 38, 'Feedstock', 'transportation')",50.712592974700975
 opex_costs,"(4, 38, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 38, 'Feedstock', 'labor')",0.0
-opex_costs,"(4, 38, 'Feedstock', 'diesel')",0.289004042713171
-opex_costs,"(4, 38, 'Feedstock', 'TPC')",2.0889354239212614
+opex_costs,"(4, 38, 'Feedstock', 'diesel')",0.28900404265829127
+opex_costs,"(4, 38, 'Feedstock', 'TPC')",2.0889354237013413
 opex_costs,"(4, 39, 'Pyrolysis', 'heat')",0.0
 opex_costs,"(4, 39, 'Pyrolysis', 'electricity')",0.0
-opex_costs,"(4, 39, 'Pyrolysis', 'disposal')",8.317126379843685e-09
+opex_costs,"(4, 39, 'Pyrolysis', 'disposal')",0.0
 opex_costs,"(4, 39, 'Pyrolysis', 'transportation')",0.0
 opex_costs,"(4, 39, 'Pyrolysis', 'water')",0.0
-opex_costs,"(4, 39, 'Pyrolysis', 'labor')",2.964069758848388e-07
+opex_costs,"(4, 39, 'Pyrolysis', 'labor')",0.0
 opex_costs,"(4, 39, 'Pyrolysis', 'diesel')",0.0
-opex_costs,"(4, 39, 'Pyrolysis', 'TPC')",7.271073936541634e-07
+opex_costs,"(4, 39, 'Pyrolysis', 'TPC')",0.0
 opex_costs,"(4, 39, 'AD', 'heat')",0.0
 opex_costs,"(4, 39, 'AD', 'electricity')",0.0
 opex_costs,"(4, 39, 'AD', 'disposal')",0.0
@@ -1918,10 +1918,10 @@ opex_costs,"(4, 39, 'Feedstock', 'transportation')",49.862020452176694
 opex_costs,"(4, 39, 'Feedstock', 'water')",0.0
 opex_costs,"(4, 39, 'Feedstock', 'labor')",0.0
 opex_costs,"(4, 39, 'Feedstock', 'diesel')",0.2841567476736666
-opex_costs,"(4, 39, 'Feedstock', 'TPC')",2.0538989375439742
+opex_costs,"(4, 39, 'Feedstock', 'TPC')",2.0538989373277423
 Variable,opex_revenues
 opex_revenues,"(4, 0, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 0, 'Pyrolysis', 'bio oil')",8.052553546548441e-07
+opex_revenues,"(4, 0, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 0, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 0, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 0, 'Pyrolysis', 'potting media')",0.0
@@ -1951,7 +1951,7 @@ opex_revenues,"(4, 0, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 0, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 0, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 0, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 0, 'CHP', 'electricity')",2.5038047555126013e-07
+opex_revenues,"(4, 0, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 0, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 0, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 0, 'CHP', 'incentive 2')",0.0
@@ -1962,14 +1962,14 @@ opex_revenues,"(4, 0, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 0, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 0, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 0, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 1, 'Pyrolysis', 'avoided fertilizer')",5.122684076058349e-06
-opex_revenues,"(4, 1, 'Pyrolysis', 'bio oil')",5.703286701233374e-06
+opex_revenues,"(4, 1, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 1, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 1, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 1, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 1, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 1, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 1, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 1, 'AD', 'avoided fertilizer')",1.7774348709079134e-07
+opex_revenues,"(4, 1, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 1, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 1, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 1, 'AD', 'electricity')",0.0
@@ -1993,11 +1993,11 @@ opex_revenues,"(4, 1, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 1, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 1, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 1, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 1, 'CHP', 'electricity')",2.461809909619647e-07
+opex_revenues,"(4, 1, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 1, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 1, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 1, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 1, 'Feedstock', 'avoided fertilizer')",1354.8723856745203
+opex_revenues,"(4, 1, 'Feedstock', 'avoided fertilizer')",2032.3085783055894
 opex_revenues,"(4, 1, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 1, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 1, 'Feedstock', 'electricity')",0.0
@@ -2005,7 +2005,7 @@ opex_revenues,"(4, 1, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 1, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 1, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 2, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 2, 'Pyrolysis', 'bio oil')",2.626706120824065e-06
+opex_revenues,"(4, 2, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 2, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 2, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 2, 'Pyrolysis', 'potting media')",0.0
@@ -2035,7 +2035,7 @@ opex_revenues,"(4, 2, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 2, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 2, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 2, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 2, 'CHP', 'electricity')",2.420519418600088e-07
+opex_revenues,"(4, 2, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 2, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 2, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 2, 'CHP', 'incentive 2')",0.0
@@ -2047,7 +2047,7 @@ opex_revenues,"(4, 2, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 2, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 2, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 3, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 3, 'Pyrolysis', 'bio oil')",7.664209897915543e-07
+opex_revenues,"(4, 3, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 3, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 3, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 3, 'Pyrolysis', 'potting media')",0.0
@@ -2069,7 +2069,7 @@ opex_revenues,"(4, 3, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 3, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 3, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 3, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 3, 'HTC', 'avoided coal')",3.197703422311639e-07
+opex_revenues,"(4, 3, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 3, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 3, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 3, 'HTC', 'incentive 1')",0.0
@@ -2077,7 +2077,7 @@ opex_revenues,"(4, 3, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 3, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 3, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 3, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 3, 'CHP', 'electricity')",2.3799760466519343e-07
+opex_revenues,"(4, 3, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 3, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 3, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 3, 'CHP', 'incentive 2')",0.0
@@ -2089,7 +2089,7 @@ opex_revenues,"(4, 3, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 3, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 3, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 4, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 4, 'Pyrolysis', 'bio oil')",2.5393326530002115e-06
+opex_revenues,"(4, 4, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 4, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 4, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 4, 'Pyrolysis', 'potting media')",0.0
@@ -2104,14 +2104,14 @@ opex_revenues,"(4, 4, 'AD', 'incentive 1')",0.0
 opex_revenues,"(4, 4, 'AD', 'incentive 2')",0.0
 opex_revenues,"(4, 4, 'HTL', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 4, 'HTL', 'bio oil')",0.0
-opex_revenues,"(4, 4, 'HTL', 'avoided coal')",0.0
+opex_revenues,"(4, 4, 'HTL', 'avoided coal')",1.2650316931055987e-13
 opex_revenues,"(4, 4, 'HTL', 'electricity')",0.0
 opex_revenues,"(4, 4, 'HTL', 'potting media')",0.0
 opex_revenues,"(4, 4, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 4, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 4, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 4, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 4, 'HTC', 'avoided coal')",2.2870730438411502e-07
+opex_revenues,"(4, 4, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 4, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 4, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 4, 'HTC', 'incentive 1')",0.0
@@ -2119,7 +2119,7 @@ opex_revenues,"(4, 4, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 4, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 4, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 4, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 4, 'CHP', 'electricity')",2.1276268415532104e-07
+opex_revenues,"(4, 4, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 4, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 4, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 4, 'CHP', 'incentive 2')",0.0
@@ -2130,14 +2130,14 @@ opex_revenues,"(4, 4, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 4, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 4, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 4, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 5, 'Pyrolysis', 'avoided fertilizer')",1.6282934433774101e-06
-opex_revenues,"(4, 5, 'Pyrolysis', 'bio oil')",7.409271368019894e-07
+opex_revenues,"(4, 5, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 5, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 5, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 5, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 5, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 5, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 5, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 5, 'AD', 'avoided fertilizer')",1.4965081991753555e-07
+opex_revenues,"(4, 5, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 5, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 5, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 5, 'AD', 'electricity')",0.0
@@ -2161,11 +2161,11 @@ opex_revenues,"(4, 5, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 5, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 5, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 5, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 5, 'CHP', 'electricity')",2.3008096873530692e-07
+opex_revenues,"(4, 5, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 5, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 5, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 5, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 5, 'Feedstock', 'avoided fertilizer')",5064.9434938596505
+opex_revenues,"(4, 5, 'Feedstock', 'avoided fertilizer')",7597.415246002151
 opex_revenues,"(4, 5, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 5, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 5, 'Feedstock', 'electricity')",0.0
@@ -2173,7 +2173,7 @@ opex_revenues,"(4, 5, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 5, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 5, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 6, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 6, 'Pyrolysis', 'bio oil')",2.566838578482562e-06
+opex_revenues,"(4, 6, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 6, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 6, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 6, 'Pyrolysis', 'potting media')",0.0
@@ -2203,7 +2203,7 @@ opex_revenues,"(4, 6, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 6, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 6, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 6, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 6, 'CHP', 'electricity')",2.2621676809346611e-07
+opex_revenues,"(4, 6, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 6, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 6, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 6, 'CHP', 'incentive 2')",0.0
@@ -2215,7 +2215,7 @@ opex_revenues,"(4, 6, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 6, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 6, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 7, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 7, 'Pyrolysis', 'bio oil')",7.162812988706111e-07
+opex_revenues,"(4, 7, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 7, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 7, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 7, 'Pyrolysis', 'potting media')",0.0
@@ -2245,7 +2245,7 @@ opex_revenues,"(4, 7, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 7, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 7, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 7, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 7, 'CHP', 'electricity')",2.2242256717042236e-07
+opex_revenues,"(4, 7, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 7, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 7, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 7, 'CHP', 'incentive 2')",0.0
@@ -2257,7 +2257,7 @@ opex_revenues,"(4, 7, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 7, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 7, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 8, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 8, 'Pyrolysis', 'bio oil')",7.042675335417256e-07
+opex_revenues,"(4, 8, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 8, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 8, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 8, 'Pyrolysis', 'potting media')",0.0
@@ -2287,7 +2287,7 @@ opex_revenues,"(4, 8, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 8, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 8, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 8, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 8, 'CHP', 'electricity')",2.1869200414993452e-07
+opex_revenues,"(4, 8, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 8, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 8, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 8, 'CHP', 'incentive 2')",0.0
@@ -2298,14 +2298,14 @@ opex_revenues,"(4, 8, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 8, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 8, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 8, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 9, 'Pyrolysis', 'avoided fertilizer')",1.9156158971639444e-06
-opex_revenues,"(4, 9, 'Pyrolysis', 'bio oil')",1.4823674759129963e-06
+opex_revenues,"(4, 9, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 9, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 9, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 9, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 9, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 9, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 9, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 9, 'AD', 'avoided fertilizer')",2.3316334110789826e-07
+opex_revenues,"(4, 9, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 9, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 9, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 9, 'AD', 'electricity')",0.0
@@ -2329,11 +2329,11 @@ opex_revenues,"(4, 9, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 9, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 9, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 9, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 9, 'CHP', 'electricity')",2.150240116708574e-07
+opex_revenues,"(4, 9, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 9, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 9, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 9, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 9, 'Feedstock', 'avoided fertilizer')",4733.592053980618
+opex_revenues,"(4, 9, 'Feedstock', 'avoided fertilizer')",7100.388080375854
 opex_revenues,"(4, 9, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 9, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 9, 'Feedstock', 'electricity')",0.0
@@ -2341,7 +2341,7 @@ opex_revenues,"(4, 9, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 9, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 9, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 10, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 10, 'Pyrolysis', 'bio oil')",1.457504597299705e-06
+opex_revenues,"(4, 10, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 10, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 10, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 10, 'Pyrolysis', 'potting media')",0.0
@@ -2363,7 +2363,7 @@ opex_revenues,"(4, 10, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 10, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 10, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 10, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 10, 'HTC', 'avoided coal')",2.6250450444803217e-08
+opex_revenues,"(4, 10, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 10, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 10, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 10, 'HTC', 'incentive 1')",0.0
@@ -2371,7 +2371,7 @@ opex_revenues,"(4, 10, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 10, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 10, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 10, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 10, 'CHP', 'electricity')",2.0902771985436105e-07
+opex_revenues,"(4, 10, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 10, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 10, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 10, 'CHP', 'incentive 2')",0.0
@@ -2383,7 +2383,7 @@ opex_revenues,"(4, 10, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 10, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 10, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 11, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 11, 'Pyrolysis', 'bio oil')",6.69421774645431e-07
+opex_revenues,"(4, 11, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 11, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 11, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 11, 'Pyrolysis', 'potting media')",0.0
@@ -2413,7 +2413,7 @@ opex_revenues,"(4, 11, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 11, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 11, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 11, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 11, 'CHP', 'electricity')",2.0787155810319845e-07
+opex_revenues,"(4, 11, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 11, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 11, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 11, 'CHP', 'incentive 2')",0.0
@@ -2425,7 +2425,7 @@ opex_revenues,"(4, 11, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 11, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 11, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 12, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 12, 'Pyrolysis', 'bio oil')",9.100953473713308e-07
+opex_revenues,"(4, 12, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 12, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 12, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 12, 'Pyrolysis', 'potting media')",0.0
@@ -2447,7 +2447,7 @@ opex_revenues,"(4, 12, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 12, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 12, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 12, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 12, 'HTC', 'avoided coal')",6.380447760338621e-07
+opex_revenues,"(4, 12, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 12, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 12, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 12, 'HTC', 'incentive 1')",0.0
@@ -2455,7 +2455,7 @@ opex_revenues,"(4, 12, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 12, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 12, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 12, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 12, 'CHP', 'electricity')",1.4325978172566173e-07
+opex_revenues,"(4, 12, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 12, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 12, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 12, 'CHP', 'incentive 2')",0.0
@@ -2466,14 +2466,14 @@ opex_revenues,"(4, 12, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 12, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 12, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 12, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 13, 'Pyrolysis', 'avoided fertilizer')",1.2646220527245588e-06
-opex_revenues,"(4, 13, 'Pyrolysis', 'bio oil')",7.382356032307892e-07
+opex_revenues,"(4, 13, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 13, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 13, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 13, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 13, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 13, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 13, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 13, 'AD', 'avoided fertilizer')",4.056316934003995e-07
+opex_revenues,"(4, 13, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 13, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 13, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 13, 'AD', 'electricity')",0.0
@@ -2497,11 +2497,11 @@ opex_revenues,"(4, 13, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 13, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 13, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 13, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 13, 'CHP', 'electricity')",2.0095702025313769e-07
+opex_revenues,"(4, 13, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 13, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 13, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 13, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 13, 'Feedstock', 'avoided fertilizer')",4423.91780675693
+opex_revenues,"(4, 13, 'Feedstock', 'avoided fertilizer')",6635.876710631629
 opex_revenues,"(4, 13, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 13, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 13, 'Feedstock', 'electricity')",0.0
@@ -2509,7 +2509,7 @@ opex_revenues,"(4, 13, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 13, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 13, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 14, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 14, 'Pyrolysis', 'bio oil')",1.6056761527594227e-06
+opex_revenues,"(4, 14, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 14, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 14, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 14, 'Pyrolysis', 'potting media')",0.0
@@ -2539,7 +2539,7 @@ opex_revenues,"(4, 14, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 14, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 14, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 14, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 14, 'CHP', 'electricity')",1.9758648623763297e-07
+opex_revenues,"(4, 14, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 14, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 14, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 14, 'CHP', 'incentive 2')",0.0
@@ -2551,7 +2551,7 @@ opex_revenues,"(4, 14, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 14, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 14, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 15, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 15, 'Pyrolysis', 'bio oil')",1.3393072234949644e-06
+opex_revenues,"(4, 15, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 15, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 15, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 15, 'Pyrolysis', 'potting media')",0.0
@@ -2581,7 +2581,7 @@ opex_revenues,"(4, 15, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 15, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 15, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 15, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 15, 'CHP', 'electricity')",1.9427693939330556e-07
+opex_revenues,"(4, 15, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 15, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 15, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 15, 'CHP', 'incentive 2')",0.0
@@ -2593,7 +2593,7 @@ opex_revenues,"(4, 15, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 15, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 15, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 16, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 16, 'Pyrolysis', 'bio oil')",3.0519748327817796e-06
+opex_revenues,"(4, 16, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 16, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 16, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 16, 'Pyrolysis', 'potting media')",0.0
@@ -2623,7 +2623,7 @@ opex_revenues,"(4, 16, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 16, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 16, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 16, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 16, 'CHP', 'electricity')",1.910184464487524e-07
+opex_revenues,"(4, 16, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 16, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 16, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 16, 'CHP', 'incentive 2')",0.0
@@ -2634,14 +2634,14 @@ opex_revenues,"(4, 16, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 16, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 16, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 16, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 17, 'Pyrolysis', 'avoided fertilizer')",4.1041178493474776e-06
-opex_revenues,"(4, 17, 'Pyrolysis', 'bio oil')",1.294757162995018e-06
+opex_revenues,"(4, 17, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 17, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 17, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 17, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 17, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 17, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 17, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 17, 'AD', 'avoided fertilizer')",2.141692756431345e-07
+opex_revenues,"(4, 17, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 17, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 17, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 17, 'AD', 'electricity')",0.0
@@ -2665,11 +2665,11 @@ opex_revenues,"(4, 17, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 17, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 17, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 17, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 17, 'CHP', 'electricity')",1.878102993019978e-07
+opex_revenues,"(4, 17, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 17, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 17, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 17, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 17, 'Feedstock', 'avoided fertilizer')",4134.502620572295
+opex_revenues,"(4, 17, 'Feedstock', 'avoided fertilizer')",6201.753935169756
 opex_revenues,"(4, 17, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 17, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 17, 'Feedstock', 'electricity')",0.0
@@ -2677,7 +2677,7 @@ opex_revenues,"(4, 17, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 17, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 17, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 18, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 18, 'Pyrolysis', 'bio oil')",1.2730408244565747e-06
+opex_revenues,"(4, 18, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 18, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 18, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 18, 'Pyrolysis', 'potting media')",0.0
@@ -2707,7 +2707,7 @@ opex_revenues,"(4, 18, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 18, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 18, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 18, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 18, 'CHP', 'electricity')",1.8466026751180645e-07
+opex_revenues,"(4, 18, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 18, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 18, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 18, 'CHP', 'incentive 2')",0.0
@@ -2719,7 +2719,7 @@ opex_revenues,"(4, 18, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 18, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 18, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 19, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 19, 'Pyrolysis', 'bio oil')",6.7918464094807454e-06
+opex_revenues,"(4, 19, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 19, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 19, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 19, 'Pyrolysis', 'potting media')",0.0
@@ -2741,7 +2741,7 @@ opex_revenues,"(4, 19, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 19, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 19, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 19, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 19, 'HTC', 'avoided coal')",3.6581703984939116e-06
+opex_revenues,"(4, 19, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 19, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 19, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 19, 'HTC', 'incentive 1')",0.0
@@ -2749,7 +2749,7 @@ opex_revenues,"(4, 19, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 19, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 19, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 19, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 19, 'CHP', 'electricity')",1.815630693538286e-07
+opex_revenues,"(4, 19, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 19, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 19, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 19, 'CHP', 'incentive 2')",0.0
@@ -2761,7 +2761,7 @@ opex_revenues,"(4, 19, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 19, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 19, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 20, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 20, 'Pyrolysis', 'bio oil')",7.900066822460497e-06
+opex_revenues,"(4, 20, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 20, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 20, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 20, 'Pyrolysis', 'potting media')",0.0
@@ -2783,7 +2783,7 @@ opex_revenues,"(4, 20, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 20, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 20, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 20, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 20, 'HTC', 'avoided coal')",-5.7674634708643395e-08
+opex_revenues,"(4, 20, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 20, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 20, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 20, 'HTC', 'incentive 1')",0.0
@@ -2791,7 +2791,7 @@ opex_revenues,"(4, 20, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 20, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 20, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 20, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 20, 'CHP', 'electricity')",1.785178186805968e-07
+opex_revenues,"(4, 20, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 20, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 20, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 20, 'CHP', 'incentive 2')",0.0
@@ -2802,14 +2802,14 @@ opex_revenues,"(4, 20, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 20, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 20, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 20, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 21, 'Pyrolysis', 'avoided fertilizer')",1.2641004719450783e-06
-opex_revenues,"(4, 21, 'Pyrolysis', 'bio oil')",5.652498569079217e-07
+opex_revenues,"(4, 21, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 21, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 21, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 21, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 21, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 21, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 21, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 21, 'AD', 'avoided fertilizer')",2.668764329201967e-07
+opex_revenues,"(4, 21, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 21, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 21, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 21, 'AD', 'electricity')",0.0
@@ -2825,7 +2825,7 @@ opex_revenues,"(4, 21, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 21, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 21, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 21, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 21, 'HTC', 'avoided coal')",-5.670729195111035e-08
+opex_revenues,"(4, 21, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 21, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 21, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 21, 'HTC', 'incentive 1')",0.0
@@ -2833,11 +2833,11 @@ opex_revenues,"(4, 21, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 21, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 21, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 21, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 21, 'CHP', 'electricity')",1.755236442074745e-07
+opex_revenues,"(4, 21, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 21, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 21, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 21, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 21, 'Feedstock', 'avoided fertilizer')",3864.0211300948727
+opex_revenues,"(4, 21, 'Feedstock', 'avoided fertilizer')",5796.031715111907
 opex_revenues,"(4, 21, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 21, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 21, 'Feedstock', 'electricity')",0.0
@@ -2845,7 +2845,7 @@ opex_revenues,"(4, 21, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 21, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 21, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 22, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 22, 'Pyrolysis', 'bio oil')",6.339886551275494e-07
+opex_revenues,"(4, 22, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 22, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 22, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 22, 'Pyrolysis', 'potting media')",0.0
@@ -2875,7 +2875,7 @@ opex_revenues,"(4, 22, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 22, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 22, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 22, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 22, 'CHP', 'electricity')",1.7257968926337048e-07
+opex_revenues,"(4, 22, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 22, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 22, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 22, 'CHP', 'incentive 2')",0.0
@@ -2887,7 +2887,7 @@ opex_revenues,"(4, 22, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 22, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 22, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 23, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 23, 'Pyrolysis', 'bio oil')",6.233550096421183e-07
+opex_revenues,"(4, 23, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 23, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 23, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 23, 'Pyrolysis', 'potting media')",0.0
@@ -2917,7 +2917,7 @@ opex_revenues,"(4, 23, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 23, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 23, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 23, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 23, 'CHP', 'electricity')",1.6968511154563415e-07
+opex_revenues,"(4, 23, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 23, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 23, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 23, 'CHP', 'incentive 2')",0.0
@@ -2929,7 +2929,7 @@ opex_revenues,"(4, 23, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 23, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 23, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 24, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 24, 'Pyrolysis', 'bio oil')",5.372823293395018e-07
+opex_revenues,"(4, 24, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 24, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 24, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 24, 'Pyrolysis', 'potting media')",0.0
@@ -2951,7 +2951,7 @@ opex_revenues,"(4, 24, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 24, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 24, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 24, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 24, 'HTC', 'avoided coal')",-5.341406689786387e-08
+opex_revenues,"(4, 24, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 24, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 24, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 24, 'HTC', 'incentive 1')",0.0
@@ -2959,7 +2959,7 @@ opex_revenues,"(4, 24, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 24, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 24, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 24, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 24, 'CHP', 'electricity')",1.6683908287906237e-07
+opex_revenues,"(4, 24, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 24, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 24, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 24, 'CHP', 'incentive 2')",0.0
@@ -2970,14 +2970,14 @@ opex_revenues,"(4, 24, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 24, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 24, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 24, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 25, 'Pyrolysis', 'avoided fertilizer')",1.1814023102290448e-06
-opex_revenues,"(4, 25, 'Pyrolysis', 'bio oil')",1.1358002401987128e-05
+opex_revenues,"(4, 25, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 25, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 25, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 25, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 25, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 25, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 25, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 25, 'AD', 'avoided fertilizer')",2.550571601400621e-07
+opex_revenues,"(4, 25, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 25, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 25, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 25, 'AD', 'electricity')",0.0
@@ -2993,7 +2993,7 @@ opex_revenues,"(4, 25, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 25, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 25, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 25, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 25, 'HTC', 'avoided coal')",-6.939702390799198e-08
+opex_revenues,"(4, 25, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 25, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 25, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 25, 'HTC', 'incentive 1')",0.0
@@ -3001,11 +3001,11 @@ opex_revenues,"(4, 25, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 25, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 25, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 25, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 25, 'CHP', 'electricity')",1.6404078897894812e-07
+opex_revenues,"(4, 25, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 25, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 25, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 25, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 25, 'Feedstock', 'avoided fertilizer')",3611.2347010232443
+opex_revenues,"(4, 25, 'Feedstock', 'avoided fertilizer')",5416.852070198058
 opex_revenues,"(4, 25, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 25, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 25, 'Feedstock', 'electricity')",0.0
@@ -3013,7 +3013,7 @@ opex_revenues,"(4, 25, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 25, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 25, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 26, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 26, 'Pyrolysis', 'bio oil')",7.181971414999745e-07
+opex_revenues,"(4, 26, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 26, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 26, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 26, 'Pyrolysis', 'potting media')",0.0
@@ -3035,7 +3035,7 @@ opex_revenues,"(4, 26, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 26, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 26, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 26, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 26, 'HTC', 'avoided coal')",7.506882345229793e-07
+opex_revenues,"(4, 26, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 26, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 26, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 26, 'HTC', 'incentive 1')",0.0
@@ -3043,7 +3043,7 @@ opex_revenues,"(4, 26, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 26, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 26, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 26, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 26, 'CHP', 'electricity')",8.837716109522883e-08
+opex_revenues,"(4, 26, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 26, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 26, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 26, 'CHP', 'incentive 2')",0.0
@@ -3055,7 +3055,7 @@ opex_revenues,"(4, 26, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 26, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 26, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 27, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 27, 'Pyrolysis', 'bio oil')",5.825748934166719e-07
+opex_revenues,"(4, 27, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 27, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 27, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 27, 'Pyrolysis', 'potting media')",0.0
@@ -3085,7 +3085,7 @@ opex_revenues,"(4, 27, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 27, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 27, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 27, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 27, 'CHP', 'electricity')",1.5858421639778886e-07
+opex_revenues,"(4, 27, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 27, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 27, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 27, 'CHP', 'incentive 2')",0.0
@@ -3097,7 +3097,7 @@ opex_revenues,"(4, 27, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 27, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 27, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 28, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 28, 'Pyrolysis', 'bio oil')",5.021330180743006e-07
+opex_revenues,"(4, 28, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 28, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 28, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 28, 'Pyrolysis', 'potting media')",0.0
@@ -3127,7 +3127,7 @@ opex_revenues,"(4, 28, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 28, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 28, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 28, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 28, 'CHP', 'electricity')",1.5592437652248817e-07
+opex_revenues,"(4, 28, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 28, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 28, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 28, 'CHP', 'incentive 2')",0.0
@@ -3138,14 +3138,14 @@ opex_revenues,"(4, 28, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 28, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 28, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 28, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 29, 'Pyrolysis', 'avoided fertilizer')",5.281925756099289e-07
-opex_revenues,"(4, 29, 'Pyrolysis', 'bio oil')",1.1485621104773483e-05
+opex_revenues,"(4, 29, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 29, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 29, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 29, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 29, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 29, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 29, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 29, 'AD', 'avoided fertilizer')",1.5104133222648364e-07
+opex_revenues,"(4, 29, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 29, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 29, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 29, 'AD', 'electricity')",0.0
@@ -3169,11 +3169,11 @@ opex_revenues,"(4, 29, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 29, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 29, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 29, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 29, 'CHP', 'electricity')",1.533126643649417e-07
+opex_revenues,"(4, 29, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 29, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 29, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 29, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 29, 'Feedstock', 'avoided fertilizer')",3374.985701890882
+opex_revenues,"(4, 29, 'Feedstock', 'avoided fertilizer')",5062.47857027854
 opex_revenues,"(4, 29, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 29, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 29, 'Feedstock', 'electricity')",0.0
@@ -3181,7 +3181,7 @@ opex_revenues,"(4, 29, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 29, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 29, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 30, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 30, 'Pyrolysis', 'bio oil')",1.224962649039053e-06
+opex_revenues,"(4, 30, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 30, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 30, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 30, 'Pyrolysis', 'potting media')",0.0
@@ -3203,7 +3203,7 @@ opex_revenues,"(4, 30, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 30, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 30, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 30, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 30, 'HTC', 'avoided coal')",-4.78405345192153e-08
+opex_revenues,"(4, 30, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 30, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 30, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 30, 'HTC', 'incentive 1')",0.0
@@ -3211,7 +3211,7 @@ opex_revenues,"(4, 30, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 30, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 30, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 30, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 30, 'CHP', 'electricity')",1.5073778431598428e-07
+opex_revenues,"(4, 30, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 30, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 30, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 30, 'CHP', 'incentive 2')",0.0
@@ -3223,7 +3223,7 @@ opex_revenues,"(4, 30, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 30, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 30, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 31, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 31, 'Pyrolysis', 'bio oil')",4.999707209530536e-06
+opex_revenues,"(4, 31, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 31, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 31, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 31, 'Pyrolysis', 'potting media')",0.0
@@ -3253,7 +3253,7 @@ opex_revenues,"(4, 31, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 31, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 31, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 31, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 31, 'CHP', 'electricity')",1.4820954803531667e-07
+opex_revenues,"(4, 31, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 31, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 31, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 31, 'CHP', 'incentive 2')",0.0
@@ -3265,7 +3265,7 @@ opex_revenues,"(4, 31, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 31, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 31, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 32, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 32, 'Pyrolysis', 'bio oil')",5.353305673445618e-07
+opex_revenues,"(4, 32, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 32, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 32, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 32, 'Pyrolysis', 'potting media')",0.0
@@ -3287,7 +3287,7 @@ opex_revenues,"(4, 32, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 32, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 32, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 32, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 32, 'HTC', 'avoided coal')",3.036904024786138e-08
+opex_revenues,"(4, 32, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 32, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 32, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 32, 'HTC', 'incentive 1')",0.0
@@ -3295,7 +3295,7 @@ opex_revenues,"(4, 32, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 32, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 32, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 32, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 32, 'CHP', 'electricity')",1.4572705820850964e-07
+opex_revenues,"(4, 32, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 32, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 32, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 32, 'CHP', 'incentive 2')",0.0
@@ -3306,14 +3306,14 @@ opex_revenues,"(4, 32, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 32, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 32, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 32, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 33, 'Pyrolysis', 'avoided fertilizer')",1.0140193215756521e-06
-opex_revenues,"(4, 33, 'Pyrolysis', 'bio oil')",4.614121831987273e-07
+opex_revenues,"(4, 33, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 33, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 33, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 33, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 33, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 33, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 33, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 33, 'AD', 'avoided fertilizer')",1.2565241607289787e-07
+opex_revenues,"(4, 33, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 33, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 33, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 33, 'AD', 'electricity')",0.0
@@ -3329,7 +3329,7 @@ opex_revenues,"(4, 33, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 33, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 33, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 33, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 33, 'HTC', 'avoided coal')",-5.847633126683749e-08
+opex_revenues,"(4, 33, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 33, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 33, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 33, 'HTC', 'incentive 1')",0.0
@@ -3337,11 +3337,11 @@ opex_revenues,"(4, 33, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 33, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 33, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 33, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 33, 'CHP', 'electricity')",1.4328286389246883e-07
+opex_revenues,"(4, 33, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 33, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 33, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 33, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 33, 'Feedstock', 'avoided fertilizer')",3154.1922447578327
+opex_revenues,"(4, 33, 'Feedstock', 'avoided fertilizer')",4731.2883834379
 opex_revenues,"(4, 33, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 33, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 33, 'Feedstock', 'electricity')",0.0
@@ -3349,7 +3349,7 @@ opex_revenues,"(4, 33, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 33, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 33, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 34, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 34, 'Pyrolysis', 'bio oil')",9.71196749718954e-07
+opex_revenues,"(4, 34, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 34, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 34, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 34, 'Pyrolysis', 'potting media')",0.0
@@ -3371,7 +3371,7 @@ opex_revenues,"(4, 34, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 34, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 34, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 34, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 34, 'HTC', 'avoided coal')",-5.128914356983243e-07
+opex_revenues,"(4, 34, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 34, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 34, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 34, 'HTC', 'incentive 1')",0.0
@@ -3379,7 +3379,7 @@ opex_revenues,"(4, 34, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 34, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 34, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 34, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 34, 'CHP', 'electricity')",1.408764339401722e-07
+opex_revenues,"(4, 34, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 34, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 34, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 34, 'CHP', 'incentive 2')",0.0
@@ -3391,7 +3391,7 @@ opex_revenues,"(4, 34, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 34, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 34, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 35, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 35, 'Pyrolysis', 'bio oil')",9.549074373249309e-07
+opex_revenues,"(4, 35, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 35, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 35, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 35, 'Pyrolysis', 'potting media')",0.0
@@ -3413,7 +3413,7 @@ opex_revenues,"(4, 35, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 35, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 35, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 35, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 35, 'HTC', 'avoided coal')",9.196442786818134e-08
+opex_revenues,"(4, 35, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 35, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 35, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 35, 'HTC', 'incentive 1')",0.0
@@ -3421,7 +3421,7 @@ opex_revenues,"(4, 35, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 35, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 35, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 35, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 35, 'CHP', 'electricity')",1.3851677277981298e-07
+opex_revenues,"(4, 35, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 35, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 35, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 35, 'CHP', 'incentive 2')",0.0
@@ -3433,7 +3433,7 @@ opex_revenues,"(4, 35, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 35, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 35, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 36, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 36, 'Pyrolysis', 'bio oil')",1.1067440098542888e-06
+opex_revenues,"(4, 36, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 36, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 36, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 36, 'Pyrolysis', 'potting media')",0.0
@@ -3463,7 +3463,7 @@ opex_revenues,"(4, 36, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 36, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 36, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 36, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 36, 'CHP', 'electricity')",1.361903891365954e-07
+opex_revenues,"(4, 36, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 36, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 36, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 36, 'CHP', 'incentive 2')",0.0
@@ -3474,14 +3474,14 @@ opex_revenues,"(4, 36, 'Feedstock', 'electricity')",0.0
 opex_revenues,"(4, 36, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 36, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 36, 'Feedstock', 'incentive 2')",0.0
-opex_revenues,"(4, 37, 'Pyrolysis', 'avoided fertilizer')",7.35803089678969e-07
-opex_revenues,"(4, 37, 'Pyrolysis', 'bio oil')",1.2946863990395058e-05
+opex_revenues,"(4, 37, 'Pyrolysis', 'avoided fertilizer')",0.0
+opex_revenues,"(4, 37, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 37, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 37, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 37, 'Pyrolysis', 'potting media')",0.0
 opex_revenues,"(4, 37, 'Pyrolysis', 'incentive 1')",0.0
 opex_revenues,"(4, 37, 'Pyrolysis', 'incentive 2')",0.0
-opex_revenues,"(4, 37, 'AD', 'avoided fertilizer')",2.698320795305512e-07
+opex_revenues,"(4, 37, 'AD', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 37, 'AD', 'bio oil')",0.0
 opex_revenues,"(4, 37, 'AD', 'avoided coal')",0.0
 opex_revenues,"(4, 37, 'AD', 'electricity')",0.0
@@ -3505,11 +3505,11 @@ opex_revenues,"(4, 37, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 37, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 37, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 37, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 37, 'CHP', 'electricity')",1.3390614776701556e-07
+opex_revenues,"(4, 37, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 37, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 37, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 37, 'CHP', 'incentive 2')",0.0
-opex_revenues,"(4, 37, 'Feedstock', 'avoided fertilizer')",2947.8432296557016
+opex_revenues,"(4, 37, 'Feedstock', 'avoided fertilizer')",4421.764844334477
 opex_revenues,"(4, 37, 'Feedstock', 'bio oil')",0.0
 opex_revenues,"(4, 37, 'Feedstock', 'avoided coal')",0.0
 opex_revenues,"(4, 37, 'Feedstock', 'electricity')",0.0
@@ -3517,7 +3517,7 @@ opex_revenues,"(4, 37, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 37, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 37, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 38, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 38, 'Pyrolysis', 'bio oil')",4.836669094892567e-07
+opex_revenues,"(4, 38, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 38, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 38, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 38, 'Pyrolysis', 'potting media')",0.0
@@ -3547,7 +3547,7 @@ opex_revenues,"(4, 38, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 38, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 38, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 38, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 38, 'CHP', 'electricity')",1.316602186356749e-07
+opex_revenues,"(4, 38, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 38, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 38, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 38, 'CHP', 'incentive 2')",0.0
@@ -3559,7 +3559,7 @@ opex_revenues,"(4, 38, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 38, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 38, 'Feedstock', 'incentive 2')",0.0
 opex_revenues,"(4, 39, 'Pyrolysis', 'avoided fertilizer')",0.0
-opex_revenues,"(4, 39, 'Pyrolysis', 'bio oil')",1.4047903701020792e-06
+opex_revenues,"(4, 39, 'Pyrolysis', 'bio oil')",0.0
 opex_revenues,"(4, 39, 'Pyrolysis', 'avoided coal')",0.0
 opex_revenues,"(4, 39, 'Pyrolysis', 'electricity')",0.0
 opex_revenues,"(4, 39, 'Pyrolysis', 'potting media')",0.0
@@ -3581,7 +3581,7 @@ opex_revenues,"(4, 39, 'HTL', 'incentive 1')",0.0
 opex_revenues,"(4, 39, 'HTL', 'incentive 2')",0.0
 opex_revenues,"(4, 39, 'HTC', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 39, 'HTC', 'bio oil')",0.0
-opex_revenues,"(4, 39, 'HTC', 'avoided coal')",3.416772786464272e-07
+opex_revenues,"(4, 39, 'HTC', 'avoided coal')",0.0
 opex_revenues,"(4, 39, 'HTC', 'electricity')",0.0
 opex_revenues,"(4, 39, 'HTC', 'potting media')",0.0
 opex_revenues,"(4, 39, 'HTC', 'incentive 1')",0.0
@@ -3589,7 +3589,7 @@ opex_revenues,"(4, 39, 'HTC', 'incentive 2')",0.0
 opex_revenues,"(4, 39, 'CHP', 'avoided fertilizer')",0.0
 opex_revenues,"(4, 39, 'CHP', 'bio oil')",0.0
 opex_revenues,"(4, 39, 'CHP', 'avoided coal')",0.0
-opex_revenues,"(4, 39, 'CHP', 'electricity')",9.8345927688123e-08
+opex_revenues,"(4, 39, 'CHP', 'electricity')",0.0
 opex_revenues,"(4, 39, 'CHP', 'potting media')",0.0
 opex_revenues,"(4, 39, 'CHP', 'incentive 1')",0.0
 opex_revenues,"(4, 39, 'CHP', 'incentive 2')",0.0
@@ -3601,16 +3601,16 @@ opex_revenues,"(4, 39, 'Feedstock', 'potting media')",0.0
 opex_revenues,"(4, 39, 'Feedstock', 'incentive 1')",0.0
 opex_revenues,"(4, 39, 'Feedstock', 'incentive 2')",0.0
 Variable,process_capex
-process_capex,"(4, 'Pyrolysis')",6.25040091886342e-05
+process_capex,"(4, 'Pyrolysis')",0.0
 process_capex,"(4, 'AD')",0.0
 process_capex,"(4, 'HTL')",0.0
 process_capex,"(4, 'HTC')",0.0
 process_capex,"(4, 'CHP')",0.0
-process_capex,"(4, 'Feedstock')",176.55840001791393
+process_capex,"(4, 'Feedstock')",176.5583999993261
 Variable,storage_capex
 storage_capex,"(4, 'Pyrolysis')",0.0
-storage_capex,"(4, 'AD')",3.907259031652603e-11
+storage_capex,"(4, 'AD')",0.0
 storage_capex,"(4, 'HTL')",0.0
 storage_capex,"(4, 'HTC')",0.0
 storage_capex,"(4, 'CHP')",0.0
-storage_capex,"(4, 'Feedstock')",13995.839951778837
+storage_capex,"(4, 'Feedstock')",13995.83999999998

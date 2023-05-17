@@ -446,7 +446,7 @@ def add_constraints(A, M, scenario):
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', temp] == 1)
+                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
             elif scenario == 10203:
                 if A.FEEDSTOCK_SUPPLY[l] > 3.2:
                     M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
@@ -460,7 +460,7 @@ def add_constraints(A, M, scenario):
                 M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
                 M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
-                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', temp] == 1)
+                M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
             else:
                 M.const.add(
                     expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
@@ -973,9 +973,9 @@ def add_constraints(A, M, scenario):
                 # other revenue sources
                 if scenario == 10103 or scenario in [5]:
                     if tech == "Feedstock":
-                        #M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
+                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                         #carbon credits can go here
-                        M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
+                        #M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
                     else:
                         M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                 else:
