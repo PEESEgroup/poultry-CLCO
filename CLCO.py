@@ -341,8 +341,7 @@ def initialize_model(scenario, j, midpoint, lca_type):
                 sense=pyo.maximize)
 
     elif scenario == 50:
-        # M.Obj = pyo.Objective(expr=sum(M.pyrolysis_to_storage[l, t, feed, 'Biochar', temp] for l in M.Location for t in M.Time for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures), sense=pyo.maximize)
-        M.Obj = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location),
+      M.Obj = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location),
                               sense=pyo.minimize)
     elif scenario in [425]:
         M.Obj = pyo.Objective(
@@ -352,16 +351,14 @@ def initialize_model(scenario, j, midpoint, lca_type):
         M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
 
     model = M
-
     opt = pyo.SolverFactory('gurobi')
 
     if scenario in [5]:
         opt.options["mipgap"] = .001
 
-    print(opt.solve(model, tee=True))  # keepfiles = True
+    print(opt.solve(model, tee=True))
 
     model.npv.pprint()
-    # model.opex_revenues.pprint()
 
     # print data to csv
     print_model(scenario, model, j, "TEA")
@@ -376,9 +373,9 @@ def add_constraints(A, M, scenario):
     :param scenario: the scenario number
     :return:
     """
-    ### CONSTRAINT LIST
+    # constraint list definition
     M.const = pyo.ConstraintList()
-    ### Stage 2 constraints
+
     for l in M.Location:
         # only one stage can be selected for each location for AD
         M.const.add(expr=sum(M.decision_ad_stage[l, stage] for stage in M.ADStages) == 1)
@@ -1055,7 +1052,7 @@ def revenue_constraints(A, M, l, scenario, t):
                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
 
         # other revenue sources
-        if scenario == 10103 or scenario in [5]:
+        if scenario in [5, 10103]:
             if tech == "Feedstock":
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                 # carbon credits can go here
@@ -1078,56 +1075,51 @@ def facility_constraints(A, M, l, scenario, t):
     :param t: time
     :return: N/A
     """
-    ## FEEDSTOCK
-    if scenario == 1 or scenario == 421 or scenario == 431 or scenario == 441:
+    # FEEDSTOCK distribution
+    if scenario in [1, 421, 431, 441]:
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-    elif scenario == 2 or scenario == 422 or scenario == 432 or scenario == 442 or (1000 < scenario < 1019) or (
-            2000 < scenario < 2019) or scenario == 10003:
+    elif scenario in [2, 422, 432, 442, 10003] or (1000 < scenario < 1019) or (2000 < scenario < 2019):
         M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
-    elif scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-            1100 < scenario < 1119) or (
-            2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
+    elif scenario in [5, 425, 435, 445, 50, 51, 52] or (1100 < scenario < 1119) or (2100 < scenario < 2119) \
+            or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-    elif scenario == 6 or scenario == 426 or scenario == 436 or scenario == 446 or (1200 < scenario < 1219) or (
-            2200 < scenario < 2219):
+    elif scenario in [6, 426, 436, 446] or (1200 < scenario < 1219) or (2200 < scenario < 2219):
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-    elif scenario == 7 or scenario == 427 or scenario == 437 or scenario == 447 or (1300 < scenario < 1319) or (
-            2300 < scenario < 2319):
+    elif scenario in [7, 427, 437, 447] or (1300 < scenario < 1319) or (2300 < scenario < 2319):
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-    elif scenario == 8 or scenario == 428 or scenario == 438 or scenario == 448 or (1400 < scenario < 1419) or (
-            2400 < scenario < 2419):
+    elif scenario in [8, 428, 438, 448] or (1400 < scenario < 1419) or (2400 < scenario < 2419):
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-    elif scenario == 9 or scenario == 429 or scenario == 439 or scenario == 449:
+    elif scenario in [9, 429, 439, 449]:
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-    elif scenario == 10103:
+    elif scenario in [10103]:
         if A.FEEDSTOCK_SUPPLY[l] > 100:
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
@@ -1141,7 +1133,7 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
-    elif scenario == 10203:
+    elif scenario in [10203]:
         if A.FEEDSTOCK_SUPPLY[l] > 3.2:
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
@@ -1158,7 +1150,8 @@ def facility_constraints(A, M, l, scenario, t):
     else:
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
                  M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
-    ## DIRECT LAND APPLICATION
+
+    # DIRECT LAND APPLICATION
     M.const.add(expr=M.feedstock_to_storage[l, t] <= M.process_capacity[l, 'Feedstock'])
     M.const.add(expr=M.feedstock_from_storage[l, t] <= M.feedstock_storage[l, t])
     # direct land cost storage size updates
@@ -1169,14 +1162,15 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.feedstock_storage[l, t] == 0)
         M.const.add(expr=M.feedstock_from_storage[l, t] == 0)
     if t == A.TIME_PERIODS - 1:
-        # raw feedstock has no other disposal pathway other than direct land application, so it must be allowed to store a certain amount for next year
+        # raw feedstock has no other disposal pathway other than direct land application, so it must be allowed to
+        # store a certain amount for next year
         M.const.add(
             expr=M.feedstock_storage[l, t] <= (A.TIME_PERIODS / A.YEARS - A.LAND_APPLICATION_MONTH - 1) *
                  A.FEEDSTOCK_SUPPLY[l] + 1)  # constrain likely to cause infeasibility issues
     # ensuring that the feedstock storage does not overflow
     M.const.add(expr=M.feedstock_storage[l, t] <= M.feedstock_storage_capacity[l])
 
-    ## PYROLYSIS
+    # PYROLYSIS
     M.const.add(expr=sum(M.pyrolysis_in[l, t, feed] for feed in M.PyrolysisFeedstocks) <=
                      M.process_capacity[l, 'Pyrolysis'])
     ##pyrolysis yield conversion
@@ -1444,9 +1438,10 @@ def facility_constraints(A, M, l, scenario, t):
             expr=sum(M.ad_in_glovers[l, t, feed, stage] * A.LOADING[feed, stage] for feed in M.ADFeedstocks)
                  == M.ad_capacity[l, stage])
     M.const.add(expr=sum(M.ad_capacity[l, stage] for stage in M.ADStages) == M.process_capacity[l, 'AD'])
-    if scenario == 5 or scenario == 425 or scenario == 435 or scenario == 445 or scenario == 50 or scenario == 51 or scenario == 52 or (
-            1100 < scenario < 1119) or (
-            2100 < scenario < 2119) or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
+
+    if scenario in [5, 425, 435, 445, 50, 51, 52] or (1100 < scenario < 1119) or (2100 < scenario < 2119) \
+            or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
+        #scenarios in which we want pyrolysis only, no AD
         M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
     else:
         M.const.add(expr=M.ad_in[l, t, 'COD'] == sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
@@ -1490,7 +1485,7 @@ def facility_constraints(A, M, l, scenario, t):
 
         # linking the edges of the graph for digestate
         # if scenario is 1, then digestate can only be disposed of
-        if scenario == 1 or scenario == 421 or scenario == 431 or scenario == 441:
+        if scenario in [1, 421, 431, 441]:
             M.const.add(expr=M.digestate_from_ad[l, t, stage, 'storage'] == 0)
             M.const.add(expr=M.digestate_from_ad[l, t, stage, 'land'] == 0)
 
@@ -1978,9 +1973,9 @@ if __name__ == '__main__':
             midpoint = "climate change"
 
         # scenario defines the number of counties
-        if 1000 < scenario < 2999 or scenario == 51 or scenario == 52 or scenario == 3000 or scenario == 3100 or scenario == 3200:
+        if scenario in [51, 52, 3000, 3100, 3200] or 1000 < scenario < 2999:
             number_counties = 1
-        elif 420 < scenario < 430 or scenario == 3001 or scenario == 3101 or scenario == 3201:
+        elif scenario in [3001, 3101, 3201] or 420 < scenario < 430:
             number_counties = 2
         elif 430 < scenario < 440:
             number_counties = 3
