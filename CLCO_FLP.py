@@ -13,7 +13,7 @@ SUPPLY_Y_COORD = [4695, 4535, 4682, 4680, 4764, 4747, 4874, 4738, 4722, 4937, 47
 FACILITY_X_COORD = [i * 20 + 100 for i in range(int((700 - 100) / 20))]
 FACILITY_Y_COORD = [i * 20 + 4440 for i in range(int((5000 - 4440) / 20))]
 
-NPV = [[0 for i in range(6)] for j in range(6)]
+NPV = [[0 for i in range(6)] for j in range(8)]
 
 
 # pre-compute the distances
@@ -135,7 +135,7 @@ def FLP(t_cutoff_offset, t_dist, t_dist_no_logistics):
         opt = pyo.SolverFactory('gurobi')
         if not i == 0:
             opt.options[
-                'mipgap'] = .04 + t_cutoff_offset / 100 + i / 50 + i * i / 125  # for gurobi so as to not burn the computer down
+                'mipgap'] = .04 + t_cutoff_offset / 100 + i / 25 + i * i / 250  # for gurobi so as to not burn the computer down
         print(opt.solve(instance, tee=True))  # keepfiles = True
 
         # store the NPV of the location for later
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     # facility location problem is traditionally scenario number 4
     A = CLCO_Data(4)
 
-    for i in range(6):
+    for i in range(8):
         '''
         There are 6 scenarios, corresponding to maximum transportation prices of $45/ton, $40/ton, $35/ton, $30/ton, 
         $25/ton, $20/ton, which corresponds to transportation circles of 450km, 400km, etc.
