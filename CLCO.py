@@ -341,7 +341,7 @@ def initialize_model(scenario, j, midpoint, lca_type):
                 sense=pyo.maximize)
 
     elif scenario == 50:
-      M.Obj = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location),
+        M.Obj = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location),
                               sense=pyo.minimize)
     elif scenario in [425]:
         M.Obj = pyo.Objective(
@@ -418,7 +418,9 @@ def lca_constraints(A, M, l):
                                                                                for tech in M.Technology for t in
                                                                                M.Time))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
-                             * sum(M.inputs[l, t, tech, 'diesel'] for tech in M.Technology for t in M.Time))
+                             * sum(M.inputs[l, t, tech, 'bio-oil diesel'] for tech in M.Technology for t in M.Time) +
+                             sum(M.inputs[l, t, tech, 'transportation'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]
+                                 * A.DIESEL_USE for t in M.Time for tech in M.Technology))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
                              sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
@@ -778,11 +780,11 @@ def opex_constraints(A, M, l, t):
         # electricity inputs for each technology
         if tech == "AD":
             M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] *
-                                                                    M.ad_in_glovers[l, t, feed, stage] for feed in
-                                                                    M.ADFeedstocks for stage in M.ADStages))
+                                                                        M.ad_in_glovers[l, t, feed, stage] for feed in
+                                                                        M.ADFeedstocks for stage in M.ADStages))
         elif tech == "CHP":
             M.const.add(expr=M.inputs[l, t, 'CHP', 'electricity'] == A.OPEX['CHP', 'Electricity'] *
-                     A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[l, t])
+                             A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[l, t])
         elif tech == "Pyrolysis":
             M.const.add(expr=M.inputs[l, t, 'Pyrolysis', 'electricity'] == sum(
                 A.OPEX['Pyrolysis', 'Electricity'] * M.pyrolysis_out[l, t, feed, pyro_prod, temp] for feed in
@@ -794,9 +796,9 @@ def opex_constraints(A, M, l, t):
                          M.HTLFeedstocks for temp in M.HTLTemperatures for prod in M.HTLProducts))
         elif tech == "HTC":
             M.const.add(expr=M.inputs[l, t, 'HTC', 'electricity'] == sum(A.OPEX['HTC', 'Electricity'] *
-                                                                 M.htc_out[l, t, feed, prod, temp]
-                                                                 for feed in M.HTCFeedstocks for temp in
-                                                                 M.HTCTemperatures for prod in M.HTCProducts))
+                                                                         M.htc_out[l, t, feed, prod, temp]
+                                                                         for feed in M.HTCFeedstocks for temp in
+                                                                         M.HTCTemperatures for prod in M.HTCProducts))
         else:
             M.const.add(expr=M.inputs[l, t, tech, 'electricity'] == 0)
 
@@ -810,14 +812,39 @@ def opex_constraints(A, M, l, t):
 
         # diesel inputs for biodiesel blending
         if tech == "HTL":
-            M.const.add(expr=M.inputs[l, t, 'HTL', 'bio-oil diesel'] == A.DIESEL_PRICE * 3 * A.TON_DIESEL_TO_GAL *
-                     sum(M.biooil_from_htl[l, t, 'feedstock', temp, 'CHP'] for temp in M.HTLTemperatures))
+            M.const.add(expr=M.inputs[l, t, 'HTL', 'bio-oil diesel'] == A.DIESEL_BIOOIL_RATIO * A.TON_DIESEL_TO_GAL *
+                             sum(M.biooil_from_htl[l, t, 'feedstock', temp, 'CHP'] for temp in M.HTLTemperatures))
         elif tech == "Pyrolysis":
             M.const.add(
-                expr=M.inputs[l, t, 'Pyrolysis', 'bio-oil diesel'] == A.DIESEL_PRICE * 3 * A.TON_DIESEL_TO_GAL *
+                expr=M.inputs[l, t, 'Pyrolysis', 'bio-oil diesel'] == A.DIESEL_BIOOIL_RATIO * A.TON_DIESEL_TO_GAL *
                      sum(M.biooil_from_pyrolysis[l, t, 'feedstock', temp, 'CHP'] for temp in M.PyrolysisTemperatures))
         else:
             M.const.add(expr=M.inputs[l, t, tech, 'bio-oil diesel'] == 0)
+
+        # transportation inputs ton
+        if tech == "Feedstock":
+            M.const.add(
+                expr=M.inputs[l, t, tech, "transportation"] == M.feedstock_to_storage[l, t] + M.feedstock_from_storage[
+                    l, t])
+        elif tech == "Pyrolysis":
+            M.const.add(
+                expr=M.inputs[l, t, tech, "transportation"] == (M.pyrolysis_in[l, t, 'feedstock'] + sum(
+                    M.biochar_from_pyrolysis[l, t, feed, temp, 'land'] for feed in
+                    M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures)))
+        elif tech == "HTL":
+            M.const.add(expr=M.inputs[l, t, tech, "transportation"] == (M.htl_in[l, t, 'feedstock'] + sum(
+                M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in M.HTLFeedstocks for
+                temp in M.HTLTemperatures)))
+        elif tech == "HTC":
+            M.const.add(expr=M.inputs[l, t, tech, "transportation"] == (
+                    M.htc_in[l, t, 'feedstock'] + sum(M.hydrochar_from_htc[l, t, feed, temp, 'land']
+                                                      for feed in M.HTCFeedstocks for temp in
+                                                      M.HTCTemperatures)))
+        elif tech == "AD":
+            M.const.add(expr=M.inputs[l, t, tech, "transportation"] == M.ad_in[l, t, 'feedstock'] +
+                             sum(M.digestate_from_ad[l, t, temp, 'land'] for temp in M.ADStages))
+        else:
+            M.const.add(expr=M.inputs[l, t, tech, "transportation"] == 0)
 
         # inputs to heat and electricity from the CHP plant
         M.const.add(
@@ -847,85 +874,58 @@ def opex_constraints(A, M, l, t):
             M.const.add(expr=M.opex_costs[l, t, tech, 'labor'] ==
                              (A.OPEX['Labor Cost'] * (M.process_capacity[l, tech] /
                                                       A.HOURS_PER_PERIOD ** A.OPEX['Labor Exponent'])) / (
-                                         (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+                                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
         # transportation costs
-        if tech == "AD":
-            M.const.add(expr=M.opex_costs[l, t, 'AD', 'transportation'] ==
-                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
-                             (M.ad_in[l, t, 'feedstock'] +
-                              sum(M.digestate_from_ad[l, t, temp, 'land'] for temp in M.ADStages)) /
-                             ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-        elif tech == "CHP":
-            M.const.add(expr=M.opex_costs[l, t, 'CHP', 'transportation'] == 0 / (
-                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-        elif tech == "Feedstock":
-            M.const.add(expr=M.opex_costs[l, t, 'Feedstock', 'transportation'] ==
-                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.ON_FARM_TRANSPORT_DISTANCE) *
-                             (M.feedstock_to_storage[l, t] + M.feedstock_from_storage[l, t])
-                             / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-        elif tech == "Pyrolysis":
-            M.const.add(expr=M.opex_costs[l, t, 'Pyrolysis', 'transportation'] ==
-                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
-                             (M.pyrolysis_in[l, t, 'feedstock'] + sum(
-                                 M.biochar_from_pyrolysis[l, t, feed, temp, 'land'] for feed in
-                                 M.PyrolysisFeedstocks for temp in
-                                 M.PyrolysisTemperatures)) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-        elif tech == "HTL":
-            M.const.add(expr=M.opex_costs[l, t, 'HTL', 'transportation'] ==
-                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
-                             (M.htl_in[l, t, 'feedstock'] + sum(
-                                 M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in M.HTLFeedstocks for
-                                 temp in M.HTLTemperatures)) / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-
-        elif tech == "HTC":
-            M.const.add(expr=M.opex_costs[l, t, 'HTC', 'transportation'] ==
-                             (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
-                             (M.htc_in[l, t, 'feedstock'] + sum(M.hydrochar_from_htc[l, t, feed, temp, 'land']
-                                                                for feed in M.HTCFeedstocks for temp in
-                                                                M.HTCTemperatures)) /
-                             ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        M.const.add(expr=M.opex_costs[l, t, tech, 'transportation'] ==
+                         (A.LOAD_TRANSIT_COST + A.OPEX['transit'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]) *
+                         M.inputs[l, t, tech, "transportation"] /
+                         (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t))
 
         # Disposal operational expenses depend on the amount of feedstock being disposed of and the method of disposal
         if tech == "AD":
             M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] ==
-                             (A.OPEX['Landfill'] * sum(M.digestate_from_ad[l, t, stage, 'disposal'] for stage in M.ADStages) +
-                              sum(A.OPEX['Atmosphere'] * M.biogas_from_ad[l, t, stage, 'disposal'] for stage in M.ADStages)) /
+                             (A.OPEX['Landfill'] * sum(
+                                 M.digestate_from_ad[l, t, stage, 'disposal'] for stage in M.ADStages) +
+                              sum(A.OPEX['Atmosphere'] * M.biogas_from_ad[l, t, stage, 'disposal'] for stage in
+                                  M.ADStages)) /
                              ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
         elif tech == "Pyrolysis":
             M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] ==
                              (A.OPEX['Landfill'] * sum(M.biochar_from_pyrolysis[l, t, feed, temp, 'disposal']
-                                            for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures) +
-                            A.OPEX['Wastewater'] * sum(M.ap_from_pyrolysis[l, t, feed, temp, 'disposal']
-                                            for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures) +
-                            A.OPEX['Atmosphere'] * sum(M.syngas_from_pyrolysis[l, t, feed, temp, 'disposal']
-                                            for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures)) /
+                                                       for feed in M.PyrolysisFeedstocks for temp in
+                                                       M.PyrolysisTemperatures) +
+                              A.OPEX['Wastewater'] * sum(M.ap_from_pyrolysis[l, t, feed, temp, 'disposal']
+                                                         for feed in M.PyrolysisFeedstocks for temp in
+                                                         M.PyrolysisTemperatures) +
+                              A.OPEX['Atmosphere'] * sum(M.syngas_from_pyrolysis[l, t, feed, temp, 'disposal']
+                                                         for feed in M.PyrolysisFeedstocks for temp in
+                                                         M.PyrolysisTemperatures)) /
                              ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
         elif tech == "HTL":
             M.const.add(expr=M.opex_costs[l, t, 'HTL', 'disposal'] ==
                              (A.OPEX['Landfill'] * sum(M.hydrochar_from_htl[l, t, feed, temp, 'disposal']
-                                                 for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) +
-                            A.OPEX['Wastewater'] * sum(M.ap_from_htl[l, t, feed, temp, 'disposal']
-                                                for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) +
-                            A.OPEX['Atmosphere'] * sum( M.gp_from_htl[l, t, feed, temp, 'disposal']
-                                                for feed in M.HTLFeedstocks for temp in M.HTLTemperatures)) /
+                                                       for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) +
+                              A.OPEX['Wastewater'] * sum(M.ap_from_htl[l, t, feed, temp, 'disposal']
+                                                         for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) +
+                              A.OPEX['Atmosphere'] * sum(M.gp_from_htl[l, t, feed, temp, 'disposal']
+                                                         for feed in M.HTLFeedstocks for temp in M.HTLTemperatures)) /
                              ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
         elif tech == "HTC":
             M.const.add(expr=M.opex_costs[l, t, 'HTC', 'disposal'] ==
                              (A.OPEX['Landfill'] * sum(M.hydrochar_from_htc[l, t, feed, temp, 'disposal']
-                                             for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) +
-                            A.OPEX['Wastewater'] * sum(M.ap_from_htc[l, t, feed, temp, 'disposal']
-                                            for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) +
-                            A.OPEX['Atmosphere'] * sum( M.gp_from_htc[l, t, feed, temp, 'disposal']
-                                            for feed in M.HTCFeedstocks for temp in M.HTCTemperatures)) /
+                                                       for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) +
+                              A.OPEX['Wastewater'] * sum(M.ap_from_htc[l, t, feed, temp, 'disposal']
+                                                         for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) +
+                              A.OPEX['Atmosphere'] * sum(M.gp_from_htc[l, t, feed, temp, 'disposal']
+                                                         for feed in M.HTCFeedstocks for temp in M.HTCTemperatures)) /
                              ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
-        else: # by definition nothing from chp and feedstock can be disposed
+        else:  # by definition nothing from chp and feedstock can be disposed
             M.const.add(expr=M.opex_costs[l, t, tech, 'disposal'] == 0 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
 
         # diesel costs
-        M.const.add(expr=M.opex_costs[l, t, tech, 'diesel'] == M.inputs[l, t, tech, 'bio-oil diesel'] / (
-                         (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
+        M.const.add(
+            expr=M.opex_costs[l, t, tech, 'diesel'] == A.DIESEL_PRICE * M.inputs[l, t, tech, 'bio-oil diesel'] / (
+                    (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
 
         # opex plant costs
         M.const.add(expr=M.opex_costs[l, t, tech, 'TPC'] == (A.OPEX_TPC * M.process_capex[l, tech]) / (
@@ -975,7 +975,7 @@ def revenue_constraints(A, M, l, scenario, t):
             A.REVENUE[fert] * M.avoided_fertilizers[l, t, tech, fert] for fert in M.AvoidedFertilizers) / (
                                  (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
 
-        #selling hydrochar as avoided coal, bio oil, and electricity on the markets.
+        # selling hydrochar as avoided coal, bio oil, and electricity on the markets.
         if tech == "Pyrolysis":
             M.const.add(expr=M.opex_revenues[l, t, tech, 'avoided coal'] == 0 / (
                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
@@ -1149,7 +1149,7 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
     else:
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
-                 M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+                         M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
 
     # DIRECT LAND APPLICATION
     M.const.add(expr=M.feedstock_to_storage[l, t] <= M.process_capacity[l, 'Feedstock'])
@@ -1441,7 +1441,7 @@ def facility_constraints(A, M, l, scenario, t):
 
     if scenario in [5, 425, 435, 445, 50, 51, 52] or (1100 < scenario < 1119) or (2100 < scenario < 2119) \
             or 2999 < scenario < 3003 or 3099 < scenario < 3103 or 3199 < scenario < 3203:
-        #scenarios in which we want pyrolysis only, no AD
+        # scenarios in which we want pyrolysis only, no AD
         M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
     else:
         M.const.add(expr=M.ad_in[l, t, 'COD'] == sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
@@ -1723,7 +1723,7 @@ def add_sets(A, M, j):
     M.OPEXSubRevenues = pyo.Set(
         initialize=['avoided fertilizer', 'bio oil', 'avoided coal', 'electricity', 'potting media', 'incentive 1',
                     'incentive 2'])
-    M.InputProducts = pyo.Set(initialize=['heat', 'electricity', 'water', 'bio-oil diesel'])
+    M.InputProducts = pyo.Set(initialize=['heat', 'electricity', 'water', 'bio-oil diesel', 'transportation'])
     M.CHPProducts = pyo.Set(initialize=['heat', 'electricity'])
 
     # LCA categories
@@ -1942,7 +1942,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [428]
+    S = [5]
 
     for scenario in S:
         lca_type = "CLCA"

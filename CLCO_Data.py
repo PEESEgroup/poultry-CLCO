@@ -246,8 +246,9 @@ class CLCO_Data:
     CAPEX['Solid', 'storage', 'exponent'] = .1
 
     ON_FARM_TRANSPORT_DISTANCE = 1
-    DIESEL_USE = .0071  # units gallons/km*ton
+    DIESEL_USE = .0071  # units gallons/km*ton (cost of this diesel is subsumed into transportation costs, but is counted in LCAs)
     DIESEL_PRICE = 4.23
+    DIESEL_BIOOIL_RATIO = 3
     TON_DIESEL_TO_GAL = 306.1  # http://www.cbi.dk/conversion.html
 
     CHP_HEAT_EFFICIENCY = .5  # MJ out /MJ in
