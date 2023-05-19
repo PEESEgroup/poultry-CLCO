@@ -5,6 +5,9 @@ This readme document is intended to aid others in using the model and reproducin
 TODO: Include license
 
 # Running the model
+## Installation
+Download the github repository.  To run any CLCO scenario, run the CLCO.py file in your IDE of choice.  To run the FLP problem, run the CLCO_FLP.py file.  Do not run any other python file in this repository.
+
 ## Necessary software
 
  - Python 3.8 or greater
@@ -13,4 +16,145 @@ TODO: Include license
 
 ## Model runtime
 
-A Dell XPS 15 7590 with Windows 10 Home and Intel(R) Core(TM) i-7-9750H CPU @2.60GHz, 2592 Mhz, 6 Core(s), 12 Logical Processor(s) can run
+A Dell XPS 15 7590 with Windows 10 Home and Intel(R) Core(TM) i-7-9750H CPU @2.60GHz, 2592 Mhz, 6 Core(s), 12 Logical Processor(s) can run an optimization for 1 county in 10 seconds or less.  The calculation time necessary for each Pareto front is about 1-2 hours.
+
+## Generating results
+
+To run the model, simply choose a scenario from the list below and edit the code in the main method of CLCO.py
+
+```    S = []```
+
+### Pareto Fronts
+
+To find the Pareto fronts in Figure 5, run scenarios 1501, 1502, 1503 for the CLCA GWP/NPV Pareto Front and scenarios 2501, 2502, 2503 for the ALCA GWP/NPV Pareto Front.  Pareto fronts are automatically plotted using matplotlib and can be found in the folder of the scenario number.
+
+## Excel plotting
+
+## Scenario List
+     SCENARIO LIST:
+    1: AD + CHP w/ disposal of digestate, NPV max, county level
+    2: Direct Land Application, NPV max, county level
+    3: Optimal County Level Results, NPV max, county level
+    4: FLP, NPV max, county level
+    5: Pyrolysis + CHP, NPV max, county level
+    6: HTL + CHP, NPV max, county level
+    7: HTC + CHP, NPV max, county level
+    8: AD + CHP, NPV max, county level
+    9: AD + Pyrolysis + CHP, NPV max, county level
+    50: Pyrolysis + CHP GWP min, county level
+    51: Pyroylsis + CHP Onondaga county Pareto Front min GWP max NPV
+    52: Pyroylsis + CHP Jefferson county Pareto Front min GWP max NPV
+    421: AD + CHP w/ disposal of digestate, NPV max, two optimal facilities
+    422: Direct Land Application, NPV max, two optimal facilities
+    423: Optimal County Level Results, NPV max, two optimal facilities
+    424: FLP, NPV max, two optimal facilities
+    425: Pyrolysis + CHP, NPV max, two optimal facilities
+    426: HTL + CHP, NPV max, two optimal facilities
+    427: HTC + CHP, NPV max, two optimal facilities
+    428: AD + CHP, NPV max, two optimal facilities
+    429: AD + Pyrolysis, NPV max, two optimal facilities
+    431: AD + CHP w/ disposal of digestate, NPV max, three optimal facilities
+    432: Direct Land Application, NPV max, three optimal facilities
+    433: Optimal County Level Results, NPV max, three optimal facilities
+    434: FLP, NPV max, three optimal facilities
+    435: Pyrolysis + CHP, NPV max, three optimal facilities
+    436: HTL + CHP, NPV max, three optimal facilities
+    437: HTC + CHP, NPV max, three optimal facilities
+    438: AD + CHP, NPV max, three optimal facilities
+    439: AD + Pyrolysis, NPV max, three optimal facilities
+    441: AD + CHP w/ disposal of digestate, NPV max, four optimal facilities
+    442: Direct Land Application, NPV max, four optimal facilities
+    443: Optimal County Level Results, NPV max, four optimal facilities
+    444: FLP, NPV max, four optimal facilities
+    445: Pyrolysis + CHP, NPV max, four optimal facilities
+    446: HTL + CHP, NPV max, four optimal facilities
+    447: HTC + CHP, NPV max, four optimal facilities
+    448: AD + CHP, NPV max, four optimal facilities
+    449: AD + Pyrolysis, NPV max, four optimal facilities
+    1001:, CLCA,  Direct Land Application, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    1002:, CLCA,  Direct Land Application, Pareto Front NPV max GWP min, Onondaga county
+    1003:, CLCA,  Direct Land Application, Pareto Front NPV max GWP min, Jefferson county
+    1011:, CLCA,  Direct Land Application, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    1012:, CLCA,  Direct Land Application, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    1013:, CLCA,  Direct Land Application, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    1101:, CLCA,  Pyrolysis, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    1102:, CLCA,  Pyrolysis, Pareto Front NPV max GWP min, Onondaga county
+    1103:, CLCA,  Pyrolysis, Pareto Front NPV max GWP min, Jefferson county
+    1111:, CLCA,  Pyrolysis, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    1112:, CLCA,  Pyrolysis, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    1113:, CLCA,  Pyrolysis, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    1201:, CLCA,  HTL, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    1202:, CLCA,  HTL, Pareto Front NPV max GWP min, Onondaga county
+    1203:, CLCA,  HTL, Pareto Front NPV max GWP min, Jefferson county
+    1211:, CLCA,  HTL, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    1212:, CLCA,  HTL, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    1213:, CLCA,  HTL, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    1301:, CLCA,  HTC, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    1302:, CLCA,  HTC, Pareto Front NPV max GWP min, Onondaga county
+    1303:, CLCA,  HTC, Pareto Front NPV max GWP min, Jefferson county
+    1311:, CLCA,  HTC, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    1312:, CLCA,  HTC, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    1313:, CLCA,  HTC, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    1401:, CLCA,  AD, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    1402:, CLCA,  AD, Pareto Front NPV max GWP min, Onondaga county
+    1403:, CLCA,  AD, Pareto Front NPV max GWP min, Jefferson county
+    1411:, CLCA,  AD, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    1412:, CLCA,  AD, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    1413:, CLCA,  AD, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    1501:, CLCA,  All, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    1502:, CLCA,  All, Pareto Front NPV max GWP min, Onondaga county
+    1503:, CLCA,  All, Pareto Front NPV max GWP min, Jefferson county
+    1511:, CLCA,  All, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    1512:, CLCA,  All, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    1513:, CLCA,  All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    2001:, ALCA,  Direct Land Application, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    2002:, ALCA,  Direct Land Application, Pareto Front NPV max GWP min, Onondaga county
+    2003:, ALCA,  Direct Land Application, Pareto Front NPV max GWP min, Jefferson county
+    2011:, ALCA,  Direct Land Application, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    2012:, ALCA,  Direct Land Application, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    2013:, ALCA,  Direct Land Application, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    2101:, ALCA,  Pyrolysis, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    2102:, ALCA,  Pyrolysis, Pareto Front NPV max GWP min, Onondaga county
+    2103:, ALCA,  Pyrolysis, Pareto Front NPV max GWP min, Jefferson county
+    2111:, ALCA,  Pyrolysis, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    2112:, ALCA,  Pyrolysis, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    2113:, ALCA,  Pyrolysis, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    2201:, ALCA,  HTL, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    2202:, ALCA,  HTL, Pareto Front NPV max GWP min, Onondaga county
+    2203:, ALCA,  HTL, Pareto Front NPV max GWP min, Jefferson county
+    2211:, ALCA,  HTL, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    2212:, ALCA,  HTL, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    2213:, ALCA,  HTL, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    2301:, ALCA,  HTC, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    2302:, ALCA,  HTC, Pareto Front NPV max GWP min, Onondaga county
+    2303:, ALCA,  HTC, Pareto Front NPV max GWP min, Jefferson county
+    2311:, ALCA,  HTC, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    2312:, ALCA,  HTC, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    2313:, ALCA,  HTC, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    2401:, ALCA,  AD, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    2402:, ALCA,  AD, Pareto Front NPV max GWP min, Onondaga county
+    2403:, ALCA,  AD, Pareto Front NPV max GWP min, Jefferson county
+    2411:, ALCA,  AD, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    2412:, ALCA,  AD, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    2413:, ALCA,  AD, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    2501:, ALCA,  All, Pareto Front NPV max GWP min, largest facility from 2 facility FLP
+    2502:, ALCA,  All, Pareto Front NPV max GWP min, Onondaga county
+    2503:, ALCA,  All, Pareto Front NPV max GWP min, Jefferson county
+    2511:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, largest facility from 2 facility FLP
+    2512:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Onondaga county
+    2513:, ALCA,  All, Pareto Front NPV max freshwater eutrophication min, Jefferson county
+    3000: 1 pyrolysis plant for the whole state - max NPV
+    3001: 2 pyrolysis plants for the whole state - max NPV
+    3002: pyrolysis plant in every county, calculate biochar break-even prices - max NPV
+    3003: plant in every county, calculate biochar break-even prices - max NPV
+    3100: 1 pyrolysis plant for the whole state - max NPV and min GWP
+    3101: 2 pyrolysis plants for the whole state - max NPV and min GWP
+    3102: pyrolysis plant in every county, calculate biochar break-even prices - max NPV and min GWP
+    3103: plant in every county, calculate biochar break-even prices - max NPV and min GWP
+    3200: 1 pyrolysis plant for the whole state - min GWP
+    3201: 2 pyrolysis plants for the whole state - min GWP
+    3202: pyrolysis plant in every county, calculate biochar break-even prices - min GWP
+    3203: plant in every county, calculate biochar break-even prices - min GWP
+    10003: first calculated optimal plants at NPV max in every county, then implemented constraints on those plants for sensitivity analysis
+    10103: first calculated optimal plants at a tradeoff in every county, then implemented constraints on those plants for sensitivity analysis
+    10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
