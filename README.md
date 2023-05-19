@@ -30,6 +30,18 @@ To find the Pareto fronts in Figure 5, run scenarios 1501, 1502, 1503 for the CL
 
 ## Excel plotting
 
+For any scenario that does not have an existing S[Scenario Number].xlsx file, one can be created from the STemplate.xlsx.
+
+- First, delete the existing TEA and LCA tabs, as they are being replaced.
+- Then go to the data tab in the ribbon
+- Click on Get Data on the right part of the ribbon, then select "from file" and then "from folder".
+- Next, navigate in the data file directory to the folder with the scenario number you want
+- Enter that folder, and then select TEA.
+- In the pop-up window, on the combine drop-down, select combine and load, and then click "OK".
+- Rename the sheet to TEA
+- Repeat the above steps, except select the LCA folder instead.
+- Some simple figures should already be populated, although they may need additional modification (i.e. to include all 62 counties in the figure and the data table), though this shouldn't be an issue for any figure that appears in the text or the SI.
+
 ## Scenario List
      SCENARIO LIST:
     1: AD + CHP w/ disposal of digestate, NPV max, county level
