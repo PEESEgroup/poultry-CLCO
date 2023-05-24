@@ -29,7 +29,11 @@ To run scenario 3:
 To run scenario 3, 428, and 1503:
 ```    S = [3, 428, 1503]```
 
-### Pareto Fronts
+### NPVs - Figure 2 and LCA - Figure 3
+
+Run scenarios 2,5,6,7,8 for direct land application, pyrolysis, HTL, HTC, and AD.
+
+### Pareto Fronts - Figure 5
 
 To find the Pareto fronts in Figure 5, run scenarios 1501, 1502, 1503 for the CLCA GWP/NPV Pareto Front and scenarios 2501, 2502, 2503 for the ALCA GWP/NPV Pareto Front.  Pareto fronts are automatically plotted using matplotlib and can be found in the folder of the scenario number.
 
