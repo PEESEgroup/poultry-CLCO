@@ -33,6 +33,10 @@ To run scenario 3, 428, and 1503:
 
 Run scenarios 2,5,6,7,8 for direct land application, pyrolysis, HTL, HTC, and AD.
 
+### FLP - Figure 4
+
+Figure 4 was created by running the CLCO_FLP.py file.  This program does a full search over all maximum transportation distances and number of facilities.  Looking at the reported objective function values (likely in the SI) it was easy to determine the minimum transportation distance for each number of facilities.  Then, the solutions were manually adjusted as a few counties with very little manure were mislabeled due to a high mipgap to decrease computation time.
+
 ### Pareto Fronts - Figure 5
 
 To find the Pareto fronts in Figure 5, run scenarios 1501, 1502, 1503 for the CLCA GWP/NPV Pareto Front and scenarios 2501, 2502, 2503 for the ALCA GWP/NPV Pareto Front.  Pareto fronts are automatically plotted using matplotlib and can be found in the folder of the scenario number.
