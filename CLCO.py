@@ -570,15 +570,15 @@ def lca_constraints(A, M, l):
                                  -A.IMPACT[lca_type, 'grid electricity', cat] *
                                  sum(M.chp_market[l, t, 'electricity'] for t in M.Time))
                 M.const.add(expr=M.LCA_midpoints[l, lca_type, 'N fertilizer', cat] ==
-                                 A.IMPACT[lca_type, 'N fertilizer', cat] *
+                                 -A.IMPACT[lca_type, 'N fertilizer', cat] *
                                  sum(M.avoided_fertilizers[l, t, tech, 'N']
                                      for l in M.Location for t in M.Time for tech in M.Technology))
                 M.const.add(expr=M.LCA_midpoints[l, lca_type, 'P fertilizer', cat] ==
-                                 A.IMPACT[lca_type, 'P fertilizer', cat] *
+                                 -A.IMPACT[lca_type, 'P fertilizer', cat] *
                                  sum(M.avoided_fertilizers[l, t, tech, 'P']
                                      for l in M.Location for t in M.Time for tech in M.Technology))
                 M.const.add(expr=M.LCA_midpoints[l, lca_type, 'K fertilizer', cat] ==
-                                 A.IMPACT[lca_type, 'K fertilizer', cat] *
+                                 -A.IMPACT[lca_type, 'K fertilizer', cat] *
                                  sum(M.avoided_fertilizers[l, t, tech, 'K']
                                      for l in M.Location for t in M.Time for tech in M.Technology))
 
@@ -1942,7 +1942,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [6, 1501, 1502, 1503, 1511, 1512, 1513, 2501, 2502, 2503, 2511, 2512, 2513]
+    S = [2, 5, 6, 7, 8, 1501, 1502, 1503, 1511, 1512, 1513, 2501, 2502, 2503, 2511, 2512, 2513]
 
     for scenario in S:
         lca_type = "CLCA"
