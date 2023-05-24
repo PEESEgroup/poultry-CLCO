@@ -191,7 +191,7 @@ def ws_bound_refinement(dist, nadir, utopia):
     :return: the offset parameter delta and the number of refinements to conduct in each segment
     """
     avg_length = sum(i for i in dist) / len(dist)
-    C = 1.8
+    C = 1.5
     delta = abs(nadir[0] - utopia[0]) / 8
     if delta < 1000:
         delta = 1000
@@ -418,9 +418,9 @@ def lca_constraints(A, M, l):
                                                                                for tech in M.Technology for t in
                                                                                M.Time))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
-                             * sum(M.inputs[l, t, tech, 'bio-oil diesel'] for tech in M.Technology for t in M.Time) +
+                             * (sum(M.inputs[l, t, tech, 'bio-oil diesel'] for tech in M.Technology for t in M.Time) +
                              sum(M.inputs[l, t, tech, 'transportation'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]
-                                 * A.DIESEL_USE for t in M.Time for tech in M.Technology))
+                                 * A.DIESEL_USE for t in M.Time for tech in M.Technology)))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
                              sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
@@ -1942,7 +1942,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [1501, 1502, 1503]
+    S = [6, 1501, 1502, 1503, 1511, 1512, 1513, 2501, 2502, 2503, 2511, 2512, 2513]
 
     for scenario in S:
         lca_type = "CLCA"

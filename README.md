@@ -7,6 +7,7 @@ TODO: Include license
 # Running the model
 ## Installation
 Download the github repository.  To run any CLCO scenario, run the CLCO.py file in your IDE of choice.  To run the FLP problem, run the CLCO_FLP.py file.  Do not run any other python file in this repository.
+CLCO_Data.py holds parameter information for the program, and sources for this data can be found in CLCO_TEA_LCA_Data.xlsx in the data analysis folder. 
 
 ## Necessary software
 
@@ -22,7 +23,11 @@ A Dell XPS 15 7590 with Windows 10 Home and Intel(R) Core(TM) i-7-9750H CPU @2.6
 
 To run the model, simply choose a scenario from the list below and edit the code in the main method of CLCO.py
 
-```    S = []```
+To run scenario 3:
+```    S = [3]```
+
+To run scenario 3, 428, and 1503:
+```    S = [3, 428, 1503]```
 
 ### Pareto Fronts
 
@@ -34,11 +39,11 @@ For any scenario that does not have an existing S[Scenario Number].xlsx file, on
 
 - First, delete the existing TEA and LCA tabs, as they are being replaced.
 - Then go to the data tab in the ribbon
-- Click on Get Data on the right part of the ribbon, then select "from file" and then "from folder".
+- Click on "Get Data" on the left part of the ribbon, then select "from file" and then "from folder".
 - Next, navigate in the data file directory to the folder with the scenario number you want
 - Enter that folder, and then select TEA.
 - In the pop-up window, on the combine drop-down, select combine and load, and then click "OK".
-- Rename the sheet to TEA
+- Rename the sheet to TEA from "TEA (2)" or whatever it loads in as.
 - Repeat the above steps, except select the LCA folder instead.
 - Some simple figures should already be populated, although they may need additional modification (i.e. to include all 62 counties in the figure and the data table), though this shouldn't be an issue for any figure that appears in the text or the SI.
 
