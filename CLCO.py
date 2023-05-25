@@ -359,6 +359,7 @@ def initialize_model(scenario, j, midpoint, lca_type):
     print(opt.solve(model, tee=True))
 
     model.npv.pprint()
+    model.process_capacity.pprint()
 
     # print data to csv
     print_model(scenario, model, j, "TEA")
@@ -1120,9 +1121,10 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
     elif scenario in [10103]:
-        if A.FEEDSTOCK_SUPPLY[l] > 100:
+        if A.FEEDSTOCK_SUPPLY[l] > 300: #this accounts for 92.4% of all manure in the state
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+            M.const.add(eexpr=M.process_capacity[l, 'CHP'] == 1.08731587 * A.FEEDSTOCK_SUPPLY[l])  # to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
         else:
             M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
@@ -1134,12 +1136,14 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
     elif scenario in [10203]:
-        if A.FEEDSTOCK_SUPPLY[l] > 3.2:
+        if A.FEEDSTOCK_SUPPLY[l] > 3.2: #this accounts for 99.96% of all manure in the state
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+            M.const.add(eexpr=M.process_capacity[l, 'CHP'] == 1.08731587*A.FEEDSTOCK_SUPPLY[l]) #to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
         else:
             M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+
 
         # ensure that no other feedstocks are used
         M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
@@ -1942,7 +1946,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [2501, 2502, 2503, 2511, 2512, 2513]
+    S = [10003, 10103, 10203]
 
     for scenario in S:
         lca_type = "CLCA"
