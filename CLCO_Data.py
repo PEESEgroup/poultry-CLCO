@@ -88,9 +88,9 @@ class CLCO_Data:
     ### LCA EMISSIONS CHARACTERIZATION FACTORS
 
     ### TEO ECONOMICS PARAMETERS
-    TIME_PERIODS = 40
-    YEARS = 10
-    ANNUAL_DISCOUNT_RATE = .07
+    TIME_PERIODS = 80
+    YEARS = 20
+    ANNUAL_DISCOUNT_RATE = .07 #TODO change back
     MONTHLY_DISCOUNT_RATE = (1 + ANNUAL_DISCOUNT_RATE) ** (1 / 4) - 1
     LAND_APPLICATION_MONTH = 1
     OPEX_TPC = .09 / TIME_PERIODS * YEARS
@@ -100,7 +100,7 @@ class CLCO_Data:
     ## STAGE 1 PARAMETERS
 
     ## STAGE 2 PARAMETERS
-    # YIELDS ARE IN TONSSSSSSSSSSSSSSSSSSS
+    # YIELDS ARE IN TONS
     PYRO_YIELD = defaultdict(dict)  # indexed on temperature and yield product
     PYRO_YIELD['feedstock', 'Biochar', 400] = .53
     PYRO_YIELD['feedstock', 'Biochar', 450] = .48

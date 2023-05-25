@@ -1124,7 +1124,8 @@ def facility_constraints(A, M, l, scenario, t):
         if A.FEEDSTOCK_SUPPLY[l] > 300: #this accounts for 92.4% of all manure in the state
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            M.const.add(eexpr=M.process_capacity[l, 'CHP'] == 1.08731587 * A.FEEDSTOCK_SUPPLY[l])  # to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
+            M.const.add(expr=sum(M.biochar_from_pyrolysis[l, t, feed, temp, 'CHP'] for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures) == 0) #all biochar applied to land
+            M.const.add(expr=M.process_capacity[l, 'CHP'] == 1.08731587 * A.FEEDSTOCK_SUPPLY[l])  # to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
         else:
             M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
@@ -1139,7 +1140,10 @@ def facility_constraints(A, M, l, scenario, t):
         if A.FEEDSTOCK_SUPPLY[l] > 3.2: #this accounts for 99.96% of all manure in the state
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            M.const.add(eexpr=M.process_capacity[l, 'CHP'] == 1.08731587*A.FEEDSTOCK_SUPPLY[l]) #to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
+            M.const.add(expr=sum(
+                M.biochar_from_pyrolysis[l, t, feed, temp, 'CHP'] for feed in M.PyrolysisFeedstocks for temp in
+                M.PyrolysisTemperatures) == 0)
+            M.const.add(expr=M.process_capacity[l, 'CHP'] == 1.08731587*A.FEEDSTOCK_SUPPLY[l]) #to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
         else:
             M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
