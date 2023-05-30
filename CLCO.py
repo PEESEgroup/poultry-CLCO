@@ -1950,7 +1950,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [10003, 10103, 10203]
+    S = [10103]
 
     for scenario in S:
         lca_type = "CLCA"
