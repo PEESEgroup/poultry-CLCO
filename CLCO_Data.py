@@ -190,12 +190,12 @@ class CLCO_Data:
     OPEX['Pyrolysis', 'Electricity'] = 0
 
     OPEX['HTL', 'Heat'] = 1345 * HEAT_EXCHANGER  # MJ/ton sludge
-    OPEX['HTL', 'Electricity'] = 92.86  # KWh
+    OPEX['HTL', 'Electricity'] = 9.9  # KWh/ton sludge
     OPEX['HTC', 'Heat', 180] = 585 * HEAT_EXCHANGER  # MJ/ton sludge
-    OPEX['HTC', 'Heat', 200] = 664 * HEAT_EXCHANGER# MJ/ton sludge
-    OPEX['HTC', 'Heat', 220] = 744 * HEAT_EXCHANGER# MJ/ton sludge
-    OPEX['HTC', 'Heat', 250] = 870 * HEAT_EXCHANGER# MJ/ton sludge
-    OPEX['HTC', 'Electricity'] = 92.86  # KWh
+    OPEX['HTC', 'Heat', 200] = 664 * HEAT_EXCHANGER # MJ/ton sludge
+    OPEX['HTC', 'Heat', 220] = 744 * HEAT_EXCHANGER # MJ/ton sludge
+    OPEX['HTC', 'Heat', 250] = 870 * HEAT_EXCHANGER # MJ/ton sludge
+    OPEX['HTC', 'Electricity'] = 15.48  # KWh/ton sludge
 
     OPEX['AD', 'Heat'] = 201.95  # MJ/ton feedstock
     OPEX['AD', 'Electricity'] = 0
