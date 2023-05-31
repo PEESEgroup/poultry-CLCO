@@ -359,7 +359,6 @@ def initialize_model(scenario, j, midpoint, lca_type):
     print(opt.solve(model, tee=True))
 
     model.npv.pprint()
-    model.process_capacity.pprint()
 
     # print data to csv
     print_model(scenario, model, j, "TEA")
@@ -1950,7 +1949,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [10103]
+    S = [6, 7, 1501, 1502, 1503, 1511, 1512, 1513, 2501, 2502, 2503, 2511, 2512, 2513]
 
     for scenario in S:
         lca_type = "CLCA"
