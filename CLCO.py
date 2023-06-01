@@ -52,7 +52,7 @@ def utopian(m, lca_midpoint, lca_type):
     print("scalar denominator", (nadir[1] - utopia[1]), "nadir lca_midpoint", nadir[1], "utopia lca_midpoint",
           utopia[1])
 
-    if (nadir[1] - utopia[1]) == 0:
+    if (nadir[1] - utopia[1]) <= .000001:
         raise ValueError("No Pareto Front can be generated - no change in denominator")
     scalar = abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1]))
     print("scalar", scalar)
@@ -1949,7 +1949,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [1211, 2201, 2202]
+    S = [1202, 1212, 2212]
 
     for scenario in S:
         lca_type = "CLCA"
