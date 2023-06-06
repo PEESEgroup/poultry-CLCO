@@ -339,18 +339,18 @@ class CLCO_Data:
     NUTRIENTS['HTL', 'feedstock', 350, 'P'] = 91.43 * P_CONTENT
     NUTRIENTS['HTL', 'feedstock', 350, 'K'] = .89 * K_CONTENT
 
-    NUTRIENTS['HTC', 'feedstock', 180, 'N'] = .0193 * N_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 180, 'P'] = .0293 * P_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 180, 'K'] = .0013 * K_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 200, 'N'] = .0234 * N_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 200, 'P'] = .0322 * P_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 200, 'K'] = .0013 * K_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 220, 'N'] = .0274 * N_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 220, 'P'] = .0351 * P_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 220, 'K'] = .0013 * K_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 250, 'N'] = .0017 * N_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 250, 'P'] = .0395 * P_CONTENT
-    NUTRIENTS['HTC', 'feedstock', 250, 'K'] = .0013 * K_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 180, 'N'] = 58.606 * N_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 180, 'P'] = 66.613 * P_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 180, 'K'] = 1.566 * K_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 200, 'N'] = 70.808 * N_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 200, 'P'] = 73.219 * P_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 200, 'K'] = 1.566 * K_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 220, 'N'] = 83.010 * N_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 220, 'P'] = 79.825 * P_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 220, 'K'] = 1.566 * K_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 250, 'N'] = 101.313 * N_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 250, 'P'] = 89.734 * P_CONTENT
+    NUTRIENTS['HTC', 'feedstock', 250, 'K'] = 1.566 * K_CONTENT
 
     NUTRIENTS['AD', 'N'] = 10.30 * N_CONTENT  # kg avoided per ton digestate
     NUTRIENTS['AD', 'P'] = 2.72 * P_CONTENT
