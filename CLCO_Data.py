@@ -166,9 +166,9 @@ class CLCO_Data:
     AD_YIELD['feedstock', 'biogas', 1.5] = 152  # Nm^3/ton feedstock
     AD_YIELD['feedstock', 'biogas', 3] = 116.6
     AD_YIELD['feedstock', 'biogas', 4.5] = 104.1
-    AD_YIELD['COD', 'digestate', 1.5] = 3  # ton digestate/ton COD
-    AD_YIELD['COD', 'digestate', 3] = 3  # low confidence for 'COD', 'digestate'
-    AD_YIELD['COD', 'digestate', 4.5] = 3
+    AD_YIELD['COD', 'digestate', 1.5] = 0  # ton digestate/ton COD
+    AD_YIELD['COD', 'digestate', 3] = 0  # low confidence for 'COD', 'digestate'
+    AD_YIELD['COD', 'digestate', 4.5] = 0
     AD_YIELD['COD', 'biogas', 1.5] = 405.9  # Nm^3/ton COD
     AD_YIELD['COD', 'biogas', 3] = 379.6
     AD_YIELD['COD', 'biogas', 4.5] = 353.4
@@ -197,10 +197,10 @@ class CLCO_Data:
     OPEX['HTC', 'Heat', 250] = 870 * HEAT_EXCHANGER # MJ/ton sludge
     OPEX['HTC', 'Electricity'] = 15.48  # KWh/ton sludge
 
-    OPEX['AD', 'Heat'] = 201.95  # MJ/ton feedstock
-    OPEX['AD', 'Electricity'] = 0
+    OPEX['AD', 'Heat'] = 208.07  # MJ/m^3
+    OPEX['AD', 'Electricity'] = 26.97 # kWh/m^3
     OPEX['CHP', 'Heat'] = 0
-    OPEX['CHP', 'Electricity'] = .1
+    OPEX['CHP', 'Electricity'] = 0
 
     OPEX['Electricity'] = .07  # $/kWh
     OPEX['Fuel'] = .0082  # $/MJ
@@ -360,9 +360,9 @@ class CLCO_Data:
     LOADING["feedstock", 1.5] = 2.68  # m^3 / ton feedstock
     LOADING["feedstock", 3] = 1.34
     LOADING["feedstock", 4.5] = .89
-    LOADING["COD", 1.5] = 2.68  # m^3 / ton feedstock
-    LOADING["COD", 3] = 1.34
-    LOADING["COD", 4.5] = .89
+    LOADING["COD", 1.5] = 2.832  # m^3 / ton COD
+    LOADING["COD", 3] = 2.832
+    LOADING["COD", 4.5] = 2.832
 
     COD = defaultdict(dict)
     COD['Pyrolysis', 'feedstock', 'Biochar', 400] = .0

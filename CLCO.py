@@ -755,9 +755,7 @@ def opex_constraints(A, M, l, t):
     for tech in M.Technology:
         # heat inputs for each technology
         if tech == "AD":
-            M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(A.OPEX['AD', 'Heat'] *
-                                                                 M.ad_in_glovers[l, t, feed, stage] for feed in
-                                                                 M.ADFeedstocks for stage in M.ADStages))
+            M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(A.OPEX['AD', 'Heat'] * M.ad_capacity[l, stage] for stage in M.ADStages))
         elif tech == "CHP":
             M.const.add(expr=M.inputs[l, t, 'CHP', 'heat'] == A.OPEX['CHP', 'Heat'] *
                              A.CHP_HEAT_EFFICIENCY * M.chp_in[l, t])
@@ -779,9 +777,7 @@ def opex_constraints(A, M, l, t):
 
         # electricity inputs for each technology
         if tech == "AD":
-            M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] *
-                                                                        M.ad_in_glovers[l, t, feed, stage] for feed in
-                                                                        M.ADFeedstocks for stage in M.ADStages))
+            M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] * M.ad_capacity[l, stage] for stage in M.ADStages))
         elif tech == "CHP":
             M.const.add(expr=M.inputs[l, t, 'CHP', 'electricity'] == A.OPEX['CHP', 'Electricity'] *
                              A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[l, t])
@@ -1949,7 +1945,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [7, 1501, 1502, 1503, 1511, 1512, 1513, 2501, 2502, 2503, 2511, 2512, 2513]
+    S = [8,2,5,6,7, 1501, 1502, 1503, 1511, 1512, 1513, 2501, 2502, 2503, 2511, 2512, 2513]
 
     for scenario in S:
         lca_type = "CLCA"
