@@ -77,15 +77,13 @@ class CLCO_Data:
                                  12.5, 16.5, 9.9, 24.9, 0.3, 0.2, 19.9, 28.0, 4068.4, 186.4, 626.8, 13.1, 13.4,
                                  38.1, 4.2, 2.5, 34.5, 0.0, 1.6, 818.1, 3.0, 33.0, 69.7, 335.9, 35.8, 1784.3,
                                  70.8, 2276.5, 12.0, 12.8, 25.8, 3.5, 37.6, 3856.4, 32.3, 13.4, 377.7]
+
     ### PARAMETERS TO VARY IN SENSITIVITY ANALYSIS
     ENERGY_CONTENT = 1
     P_CONTENT = 1
     N_CONTENT = 1
     K_CONTENT = 1
     FERT_PRICE = 1
-
-    #### PARAMETERS
-    ### LCA EMISSIONS CHARACTERIZATION FACTORS
 
     ### TEO ECONOMICS PARAMETERS
     TIME_PERIODS = 40
