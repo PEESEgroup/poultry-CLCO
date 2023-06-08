@@ -538,7 +538,7 @@ def lca_constraints(A, M, l):
                 'biochar market', cat] *
                              sum(M.biochar_from_pyrolysis[l, t, feedstock, temp, 'market']
                                   for l in M.Location for t in M.Time for feedstock in M.PyrolysisFeedstocks
-                                  for temp in M.PyrolysisTemperatures))'''  # for when biochar can be sold on the market
+                                  for temp in M.PyrolysisTemperatures))'''  # for when biochar can be sold on the market - still needs to be implemented
             M.const.add(expr=M.LCA_midpoints[l, lca_type, "bio-oil market", cat] ==
                              A.IMPACT[lca_type, 'bio-oil market', cat] *
                              (sum(M.biooil_from_pyrolysis[l, t, feedstock, temp, 'market']
