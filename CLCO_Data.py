@@ -7,8 +7,8 @@ class CLCO_Data:
     def __init__(self, scenario):
         if 1000 < scenario <2999:
             if scenario % 10 == 1:
-                self.FEEDSTOCK_SUPPLY = [4867 * 3]
-                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [80.6]
+                self.FEEDSTOCK_SUPPLY = [5767 * 3]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [111.5]
             if scenario % 10 == 2:
                 self.FEEDSTOCK_SUPPLY = [1356.1 * 3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [16.5]
@@ -20,8 +20,8 @@ class CLCO_Data:
                 self.FEEDSTOCK_SUPPLY = [4867 * 3 + 2501.4 * 3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [120]
             elif scenario % 10 == 1:
-                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [80.6, 154.3]
-                self.FEEDSTOCK_SUPPLY = [4867 * 3, 2501.4 * 3]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [111.5, 122.2]
+                self.FEEDSTOCK_SUPPLY = [5767 * 3, 1338 * 3]
             else:
                 self.FEEDSTOCK_SUPPLY = [16.4, 85.7, 0.0, 14.5, 18.3, 158.2, 34.8, 6.1, 27.4, 2722.3, 49.0, 7.8, 29.9,
                                          37.7, 2721.6, 33.4, 382.5, 23.8, 455.0, 91.4, 0.0, 48.2, 228.4, 0.1, 13.1,
@@ -42,14 +42,14 @@ class CLCO_Data:
                 self.FEEDSTOCK_SUPPLY = [76.1 * 3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [26.2]
             elif 420 < scenario < 430:
-                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [80.6, 154.3]
-                self.FEEDSTOCK_SUPPLY = [4867 * 3, 2501.4 * 3]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [111.5, 122.2]
+                self.FEEDSTOCK_SUPPLY = [5767 * 3, 1338 * 3]
             elif 430 < scenario < 440:
-                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [94.2, 83.6, 81.7]
-                self.FEEDSTOCK_SUPPLY = [4867 * 3, 1087.8 * 3, 1413.6 * 3]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [90.9, 84.7, 19.2]
+                self.FEEDSTOCK_SUPPLY = [5008 * 3, 1062 * 3, 1035 * 3]
             elif 440 < scenario < 450:
-                self.FEEDSTOCK_SUPPLY = [3394.5 * 3, 1485.2 * 3, 1368.4 * 3, 1120.3 * 3]
-                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [66.7, 54.4, 62.6, 94.2]
+                self.FEEDSTOCK_SUPPLY = [1059 * 3, 4043.7, 967.7 * 3, 1035 * 3]
+                self.INTRA_COUNTY_TRANSPORT_DISTANCE = [15.2, 70.12, 23.2, 19.2]
             else:
                 self.FEEDSTOCK_SUPPLY = [16.4, 85.7, 0.0, 14.5, 18.3, 158.2, 34.8, 6.1, 27.4, 2722.3, 49.0, 7.8, 29.9,
                                          37.7, 2721.6, 33.4, 382.5, 23.8, 455.0, 91.4, 0.0, 48.2, 228.4, 0.1, 13.1,
