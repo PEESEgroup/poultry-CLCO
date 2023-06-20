@@ -1150,6 +1150,32 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
+    elif scenario in [10]:
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'CHP'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'land'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
+    elif scenario in [11]:
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'CHP'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'market'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
+        for feed in M.HTCFeedstocks:
+            M.const.add(expr=M.decision_htc_temperature[l, t, feed, 200] == 1)
+    elif scenario in [12]:
+        M.const.add(expr=M.htl_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
+        M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
+        M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htl[l, t, feed, temp, 'market'] for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) == 0)
     else:
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
                          M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
@@ -1826,6 +1852,9 @@ if __name__ == '__main__':
     7: HTC + CHP, NPV max, county level
     8: AD + CHP, NPV max, county level
     9: AD + Pyrolysis + CHP, NPV max, county level
+    10: HTC w/ selling hydrochar, NPV max, county level
+    11: HTC w/ DLA, NPV max, county level
+    12: HTL w/ combustion of hydrochar, NPV max, county level
     50: Pyrolysis + CHP GWP min, county level
     51: Pyroylsis + CHP Onondaga county Pareto Front min GWP max NPV
     52: Pyroylsis + CHP Jefferson county Pareto Front min GWP max NPV
@@ -1945,7 +1974,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [10103, 10203]
+    S = [11, 12]
 
     for scenario in S:
         lca_type = "CLCA"

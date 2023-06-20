@@ -148,7 +148,7 @@ class CLCO_Data:
     HTC_YIELD['feedstock', 'GP', 180] = .01
     HTC_YIELD['feedstock', 'GP', 200] = .056
     HTC_YIELD['feedstock', 'GP', 220] = .188
-    HTC_YIELD['feedstock', 'GP', 250] = .2685
+    HTC_YIELD['feedstock', 'GP', 250] = .2785
     HTC_YIELD['feedstock', 'AP', 180] = .403 + HTC_WATER
     HTC_YIELD['feedstock', 'AP', 200] = .394 + HTC_WATER
     HTC_YIELD['feedstock', 'AP', 220] = .310 + HTC_WATER
