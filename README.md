@@ -2,18 +2,23 @@
 
 This readme document is intended to aid others in using the model and reproducing results from the paper TBD under consideration at ES&T.
 
-TODO: Include license
+TODO: Include license in the github repo
 
 # Running the model
 ## Installation
-Download the github repository.  To run any CLCO scenario, run the CLCO.py file in your IDE of choice.  To run the FLP problem, run the CLCO_FLP.py file.  Do not run any other python file in this repository.
-CLCO_Data.py holds parameter information for the program, and sources for this data can be found in CLCO_TEA_LCA_Data.xlsx in the data analysis folder. 
+Download the github repository.  To run any CLCO scenario, open the CLCO.py file in your IDE of choice, and follow the steps in the generating results section below.  To run the FLP problem, run the CLCO_FLP.py file.  
+
+It is unnecessary to run any other python file in this repository.
+
+CLCO_Data.py holds parameter information for the program, and sources for this data can be found in CLCO_TEA_LCA_Data.xlsx in the data analysis folder, values which are also repeated throughout the SI.  
+
+To run this model with your own parameters, simply change the relevant parameters in the CLCO_Data.py file.
 
 ## Necessary software
 
  - Python 3.8 or greater
- - Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
- - Python dependencies
+ - Gurobi Optimizer (version 9.5.2 build v9.5.2rc0 (win64) was used to generate the results)
+ - Python dependencies 
 
 ## Model runtime
 
@@ -21,7 +26,7 @@ A Dell XPS 15 7590 with Windows 10 Home and Intel(R) Core(TM) i-7-9750H CPU @2.6
 
 ## Generating results
 
-To run the model, simply choose a scenario from the list below and edit the code in the main method of CLCO.py
+To run the model, simply choose a scenario from the list below and edit the line of code in the main method of CLCO.py.  This line of code is located toward the bottom of the python file.  
 
 To run scenario 3:
 ```    S = [3]```
@@ -29,23 +34,25 @@ To run scenario 3:
 To run scenario 3, 428, and 1503:
 ```    S = [3, 428, 1503]```
 
-### NPVs - Figure 2 and LCA - Figure 3
+### NPV and LCA figures
 
-Run scenarios 2,5,6,7,8 for direct land application, pyrolysis, HTL, HTC, and AD.
+Run scenarios 2, 5, 6, 7, 8 for direct land application, pyrolysis, HTL, HTC, and AD.
+Run scenarios 2, 5, 8, 10, 11, 12, 10103 and extract the entries for Onondaga county to create figures S1 and S2.  The normalization technology was chosen based on what technology would have the lowest range of LCA impacts.
 
-### FLP - Figure 4
+### FLP
 
 Figure 4 was created by running the CLCO_FLP.py file.  This program does a full search over all maximum transportation distances and number of facilities.  Looking at the reported objective function values (likely in the SI) it was easy to determine the minimum transportation distance for each number of facilities.  Then, the solutions were manually adjusted as a few counties with very little manure were mislabeled due to a high mipgap to decrease computation time.
 
-### Pareto Fronts - Figure 5
+### Pareto Fronts
 
-To find the Pareto fronts in Figure 5, run scenarios 1501, 1502, 1503 for the CLCA GWP/NPV Pareto Front and scenarios 2501, 2502, 2503 for the ALCA GWP/NPV Pareto Front.  Pareto fronts are automatically plotted using matplotlib and can be found in the folder of the scenario number.
+To find the Pareto fronts in Figure 5, run scenarios 1501, 1502, 1503, 1511, 1512, 1513 for the CLCA GWP/NPV Pareto Front and scenarios 2501, 2502, 2503, 2511, 2512, 2513 for the ALCA GWP/NPV Pareto Front.  Pareto fronts are automatically plotted using matplotlib and can be found in the folder of the scenario number.
+Pareto fronts found in the figures in the manuscript are manually adjusted at the anchor points.
 
 ## Excel plotting
 
 For any scenario that does not have an existing S[Scenario Number].xlsx file, one can be created from the STemplate.xlsx.
 
-- First, delete the existing TEA and LCA tabs, as they are being replaced.
+- First, delete the existing TEA and LCA tabs, as they are being replaced by references to new directories.
 - Then go to the data tab in the ribbon
 - Click on "Get Data" on the left part of the ribbon, then select "from file" and then "from folder".
 - Next, navigate in the data file directory to the folder with the scenario number you want
@@ -56,7 +63,9 @@ For any scenario that does not have an existing S[Scenario Number].xlsx file, on
 - Some simple figures should already be populated, although they may need additional modification (i.e. to include all 62 counties in the figure and the data table), though this shouldn't be an issue for any figure that appears in the text or the SI.
 
 ## Scenario List
-     SCENARIO LIST:
+Not every scenario in the scenario list below was used to create figures for this model or validate the model.
+```
+    SCENARIO LIST:
     1: AD + CHP w/ disposal of digestate, NPV max, county level
     2: Direct Land Application, NPV max, county level
     3: Optimal County Level Results, NPV max, county level
@@ -66,6 +75,9 @@ For any scenario that does not have an existing S[Scenario Number].xlsx file, on
     7: HTC + CHP, NPV max, county level
     8: AD + CHP, NPV max, county level
     9: AD + Pyrolysis + CHP, NPV max, county level
+    10: HTC w/ selling hydrochar, NPV max, county level
+    11: HTC w/ DLA, NPV max, county level
+    12: HTL w/ combustion of hydrochar, NPV max, county level
     50: Pyrolysis + CHP GWP min, county level
     51: Pyroylsis + CHP Onondaga county Pareto Front min GWP max NPV
     52: Pyroylsis + CHP Jefferson county Pareto Front min GWP max NPV
@@ -183,3 +195,5 @@ For any scenario that does not have an existing S[Scenario Number].xlsx file, on
     10003: first calculated optimal plants at NPV max in every county, then implemented constraints on those plants for sensitivity analysis
     10103: first calculated optimal plants at a tradeoff in every county, then implemented constraints on those plants for sensitivity analysis
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
+```
+
