@@ -52,6 +52,12 @@ Pareto fronts found in the figures in the manuscript are manually adjusted at th
 
 To replicate the sensitivity analysis, run scenarios 10003, 10103, 10203 for NPV max, tradeoff, and GWP min respectively.  Modify CLCO_Data.py to change key parameters.
 
+### Changing model location
+
+To change the model location, update FEEDSTOCK_SUPPLY and INTRA_COUNTY_TRANSPORT_DISTANCE in CLCO_Data.py.  The data is stored in a list, so the nth county in the feedstock supply list corresponds to the nth county in the transportation distance list
+
+**It should be noted that the model has not been tested for counties with more than 6,000 tons of poultry manure.  Extremely large inputs may require modification to the piecewise linear approximtion list lpa_xvals and bounded variables**
+
 ## Excel plotting
 
 For any scenario that does not have an existing S[Scenario Number].xlsx file, one can be created from the STemplate.xlsx.
