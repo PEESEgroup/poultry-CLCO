@@ -36,8 +36,8 @@ To run scenario 3, 428, and 1503:
 
 ### NPV and LCA figures
 
-Run scenarios 2, 5, 6, 7, 8 for direct land application, pyrolysis, HTL, HTC, and AD.
-Run scenarios 2, 5, 8, 10, 11, 12, 10103 and extract the entries for Onondaga county to create figures S1 and S2.  The normalization technology was chosen based on what technology would have the lowest range of LCA impacts.
+Run scenarios 2, 5, 6, 7, 8 for direct land application, pyrolysis, HTL, HTC, and AD for figures 2, 3, and 5.
+Run scenarios 2, 5, 8, 10, 11, 12, and 10103 and then extract the entries for Onondaga county to create figures S1 and S2.  The normalization technology was chosen based on what technology would have the lowest range of LCA impacts.
 
 ### FLP
 
@@ -47,6 +47,10 @@ Figure 4 was created by running the CLCO_FLP.py file.  This program does a full 
 
 To find the Pareto fronts in Figure 5, run scenarios 1501, 1502, 1503, 1511, 1512, 1513 for the CLCA GWP/NPV Pareto Front and scenarios 2501, 2502, 2503, 2511, 2512, 2513 for the ALCA GWP/NPV Pareto Front.  Pareto fronts are automatically plotted using matplotlib and can be found in the folder of the scenario number.
 Pareto fronts found in the figures in the manuscript are manually adjusted at the anchor points.
+
+### Sensitivity analysis
+
+To replicate the sensitivity analysis, run scenarios 10003, 10103, 10203 for NPV max, tradeoff, and GWP min respectively.  Modify CLCO_Data.py to change key parameters.
 
 ## Excel plotting
 
