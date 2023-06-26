@@ -118,9 +118,9 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     temp1.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
 
     # capture the smallest points and load them into an array
-    nadir.append(min(temp))
-    nadir.append(min(temp1))
-    nadir.append(min(temp2))
+    nadir.append(max(temp))
+    nadir.append(max(temp1))
+    nadir.append(max(temp2))
 
     # add constraints on the anchor points
     m.const.add(expr=m.npv[0] >= nadir[0])
@@ -128,7 +128,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint2] <= nadir[2])
 
     for i in range(3):
-        print(i, "utopia:", utopia[i], "nadir,:", nadir[i])
+        print(i, "utopia:", utopia[i], "nadir:", nadir[i])
 
     # deactivate remaining objective function
     m.Obj3.deactivate()
@@ -492,13 +492,13 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     print("\n\n finished computing utopia and nadir points")
 
     # use the new objective function with the new weights
+    ranges = [abs(nadir[0]-utopia[0]),abs(nadir[1]-utopia[1]),abs(nadir[2]-utopia[2])]
+    print(ranges)
+
     M.combined = pyo.Objective(
-        expr=0 - M.alpha * M.alpha2 * ((sum(M.npv[l] for l in M.Location) - utopia[0]) / (nadir[0] - utopia[0])) +
-             (1 - M.alpha) * M.alpha2 * (
-                         (sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) - utopia[1]) / (
-                             nadir[1] - utopia[1])) +
-             (1 - M.alpha2) * ((sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) - utopia[2]) / (
-                    nadir[2] - utopia[2]))
+        expr=0 - M.alpha * M.alpha2 * (sum(M.npv[l] for l in M.Location) *max(ranges)/ranges[0]) +
+             (1 - M.alpha) * M.alpha2 * (sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) *max(ranges)/ranges[1]) +
+             (1 - M.alpha2) * (sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) *max(ranges)/ranges[2])
         , sense=pyo.minimize)
 
     print("returned to control method")
