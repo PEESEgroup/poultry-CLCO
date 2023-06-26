@@ -84,7 +84,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.Obj.activate()
     model = m
     opt = pyo.SolverFactory('gurobi')
-    print(opt.solve(model), Tee=True)  # keepfiles = True
+    print(opt.solve(model, tee=True))  # keepfiles = True
 
     utopia.append(pyo.value(model.npv[0]))
     temp = []
@@ -96,7 +96,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.Obj2.activate()
     model = m
     opt = pyo.SolverFactory('gurobi')
-    print(opt.solve(model), Tee=True)  # keepfiles = True
+    print(opt.solve(model, tee=True)) # keepfiles = True
 
     # get the nadir and utopia points
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
@@ -108,7 +108,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.Obj3.activate()
     model = m
     opt = pyo.SolverFactory('gurobi')
-    print(opt.solve(model), Tee=True)  # keepfiles = True
+    print(opt.solve(model, tee=True))  # keepfiles = True
 
     # get the nadir and utopia points
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
@@ -116,7 +116,9 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     temp1.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
 
     # capture the smallest points and load them into an array
-    nadir.append(min(temp), min(temp1), min(temp2))
+    nadir.append(min(temp))
+    nadir.append(min(temp1))
+    nadir.append(min(temp2))
 
     # add constraints on the anchor points
     m.const.add(expr=m.npv[0] >= nadir[0])
@@ -233,8 +235,7 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
     print(npv_new, gwp_new)
     return npv_new, gwp_new
 
-
-def aws3D(M, divs, midpoint1, midpoint2, utopia, nadir, scenario, lca_type):
+def aws3D(M, divs, midpoint1, midpoint2, lca_type):
     """
     the main control loop for conducting adaptive weight sums to identify the pareto front
     :param M: the model being used
@@ -377,7 +378,7 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
         print("\n\nalpha", alpha)
         M.alpha = alpha
         for j in range(divisions + 1):
-            alpha2 = 1 / divisions * i
+            alpha2 = 1 / divisions * j
             print("\n\nalpha2", alpha2)
             M.alpha2 = alpha2
             model = M
@@ -496,12 +497,12 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, z = aws3D(M, 12, midpoint, utopia, nadir, scenario, lca_type)
+    x, y, z = aws3D(M, 4, midpoint1, midpoint2, lca_type)
 
     # rescale the y points back to their original values
-    x_rescaled = [(-i * (nadir[0] - utopia[0]) + utopia[0]) / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
-    y_rescaled = [(i * (nadir[1] - utopia[1]) + utopia[1]) / (A.FEEDSTOCK_SUPPLY[1] * A.TIME_PERIODS) for i in y]
-    z_rescaled = [(i * (nadir[2] - utopia[2]) + utopia[2]) / (A.FEEDSTOCK_SUPPLY[2] * A.TIME_PERIODS) for i in z]
+    x_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
+    y_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in y]
+    z_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in z]
     print("rescaled points")
 
     # plot the points
