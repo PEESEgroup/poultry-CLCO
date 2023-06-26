@@ -265,6 +265,10 @@ def aws3D(M, divs, midpoint1, midpoint2, lca_type):
     if len(dist) == 0:
         return [], [], []
 
+    for i in range(len(x_vals)):
+        print_model(scenario, models[i], i+int(pyo.value(models[i].npv[0])), "TEA")
+        print_model(scenario, models[i], i+int(pyo.value(models[i].npv[0])), "LCA", midpoint=midpoint1)
+
     # return from the algorithm
     print("\n\n\n\n\n return from an iteration!!!!!")
     print(x_vals, y_vals, z_vals)
@@ -511,13 +515,13 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     plt.clf()
 
     fig = plt.figure()
-    ax = Axes3D(fig)
-    surf = ax.plot_trisurf(x, y, z, linewidth=0.1, cmap=plt.cm.CMRmap)
+    ax = fig.add_subplot(projection='3d')
+    surf = ax.plot_trisurf(x_rescaled, y_rescaled, z_rescaled, linewidth=0.1, cmap=plt.cm.CMRmap)
     fig.colorbar(surf, shrink=0.5, aspect=5)
-    ax.title("Pareto Front (Adaptive Weighted Sums)")
-    ax.xlabel("NPV ($USD) per ton manure")
-    ax.ylabel("climate change impact (kg CO2-eq) per ton manure")
-    ax.zlabel("freshwater eutrophication impact (kg P-eq) per ton manure")
+    ax.set_title("Pareto Front (Adaptive Weighted Sums)")
+    ax.set_xlabel("NPV ($USD) per ton manure")
+    ax.set_ylabel("climate change impact (kg CO2-eq) per ton manure")
+    ax.set_zlabel("freshwater eutrophication impact (kg P-eq) per ton manure")
 
     plt.show()
     return 1
