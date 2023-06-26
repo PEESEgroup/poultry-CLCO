@@ -7,6 +7,7 @@ from CLCO_Data import CLCO_Data
 from sympy import symbols
 import matplotlib.pyplot as plt
 import math
+import numpy as np
 
 
 def utopian(m, lca_midpoint, lca_type):
@@ -62,6 +63,7 @@ def utopian(m, lca_midpoint, lca_type):
     m.Obj2.deactivate()
     return utopia, nadir
 
+
 def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     """
     Finds the utopia and nadir points for the pareto front with NPV and any LCA subcategory
@@ -82,7 +84,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.Obj.activate()
     model = m
     opt = pyo.SolverFactory('gurobi')
-    print(opt.solve(model))  # keepfiles = True
+    print(opt.solve(model), Tee=True)  # keepfiles = True
 
     utopia.append(pyo.value(model.npv[0]))
     temp = []
@@ -94,7 +96,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.Obj2.activate()
     model = m
     opt = pyo.SolverFactory('gurobi')
-    print(opt.solve(model))  # keepfiles = True
+    print(opt.solve(model), Tee=True)  # keepfiles = True
 
     # get the nadir and utopia points
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
@@ -106,14 +108,14 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.Obj3.activate()
     model = m
     opt = pyo.SolverFactory('gurobi')
-    print(opt.solve(model))  # keepfiles = True
+    print(opt.solve(model), Tee=True)  # keepfiles = True
 
     # get the nadir and utopia points
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
     temp.append(pyo.value(model.npv[0]))
     temp1.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
 
-    #capture the smallest points and load them into an array
+    # capture the smallest points and load them into an array
     nadir.append(min(temp), min(temp1), min(temp2))
 
     # add constraints on the anchor points
@@ -127,6 +129,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     # deactivate remaining objective function
     m.Obj3.deactivate()
     return utopia, nadir
+
 
 def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
     """
@@ -231,6 +234,40 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
     return npv_new, gwp_new
 
 
+def aws3D(M, divs, midpoint1, midpoint2, utopia, nadir, scenario, lca_type):
+    """
+    the main control loop for conducting adaptive weight sums to identify the pareto front
+    :param M: the model being used
+    :param divs: the initial number of divisions
+    :param midpoint: the LCA ReCiPe lca_midpoint used
+    :param utopia: the utopia point for the pareto front
+    :param nadir: the nadir point for the pareto front
+    :param scenario: the scenario number
+    :param lca_type: the type of LCA being conducted (ALCA/CLCA)
+    :return: the npv values and the lca_midpoint values that comprise the pareto front
+    """
+    # following Adaptive weighted-sum method for bi-objective optimization:Pareto front generation
+    print("\n\n 3D AWS!!!!")
+    dist = []
+
+    x_vals, y_vals, z_vals, models = ws3D(M, divs, lca_type, midpoint1, midpoint2)
+
+    # calculate the euclidean distances between the points on the pareto front
+    for i in range(len(x_vals) - 1):
+        dist.append(np.linalg.norm(
+            np.array((x_vals[i], y_vals[i], z_vals[i])) - np.array((x_vals[i + 1], y_vals[i + 1], z_vals[i + 1]))))
+    print(dist)
+
+    # avoid those damn divide by zero errors
+    if len(dist) == 0:
+        return [], [], []
+
+    # return from the algorithm
+    print("\n\n\n\n\n return from an iteration!!!!!")
+    print(x_vals, y_vals, z_vals)
+    return x_vals, y_vals, z_vals
+
+
 def pareto_point_distance(gwp_vals, npv_vals):
     """
     calculates the distance between the pareto points
@@ -318,6 +355,57 @@ def ws(M, divisions, lca_type, midpoint, scalar):
     return npv_vals, gwp_vals, models
 
 
+def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
+    """
+    Conducts weighted sums on a region of a pareto front
+    :param M: the model being optimized
+    :param divisions: the number of divisions to be made on the pareto front
+    :param lca_type: the LCA type (ALCA, CLCA)
+    :param midpoint: the ReCiPe lca_midpoint used on the pareto front
+    :param scalar: the scalar for the objective function so that the distance function works accurately
+    :return: a list of npv values, lca_midpoint values, and copies of the models for points alongside the pareto front
+    """
+    # lists of objective values
+    models = []
+    x = []
+    y = []
+    z = []
+
+    # do normal weighted sums
+    for i in range(divisions + 1):
+        alpha = 1 / divisions * i
+        print("\n\nalpha", alpha)
+        M.alpha = alpha
+        for j in range(divisions + 1):
+            alpha2 = 1 / divisions * i
+            print("\n\nalpha2", alpha2)
+            M.alpha2 = alpha2
+            model = M
+            opt = pyo.SolverFactory('gurobi')
+            opt.options['TimeLimit'] = 60
+            try:
+                results = opt.solve(model, tee=True)
+
+                # check for infeasible solutions - don't add infeasible solutions to the pareto front
+                if not results.solver.termination_condition == TerminationCondition.optimal:
+                    print("infeasible solution reached")
+                else:
+                    x.append(pyo.value(model.npv[0]))
+                    y.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint1]))
+                    z.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint2]))
+                    models.append(model.clone())
+            except ValueError:
+                print("model did not find a solution within the time limit")
+    print("\n\n\nvalues from weighted sums iteration")
+    print("npv values", x)
+    print("gwp values", y)
+    print("fe values", z)
+    for i in range(len(models)):
+        print("model npv", i, pyo.value(models[i].npv[0]))
+
+    return x, y, z, models
+
+
 def pareto_front2D(M, midpoint, scenario, A, lca_type):
     """
     Calculates the pareto front
@@ -368,6 +456,7 @@ def pareto_front2D(M, midpoint, scenario, A, lca_type):
     # plt.show()
     return 1
 
+
 def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     """
     Calculates the pareto front
@@ -381,7 +470,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     """
     print("3D pareto front!!!!")
 
-    M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
+    M.Obj = pyo.Objective(expr=0 - sum(M.npv[l] for l in M.Location), sense=pyo.minimize)
     M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location),
                            sense=pyo.minimize)
     M.Obj3 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location),
@@ -396,32 +485,37 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     print("\n\n finished computing utopia and nadir points")
 
     # use the new objective function with the new weights
-
     M.combined = pyo.Objective(
-        expr=M.alpha * sum(M.npv[l] for l in M.Location) -
-             (1 - M.alpha) * abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1])) * sum(
-            M.total_LCA_midpoints[l, lca_type, midpoint] for l in M.Location), sense=pyo.maximize)
+        expr=0 - M.alpha * M.alpha2 * ((sum(M.npv[l] for l in M.Location) - utopia[0]) / (nadir[0] - utopia[0])) +
+             (1 - M.alpha) * M.alpha2 * (
+                         (sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) - utopia[1]) / (
+                             nadir[1] - utopia[1])) +
+             (1 - M.alpha2) * ((sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) - utopia[2]) / (
+                    nadir[2] - utopia[2]))
+        , sense=pyo.minimize)
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y = aws(M, 4, midpoint, utopia, nadir, scenario, lca_type)
+    x, y, z = aws3D(M, 12, midpoint, utopia, nadir, scenario, lca_type)
 
     # rescale the y points back to their original values
-    scalar = abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1]))
-    y_rescaled = [sum(i / (scalar * A.FEEDSTOCK_SUPPLY[l] * A.TIME_PERIODS) for l in M.Location) for i in y]
-    x_rescaled = [sum(i / (A.FEEDSTOCK_SUPPLY[l] * A.TIME_PERIODS) for l in M.Location) for i in x]
+    x_rescaled = [(-i * (nadir[0] - utopia[0]) + utopia[0]) / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
+    y_rescaled = [(i * (nadir[1] - utopia[1]) + utopia[1]) / (A.FEEDSTOCK_SUPPLY[1] * A.TIME_PERIODS) for i in y]
+    z_rescaled = [(i * (nadir[2] - utopia[2]) + utopia[2]) / (A.FEEDSTOCK_SUPPLY[2] * A.TIME_PERIODS) for i in z]
     print("rescaled points")
 
     # plot the points
     plt.clf()
-    plt.plot(x_rescaled, y_rescaled, 'ob-')
-    plt.title("Pareto Front (Adaptive Weighted Sums)")
+    plt.plot3D(x_rescaled, y_rescaled, z_rescaled, 'ob-')
+    plt.title("3D pareto front")
     plt.xlabel("NPV ($USD) per ton manure")
-    plt.ylabel(str(midpoint) + " impact per ton manure")
+    plt.ylabel("climate change impact (kg CO2-eq) per ton manure")
+    plt.zlabel("freshwater eutrophication impact (kg CO2-eq) per ton manure")
     plt.savefig(save_plot(scenario, midpoint=midpoint), dpi=300)
     print("saved fig")
     # plt.show()
     return 1
+
 
 def initialize_model(scenario, j, midpoint, lca_type):
     """
@@ -534,8 +628,8 @@ def lca_constraints(A, M, l):
                                                                                M.Time))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'diesel', cat] == A.IMPACT[lca_type, 'diesel', cat]
                              * (sum(M.inputs[l, t, tech, 'bio-oil diesel'] for tech in M.Technology for t in M.Time) +
-                             sum(M.inputs[l, t, tech, 'transportation'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]
-                                 * A.DIESEL_USE for t in M.Time for tech in M.Technology)))
+                                sum(M.inputs[l, t, tech, 'transportation'] * A.INTRA_COUNTY_TRANSPORT_DISTANCE[l]
+                                    * A.DIESEL_USE for t in M.Time for tech in M.Technology)))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'water', cat] == A.IMPACT[lca_type, 'water', cat] *
                              sum(M.inputs[l, t, tech, 'water'] for tech in M.Technology for t in M.Time))
             M.const.add(expr=M.LCA_midpoints[l, lca_type, 'biochar-chp', cat] ==
@@ -870,7 +964,8 @@ def opex_constraints(A, M, l, t):
     for tech in M.Technology:
         # heat inputs for each technology
         if tech == "AD":
-            M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(A.OPEX['AD', 'Heat'] * M.ad_capacity[l, stage] for stage in M.ADStages))
+            M.const.add(expr=M.inputs[l, t, 'AD', 'heat'] == sum(
+                A.OPEX['AD', 'Heat'] * M.ad_capacity[l, stage] for stage in M.ADStages))
         elif tech == "CHP":
             M.const.add(expr=M.inputs[l, t, 'CHP', 'heat'] == A.OPEX['CHP', 'Heat'] *
                              A.CHP_HEAT_EFFICIENCY * M.chp_in[l, t])
@@ -892,7 +987,8 @@ def opex_constraints(A, M, l, t):
 
         # electricity inputs for each technology
         if tech == "AD":
-            M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(A.OPEX['AD', 'Electricity'] * M.ad_capacity[l, stage] for stage in M.ADStages))
+            M.const.add(expr=M.inputs[l, t, 'AD', 'electricity'] == sum(
+                A.OPEX['AD', 'Electricity'] * M.ad_capacity[l, stage] for stage in M.ADStages))
         elif tech == "CHP":
             M.const.add(expr=M.inputs[l, t, 'CHP', 'electricity'] == A.OPEX['CHP', 'Electricity'] *
                              A.CHP_ELECTRICITY_EFFICIENCY * M.chp_in[l, t])
@@ -1231,11 +1327,14 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l] / 2)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
     elif scenario in [10103]:
-        if A.FEEDSTOCK_SUPPLY[l] > 300: #this accounts for 92.4% of all manure in the state
+        if A.FEEDSTOCK_SUPPLY[l] > 300:  # this accounts for 92.4% of all manure in the state
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-            M.const.add(expr=sum(M.biochar_from_pyrolysis[l, t, feed, temp, 'CHP'] for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures) == 0) #all biochar applied to land
-            M.const.add(expr=M.process_capacity[l, 'CHP'] == 1.08731587 * A.FEEDSTOCK_SUPPLY[l])  # to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
+            M.const.add(expr=sum(
+                M.biochar_from_pyrolysis[l, t, feed, temp, 'CHP'] for feed in M.PyrolysisFeedstocks for temp in
+                M.PyrolysisTemperatures) == 0)  # all biochar applied to land
+            M.const.add(expr=M.process_capacity[l, 'CHP'] == 1.08731587 * A.FEEDSTOCK_SUPPLY[
+                l])  # to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
         else:
             M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
@@ -1247,17 +1346,17 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.decision_pyrolysis_temperature[l, t, 'feedstock', 500] == 1)
     elif scenario in [10203]:
-        if A.FEEDSTOCK_SUPPLY[l] > 3.2: #this accounts for 99.96% of all manure in the state
+        if A.FEEDSTOCK_SUPPLY[l] > 3.2:  # this accounts for 99.96% of all manure in the state
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
             M.const.add(expr=sum(
                 M.biochar_from_pyrolysis[l, t, feed, temp, 'CHP'] for feed in M.PyrolysisFeedstocks for temp in
                 M.PyrolysisTemperatures) == 0)
-            M.const.add(expr=M.process_capacity[l, 'CHP'] == 1.08731587*A.FEEDSTOCK_SUPPLY[l]) #to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
+            M.const.add(expr=M.process_capacity[l, 'CHP'] == 1.08731587 * A.FEEDSTOCK_SUPPLY[
+                l])  # to ensure that capex decisions aren't influenced by changes in energy supply of the feedstock
         else:
             M.const.add(expr=M.feedstock_to_storage[l, t] == A.FEEDSTOCK_SUPPLY[l])
             M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
-
 
         # ensure that no other feedstocks are used
         M.const.add(expr=M.ad_in[l, t, 'COD'] == 0)
@@ -1271,16 +1370,20 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'CHP'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
-        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'land'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'CHP'] for feed in M.HTCFeedstocks for temp in
+                             M.HTCTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'land'] for feed in M.HTCFeedstocks for temp in
+                             M.HTCTemperatures) == 0)
     elif scenario in [11]:
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
         M.const.add(expr=M.pyrolysis_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'CHP'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
-        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'market'] for feed in M.HTCFeedstocks for temp in M.HTCTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'CHP'] for feed in M.HTCFeedstocks for temp in
+                             M.HTCTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htc[l, t, feed, temp, 'market'] for feed in M.HTCFeedstocks for temp in
+                             M.HTCTemperatures) == 0)
         for feed in M.HTCFeedstocks:
             M.const.add(expr=M.decision_htc_temperature[l, t, feed, 200] == 1)
     elif scenario in [12]:
@@ -1289,8 +1392,10 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.htc_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.ad_in[l, t, 'feedstock'] == 0)
         M.const.add(expr=M.feedstock_to_storage[l, t] == 0)
-        M.const.add(expr=sum(M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) == 0)
-        M.const.add(expr=sum(M.hydrochar_from_htl[l, t, feed, temp, 'market'] for feed in M.HTLFeedstocks for temp in M.HTLTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htl[l, t, feed, temp, 'land'] for feed in M.HTLFeedstocks for temp in
+                             M.HTLTemperatures) == 0)
+        M.const.add(expr=sum(M.hydrochar_from_htl[l, t, feed, temp, 'market'] for feed in M.HTLFeedstocks for temp in
+                             M.HTLTemperatures) == 0)
     else:
         M.const.add(expr=M.htl_in[l, t, 'feedstock'] + M.htc_in[l, t, 'feedstock'] + M.ad_in[l, t, 'feedstock'] +
                          M.feedstock_to_storage[l, t] + M.pyrolysis_in[l, t, 'feedstock'] == A.FEEDSTOCK_SUPPLY[l])
@@ -1891,6 +1996,7 @@ def add_sets(A, M, j):
                     'photochemical oxidant formation: terrestrial ecosystems', 'water use'])
 
     M.alpha = pyo.Param(default=0, mutable=True)
+    M.alpha2 = pyo.Param(default=0, mutable=True)
 
 
 def save_plot(scenario, FLP=False, midpoint=""):
