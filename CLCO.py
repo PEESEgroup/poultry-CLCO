@@ -387,7 +387,7 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
             M.alpha2 = alpha2
             model = M
             opt = pyo.SolverFactory('gurobi')
-            opt.options['TimeLimit'] = 60
+            opt.options['TimeLimit'] = 180
             try:
                 results = opt.solve(model, tee=True)
 
@@ -501,7 +501,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, z = aws3D(M, 9, midpoint1, midpoint2, lca_type)
+    x, y, z = aws3D(M, 10, midpoint1, midpoint2, lca_type)
 
     # rescale the y points back to their original values
     x_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
