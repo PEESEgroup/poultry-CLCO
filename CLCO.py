@@ -29,12 +29,8 @@ def utopian(m, lca_midpoint, lca_type):
     opt = pyo.SolverFactory('gurobi')
     print(opt.solve(model))  # keepfiles = True
 
-    if scenario < 4000:
-        utopia.append(pyo.value(model.npv[0]))
-        temp = pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint])
-    else:
-        utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, 'climate change']))
-        temp = pyo.value(model.total_LCA_midpoints[0, lca_type, 'eutrophication: freshwater'])
+    utopia.append(pyo.value(model.npv[0]))
+    temp = pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint])
 
     # only one function can be active at a time
     m.Obj.deactivate()
@@ -44,22 +40,14 @@ def utopian(m, lca_midpoint, lca_type):
     print(opt.solve(model))  # keepfiles = True
 
     # get the nadir and utopia points
-    if scenario < 4000:
-        utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint]))
-        nadir.append(pyo.value(model.npv[0]))
-    else:
-        utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, 'eutrophication: freshwater']))
-        nadir.append(pyo.value(model.total_LCA_midpoints[0, lca_type, 'climate change']))
+    utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint]))
+    nadir.append(pyo.value(model.npv[0]))
 
     nadir.append(pyo.value(temp))
 
     # add constraints on the anchor points
-    if scenario < 4000:
-        m.const.add(expr=m.npv[0] >= nadir[0])
-        m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint] <= nadir[1])
-    else:
-        m.const.add(expr=m.total_LCA_midpoints[0, lca_type, 'climate change'] <= nadir[0])
-        m.const.add(expr=m.total_LCA_midpoints[0, lca_type, 'eutrophication: freshwater'] <= nadir[1])
+    m.const.add(expr=m.npv[0] >= nadir[0])
+    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint] <= nadir[1])
 
     print("scalar numerator", (nadir[0] - utopia[0]), "nadir npv", nadir[0], "utopia npv", utopia[0])
     print("scalar denominator", (nadir[1] - utopia[1]), "nadir lca_midpoint", nadir[1], "utopia lca_midpoint",
@@ -140,16 +128,10 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
             print("right point", npv_vals[i + 1], gwp_vals[i + 1])
             print("new lower npv bound", npv_vals[i] + delta1)
             print("new upper gwp bound", gwp_vals[i + 1] + delta2)
-            if scenario < 4000:
-                submodel.const.add(expr=sum(submodel.npv[l] for l in submodel.Location) >= npv_vals[i] + delta1)
-                submodel.const.add(
-                    expr=sum(submodel.total_LCA_midpoints[l, lca_type, midpoint] for l in submodel.Location) * scalar <=
-                         gwp_vals[i + 1] + delta2)
-            else:
-                submodel.const.add(expr=sum(submodel.total_LCA_midpoints[l, lca_type, 'climate change'] for l in submodel.Location) >= npv_vals[i] + delta1)
-                submodel.const.add(
-                    expr=sum(submodel.total_LCA_midpoints[l, lca_type, 'eutrophication: freshwater'] for l in submodel.Location) * scalar <=
-                         gwp_vals[i + 1] + delta2)
+            submodel.const.add(expr=sum(submodel.npv[l] for l in submodel.Location) >= npv_vals[i] + delta1)
+            submodel.const.add(
+                expr=sum(submodel.total_LCA_midpoints[l, lca_type, midpoint] for l in submodel.Location) * scalar <=
+                     gwp_vals[i + 1] + delta2)
 
             # get results back from the submodel
             x, y = aws(submodel, math.ceil(n[i]), midpoint, utopia, nadir, scenario, lca_type)
@@ -271,7 +253,7 @@ def ws(M, divisions, lca_type, midpoint, scalar):
     return npv_vals, gwp_vals, models
 
 
-def pareto_front(M, midpoint, scenario, A, lca_type):
+def pareto_front2D(M, midpoint, scenario, A, lca_type):
     """
     Calculates the pareto front
     :param M: the model used in the pareto front
@@ -281,15 +263,9 @@ def pareto_front(M, midpoint, scenario, A, lca_type):
     :param lca_type: the LCA type (ALCA/CLCA)
     :return:
     """
-    if scenario < 4000:
-        M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
-        M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint] for l in M.Location),
-                               sense=pyo.minimize)
-    else:
-        M.Obj = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location),
+    M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
+    M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint] for l in M.Location),
                            sense=pyo.minimize)
-        M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, 'eutrophication: freshwater'] for l in M.Location),
-                               sense=pyo.minimize)
     try:
         utopia, nadir = utopian(M, midpoint, lca_type)
     except ValueError as err:
@@ -300,16 +276,11 @@ def pareto_front(M, midpoint, scenario, A, lca_type):
     print("\n\n finished computing utopia and nadir points")
 
     # use the new objective function with the new weights
-    if scenario < 4000:
-        M.combined = pyo.Objective(
-            expr=M.alpha * sum(M.npv[l] for l in M.Location) -
-                 (1 - M.alpha) * abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1])) * sum(
-                M.total_LCA_midpoints[l, lca_type, midpoint] for l in M.Location), sense=pyo.maximize)
-    else:
-        M.combined = pyo.Objective(
-            expr=M.alpha * sum(M.total_LCA_midpoints[l, lca_type, "climate change"] for l in M.Location) +
-                 (1 - M.alpha) * abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1])) * sum(
-                M.total_LCA_midpoints[l, lca_type, 'eutrophication: freshwater'] for l in M.Location), sense=pyo.minimize)
+
+    M.combined = pyo.Objective(
+        expr=M.alpha * sum(M.npv[l] for l in M.Location) -
+             (1 - M.alpha) * abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1])) * sum(
+            M.total_LCA_midpoints[l, lca_type, midpoint] for l in M.Location), sense=pyo.maximize)
 
     print("returned to control method")
     # gather the points on the pareto front
@@ -325,17 +296,67 @@ def pareto_front(M, midpoint, scenario, A, lca_type):
     plt.clf()
     plt.plot(x_rescaled, y_rescaled, 'ob-')
     plt.title("Pareto Front (Adaptive Weighted Sums)")
-    if scenario < 4000:
-        plt.xlabel("NPV ($USD) per ton manure")
-        plt.ylabel(str(midpoint) + " impact per ton manure")
-    else:
-        plt.xlabel("climate change impact (kg CO2-eq/ton manure)")
-        plt.ylabel("freshwater eutrophication impact (kg P-eq/ton manure)")
+    plt.xlabel("NPV ($USD) per ton manure")
+    plt.ylabel(str(midpoint) + " impact per ton manure")
     plt.savefig(save_plot(scenario, midpoint=midpoint), dpi=300)
     print("saved fig")
     # plt.show()
     return 1
 
+def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
+    """
+    Calculates the pareto front
+    :param M: the model used in the pareto front
+    :param midpoint1: the first lca_midpoint used for the objective function
+    :param midpoint2: the second lca_midpoint used for the objective function
+    :param scenario:  the scenario number
+    :param A: parameters from the CLCO_Data
+    :param lca_type: the LCA type (ALCA/CLCA)
+    :return:
+    """
+    print("3D pareto front!!!!")
+
+    M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
+    M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location),
+                           sense=pyo.minimize)
+    M.Obj3 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location),
+                           sense=pyo.minimize)
+    try:
+        utopia, nadir = utopian(M, midpoint, lca_type)
+    except ValueError as err:
+        print(err.args)
+        print("no further attempt to find the pareto front")
+        return
+
+    print("\n\n finished computing utopia and nadir points")
+
+    # use the new objective function with the new weights
+
+    M.combined = pyo.Objective(
+        expr=M.alpha * sum(M.npv[l] for l in M.Location) -
+             (1 - M.alpha) * abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1])) * sum(
+            M.total_LCA_midpoints[l, lca_type, midpoint] for l in M.Location), sense=pyo.maximize)
+
+    print("returned to control method")
+    # gather the points on the pareto front
+    x, y = aws(M, 4, midpoint, utopia, nadir, scenario, lca_type)
+
+    # rescale the y points back to their original values
+    scalar = abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1]))
+    y_rescaled = [sum(i / (scalar * A.FEEDSTOCK_SUPPLY[l] * A.TIME_PERIODS) for l in M.Location) for i in y]
+    x_rescaled = [sum(i / (A.FEEDSTOCK_SUPPLY[l] * A.TIME_PERIODS) for l in M.Location) for i in x]
+    print("rescaled points")
+
+    # plot the points
+    plt.clf()
+    plt.plot(x_rescaled, y_rescaled, 'ob-')
+    plt.title("Pareto Front (Adaptive Weighted Sums)")
+    plt.xlabel("NPV ($USD) per ton manure")
+    plt.ylabel(str(midpoint) + " impact per ton manure")
+    plt.savefig(save_plot(scenario, midpoint=midpoint), dpi=300)
+    print("saved fig")
+    # plt.show()
+    return 1
 
 def initialize_model(scenario, j, midpoint, lca_type):
     """
@@ -347,19 +368,16 @@ def initialize_model(scenario, j, midpoint, lca_type):
     :return:
     """
     A = CLCO_Data(scenario)
-
-    #### MODEL
     M = pyo.ConcreteModel(scenario)
-
     add_sets(A, M, j)
-
     add_variables(M)
-
     add_constraints(A, M, scenario)
 
     # solving the model
-    if 1000 < scenario < 3000 or scenario in [4501, 4502, 4503, 4511, 4512, 4513]:
-        return pareto_front(M, midpoint, scenario, A, lca_type)
+    if 1000 < scenario < 3000:
+        return pareto_front2D(M, midpoint, scenario, A, lca_type)
+    elif scenario in [4501, 4502, 4503, 4511, 4512, 4513]:
+        return pareto_front3D(M, 'climate change', 'eutrophication: freshwater', scenario, A, lca_type)
     elif 2999 < scenario < 9999:
         if int((scenario / 100) % 10) == 0:
             M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
