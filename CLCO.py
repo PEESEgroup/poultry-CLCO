@@ -62,6 +62,71 @@ def utopian(m, lca_midpoint, lca_type):
     m.Obj2.deactivate()
     return utopia, nadir
 
+def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
+    """
+    Finds the utopia and nadir points for the pareto front with NPV and any LCA subcategory
+    :param m: the model
+    :param lca_midpoint1: the first LCA midpoint type
+    :param lca_midpoint2: the second LCA midpoint type
+    :param lca_type: the LCA type: ALCA, CLCA
+    :return: two lists containing the utopia and nadir points
+    """
+    # step 1: normalize the objective functions
+    # solve the model to get optimal objective function values
+    utopia = []
+    nadir = []
+
+    # only one function can be active at a time
+    m.Obj3.deactivate()
+    m.Obj2.deactivate()
+    m.Obj.activate()
+    model = m
+    opt = pyo.SolverFactory('gurobi')
+    print(opt.solve(model))  # keepfiles = True
+
+    utopia.append(pyo.value(model.npv[0]))
+    temp = []
+    temp1 = [pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1])]
+    temp2 = [pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2])]
+
+    # only one function can be active at a time
+    m.Obj.deactivate()
+    m.Obj2.activate()
+    model = m
+    opt = pyo.SolverFactory('gurobi')
+    print(opt.solve(model))  # keepfiles = True
+
+    # get the nadir and utopia points
+    utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
+    temp.append(pyo.value(model.npv[0]))
+    temp2.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
+
+    # only one function can be active at a time
+    m.Obj2.deactivate()
+    m.Obj3.activate()
+    model = m
+    opt = pyo.SolverFactory('gurobi')
+    print(opt.solve(model))  # keepfiles = True
+
+    # get the nadir and utopia points
+    utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
+    temp.append(pyo.value(model.npv[0]))
+    temp1.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
+
+    #capture the smallest points and load them into an array
+    nadir.append(min(temp), min(temp1), min(temp2))
+
+    # add constraints on the anchor points
+    m.const.add(expr=m.npv[0] >= nadir[0])
+    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint1] <= nadir[1])
+    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint2] <= nadir[2])
+
+    for i in range(3):
+        print(i, "utopia:", utopia[i], "nadir,:", nadir[i])
+
+    # deactivate remaining objective function
+    m.Obj3.deactivate()
+    return utopia, nadir
 
 def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
     """
@@ -319,10 +384,10 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     M.Obj = pyo.Objective(expr=sum(M.npv[l] for l in M.Location), sense=pyo.maximize)
     M.Obj2 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location),
                            sense=pyo.minimize)
-    M.Obj3 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location),
+    M.Obj3 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location),
                            sense=pyo.minimize)
     try:
-        utopia, nadir = utopian(M, midpoint, lca_type)
+        utopia, nadir = utopian3D(M, midpoint1, midpoint2, lca_type)
     except ValueError as err:
         print(err.args)
         print("no further attempt to find the pareto front")
