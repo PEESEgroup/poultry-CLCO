@@ -2001,12 +2001,18 @@ if __name__ == '__main__':
     3201: 2 pyrolysis plants for the whole state - min GWP
     3202: pyrolysis plant in every county, calculate biochar break-even prices - min GWP
     3203: plant in every county, calculate biochar break-even prices - min GWP
+    4501:, CLCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
+    4502:, CLCA,  All, Pareto Front FE min GWP min, Onondaga county
+    4503:, CLCA,  All, Pareto Front FE min GWP min, Jefferson county
+    4511:, ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
+    4512:, ALCA,  All, Pareto Front FE min GWP min, Onondaga county
+    4513:, ALCA,  All, Pareto Front FE min GWP min, Jefferson county
     10003: first calculated optimal plants at NPV max in every county, then implemented constraints on those plants for sensitivity analysis
     10103: first calculated optimal plants at a tradeoff in every county, then implemented constraints on those plants for sensitivity analysis
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [11, 12]
+    S = [4501, 4511, 4502, 4512, 4503, 4513]
 
     for scenario in S:
         lca_type = "CLCA"
@@ -2025,9 +2031,9 @@ if __name__ == '__main__':
 
         print("old files removed")
 
-        if 1000 < scenario < 1999:
+        if 1000 < scenario < 1999 or scenario in [4501, 4502, 4503]:
             lca_type = "CLCA"
-        elif 2000 < scenario < 2999:
+        elif 2000 < scenario < 2999 or scenario in [4511, 4512, 4513]:
             lca_type = "ALCA"
 
         # scenario defines midpoint type
@@ -2037,7 +2043,7 @@ if __name__ == '__main__':
             midpoint = "climate change"
 
         # scenario defines the number of counties
-        if scenario in [51, 52, 3000, 3100, 3200] or 1000 < scenario < 2999:
+        if scenario in [51, 52, 3000, 3100, 3200, 4501, 4502, 4503, 4511, 4512, 4513] or 1000 < scenario < 2999:
             number_counties = 1
         elif scenario in [3001, 3101, 3201] or 420 < scenario < 430:
             number_counties = 2
