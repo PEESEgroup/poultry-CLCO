@@ -379,11 +379,11 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
     # do normal weighted sums
     for i in range(divisions + 1):
         alpha = 1 / divisions * i
-        print("\n\nalpha", alpha)
         M.alpha = alpha
         for j in range(divisions + 1):
             alpha2 = 1 / divisions * j
-            print("\n\nalpha2", alpha2)
+            print("\n\nalpha", alpha)
+            print("alpha2", alpha2)
             M.alpha2 = alpha2
             model = M
             opt = pyo.SolverFactory('gurobi')
