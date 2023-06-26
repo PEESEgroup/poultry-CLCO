@@ -8,8 +8,6 @@ from sympy import symbols
 import matplotlib.pyplot as plt
 import math
 import numpy as np
-from matplotlib import cm
-from mpl_toolkits.mplot3d import Axes3D
 
 
 def utopian(m, lca_midpoint, lca_type):
@@ -503,7 +501,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, z = aws3D(M, 2, midpoint1, midpoint2, lca_type)
+    x, y, z = aws3D(M, 9, midpoint1, midpoint2, lca_type)
 
     # rescale the y points back to their original values
     x_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
@@ -518,10 +516,9 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     ax = fig.add_subplot(projection='3d')
     surf = ax.plot_trisurf(x_rescaled, y_rescaled, z_rescaled, linewidth=0.1, cmap=plt.cm.CMRmap)
     fig.colorbar(surf, shrink=0.5, aspect=5)
-    ax.set_title("Pareto Front (Adaptive Weighted Sums)")
     ax.set_xlabel("NPV ($USD) per ton manure")
-    ax.set_ylabel("climate change impact (kg CO2-eq) per ton manure")
-    ax.set_zlabel("freshwater eutrophication impact (kg P-eq) per ton manure")
+    ax.set_ylabel("GWP (kg CO2-eq) per ton manure")
+    ax.set_zlabel("FE (kg P-eq) per ton manure")
 
     plt.show()
     return 1
