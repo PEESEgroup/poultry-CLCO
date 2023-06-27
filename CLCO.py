@@ -241,10 +241,8 @@ def aws3D(M, divs, midpoint1, midpoint2, lca_type):
     the main control loop for conducting adaptive weight sums to identify the pareto front
     :param M: the model being used
     :param divs: the initial number of divisions
-    :param midpoint: the LCA ReCiPe lca_midpoint used
-    :param utopia: the utopia point for the pareto front
-    :param nadir: the nadir point for the pareto front
-    :param scenario: the scenario number
+    :param midpoint1: the first LCA ReCiPe lca_midpoint used
+    :param midpoint2: the second LCA ReCiPe lca_midpoint used
     :param lca_type: the type of LCA being conducted (ALCA/CLCA)
     :return: the npv values and the lca_midpoint values that comprise the pareto front
     """
@@ -252,7 +250,8 @@ def aws3D(M, divs, midpoint1, midpoint2, lca_type):
     print("\n\n 3D AWS!!!!")
     dist = []
 
-    x_vals, y_vals, z_vals, models = ws3D(M, divs, lca_type, midpoint1, midpoint2)
+    # get values from the weighted sums approach
+    x_vals, y_vals, z_vals = ws3D(M, divs, lca_type, midpoint1, midpoint2)
 
     # calculate the euclidean distances between the points on the pareto front
     for i in range(len(x_vals) - 1):
@@ -263,10 +262,6 @@ def aws3D(M, divs, midpoint1, midpoint2, lca_type):
     # avoid those damn divide by zero errors
     if len(dist) == 0:
         return [], [], []
-
-    for i in range(len(x_vals)):
-        print_model(scenario, models[i], i + int(pyo.value(models[i].npv[0])), "TEA")
-        print_model(scenario, models[i], i + int(pyo.value(models[i].npv[0])), "LCA", midpoint=midpoint1)
 
     # return from the algorithm
     print("\n\n\n\n\n return from an iteration!!!!!")
@@ -367,25 +362,28 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
     :param M: the model being optimized
     :param divisions: the number of divisions to be made on the pareto front
     :param lca_type: the LCA type (ALCA, CLCA)
-    :param midpoint: the ReCiPe lca_midpoint used on the pareto front
-    :param scalar: the scalar for the objective function so that the distance function works accurately
+    :param midpoint1: the ReCiPe lca_midpoint used on the pareto front
+    :param midpoint2: the ReCiPe lca_midpoint used on the pareto front
     :return: a list of npv values, lca_midpoint values, and copies of the models for points alongside the pareto front
     """
     # lists of objective values
-    models = []
     x = []
     y = []
     z = []
 
     # do normal weighted sums
     for i in range(divisions + 1):
+        #update objective function parameters
         alpha = 1 / divisions * i
         M.alpha = alpha
         for j in range(divisions + 1):
+            # update objective function parameters
             alpha2 = 1 / divisions * j
             print("\n\nalpha", alpha)
             print("alpha2", alpha2)
             M.alpha2 = alpha2
+
+            #solve the model
             model = M
             opt = pyo.SolverFactory('gurobi')
             opt.options['TimeLimit'] = 180
@@ -396,20 +394,24 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
                 if not results.solver.termination_condition == TerminationCondition.optimal:
                     print("infeasible solution reached")
                 else:
+                    # save data for plotting
                     x.append(pyo.value(model.npv[0]))
                     y.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint1]))
                     z.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint2]))
-                    models.append(model.clone())
+
+                    # write out excel data to reduce memory usage
+                    print_model(scenario, model, i + int(pyo.value(model.npv[0])), "TEA")
+                    print_model(scenario, model, i + int(pyo.value(model[i].npv[0])), "LCA", midpoint=midpoint1)
             except ValueError:
                 print("model did not find a solution within the time limit")
+
+    # log outputs
     print("\n\n\nvalues from weighted sums iteration")
     print("npv values", x)
     print("gwp values", y)
     print("fe values", z)
-    for i in range(len(models)):
-        print("model npv", i, pyo.value(models[i].npv[0]))
 
-    return x, y, z, models
+    return x, y, z
 
 
 def pareto_front2D(M, midpoint, scenario, A, lca_type):
@@ -497,17 +499,17 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     M.combined = pyo.Objective(
         expr=0 - M.alpha * M.alpha2 * (sum(M.npv[l] for l in M.Location) * max(ranges) / ranges[0]) +
              (1 - M.alpha) * M.alpha2 * (
-                         sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) * max(ranges) / ranges[
-                     1]) +
+                     sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) * max(ranges) / ranges[
+                 1]) +
              (1 - M.alpha2) * (
-                         sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) * max(ranges) / ranges[
-                     2])
+                     sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) * max(ranges) / ranges[
+                 2])
         , sense=pyo.minimize)
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, z = aws3D(M, 7, midpoint1, midpoint2, lca_type)
-    #x, y, z = GPBAB(M, 7, midpoint1, midpoint2, lca_type, ranges, utopia, nadir)
+    x, y, z = ws3D(M, 2, midpoint1, midpoint2, lca_type)
+    # x, y, z = GPBAB(M, 7, midpoint1, midpoint2, lca_type, ranges, utopia, nadir)
 
     # rescale the y points back to their original values
     npv_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
@@ -544,6 +546,15 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
 
 def GPBAB(M, delta, midpoint1, midpoint2, lca_type, r, u, n):
+    '''
+    :param delta:
+    :param midpoint1:
+    :param midpoint2:
+    :param r:
+    :param u:
+    :param n:
+    :return:
+    '''
     # initialize loop control variables
 
     e2 = n[2]
@@ -596,7 +607,7 @@ def GPBAB(M, delta, midpoint1, midpoint2, lca_type, r, u, n):
             except ValueError:
                 print("model did not find a solution within the time limit")
                 # therefore, any future refinements are futile
-                e1 = u[1]-1
+                e1 = u[1] - 1
 
         # update the outer loop
         e2 = zwv2 - offset2
