@@ -501,12 +501,12 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, z = aws3D(M, 10, midpoint1, midpoint2, lca_type)
+    x, y, z = aws3D(M, 7, midpoint1, midpoint2, lca_type)
 
     # rescale the y points back to their original values
-    x_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
-    y_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in y]
-    z_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in z]
+    npv_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
+    gwp_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in y]
+    fe_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in z]
     print("rescaled points")
 
     # plot the points
@@ -514,13 +514,23 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
-    surf = ax.plot_trisurf(x_rescaled, y_rescaled, z_rescaled, linewidth=0.1, cmap=plt.cm.CMRmap)
+    surf = ax.plot_trisurf(gwp_rescaled, fe_rescaled, npv_rescaled, linewidth=0.1, cmap=plt.cm.CMRmap)
     fig.colorbar(surf, shrink=0.5, aspect=5)
-    ax.set_xlabel("NPV ($USD) per ton manure")
-    ax.set_ylabel("GWP (kg CO2-eq) per ton manure")
-    ax.set_zlabel("FE (kg P-eq) per ton manure")
+    ax.set_zlabel("NPV ($USD) per ton manure")
+    ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
+    ax.set_ylabel("FE (kg P-eq) per ton manure")
 
     plt.show()
+
+    plt.clf()
+    fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
+    ax.stem(gwp_rescaled, fe_rescaled, npv_rescaled)
+    ax.set_zlabel("NPV ($USD) per ton manure")
+    ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
+    ax.set_ylabel("FE (kg P-eq) per ton manure")
+
+    plt.show()
+
     return 1
 
 
