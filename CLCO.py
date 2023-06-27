@@ -7,7 +7,6 @@ from CLCO_Data import CLCO_Data
 from sympy import symbols
 import matplotlib.pyplot as plt
 import math
-import numpy as np
 
 
 def utopian(m, lca_midpoint, lca_type):
@@ -236,39 +235,6 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
     return npv_new, gwp_new
 
 
-def aws3D(M, divs, midpoint1, midpoint2, lca_type):
-    """
-    the main control loop for conducting adaptive weight sums to identify the pareto front
-    :param M: the model being used
-    :param divs: the initial number of divisions
-    :param midpoint1: the first LCA ReCiPe lca_midpoint used
-    :param midpoint2: the second LCA ReCiPe lca_midpoint used
-    :param lca_type: the type of LCA being conducted (ALCA/CLCA)
-    :return: the npv values and the lca_midpoint values that comprise the pareto front
-    """
-    # following Adaptive weighted-sum method for bi-objective optimization:Pareto front generation
-    print("\n\n 3D AWS!!!!")
-    dist = []
-
-    # get values from the weighted sums approach
-    x_vals, y_vals, z_vals = ws3D(M, divs, lca_type, midpoint1, midpoint2)
-
-    # calculate the euclidean distances between the points on the pareto front
-    for i in range(len(x_vals) - 1):
-        dist.append(np.linalg.norm(
-            np.array((x_vals[i], y_vals[i], z_vals[i])) - np.array((x_vals[i + 1], y_vals[i + 1], z_vals[i + 1]))))
-    print(dist)
-
-    # avoid those damn divide by zero errors
-    if len(dist) == 0:
-        return [], [], []
-
-    # return from the algorithm
-    print("\n\n\n\n\n return from an iteration!!!!!")
-    print(x_vals, y_vals, z_vals)
-    return x_vals, y_vals, z_vals
-
-
 def pareto_point_distance(gwp_vals, npv_vals):
     """
     calculates the distance between the pareto points
@@ -356,7 +322,7 @@ def ws(M, divisions, lca_type, midpoint, scalar):
     return npv_vals, gwp_vals, models
 
 
-def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
+def ws3D(M, divisions, lca_type, midpoint1, midpoint2, s):
     """
     Conducts weighted sums on a region of a pareto front
     :param M: the model being optimized
@@ -364,6 +330,7 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
     :param lca_type: the LCA type (ALCA, CLCA)
     :param midpoint1: the ReCiPe lca_midpoint used on the pareto front
     :param midpoint2: the ReCiPe lca_midpoint used on the pareto front
+    :param s: the scenario number for the problem
     :return: a list of npv values, lca_midpoint values, and copies of the models for points alongside the pareto front
     """
     # lists of objective values
@@ -373,7 +340,7 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
 
     # do normal weighted sums
     for i in range(divisions + 1):
-        #update objective function parameters
+        # update objective function parameters
         alpha = 1 / divisions * i
         M.alpha = alpha
         for j in range(divisions + 1):
@@ -383,7 +350,7 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
             print("alpha2", alpha2)
             M.alpha2 = alpha2
 
-            #solve the model
+            # solve the model
             model = M
             opt = pyo.SolverFactory('gurobi')
             opt.options['TimeLimit'] = 180
@@ -400,8 +367,8 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2):
                     z.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint2]))
 
                     # write out excel data to reduce memory usage
-                    print_model(scenario, model, i + int(pyo.value(model.npv[0])), "TEA")
-                    print_model(scenario, model, i + int(pyo.value(model[i].npv[0])), "LCA", midpoint=midpoint1)
+                    print_model(s, model, i + int(pyo.value(model.npv[0])), "TEA")
+                    print_model(s, model, i + int(pyo.value(model.npv[0])), "LCA", midpoint=midpoint1)
             except ValueError:
                 print("model did not find a solution within the time limit")
 
@@ -467,7 +434,7 @@ def pareto_front2D(M, midpoint, scenario, A, lca_type):
 
 def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     """
-    Calculates the pareto front
+    Calculates the 3D pareto front
     :param M: the model used in the pareto front
     :param midpoint1: the first lca_midpoint used for the objective function
     :param midpoint2: the second lca_midpoint used for the objective function
@@ -508,7 +475,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, z = ws3D(M, 2, midpoint1, midpoint2, lca_type)
+    x, y, z = ws3D(M, 2, lca_type, midpoint1, midpoint2, scenario)
     # x, y, z = GPBAB(M, 7, midpoint1, midpoint2, lca_type, ranges, utopia, nadir)
 
     # rescale the y points back to their original values
@@ -547,13 +514,14 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
 def GPBAB(M, delta, midpoint1, midpoint2, lca_type, r, u, n):
     '''
-    :param delta:
-    :param midpoint1:
-    :param midpoint2:
-    :param r:
-    :param u:
-    :param n:
-    :return:
+    alternative pareto front generation algorithm - untested
+    :param delta: the number of points to be spread across the solution space
+    :param midpoint1: the first lca midpoint to use
+    :param midpoint2: the second lca midpoint to use
+    :param r: the range of parameter values
+    :param u: the utopia points for each objective
+    :param n: the nadir points for each objective
+    :return: none - program is still untested
     '''
     # initialize loop control variables
 
@@ -2114,7 +2082,7 @@ def save_plot(scenario, FLP=False, midpoint=""):
 def print_model(scenario, model, location_num, model_type="TEA", FLP=False, midpoint=""):
     """
     Prints the relevant data in the model out to a .csv file
-    :param scenario: the sceanrio number
+    :param scenario: the scenario number
     :param model: the model being used
     :param location_num: the location number
     :param model_type: the model type TEA/LCA
