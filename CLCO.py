@@ -475,7 +475,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
     print("returned to control method")
     # gather the points on the pareto front
-    x, y, z = ws3D(M, 2, lca_type, midpoint1, midpoint2, scenario)
+    x, y, z = ws3D(M, 6, lca_type, midpoint1, midpoint2, scenario)
     # x, y, z = GPBAB(M, 7, midpoint1, midpoint2, lca_type, ranges, utopia, nadir)
 
     # rescale the y points back to their original values
