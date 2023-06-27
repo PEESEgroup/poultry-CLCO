@@ -96,7 +96,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     m.Obj2.activate()
     model = m
     opt = pyo.SolverFactory('gurobi')
-    print(opt.solve(model, tee=True)) # keepfiles = True
+    print(opt.solve(model, tee=True))  # keepfiles = True
 
     # get the nadir and utopia points
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
@@ -235,6 +235,7 @@ def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
     print(npv_new, gwp_new)
     return npv_new, gwp_new
 
+
 def aws3D(M, divs, midpoint1, midpoint2, lca_type):
     """
     the main control loop for conducting adaptive weight sums to identify the pareto front
@@ -264,8 +265,8 @@ def aws3D(M, divs, midpoint1, midpoint2, lca_type):
         return [], [], []
 
     for i in range(len(x_vals)):
-        print_model(scenario, models[i], i+int(pyo.value(models[i].npv[0])), "TEA")
-        print_model(scenario, models[i], i+int(pyo.value(models[i].npv[0])), "LCA", midpoint=midpoint1)
+        print_model(scenario, models[i], i + int(pyo.value(models[i].npv[0])), "TEA")
+        print_model(scenario, models[i], i + int(pyo.value(models[i].npv[0])), "LCA", midpoint=midpoint1)
 
     # return from the algorithm
     print("\n\n\n\n\n return from an iteration!!!!!")
@@ -490,18 +491,23 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     print("\n\n finished computing utopia and nadir points")
 
     # use the new objective function with the new weights
-    ranges = [abs(nadir[0]-utopia[0]),abs(nadir[1]-utopia[1]),abs(nadir[2]-utopia[2])]
+    ranges = [abs(nadir[0] - utopia[0]), abs(nadir[1] - utopia[1]), abs(nadir[2] - utopia[2])]
     print(ranges)
 
     M.combined = pyo.Objective(
-        expr=0 - M.alpha * M.alpha2 * (sum(M.npv[l] for l in M.Location) *max(ranges)/ranges[0]) +
-             (1 - M.alpha) * M.alpha2 * (sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) *max(ranges)/ranges[1]) +
-             (1 - M.alpha2) * (sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) *max(ranges)/ranges[2])
+        expr=0 - M.alpha * M.alpha2 * (sum(M.npv[l] for l in M.Location) * max(ranges) / ranges[0]) +
+             (1 - M.alpha) * M.alpha2 * (
+                         sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) * max(ranges) / ranges[
+                     1]) +
+             (1 - M.alpha2) * (
+                         sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) * max(ranges) / ranges[
+                     2])
         , sense=pyo.minimize)
 
     print("returned to control method")
     # gather the points on the pareto front
     x, y, z = aws3D(M, 7, midpoint1, midpoint2, lca_type)
+    #x, y, z = GPBAB(M, 7, midpoint1, midpoint2, lca_type, ranges, utopia, nadir)
 
     # rescale the y points back to their original values
     npv_rescaled = [i / (A.FEEDSTOCK_SUPPLY[0] * A.TIME_PERIODS) for i in x]
@@ -523,8 +529,11 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     plt.show()
 
     plt.clf()
-    fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
-    ax.stem(gwp_rescaled, fe_rescaled, npv_rescaled)
+    fig = plt.figure()
+    ax = plt.axes(projection='3d')
+    ax.stem(gwp_rescaled, fe_rescaled, npv_rescaled, markerfmt=" ", basefmt=" ", linefmt="grey")
+    ax.scatter(gwp_rescaled, fe_rescaled, npv_rescaled, s=40, cmap='plasma', c=npv_rescaled, edgecolor="black", alpha=1)
+
     ax.set_zlabel("NPV ($USD) per ton manure")
     ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
     ax.set_ylabel("FE (kg P-eq) per ton manure")
@@ -532,6 +541,65 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     plt.show()
 
     return 1
+
+
+def GPBAB(M, delta, midpoint1, midpoint2, lca_type, r, u, n):
+    # initialize loop control variables
+
+    e2 = n[2]
+    offset1 = r[1] / delta
+    offset2 = r[2] / delta
+    zwv2 = u[2]
+    M.alpha = 0.999
+    M.alpha2 = 0.999
+    x = []
+    y = []
+    z = []
+    j = 0
+
+    while e2 > u[2]:
+        i = 0
+        j = j + 1
+        e1 = n[1]
+
+        while e1 > u[1]:
+            i = i + 1
+            # add constraints
+            M.const.add(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) <= e1)
+            M.const.add(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) <= e2)
+
+            # update the epsilon bounds
+            print("\n\ne1", e1)
+            print("e2", e2)
+            print("zwv2", zwv2)
+            model = M
+            opt = pyo.SolverFactory('gurobi')
+            opt.options['TimeLimit'] = 180
+            try:
+                results = opt.solve(model, tee=True)
+
+                # check for infeasible solutions - don't add infeasible solutions to the pareto front
+                if not results.solver.termination_condition == TerminationCondition.optimal:
+                    print("infeasible solution reached")
+                else:
+                    # get results from model
+                    x.append(pyo.value(model.npv[0]))
+                    y.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint1]))
+                    z.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint2]))
+                    print_model(scenario, model, i + int(pyo.value(model.npv[0])), "TEA")
+                    print_model(scenario, model, i + int(pyo.value(model.npv[0])), "LCA", midpoint=midpoint1)
+
+                    # update parameters
+                    e1 = pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint1]) - offset1
+                    zwv2 = max(zwv2, pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint2]))
+
+            except ValueError:
+                print("model did not find a solution within the time limit")
+                # therefore, any future refinements are futile
+                e1 = u[1]-1
+
+        # update the outer loop
+        e2 = zwv2 - offset2
 
 
 def initialize_model(scenario, j, midpoint, lca_type):
