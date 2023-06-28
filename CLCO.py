@@ -485,11 +485,9 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     M.combined = pyo.Objective(
         expr=0 - M.alpha * M.alpha2 * (sum(M.npv[l] for l in M.Location) * max(ranges) / ranges[0]) +
              (1 - M.alpha) * M.alpha2 * (
-                     sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) * max(ranges) / ranges[
-                 1]) +
+                     sum(M.total_LCA_midpoints[l, lca_type, midpoint1] for l in M.Location) * max(ranges) / ranges[1]) +
              (1 - M.alpha2) * (
-                     sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) * max(ranges) / ranges[
-                 2])
+                     sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location) * max(ranges) / ranges[2])
         , sense=pyo.minimize)
 
     print("returned to control method")
@@ -539,16 +537,18 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
 
 
 def GPBAB(M, delta, midpoint1, midpoint2, lca_type, r, u, n):
-    '''
+    """
     alternative pareto front generation algorithm - untested
+    :param M: the model being used
     :param delta: the number of points to be spread across the solution space
     :param midpoint1: the first lca midpoint to use
     :param midpoint2: the second lca midpoint to use
+    :param lca_type: the lca type being used for the optimization algorithm
     :param r: the range of parameter values
     :param u: the utopia points for each objective
     :param n: the nadir points for each objective
     :return: none - program is still untested
-    '''
+    """
     # initialize loop control variables
 
     e2 = n[2]
@@ -1512,7 +1512,7 @@ def facility_constraints(A, M, l, scenario, t):
     # PYROLYSIS
     M.const.add(expr=sum(M.pyrolysis_in[l, t, feed] for feed in M.PyrolysisFeedstocks) <=
                      M.process_capacity[l, 'Pyrolysis'])
-    ##pyrolysis yield conversion
+    # #pyrolysis yield conversion
     # only one temperature can be selected for each location at each time period
     for feed in M.PyrolysisFeedstocks:
         M.const.add(expr=sum(M.decision_pyrolysis_temperature[l, t, feed, temp] for temp in
@@ -1604,9 +1604,9 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=sum(
             M.pyrolysis_storage[l, t, feed, prod, temp] for feed in M.PyrolysisFeedstocks for temp in
             M.PyrolysisTemperatures) <= M.pyrolysis_storage_capacity[l, prod])
-    ## HTL
+    # HTL
     M.const.add(expr=sum(M.htl_in[l, t, feed] for feed in M.HTLFeedstocks) <= M.process_capacity[l, 'HTL'])
-    ##htl yield conversion
+    # htl yield conversion
     # only one temperature can be selected for each location at each time period
     for feed in M.HTLFeedstocks:
         M.const.add(
@@ -1634,7 +1634,7 @@ def facility_constraints(A, M, l, scenario, t):
                         l, prod])
 
                 # storage is empty in the first time period, and is the boundary conditions
-                if (t > 0):
+                if t > 0:
                     M.const.add(expr=M.htl_storage[l, t, feed, prod, temp] == M.htl_storage[
                         l, t - 1, feed, prod, temp] + M.htl_to_storage[l, t - 1, feed, prod, temp] -
                                      M.htl_from_storage[l, t - 1, feed, prod, temp])
@@ -1685,10 +1685,10 @@ def facility_constraints(A, M, l, scenario, t):
     for prod in M.HTLProducts:
         M.const.add(expr=sum(M.htl_storage[l, t, feed, prod, temp] for feed in M.HTLFeedstocks
                              for temp in M.HTLTemperatures) <= M.htl_storage_capacity[l, prod])
-    ## HTC
+    # HTC
     # products entering htc must be under capacity
     M.const.add(expr=sum(M.htc_in[l, t, feed] for feed in M.HTCFeedstocks) <= M.process_capacity[l, 'HTC'])
-    ##htc yield conversion
+    # htc yield conversion
     # only one temperature can be selected for each location at each time period
     for feed in M.HTCFeedstocks:
         M.const.add(
@@ -1786,7 +1786,7 @@ def facility_constraints(A, M, l, scenario, t):
         M.const.add(expr=M.ad_in[l, t, 'COD'] == sum(A.COD['Pyrolysis', feed, 'AP', temp] * M.ap_from_pyrolysis[
             l, t, feed, temp, 'AD'] for feed in M.PyrolysisFeedstocks
                                                      for temp in M.PyrolysisTemperatures))  # units: tons COD
-    ##ad yield conversion
+    # ad yield conversion
     # getting AD yields from inputs
     for prod in M.ADProducts:
         for stage in M.ADStages:
@@ -1979,7 +1979,7 @@ def add_variables(M):
                                   M.ADDigestateLocations, initialize=0, within=pyo.NonNegativeReals)
     M.biogas_from_ad = pyo.Var(M.Location, M.Time, M.ADStages,
                                M.ADBiogasLocations, initialize=0, within=pyo.NonNegativeReals)
-    ##CHP
+    # #CHP
     M.chp_in = pyo.Var(M.Location, M.Time, initialize=0, within=pyo.NonNegativeReals)
     M.chp_out = pyo.Var(M.Location, M.Time, M.Technology, M.CHPProducts, initialize=0, within=pyo.NonNegativeReals)
     M.chp_market = pyo.Var(M.Location, M.Time, M.CHPProducts, initialize=0, within=pyo.NonNegativeReals)
