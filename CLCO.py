@@ -133,7 +133,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     nadir.append(max(temp2))
 
     # add constraints on the anchor points
-    scalar = 3
+    scalar = 1.2
     if nadir[0] < 0:
         m.const.add(expr=m.npv[0] >= scalar*nadir[0])
     else:
@@ -372,6 +372,7 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2, s):
             model = M
             opt = pyo.SolverFactory('gurobi')
             opt.options['TimeLimit'] = 180
+            opt.options["mipgap"] = .0008
             try:
                 results = opt.solve(model, tee=True)
 
