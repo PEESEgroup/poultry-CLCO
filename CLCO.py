@@ -76,6 +76,9 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     # solve the model to get optimal objective function values
     utopia = []
     nadir = []
+    gwp = []
+    fe = []
+    npv = []
 
     # only one function can be active at a time
     m.Obj3.deactivate()
@@ -90,6 +93,10 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     temp1 = [pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1])]
     temp2 = [pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2])]
 
+    npv.append(pyo.value(model.npv[0]))
+    gwp.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
+    fe.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
+
     # only one function can be active at a time
     m.Obj.deactivate()
     m.Obj2.activate()
@@ -101,6 +108,9 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
     temp.append(pyo.value(model.npv[0]))
     temp2.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
+    npv.append(pyo.value(model.npv[0]))
+    gwp.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
+    fe.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
 
     # only one function can be active at a time
     m.Obj2.deactivate()
@@ -113,6 +123,9 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
     temp.append(pyo.value(model.npv[0]))
     temp1.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
+    npv.append(pyo.value(model.npv[0]))
+    gwp.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
+    fe.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
 
     # capture the smallest points and load them into an array
     nadir.append(max(temp))
@@ -133,7 +146,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
 
     # deactivate remaining objective function
     m.Obj3.deactivate()
-    return utopia, nadir
+    return utopia, nadir, gwp, fe, npv
 
 
 def aws(M, divs, midpoint, utopia, nadir, scenario, lca_type):
@@ -455,7 +468,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     M.Obj3 = pyo.Objective(expr=sum(M.total_LCA_midpoints[l, lca_type, midpoint2] for l in M.Location),
                            sense=pyo.minimize)
     try:
-        utopia, nadir = utopian3D(M, midpoint1, midpoint2, lca_type)
+        utopia, nadir, g, f, n = utopian3D(M, midpoint1, midpoint2, lca_type)
     except ValueError as err:
         print(err.args)
         print("no further attempt to find the pareto front")
@@ -480,6 +493,10 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     print("returned to control method")
     # gather the points on the pareto front
     x, y, z = ws3D(M, 6, lca_type, midpoint1, midpoint2, scenario)
+    x.append(i for i in g)
+    y.append(i for i in f)
+    z.append(i for i in n)
+
     # x, y, z = GPBAB(M, 7, midpoint1, midpoint2, lca_type, ranges, utopia, nadir)
 
     # rescale the y points back to their original values
