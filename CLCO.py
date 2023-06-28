@@ -70,7 +70,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     :param lca_midpoint1: the first LCA midpoint type
     :param lca_midpoint2: the second LCA midpoint type
     :param lca_type: the LCA type: ALCA, CLCA
-    :return: two lists containing the utopia and nadir points
+    :return: two lists containing the utopia and nadir points, as well as the x, y, and z points for the pareto front
     """
     # step 1: normalize the objective functions
     # solve the model to get optimal objective function values
@@ -128,7 +128,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     fe.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
 
     # capture the smallest points and load them into an array
-    nadir.append(max(temp))
+    nadir.append(min(temp))
     nadir.append(max(temp1))
     nadir.append(max(temp2))
 
@@ -146,6 +146,7 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
 
     # deactivate remaining objective function
     m.Obj3.deactivate()
+    print(gwp, fe, npv)
     return utopia, nadir, gwp, fe, npv
 
 
