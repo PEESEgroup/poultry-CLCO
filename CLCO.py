@@ -120,9 +120,13 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     nadir.append(max(temp2))
 
     # add constraints on the anchor points
-    m.const.add(expr=m.npv[0] >= nadir[0])
-    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint1] <= nadir[1])
-    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint2] <= nadir[2])
+    scalar = 3
+    if nadir[0] < 0:
+        m.const.add(expr=m.npv[0] >= scalar*nadir[0])
+    else:
+        m.const.add(expr=m.npv[0] >= 0-scalar * nadir[0])
+    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint1] <= scalar*nadir[1])
+    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint2] <= scalar*nadir[2])
 
     for i in range(3):
         print(i, "utopia:", utopia[i], "nadir:", nadir[i])
@@ -367,8 +371,8 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2, s):
                     z.append(pyo.value(model.total_LCA_midpoints[0, lca_type, midpoint2]))
 
                     # write out excel data to reduce memory usage
-                    print_model(s, model, i + int(pyo.value(model.npv[0])), "TEA")
-                    print_model(s, model, i + int(pyo.value(model.npv[0])), "LCA", midpoint=midpoint1)
+                    print_model(s, model, int(pyo.value(model.npv[0])), "TEA")
+                    print_model(s, model, int(pyo.value(model.npv[0])), "LCA", midpoint=midpoint1)
             except ValueError:
                 print("model did not find a solution within the time limit")
 
@@ -2265,7 +2269,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [4501, 4511, 4502, 4512, 4503, 4513]
+    S = [4503, 4513]
 
     for scenario in S:
         lca_type = "CLCA"
