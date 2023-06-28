@@ -504,8 +504,11 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     plt.clf()
     fig = plt.figure()
     ax = plt.axes(projection='3d')
-    ax.stem(gwp_rescaled, fe_rescaled, npv_rescaled, markerfmt=" ", basefmt=" ", linefmt="grey")
-    ax.scatter(gwp_rescaled, fe_rescaled, npv_rescaled, s=40, cmap='plasma', c=npv_rescaled, edgecolor="black", alpha=1)
+    ax.stem(gwp_rescaled, fe_rescaled, npv_rescaled, markerfmt=" ", basefmt=" ", linefmt="grey",
+            bottom=min(npv_rescaled) - 3)
+    sc = ax.scatter(gwp_rescaled, fe_rescaled, npv_rescaled, s=80, cmap='plasma', c=npv_rescaled, edgecolor="black",
+                    alpha=1)
+    fig.colorbar(sc, shrink=0.5, aspect=5)
 
     ax.set_zlabel("NPV ($USD) per ton manure")
     ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
@@ -2269,7 +2272,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [4503, 4513]
+    S = [4501, 4502, 4503, 4511, 4512, 4513]
 
     for scenario in S:
         lca_type = "CLCA"
