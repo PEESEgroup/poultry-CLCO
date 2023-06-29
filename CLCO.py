@@ -88,6 +88,10 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     opt = pyo.SolverFactory('gurobi')
     print(opt.solve(model, tee=True))  # keepfiles = True
 
+    # print model
+    print_model(scenario, model, int(pyo.value(model.npv[0])), "TEA")
+    print_model(scenario, model, int(pyo.value(model.npv[0])), "LCA", midpoint=midpoint)
+
     utopia.append(pyo.value(model.npv[0]))
     temp = []
     temp1 = [pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1])]
@@ -104,6 +108,10 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     opt = pyo.SolverFactory('gurobi')
     print(opt.solve(model, tee=True))  # keepfiles = True
 
+    # print model
+    print_model(scenario, model, int(pyo.value(model.npv[0])), "TEA")
+    print_model(scenario, model, int(pyo.value(model.npv[0])), "LCA", midpoint=midpoint)
+
     # get the nadir and utopia points
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint1]))
     temp.append(pyo.value(model.npv[0]))
@@ -118,6 +126,10 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     model = m
     opt = pyo.SolverFactory('gurobi')
     print(opt.solve(model, tee=True))  # keepfiles = True
+
+    # print model
+    print_model(scenario, model, int(pyo.value(model.npv[0])), "TEA")
+    print_model(scenario, model, int(pyo.value(model.npv[0])), "LCA", midpoint=midpoint)
 
     # get the nadir and utopia points
     utopia.append(pyo.value(model.total_LCA_midpoints[0, lca_type, lca_midpoint2]))
@@ -493,9 +505,10 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     print("returned to control method")
     # gather the points on the pareto front
     x, y, z = ws3D(M, 6, lca_type, midpoint1, midpoint2, scenario)
-    x.append(i for i in g)
-    y.append(i for i in f)
-    z.append(i for i in n)
+    for j in range(len(g)):
+        x.append(n[j])
+        y.append(g[j])
+        z.append(f[j])
 
     # x, y, z = GPBAB(M, 7, midpoint1, midpoint2, lca_type, ranges, utopia, nadir)
 
@@ -2291,7 +2304,7 @@ if __name__ == '__main__':
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
     '''
 
-    S = [4501, 4502, 4503, 4511, 4512, 4513]
+    S = [4512, 4513]
 
     for scenario in S:
         lca_type = "CLCA"
