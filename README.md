@@ -1,8 +1,6 @@
 # Combined Techno-Economic and Life-Cycle Optimization of Poultry Manure Management Pathways
 
-This readme document is intended to aid others in using the model and reproducing results from the paper TBD under consideration at ES&T.
-
-TODO: Include license in the github repo
+This readme document is intended to aid others in using the model and reproducing results from the paper "Consequential life cycle optimization of poultry manure management technologies in a food-energy-water-waste nexus" under consideration at Environmental Science & Technology.
 
 # Running the model
 ## Installation
