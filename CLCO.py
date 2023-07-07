@@ -435,7 +435,6 @@ def pareto_front2D(M, midpoint, scenario, A, lca_type):
     print("\n\n finished computing utopia and nadir points")
 
     # use the new objective function with the new weights
-
     M.combined = pyo.Objective(
         expr=M.alpha * sum(M.npv[l] for l in M.Location) -
              (1 - M.alpha) * abs((nadir[0] - utopia[0]) / (nadir[1] - utopia[1])) * sum(
