@@ -147,11 +147,11 @@ def utopian3D(m, lca_midpoint1, lca_midpoint2, lca_type):
     # add constraints on the anchor points
     scalar = 1.2
     if nadir[0] < 0:
-        m.const.add(expr=m.npv[0] >= scalar*nadir[0])
+        m.const.add(expr=m.npv[0] >= scalar * nadir[0])
     else:
-        m.const.add(expr=m.npv[0] >= 0-scalar * nadir[0])
-    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint1] <= scalar*nadir[1])
-    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint2] <= scalar*nadir[2])
+        m.const.add(expr=m.npv[0] >= 0 - scalar * nadir[0])
+    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint1] <= scalar * nadir[1])
+    m.const.add(expr=m.total_LCA_midpoints[0, lca_type, lca_midpoint2] <= scalar * nadir[2])
 
     for i in range(3):
         print(i, "utopia:", utopia[i], "nadir:", nadir[i])
@@ -383,7 +383,7 @@ def ws3D(M, divisions, lca_type, midpoint1, midpoint2, s):
             # solve the model
             model = M
             opt = pyo.SolverFactory('gurobi')
-            opt.options['TimeLimit'] = 180
+            opt.options['TimeLimit'] = 600
             opt.options["mipgap"] = .0008
             try:
                 results = opt.solve(model, tee=True)
@@ -528,7 +528,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
     ax.set_ylabel("FE (kg P-eq) per ton manure")
 
-    #plt.show()
+    plt.show()
 
     plt.clf()
     fig = plt.figure()
@@ -543,7 +543,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
     ax.set_ylabel("FE (kg P-eq) per ton manure")
 
-    #plt.show()
+    plt.show()
 
     return 1
 
@@ -1368,9 +1368,10 @@ def revenue_constraints(A, M, l, scenario, t):
                 # M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
             elif tech == "Pyrolysis":
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 61.66 * sum(
-                    M.pyrolysis_out[l, t, feed, 'Biochar', temp]
-                    for l in M.Location for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures)
-                / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))# $61.66/ton biochar carbon credits
+                    M.biochar_from_pyrolysis[
+                        l, t, feed, temp, 'land'] for temp in M.PyrolysisTemperatures
+                    for feed in M.PyrolysisFeedstocks for l in M.Location)
+                                 / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))  # $61.66/ton biochar carbon credits
             else:
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
         else:
@@ -2343,7 +2344,8 @@ if __name__ == '__main__':
             midpoint = "climate change"
 
         # scenario defines the number of counties
-        if scenario in [51, 52, 3000, 3100, 3200, 4501, 4502, 4503, 4511, 4512, 4513, 4521, 4522, 4523] or 1000 < scenario < 2999:
+        if scenario in [51, 52, 3000, 3100, 3200, 4501, 4502, 4503, 4511, 4512, 4513, 4521, 4522,
+                        4523] or 1000 < scenario < 2999:
             number_counties = 1
         elif scenario in [3001, 3101, 3201] or 420 < scenario < 430:
             number_counties = 2
