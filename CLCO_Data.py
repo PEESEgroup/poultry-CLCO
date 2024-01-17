@@ -5,7 +5,7 @@ from collections import defaultdict
 class CLCO_Data:
     ## put scenario specific data here in the init method
     def __init__(self, scenario):
-        if 1000 < scenario <2999 or scenario in [4501, 4502, 4503, 4511, 4512, 4513]:
+        if 1000 < scenario <2999 or scenario in [4501, 4502, 4503, 4511, 4512, 4513, 4521, 4522, 4523]:
             if scenario % 10 == 1:
                 self.FEEDSTOCK_SUPPLY = [5767 * 3]
                 self.INTRA_COUNTY_TRANSPORT_DISTANCE = [111.5]

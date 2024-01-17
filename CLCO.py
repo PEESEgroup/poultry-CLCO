@@ -637,7 +637,7 @@ def initialize_model(scenario, j, midpoint, lca_type):
     # solving the model
     if 1000 < scenario < 3000:
         return pareto_front2D(M, midpoint, scenario, A, lca_type)
-    elif scenario in [4501, 4502, 4503, 4511, 4512, 4513]:
+    elif scenario in [4501, 4502, 4503, 4511, 4512, 4513, 4521, 4522, 4523]:
         return pareto_front3D(M, 'climate change', 'eutrophication: freshwater', scenario, A, lca_type)
     elif 2999 < scenario < 9999:
         if int((scenario / 100) % 10) == 0:
@@ -1361,11 +1361,16 @@ def revenue_constraints(A, M, l, scenario, t):
                     (1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))
 
         # other revenue sources
-        if scenario in [5, 10103]:
+        if scenario in [5, 10103, 4521, 4522, 4523]:
             if tech == "Feedstock":
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
                 # carbon credits can go here
                 # M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == -100/1000*sum(M.total_LCA_midpoints[l, "ALCA", "climate change"]/A.TIME_PERIODS for l in M.Location))
+            elif tech == "Pyrolysis":
+                M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 61.66 * sum(
+                    M.pyrolysis_out[l, t, feed, 'Biochar', temp]
+                    for l in M.Location for feed in M.PyrolysisFeedstocks for temp in M.PyrolysisTemperatures)
+                / ((1 + A.MONTHLY_DISCOUNT_RATE) ** int(t)))# $61.66/ton biochar carbon credits
             else:
                 M.const.add(expr=M.opex_revenues[l, t, tech, "incentive 1"] == 0)
         else:
@@ -2292,18 +2297,22 @@ if __name__ == '__main__':
     3201: 2 pyrolysis plants for the whole state - min GWP
     3202: pyrolysis plant in every county, calculate biochar break-even prices - min GWP
     3203: plant in every county, calculate biochar break-even prices - min GWP
-    4501:, CLCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
-    4502:, CLCA,  All, Pareto Front FE min GWP min, Onondaga county
-    4503:, CLCA,  All, Pareto Front FE min GWP min, Jefferson county
-    4511:, ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
-    4512:, ALCA,  All, Pareto Front FE min GWP min, Onondaga county
-    4513:, ALCA,  All, Pareto Front FE min GWP min, Jefferson county
+    4501: CLCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
+    4502: CLCA,  All, Pareto Front FE min GWP min, Onondaga county
+    4503: CLCA,  All, Pareto Front FE min GWP min, Jefferson county
+    4511: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
+    4512: ALCA,  All, Pareto Front FE min GWP min, Onondaga county
+    4513: ALCA,  All, Pareto Front FE min GWP min, Jefferson county
+    4521: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP, carbon credits
+    4522: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP, carbon credits
+    4523: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP, carbon credits
     10003: first calculated optimal plants at NPV max in every county, then implemented constraints on those plants for sensitivity analysis
     10103: first calculated optimal plants at a tradeoff in every county, then implemented constraints on those plants for sensitivity analysis
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
+    
     '''
 
-    S = [4501, 4502, 4503]
+    S = [4521, 4522, 4523]
 
     for scenario in S:
         lca_type = "CLCA"
@@ -2324,7 +2333,7 @@ if __name__ == '__main__':
 
         if 1000 < scenario < 1999 or scenario in [4501, 4502, 4503]:
             lca_type = "CLCA"
-        elif 2000 < scenario < 2999 or scenario in [4511, 4512, 4513]:
+        elif 2000 < scenario < 2999 or scenario in [4511, 4512, 4513, 4521, 4522, 4523]:
             lca_type = "ALCA"
 
         # scenario defines midpoint type
@@ -2334,7 +2343,7 @@ if __name__ == '__main__':
             midpoint = "climate change"
 
         # scenario defines the number of counties
-        if scenario in [51, 52, 3000, 3100, 3200, 4501, 4502, 4503, 4511, 4512, 4513] or 1000 < scenario < 2999:
+        if scenario in [51, 52, 3000, 3100, 3200, 4501, 4502, 4503, 4511, 4512, 4513, 4521, 4522, 4523] or 1000 < scenario < 2999:
             number_counties = 1
         elif scenario in [3001, 3101, 3201] or 420 < scenario < 430:
             number_counties = 2

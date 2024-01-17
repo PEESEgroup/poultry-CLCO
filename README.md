@@ -204,12 +204,16 @@ Not every scenario in the scenario list below was used to create figures for thi
     3201: 2 pyrolysis plants for the whole state - min GWP
     3202: pyrolysis plant in every county, calculate biochar break-even prices - min GWP
     3203: plant in every county, calculate biochar break-even prices - min GWP
-    4501:, CLCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
-    4502:, CLCA,  All, Pareto Front FE min GWP min, Onondaga county
-    4503:, CLCA,  All, Pareto Front FE min GWP min, Jefferson county
-    4511:, ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
-    4512:, ALCA,  All, Pareto Front FE min GWP min, Onondaga county
-    4513:, ALCA,  All, Pareto Front FE min GWP min, Jefferson county
+    The 4500 scenarios are used to generate the 3D pareto fronts.
+    4501: CLCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
+    4502: CLCA,  All, Pareto Front FE min GWP min, Onondaga county
+    4503: CLCA,  All, Pareto Front FE min GWP min, Jefferson county
+    4511: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP
+    4512: ALCA,  All, Pareto Front FE min GWP min, Onondaga county
+    4513: ALCA,  All, Pareto Front FE min GWP min, Jefferson county
+    4521: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP, carbon credits
+    4522: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP, carbon credits
+    4523: ALCA,  All, Pareto Front FE min GWP min, largest facility from 2 facility FLP, carbon credits
     10003: first calculated optimal plants at NPV max in every county, then implemented constraints on those plants for sensitivity analysis
     10103: first calculated optimal plants at a tradeoff in every county, then implemented constraints on those plants for sensitivity analysis
     10203: first calculated optimal plants at GWP min in every county, then implemented constraints on those plants for sensitivity analysis
