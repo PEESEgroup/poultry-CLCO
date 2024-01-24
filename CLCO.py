@@ -528,7 +528,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
     ax.set_ylabel("FE (kg P-eq) per ton manure")
 
-    plt.show()
+    # plt.show()
 
     plt.clf()
     fig = plt.figure()
@@ -543,7 +543,7 @@ def pareto_front3D(M, midpoint1, midpoint2, scenario, A, lca_type):
     ax.set_xlabel("GWP (kg CO2-eq) per ton manure")
     ax.set_ylabel("FE (kg P-eq) per ton manure")
 
-    plt.show()
+    # plt.show()
 
     return 1
 
@@ -2313,7 +2313,7 @@ if __name__ == '__main__':
     
     '''
 
-    S = [4521, 4522, 4523]
+    S = [4501, 4502, 4503, 4511, 4512, 4513]
 
     for scenario in S:
         lca_type = "CLCA"
