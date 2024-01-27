@@ -140,3 +140,21 @@ for i in range(len(contour_plots)):
     cbar.ax.set_title("NPV (US$) per\nton manure", loc = 'left', fontsize=10)
     plt.title(title)
     plt.show()
+
+
+for i in range(len(carbon_contour)):
+    if i == 0:
+        title = "ALCA - Largest Facility"
+    elif i == 1:
+        title = "ALCA - Onondaga County"
+    elif i == 2:
+        title = "ALCA - Jefferson County"
+    else:
+        title = ""
+    cs = plt.tricontourf(carbon_contour[i][1], carbon_contour[i][2], carbon_contour[i][0], cmap=plt.get_cmap("plasma"))
+    plt.xlabel("GWP (kg CO2-eq) per ton manure")
+    plt.ylabel("FE (kg P-eq) per ton manure")
+    cbar = plt.colorbar(cs)
+    cbar.ax.set_title("NPV (US$) per\nton manure", loc = 'left', fontsize=10)
+    plt.title(title)
+    plt.show()
