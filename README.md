@@ -32,14 +32,20 @@ To run scenario 3:
 To run scenario 3, 428, and 1503:
 ```    S = [3, 428, 1503]```
 
-### NPV and LCA figures
+### NPV and LCA figures in SI
 
 Run scenarios 2, 5, 6, 7, 8 for direct land application, pyrolysis, HTL, HTC, and AD for figures 2, 3, and 5.
 Run scenarios 2, 5, 8, 10, 11, 12, and 10103 and then extract the entries for Onondaga county to create figures S1 and S2.  The normalization technology was chosen based on what technology would have the lowest range of LCA impacts.
 
-### FLP
+## Figure data sources
+data/figures/image_sources.xlsx
 
-Figure 4 was created by running the CLCO_FLP.py file.  This program does a full search over all maximum transportation distances and number of facilities.  Looking at the reported objective function values (likely in the SI) it was easy to determine the minimum transportation distance for each number of facilities.  Then, the solutions were manually adjusted as a few counties with very little manure were mislabeled due to a high mipgap to decrease computation time.
+### Figure 2
+
+Figure 2 was created by running the CLCO_FLP.py file.  This program does a full search over all maximum transportation distances and number of facilities.  Looking at the reported objective function values (likely in the SI) it was easy to determine the minimum transportation distance for each number of facilities.  Then, the solutions were manually adjusted as a few counties with very little manure were mislabeled due to a high mipgap to decrease computation time.
+
+### Figure 3/countour_plot.py
+This file uses hardcoded values from S4501-13 to build contour plots for Figure 3.
 
 ### Pareto Fronts
 
@@ -48,7 +54,7 @@ To find the 3-D Pareto fronts, run scenarios 4501, 4502, 4503, 4511, 4512, and 4
 To find the 2-D Pareto fronts in the SI, run scenarios 1501, 1502, 1503, 1511, 1512, 1513 for the CLCA GWP/NPV Pareto Front and scenarios 2501, 2502, 2503, 2511, 2512, 2513 for the ALCA GWP/NPV Pareto Front.  Pareto fronts are automatically plotted using matplotlib and can be found in the folder of the scenario number.
 Pareto fronts found in the figures in the manuscript are manually adjusted at the anchor points.
 
-### Sensitivity analysis
+### Sensitivity analysis/Figure 5
 
 To replicate the sensitivity analysis, run scenarios 10003, 10103, 10203 for NPV max, tradeoff, and GWP min respectively.  Modify CLCO_Data.py to change key parameters.
 
@@ -234,6 +240,3 @@ Not every scenario in the scenario list below was used to create figures for thi
 - <a href="https://www.freepik.com/free-vector/isometric-delivery-trucks-set-isolated-images-with-motor-lorry-cars-vehicles-different-freights_6851742.htm#query=truck%20isometric&position=0&from_view=search&track=ais&uuid=999179d3-1c74-4560-b1bf-bd10c081e434">Image by macrovector</a> on Freepik
 - <a href="https://www.freepik.com/free-vector/venture-capital-isometric-set-isolated-compositions-with-icons-money-means-investing-graphs-charts-vector-illustration_57164644.htm#query=economic%20market%20isometric&position=44&from_view=search&track=ais&uuid=23ea9dfe-40f7-4d45-8dc9-689485821320">Image by macrovector_official</a> on Freepik
 
-## countour_plot.py
-
-This file uses hardcoded values from S4501-13 to build contour plots for fig 3.
